@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Function to get current volume
+get_volume() {
+  pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]{1,3}(?=%)' | head -1
+}
+
+get_mute() {
+  pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'
+}
+MUTE=$(get_mute)
+
+# Change volume
+case $1 in
+  up)
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+    ;;
+  down)
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+    ;;
+  mute)
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    if [[ "$MUTE" == "no" ]]; then
+      notify-send "Mute"\
+        -h string:synchronous:volume \
+        -t 10 \
+        -c value \
+        -a ""
+        exit
+      else
+        notify-send "Unmute"\
+          -h string:synchronous:volume \
+          -t 10 \
+          -c value \
+          -a ""
+          exit
+    fi
+    exit
+    ;;
+    esac
+
+# Get the new volume
+VOLUME=$(get_volume)
+# Send notification
+if [[ "$MUTE" == "no" ]]; then
+  notify-send "Volume: "\
+    -h int:value:$VOLUME \
+    -h string:synchronous:volume \
+    -t 10 \
+    -c value \
+    -a "${VOLUME}%"
+    exit
+  else
+    notify-send "Muted: "\
+      -h int:value:$VOLUME \
+      -h string:synchronous:volume \
+      -t 10 \
+      -c value \
+      -a "${VOLUME}%"
+fi

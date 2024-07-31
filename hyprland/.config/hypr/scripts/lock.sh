@@ -1,0 +1,41 @@
+#!/usr/bin/bash
+source "$HOME/.cache/wal/colors.sh"
+
+swaylock \
+--ignore-empty-password \
+--font=MesloLGS \
+--clock \
+--fade-in 0.5 \
+--grace 1 \
+--effect-blur=2x2 \
+--effect-scale=1 \
+--indicator \
+--indicator-radius=240 \
+--indicator-thickness=20 \
+--indicator-caps-lock \
+--key-hl-color=$color15 \
+--separator-color=00000000 \
+--inside-color=00000088 \
+--inside-clear-color=00000088 \
+--inside-caps-lock-color=00000000 \
+--inside-ver-color=00000088 \
+--inside-wrong-color=ee2e2400 \
+--ring-color=$color0 \
+--ring-clear-color=$color15 \
+--ring-caps-lock-color=$color0 \
+--ring-ver-color=$color2 \
+--ring-wrong-color=$color1 \
+--line-color=00000000 \
+--line-clear-color=$color11 \
+--line-caps-lock-color=$color4 \
+--line-ver-color=$color15 \
+--line-wrong-color=ee2e24FF \
+--text-color=$color15 \
+--text-clear-color=$color11 \
+--text-ver-color=$color15 \
+--text-wrong-color=ee2e2400 \
+--bs-hl-color=ee2e24FF \
+--caps-lock-key-hl-color=$color4 \
+--caps-lock-bs-hl-color=ee2e24FF \
+--disable-caps-lock-text \
+--text-caps-lock-color=$color4 &
