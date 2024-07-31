@@ -57,19 +57,8 @@ window#waybar.hidden {
 #custom-wallpaper,
 #custom-launcher,
 #custom-spotify,
-#custom-weather,
-#custom-theme,
-#custom-weather.severe,
-#custom-weather.sunnyDay,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
 
-#custom-weather.default {
+#default {
     color: @foreground;
     padding: 2px 10px;
     background-color: @background;
@@ -77,7 +66,7 @@ window#waybar.hidden {
 }
 
 #custom-launcher {
-    color: @color6;
+    color: @color7;
     font-size: 18px;
     padding: 0 0px 0 8px;
     margin-left: 8px;
@@ -150,15 +139,6 @@ button:hover {
     color: @color10;
 }
 
-#custom-wallpaper {
-    padding: 0 18px 0 12px;
-    color: @color14;
-}
-
-#custom-theme {
-    padding: 0 18px 0 12px;
-    color: @color13;
-}
 
 #bluetooth,
 #backlight,
@@ -244,7 +224,7 @@ tooltip {
     background-color: @background;
     color: @foreground;
     /* font-family: CartographCF Nerd Font; */
-    font-family: CartographCF Nerd Font;
+    font-family: MesloLGS Nerd Font;
 }
 
 tooltip label {

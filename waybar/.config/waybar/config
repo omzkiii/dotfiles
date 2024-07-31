@@ -122,11 +122,6 @@
         "format-time": "{H}h {M}min",
         "tooltip": true
     },
-    "custom/weather": {
-        "exec": "python3 ~/.config/waybar/scripts/weather.py",
-        "restart-interval": 300,
-        "return-type": "json"
-    },
     "custom/spotify": {
         "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify",
         "format": "   {}",
@@ -143,13 +138,4 @@
         "format": " ",
         "on-click": "~/.config/rofi/scripts/launcher"
     },
-    "custom/wallpaper": {
-        "format": " ",
-        "on-click": "~/.config/rofi/scripts/wallpaper",
-        "on-click-right": "~/.config/waybar/scripts/wallpaper.sh"
-    },
-    "custom/theme": {
-        "format": "",
-        "on-click": "~/.config/waybar/scripts/theme.sh"
-    }
 }

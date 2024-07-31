@@ -11,4 +11,4 @@ spicetify config current_theme text color_scheme Spotify
 spicetify apply
 ~/.config/mako/update-colors.sh
 swww img ~/Pictures/Wallpapers/girl_dawn.png --transition-type center
-notify-send TokyoNight
+notify-send TokyoDark
