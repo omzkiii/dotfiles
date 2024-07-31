@@ -1,0 +1,27 @@
+{
+    "wallpaper": "~/Pictures/Wallpapers/catppuccin.png",
+    "alpha": "100",
+    "special": {
+        "background": "#11121D",
+        "foreground": "#A0A8CD",
+        "cursor": "#A0A8CD"
+    },
+    "colors": {
+        "color0" :  "#11121D",
+        "color1" :  "#EE6D85",
+        "color2" :  "#95C561",
+        "color3" :  "#98C379",
+        "color4" :  "#9FBBF3",
+        "color5" :  "#1C4474",
+        "color6" :  "#353945",
+        "color7" :  "#A0A8CD",
+        "color8" :  "#1A1B2A",
+        "color9" :  "#F6955B",
+        "color10" : "#D7A65F",
+        "color11" : "#38A89D",
+        "color12" : "#A485DD",
+        "color13" : "#7199EE",
+        "color14" : "#2A3A5A",
+        "color15" : "#4A5057"
+    }
+}

@@ -1,0 +1,19 @@
+scheme: "Tokyo Dark"
+author: " "
+base00: "06080A" # base
+base01: "1A1B2A" # mantle
+base02: "353945" # surface0
+base03: "2A3A5A" # surface1
+base04: "4A5057" # surface2
+base05: "1C4474" # text
+base06: "A0A8CD" # rosewater
+base07: "9FBBF3" # lavender
+base08: "EE6D85" # red
+base09: "F6955B" # peach
+base0A: "D7A65F" # yellow
+base0B: "95C561" # green
+base0C: "98C379" # teal
+base0D: "7199EE" # blue
+base0E: "A485DD" # flamingo
+base0F: "38A89D" # mauve
+

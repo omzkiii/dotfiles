@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+#
+# Current Theme
+dir="$HOME/.config/rofi/powermenu/type-1"
+theme='style-3'
+
+# CMDs
+#
+artist="$(playerctl metadata artist)"
+title="$(playerctl metadata title)"
+status="$(playerctl -p spotify status)"
+
+
+# Options
+play='󰐊'
+pause='󰏤'
+prev='󰒮'
+stop='󰓛'
+next='󰒭'
+
+# Rofi CMD
+rofi_cmd() {
+	rofi -dmenu \
+		-p "$artist - $title" \
+		-theme ${dir}/${theme}.rasi
+}
+
+echo $status
+# Pass variables to rofi dmenu
+run_rofi() {
+if [[ $status == 'Playing' ]]; then
+	echo -e "$prev\n$pause\n$next" | rofi_cmd
+elif [[ $status == 'Paused' ]]; then
+  echo -e "$prev\n$play\n$next" | rofi_cmd
+fi
+
+	# echo -e "$prev\n$play\n$stop\n$next" | rofi_cmd
+}
+
+# Execute Command
+run_cmd() {
+  if [[ $1 == '--stop' ]]; then
+    playerctl -p spotify stop
+  elif [[ $1 == '--play' ]]; then
+    playerctl -p spotify play
+  elif [[ $1 == '--pause' ]]; then
+    playerctl -p spotify pause
+  elif [[ $1 == '--prev' ]]; then
+    playerctl -p spotify previous
+  elif [[ $1 == '--next' ]]; then
+    playerctl -p spotify next
+  fi
+}
+
+# Actions
+chosen="$(run_rofi)"
+case ${chosen} in
+    $prev)
+		run_cmd --prev
+        ;;
+    $pause)
+    run_cmd --pause
+    echo PAUSE
+        ;;
+    $play)
+    echo PLAY
+		run_cmd --play
+        ;;
+    $stop)
+    run_cmd --stop
+        ;;
+    $next)
+		run_cmd --next
+        ;;
+esac

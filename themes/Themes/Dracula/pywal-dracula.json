@@ -1,0 +1,43 @@
+{
+    "wallpaper": "~/Pictures/Wallpapers/arch-dracula.png",
+    "alpha": "100",
+    "special": {
+        "background": "#282a36",
+        "foreground": "#f8f8f2",
+        "cursor": "#f8f8f2"
+    },
+    "colors": {
+        "color0" :  "#282a36",
+        "color1" :  "#ff5555",
+        "color2" :  "#ffb86c",
+        "color3" :  "#f1fa8c",
+        "color4" :  "#00f769",
+        "color5" :  "#8be9fd",
+        "color6" :  "#6272a4",
+        "color7" :  "#f8f8f2",
+        "color8" :  "#44475a",
+        "color9" :  "#ea51b2",
+        "color10" : "#ff79c6",
+        "color11" : "#ebff87",
+        "color12" : "#50fa7b",
+        "color13" : "#62d6e8",
+        "color14" : "#bd93f9",
+        "color15" : "#e9e9f4"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+}

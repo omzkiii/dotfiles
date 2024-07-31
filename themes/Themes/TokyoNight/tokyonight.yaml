@@ -1,0 +1,18 @@
+scheme: "Tokyo Night"
+author: " "
+base00: "1a1b26" # base
+base01: "24283b" # mantle
+base02: "414868" # surface0
+base03: "565f89" # surface1
+base04: "cfc9c2" # surface2
+base05: "9aa5ce" # text
+base06: "a9b1d6" # rosewater
+base07: "c0caf5" # lavender
+base08: "f7768e" # red
+base09: "ff9e64" # peach
+base0A: "e0af68" # yellow
+base0B: "9ece6a" # green
+base0C: "73daca" # teal
+base0D: "2ac3de" # blue
+base0E: "7dcfff" # mauve
+base0F: "7aa2f7" # flamingo

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "~/Pictures/Wallpapers/solarizedbalcony.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#002b36",
+        "foreground": "#93a1a1",
+        "cursor": "#93a1a1"
+    },
+    "colors": {
+        "color0" :  "#002b36",  
+        "color1" :  "#dc322f", 
+        "color2" :  "#859900", 
+        "color3" :  "#268bd2", 
+        "color4" :  "#586e75", 
+        "color5" :  "#657b83", 
+        "color6" :  "#93a1a1", 
+        "color7" : "#fdf6e3",  
+        "color8" :  "#073642", 
+        "color9" :  "#cb4b16", 
+        "color10" : "#b58900", 
+        "color11" : "#6c71c4", 
+        "color12" : "#2aa198", 
+        "color13" : "#d33682", 
+        "color14" : "#eee8d5", 
+        "color15" :  "#839496" 
+    }
+}
