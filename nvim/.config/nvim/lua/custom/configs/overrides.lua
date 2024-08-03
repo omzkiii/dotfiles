@@ -1,15 +1,15 @@
 local M = {}
 
 M.nvterm = {
-  require("nvterm").setup({
+  require("nvterm").setup {
     terminals = {
       type_opts = {
         horizontal = {
-          split_ratio = 0.5  -- This sets the height to 30% of the window
+          split_ratio = 0.5, -- This sets the height to 30% of the window
         },
       },
     },
-  })
+  },
 }
 
 M.treesitter = {
@@ -80,6 +80,5 @@ M.nvimtree = {
     },
   },
 }
-
 
 return M

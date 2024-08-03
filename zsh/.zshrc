@@ -152,7 +152,7 @@ ff() {
             echo "Selected directory does not exist: $dir"
         fi
     else
-        echo "No directory selected."
+
     fi
 }
 

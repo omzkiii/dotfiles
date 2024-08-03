@@ -25,15 +25,15 @@ local default_plugins = {
     end,
     config = function(_, opts)
       require "base46.term"
-      require("nvterm").setup({
+      require("nvterm").setup {
         terminals = {
           type_opts = {
             horizontal = {
-              split_ratio = 0.5  -- This sets the height to 30% of the window
+              split_ratio = 0.5, -- This sets the height to 30% of the window
             },
           },
         },
-      })
+      }
     end,
   },
 
@@ -251,7 +251,6 @@ local default_plugins = {
     end,
   },
 }
-
 
 local config = require("core.utils").load_config()
 

@@ -68,8 +68,8 @@ M.general = {
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
 
-    ["J"] = {":m '>+1<CR>gv=gv"},
-    ["K"] = {":m '<-2<CR>gv=gv"},
+    ["J"] = { ":m '>+1<CR>gv=gv" },
+    ["K"] = { ":m '<-2<CR>gv=gv" },
   },
 
   x = {
@@ -295,11 +295,11 @@ M.telescope = {
     -- theme switcher
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
     ["<leader>tt"] = {
-      function ()
+      function()
         require("base46").toggle_transparency()
       end,
       "Toggle Transparency",
-      },
+    },
     ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
   },
 }

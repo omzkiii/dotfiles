@@ -4,14 +4,13 @@ local config = require("core.utils").load_config()
 --local pywal_core = require('pywal.core')
 --local colors = pywal_core.get_colors()
 
-
 -------------------------------------- globals -----------------------------------------
 g.nvchad_theme = config.ui.theme
 g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 
- ------------------------------------- options ------------------------------------------
+------------------------------------- options ------------------------------------------
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
