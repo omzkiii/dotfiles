@@ -1,14 +1,15 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
-local lspconfig = require 'lspconfig'
+local lspconfig = require "lspconfig"
 
--- lspconfig.htmx.setup{}
+lspconfig.htmx.setup {}
 -- lspconfig.jdtls.setup{}
 -- lspconfig.tailwindcss.setup{}
 -- lspconfig.html.setup{}
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
+  htmx = {},
   "html",
   "cssls",
   "tsserver",
@@ -20,7 +21,6 @@ local servers = {
   "jdtls",
   "tailwindcss",
 }
-
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -92,5 +92,5 @@ end
 --   capabilities = capabilities,
 -- }
 
--- 
+--
 -- lspconfig.pyright.setup { blabla}

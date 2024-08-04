@@ -29,6 +29,19 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
+      local signs = {
+        Error = " ",
+        Warn = " ",
+        Hint = "󰌵 ",
+        Info = " ",
+      }
+
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
+
+      diagnostic_signs = signs
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -53,7 +66,6 @@ return {
       --
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, `:help lsp-vs-treesitter`
-
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -97,12 +109,14 @@ return {
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
+          map("<leader>lf", function()
+            vim.diagnostic.open_float { border = "rounded" }
+          end, "Floating Diagnostics")
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -112,6 +126,7 @@ return {
           --    See `:help CursorHold` for information about when this is executed
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
+
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -165,9 +180,9 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
+        clangd = {},
+        gopls = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -175,7 +190,8 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        jdtls = {},
+        tsserver = {},
         --
 
         lua_ls = {
@@ -222,6 +238,58 @@ return {
           end,
         },
       }
+      require("lspkind").setup {
+        -- DEPRECATED (use mode instead): enables text annotations
+        --
+        -- default: true
+        -- with_text = true,
+
+        -- defines how annotations are shown
+        -- default: symbol
+        -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+        mode = "symbol_text",
+
+        -- default symbol map
+        -- can be either 'default' (requires nerd-fonts font) or
+        -- 'codicons' for codicon preset (requires vscode-codicons font)
+        --
+        -- default: 'default'
+        preset = "default",
+
+        -- override preset symbols
+        --
+        -- default: {}
+        symbol_map = {
+          Text = "󰉿 ",
+          Method = "󰆧 ",
+          Function = "󰊕 ",
+          Constructor = " ",
+          Field = "󰜢 ",
+          Variable = "󰀫 ",
+          Class = "󰠱 ",
+          Interface = " ",
+          Module = " ",
+          Property = "󰜢 ",
+          Unit = "󰑭 ",
+          Value = "󰎠 ",
+          Enum = " ",
+          Keyword = "󰌋 ",
+          Snippet = " ",
+          Color = "󰏘 ",
+          File = "󰈙 ",
+          Reference = "󰈇 ",
+          Folder = "󰉋 ",
+          EnumMember = " ",
+          Constant = "󰏿 ",
+          Struct = "󰙅 ",
+          Event = " ",
+          Operator = "󰆕 ",
+          TypeParameter = " ",
+        },
+      }
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+      })
     end,
   },
 }

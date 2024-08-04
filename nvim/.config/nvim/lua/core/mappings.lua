@@ -185,7 +185,6 @@ M.lspconfig = {
       end,
       "LSP rename",
     },
-
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
