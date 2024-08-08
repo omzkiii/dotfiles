@@ -15,8 +15,10 @@ local key_mappings = {
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
-    ["<C-u>"] = { "<C-u>zz", "Move up page" },
-    ["<C-d>"] = { "<C-d>zz", "Move down page" },
+    -- ["<C-u>"] = { "<C-u>zz", "Move up page" },
+    -- ["<C-d>"] = { "<C-d>zz", "Move down page" },
+    ["<C-u>"] = { "Hzz", "Move up page" },
+    ["<C-d>"] = { "Lzz", "Move down page" },
 
     ["j"] = { "gj", "Down" },
     ["<k>"] = { "gk", "Up" },
@@ -44,8 +46,8 @@ local key_mappings = {
   },
   i = {},
   v = {
-    ["J"] = { ":m '>+1<CR>gv=gv" },
-    ["K"] = { ":m '<-2<CR>gv=gv" },
+    ["J"] = { ":m '>+1<CR>gvgv=gv" },
+    ["K"] = { ":m '<-2<CR>gvgv=gv" },
   },
 }
 

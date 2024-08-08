@@ -58,6 +58,8 @@ return {
             -- LineNr = { fg = c.base1, bg = c.base02 },
             CursorLineNr = { bg = c.base02 },
             CursorLine = { bg = c.base02 },
+            IblScope = { fg = c.base1, bg = "NONE" },
+            IblIndent = { fg = c.base01, bg = "NONE" },
             -- Function = { italic = false },
             -- Visual = { bg = c.cyan },
           }
@@ -70,12 +72,16 @@ return {
     lazy = true,
     config = function()
       -- vim.g.gruvbox_baby_keyword_style = "normal"
-      vim.g.gruvbox_baby_use_original_palette = "true"
+      -- vim.g.gruvbox_baby_use_original_palette = "true"
       vim.g.gruvbox_baby_background_color = "medium"
       vim.g.gruvbox_baby_highlights = {
         Normal = { fg = "NONE", bg = "#1d2021", style = "NONE" },
         SignColumn = { fg = "None", bg = "#1d2021", style = "NONE" },
+        TelescopeSelection = { fg = "#fbf1c7", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
+        -- IblScope = { fg = "#928374", bg = "NONE", style = "NONE" },
+        IblScope = { fg = "#fbf1c7", bg = "NONE", style = "NONE" },
+        IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
       }
     end,
   },

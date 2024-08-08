@@ -5,7 +5,7 @@ lua << EOF
 -------------
 
 if vim.g.GuiLoaded then
-  -- local font_name = "MesloLGL Nerd Font"
+  local font_name = "Iosevka Nerd Font"
   local font_size = 12
   local not_transparent = false
 
@@ -42,9 +42,26 @@ end
 -------------
 
 if vim.g.neovide then
-  -- vim.opt.guifont = "MesloLGL Nerd Font:h14"
+  vim.opt.guifont = "Iosevka Nerd Font:h14"
   vim.g.remember_window_size = true
   vim.g.remember_window_position = true
+  -- vim.g.neovide_transparency = 0.95
+  vim.g.experimental_layer_grouping = false
+  vim.g.neovide_floating_shadow = false
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  vim.g.neovide_cursor_vfx_particle_density = 70.0
+  vim.g.neovide_cursor_vfx_particle_lifetime = 3.2
+  -- vim.g.neovide_cursor_smooth_blink = true
+
+-- Disable animation
+-- vim.g.neovide_position_animation_length = 0
+-- vim.g.neovide_cursor_animation_length = 0.00
+-- vim.g.neovide_cursor_trail_size = 0
+-- vim.g.neovide_cursor_animate_in_insert_mode = false
+-- vim.g.neovide_cursor_animate_command_line = false
+-- vim.g.neovide_scroll_animation_far_lines = 0
+-- vim.g.neovide_scroll_animation_length = 0.00
+
 
   local function toggle_transparency()
     if vim.g.neovide_transparency == 1.0 then

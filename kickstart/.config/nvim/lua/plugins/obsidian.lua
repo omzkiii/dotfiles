@@ -77,7 +77,7 @@ return {
     new_notes_location = "current_dir",
 
     -- Either 'wiki' or 'markdown'.
-    preferred_link_style = "wiki",
+    preferred_link_style = "markdown",
 
     -- Control how wiki links are completed with these (mutually exclusive) options:
     --
@@ -105,6 +105,47 @@ return {
       ["<leader>ch"] = {
         action = function()
           return require("obsidian").util.toggle_checkbox()
+        end,
+        opts = { buffer = true },
+      },
+
+      ["<leader>ob"] = {
+        action = function()
+          return vim.cmd ":ObsidianBacklinks"
+        end,
+        opts = { buffer = true },
+      },
+
+      ["<leader>ol"] = {
+        action = function()
+          return vim.cmd ":ObsidianLinks"
+        end,
+        opts = { buffer = true },
+      },
+
+      ["<leader>os"] = {
+        action = function()
+          return vim.cmd ":ObsidianSearch"
+        end,
+        opts = { buffer = true },
+      },
+
+      ["<leader>oq"] = {
+        action = function()
+          return vim.cmd ":ObsidianQuickSwitch"
+        end,
+        opts = { buffer = true },
+      },
+      ["<leader>of"] = {
+        action = function()
+          return vim.cmd ":ObsidianFollowLink vsplit"
+        end,
+        opts = { buffer = true },
+      },
+
+      ["<leader>on"] = {
+        action = function()
+          return vim.cmd ":ObsidianNew"
         end,
         opts = { buffer = true },
       },

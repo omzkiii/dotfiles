@@ -1,3 +1,11 @@
+-- vim.g.vim_markdown_folding_style_pythonic = 1
+-- vim.g.vim_markdown_folding_level = 6
+vim.g.vim_markdown_conceal = 5
+vim.g.vim_markdown_borderless_table = 1
+vim.g.vim_markdown_folding_disabled = 1 -- markdown folding
+vim.opt.wrap = true -- Enable line wrapping
+vim.opt.linebreak = true -- Allow breaking within lines
+vim.opt.breakat = vim.o.breakat -- Set break indent to vim default (using arabic characters to avoid keyword conflict)
 vim.o.cmdheight = 0
 vim.opt.termguicolors = true
 vim.g.loaded_netrw = 1
@@ -9,7 +17,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -94,3 +102,79 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Key mapping
+-- vim.api.nvim_set_keymap("n", "<leader>g", ":lua Google()<CR>", { noremap = true, silent = true })
+--
+-- -- Google function
+-- function Google()
+--   -- Get the word under the cursor
+--   local keyword = vim.fn.expand "<cword>"
+--
+--   -- Construct the URL
+--   local url = "http://www.google.com/search?q=" .. keyword
+--
+--   -- Construct and execute the command
+--   local cmd = string.format('xdg-open "%s"', url)
+--
+--   -- Execute the command
+--   vim.fn.jobstart(cmd, { detach = true })
+-- end
+--
+
+-- Key mapping
+vim.api.nvim_set_keymap("n", "<leader>g", ":lua OpenURL()<CR>", { noremap = true, silent = true })
+
+-- Function to open URL
+function OpenURL()
+  -- Get the current line
+  local current_line = vim.api.nvim_get_current_line()
+
+  -- Extract the URL from within quotes
+  local url = current_line:match '"(https?://[^"]+)"'
+
+  if not url then
+    print "No URL found between quotes in the current line."
+    return
+  end
+
+  -- Construct the command to open the URL
+  local cmd = string.format('xdg-open "%s" &', url)
+  -- local cmd = string.format('librewolf "%s" &', url)
+
+  -- Execute the command
+  vim.fn.jobstart(cmd, { detach = true })
+
+  -- print("Opening URL: " .. url)
+end
+
+-- Key mapping
+vim.api.nvim_set_keymap("n", "<leader>p", ":lua OpenPDFWithZathura()<CR>", { noremap = true, silent = true })
+
+-- Function to open PDF with Zathura
+function OpenPDFWithZathura()
+  -- Get the current line
+  local current_line = vim.api.nvim_get_current_line()
+
+  -- Extract the file path from within quotes
+  local file_path = current_line:match "'(.+)'"
+
+  if not file_path then
+    print "No file path found between quotes in the current line."
+    return
+  end
+
+  -- Check if the file is a PDF
+  if vim.fn.fnamemodify(file_path, ":e"):lower() ~= "pdf" then
+    print "The file is not a PDF."
+    return
+  end
+
+  -- Construct the command
+  local cmd = string.format('zathura "%s" &', file_path)
+
+  -- Execute the command
+  vim.fn.jobstart(cmd, { detach = true })
+
+  -- print("Opening PDF with Zathura: " .. file_path)
+end

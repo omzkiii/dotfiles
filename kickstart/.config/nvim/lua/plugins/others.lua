@@ -34,4 +34,13 @@ return {
       vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
     end,
   },
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require("leap").create_default_mappings()
+    end,
+  },
+  {
+    "preservim/vim-pencil",
+  },
 }
