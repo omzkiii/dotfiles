@@ -75,12 +75,12 @@ return {
       -- vim.g.gruvbox_baby_use_original_palette = "true"
       vim.g.gruvbox_baby_background_color = "medium"
       vim.g.gruvbox_baby_highlights = {
-        Normal = { fg = "NONE", bg = "#1d2021", style = "NONE" },
+        Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
         SignColumn = { fg = "None", bg = "#1d2021", style = "NONE" },
         TelescopeSelection = { fg = "#fbf1c7", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
         -- IblScope = { fg = "#928374", bg = "NONE", style = "NONE" },
-        IblScope = { fg = "#fbf1c7", bg = "NONE", style = "NONE" },
+        IblScope = { fg = "#a89984", bg = "NONE", style = "NONE" },
         IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
       }
     end,
@@ -119,5 +119,26 @@ return {
         transparent_mode = true,
       }
     end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("kanagawa").setup {
+        overrides = function(colors)
+          return {
+            -- Assign a static color to strings
+            -- String = { fg = colors.palette.carpYellow, italic = true },
+            -- theme colors will update dynamically when you change theme!
+            -- SomePluginHl = { fg = colors.theme.syn.type, bold = true },
+            SignColumn = { bg = colors.palette.sumiInk3 },
+            CursorLineNr = { bg = colors.palette.sumiInk3 },
+            LineNr = { bg = colors.palette.sumiInk3 },
+          }
+        end,
+      }
+    end,
+  },
+  {
+    "shaunsingh/nord.nvim",
   },
 }
