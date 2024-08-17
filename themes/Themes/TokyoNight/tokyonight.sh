@@ -1,8 +1,8 @@
 #!/bin/bash
 wal --theme ~/Themes/TokyoNight/pywal-tokyonight.json
-gsettings set org.gnome.desktop.interface gtk-theme "oomox-tokyodark"  
-gsettings set org.gnome.desktop.interface icon-theme "oomox-tokyodark"
-gsettings set org.gnome.desktop.wm.preferences theme "oomox-tokyodark"
+gsettings set org.gnome.desktop.interface gtk-theme "oomox-tokyonight"  
+gsettings set org.gnome.desktop.interface icon-theme "oomox-tokyonight"
+gsettings set org.gnome.desktop.wm.preferences theme "oomox-tokyonight"
 cp -f ~/.cache/wal/colors-waybar.css ~/.config/waybar/
 zathura-pywal
 killall waybar && waybar&

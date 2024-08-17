@@ -3,10 +3,9 @@ source "$HOME/.cache/wal/colors.sh"
 
 swaylock \
 --ignore-empty-password \
---font="MesloLGS Nerd Font" \
+--font="MesloLGL Nerd Font" \
 --clock \
 --fade-in 0.3 \
---grace 0.5 \
 --effect-blur=2x2 \
 --effect-scale=1 \
 --indicator \
@@ -38,4 +37,4 @@ swaylock \
 --caps-lock-key-hl-color=$color4 \
 --caps-lock-bs-hl-color=ee2e24FF \
 --disable-caps-lock-text \
---text-caps-lock-color=$color4 &
+--text-caps-lock-color=$color4 \

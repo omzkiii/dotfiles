@@ -2,6 +2,14 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    local function recording()
+      local reg = vim.fn.reg_recording()
+      if reg == "" then
+        return ""
+      else
+        return "rec @" .. reg .. ""
+      end
+    end
     require("lualine").setup {
       options = {
         icons_enabled = true,
@@ -50,7 +58,7 @@ return {
             },
           },
         },
-        lualine_c = { "branch" },
+        lualine_c = { "branch", recording },
         lualine_x = { "diff", "diagnostics" },
         lualine_y = { "progress" },
         lualine_z = { "location" },

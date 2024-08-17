@@ -6,7 +6,7 @@ vim.g.vim_markdown_folding_disabled = 1 -- markdown folding
 vim.opt.wrap = true -- Enable line wrapping
 vim.opt.linebreak = true -- Allow breaking within lines
 vim.opt.breakat = vim.o.breakat -- Set break indent to vim default (using arabic characters to avoid keyword conflict)
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
 vim.opt.termguicolors = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -41,7 +41,7 @@ vim.opt.showmode = false
 
 -- Conceal Level
 vim.opt.conceallevel = 3
-vim.opt.concealcursor = "nvic"
+vim.opt.concealcursor = ""
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -178,3 +178,6 @@ function OpenPDFWithZathura()
 
   -- print("Opening PDF with Zathura: " .. file_path)
 end
+
+vim.api.nvim_set_keymap("n", "<leader>c=", ":set cmdheight=1<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>c-", ":set cmdheight=0<CR>", { noremap = true, silent = true })

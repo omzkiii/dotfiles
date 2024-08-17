@@ -12,17 +12,16 @@
         "color2" :  "#88C0D0",
         "color3" :  "#B48EAD",
         "color4" :  "#8FBCBB",
-        "color5" :  "#4C566A",
-        "color6" :  "#434C5E",
+        "color5" :  "#D8DEE9",
+        "color6" :  "#5E81AC",
         "color7" :  "#ECEFF4", 
         "color8" :  "#3B4252",
         "color9" :  "#BF616A",
         "color10" : "#D08770",
-        "color12" : "#EBCB8B",
-        "color11" : "#A3BE8C",
-        "color14" : "#5E81AC",
-        "color13" : "#D8DEE9",
-        "color14" : "#5E81AC",
+        "color11" : "#EBCB8B",
+        "color12" : "#A3BE8C",
+        "color13" : "#434C5E",
+        "color14" : "#4C566A",
         "color15" : "#E5E9F0"
     }
 }

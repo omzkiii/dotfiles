@@ -25,14 +25,4 @@ swww img $wallpaper --transition-type random --transition-fps 60 --transition-du
 
 sleep 1.25
 
-# if [[ "$(<~/.cache/wal/mode )" = "dark" ]]; then
-#   wal -i $wallpaper --cols16
-# elif [[ "$(<~/.cache/wal/mode )" = "light" ]]; then
-#   wal -i $wallpaper -l --cols16
-# fi
 
-# pywalfox update
-# pywal-discord -t default
-# wal-telegram --wal
-
-. $HOME/.config/mako/update-colors.sh

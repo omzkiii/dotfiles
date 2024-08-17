@@ -157,7 +157,7 @@ button:hover {
 }
 
 #network {
-    color: @color13;
+    color: @color5;
     padding-right: 14px;
     border-right: none;
     border-left: none;
@@ -168,7 +168,7 @@ button:hover {
 }
 
 #pulseaudio {
-    color: @color13;
+    color: @color5;
     border-left: none;
     border-right: none;
 }
@@ -180,7 +180,7 @@ button:hover {
 #backlight {
     margin-right: 3px;
     padding-right: 8px;
-    color: @color13;
+    color: @color5;
     border-radius: 0 8px 8px 0;
     border-left: none;
 }

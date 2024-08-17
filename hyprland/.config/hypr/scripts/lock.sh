@@ -3,7 +3,7 @@ source "$HOME/.cache/wal/colors.sh"
 
 swaylock \
 --ignore-empty-password \
---font=MesloLGS \
+--font="MesloLGM Nerd Font" \
 --clock \
 --fade-in 0.5 \
 --grace 1 \

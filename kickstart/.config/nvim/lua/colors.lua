@@ -43,7 +43,7 @@ return {
             base1 = lighten(colors.base1, 50),
             base2 = lighten(colors.base2, 50),
             base3 = lighten(colors.base3, 50),
-            -- green = lighten(colors.green, 20),
+            green = lighten(colors.green, 20),
             cyan = lighten(colors.cyan, 50),
             yellow = lighten(colors.yellow, 20),
           }
@@ -61,12 +61,15 @@ return {
             IblScope = { fg = c.base1, bg = "NONE" },
             IblIndent = { fg = c.base01, bg = "NONE" },
             -- Function = { italic = false },
-            -- Visual = { bg = c.cyan },
+            Visual = { bg = c.base01 },
           }
         end,
       }
     end,
   },
+  -- {
+  --   "shaunsingh/solarized.nvim",
+  -- },
   {
     "luisiacc/gruvbox-baby",
     lazy = true,
@@ -132,6 +135,7 @@ return {
             -- SomePluginHl = { fg = colors.theme.syn.type, bold = true },
             SignColumn = { bg = colors.palette.sumiInk3 },
             CursorLineNr = { bg = colors.palette.sumiInk3 },
+            Visual = { bg = colors.palette.sumiInk6 },
             LineNr = { bg = colors.palette.sumiInk3 },
           }
         end,
@@ -140,5 +144,38 @@ return {
   },
   {
     "shaunsingh/nord.nvim",
+    lazy = true,
+  },
+  {
+    "Shatur/neovim-ayu",
+    lazy = true,
+    config = function()
+      local colors = require "ayu.colors"
+      colors.generate(true) -- Pass `true` to enable mirage
+
+      require("ayu").setup {
+        overrides = {
+          IblScope = { fg = colors.fg },
+        },
+      }
+    end,
+  },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      require("rose-pine").setup {
+        enable = {
+          terminal = true,
+          legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+          migrations = true, -- Handle deprecated options automatically
+        },
+        highlight_groups = {
+          TelescopeSelection = { fg = "gold", bg = "pine" },
+          -- Comment = { fg = "foam" },
+          -- VertSplit = { fg = "muted", bg = "muted" },
+        },
+      }
+    end,
   },
 }

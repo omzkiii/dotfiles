@@ -2,12 +2,12 @@
     "wallpaper": "~/Pictures/Wallpapers/catppuccin.png",
     "alpha": "100",
     "special": {
-        "background": "#1e1e2e",
+        "background": "#1e1e2f",
         "foreground": "#f2cdcd",
         "cursor": "#f2cdcd"
     },
     "colors": {
-        "color0" :   "#1e1e2e",
+        "color0" :   "#1e1e2f",
         "color1" :   "#f38ba8",
         "color2" :   "#fab387",
         "color3" :   "#a6e3a1",
