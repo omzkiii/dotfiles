@@ -14,8 +14,8 @@ return {
       options = {
         icons_enabled = true,
         theme = "auto",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = " ", right = " " },
+        component_separators = { left = "╱", right = "╲" },
+        section_separators = { left = " ", right = "" },
         disabled_filetypes = {
           statusline = {},
           winbar = {},
@@ -24,9 +24,9 @@ return {
         always_divide_middle = true,
         globalstatus = true,
         refresh = {
-          statusline = 1000,
-          tabline = 1000,
-          winbar = 1000,
+          statusline = 500,
+          -- tabline = 1000,
+          -- winbar = 1000,
         },
       },
       sections = {
@@ -34,13 +34,19 @@ return {
         lualine_b = {
           {
             "filetype",
+            color = "CursorLine",
             colored = false, -- Displays filetype icon in color if set to true
             icon_only = true, -- Display only an icon for filetype
             align = "right",
+            -- separator = "",
+            padding = { right = -3, left = 1 },
           },
           {
             "filename",
+            color = "CursorLine",
+            -- separator = "",
             file_status = true, -- Displays file status (readonly status, modified status)
+            padding = { right = 1, left = 1 },
             newfile_status = false, -- Display new file status (new file means no write after created)
             path = 4, -- 0: Just the filename
             -- 1: Relative path
@@ -48,10 +54,10 @@ return {
             -- 3: Absolute path, with tilde as the home directory
             -- 4: Filename and parent dir, with tilde as the home directory
 
-            shorting_target = 100, -- Shortens path to leave 40 spaces in the window
+            shorting_target = 40, -- Shortens path to leave 40 spaces in the window
             -- for other components. (terrible name, any suggestions?)
             symbols = {
-              modified = " ●",
+              modified = "●",
               readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
               unnamed = "[No Name]", -- Text to show for unnamed buffers.
               newfile = "[New]", -- Text to show for newly created file before first write
@@ -60,13 +66,18 @@ return {
         },
         lualine_c = { "branch", recording },
         lualine_x = { "diff", "diagnostics" },
-        lualine_y = { "progress" },
+        lualine_y = {
+          {
+            "progress",
+            color = "CursorLine",
+          },
+        },
         lualine_z = { "location" },
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},

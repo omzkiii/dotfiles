@@ -31,6 +31,7 @@ return {
     config = function()
       require("solarized").setup {
         theme = "neo", -- or comment to use solarized default theme.
+        -- pallete = "solarized",
         colors = function(colors, colorhelper)
           local darken = colorhelper.darken
           local lighten = colorhelper.lighten
@@ -38,13 +39,16 @@ return {
 
           return {
             -- base01 = lighten(colors.base01, 50),
-            base00 = lighten(colors.base00, 50),
-            base0 = lighten(colors.base0, 50),
-            base1 = lighten(colors.base1, 50),
-            base2 = lighten(colors.base2, 50),
-            base3 = lighten(colors.base3, 50),
+            base02 = lighten(colors.base02, 5),
+            base00 = lighten(colors.base00, 20),
+            -- base0 = lighten(colors.base0, 20),
+            -- base1 = lighten(colors.base1, 20),
+            -- base2 = lighten(colors.base2, 20),
+            -- base3 = lighten(colors.base3, 20),
             green = lighten(colors.green, 20),
-            cyan = lighten(colors.cyan, 50),
+            red = lighten(colors.red, 20),
+            cyan = lighten(colors.cyan, 20),
+            blue = lighten(colors.blue, 20),
             yellow = lighten(colors.yellow, 20),
           }
         end,
@@ -54,14 +58,19 @@ return {
           local blend = colorhelper.blend
           local c = colors
           return {
-            Normal = { fg = c.base1 },
+            Normal = { fg = c.base3 },
             -- LineNr = { fg = c.base1, bg = c.base02 },
-            CursorLineNr = { bg = c.base02 },
-            CursorLine = { bg = c.base02 },
+            -- CursorLineNr = { bg = lighten(c.base03, 10) },
+            CursorLine = { bg = lighten(c.base03, 10) },
+            Visual = { bg = darken(c.base03, 30) },
             IblScope = { fg = c.base1, bg = "NONE" },
-            IblIndent = { fg = c.base01, bg = "NONE" },
+            IblIndent = { fg = c.base02, bg = "NONE" },
+            b = { bg = c.base01 },
+            FloatBorder = { bg = "NONE" },
+            NormalFloat = { fg = c.base3 },
+            -- PmenuThumb = { fg = c.yellow, bg = c.yellow },
             -- Function = { italic = false },
-            Visual = { bg = c.base01 },
+            -- Visual = { bg = c.base02 },
           }
         end,
       }
@@ -171,7 +180,7 @@ return {
           migrations = true, -- Handle deprecated options automatically
         },
         highlight_groups = {
-          TelescopeSelection = { fg = "gold", bg = "pine" },
+          TelescopeSelection = { fg = "gold", bg = "overlay" },
           -- Comment = { fg = "foam" },
           -- VertSplit = { fg = "muted", bg = "muted" },
         },

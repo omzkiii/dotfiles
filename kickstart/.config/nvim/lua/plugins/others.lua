@@ -47,4 +47,73 @@ return {
   {
     "preservim/vim-pencil",
   },
+  -- {
+  --   "nvimdev/dashboard-nvim",
+  --   event = "VimEnter",
+  --
+  --   config = function()
+  --     local conf = {}
+  --     conf.header = {
+  --       "                                                       ",
+  --       "                                                       ",
+  --       "                                                       ",
+  --       "                                                       ",
+  --       "                                                       ",
+  --       "                                                       ",
+  --       " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
+  --       " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
+  --       " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
+  --       " ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
+  --       " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
+  --       " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+  --       "                                                       ",
+  --       "                                                       ",
+  --       "                                                       ",
+  --       "                                                       ",
+  --     }
+  --
+  --     conf.center = {
+  --       {
+  --         icon = "󰈞  ",
+  --         desc = "Find  File                              ",
+  --         key = "<Leader> <Leader>",
+  --       },
+  --       {
+  --         icon = "󰈢  ",
+  --         desc = "Recently opened files                   ",
+  --         key = "<Leader> s o",
+  --       },
+  --       {
+  --         icon = "  ",
+  --         desc = "Open Nvim config                        ",
+  --         key = "<Leader> s n",
+  --       },
+  --       {
+  --         icon = "  ",
+  --         desc = "New file                                ",
+  --         action = "enew",
+  --         key = "e",
+  --       },
+  --       {
+  --         icon = "󰗼  ",
+  --         desc = "Quit Nvim                               ",
+  --         -- desc = "Quit Nvim                               ",
+  --         action = "qa",
+  --         key = "q",
+  --       },
+  --
+  --       -- disable_move = true,
+  --       change_to_vcs_root = true,
+  --       -- hide = {
+  --       --   winbar = true,
+  --       -- },
+  --     }
+  --     require("dashboard").setup {
+  --       theme = "doom",
+  --       config = conf,
+  --       -- shortcut_type = "number",
+  --     }
+  --   end,
+  --   dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  -- },
 }

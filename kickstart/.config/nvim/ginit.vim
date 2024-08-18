@@ -54,20 +54,21 @@ if vim.g.neovide then
   -- vim.g.neovide_cursor_smooth_blink = true
 
 -- Disable animation
-vim.g.neovide_position_animation_length = 0
-vim.g.neovide_cursor_animation_length = 0.00
-vim.g.neovide_cursor_trail_size = 0
-vim.g.neovide_cursor_animate_in_insert_mode = false
-vim.g.neovide_cursor_animate_command_line = false
-vim.g.neovide_scroll_animation_far_lines = 0
-vim.g.neovide_scroll_animation_length = 0.00
+vim.g.neovide_position_animation_length = 0.03
+vim.g.neovide_cursor_animation_length = 0.03
+-- vim.g.neovide_cursor_trail_size = 3
+-- vim.g.neovide_cursor_animate_in_insert_mode = false
+-- vim.g.neovide_cursor_animate_command_line = false
+-- vim.g.neovide_scroll_animation_far_lines = 0
+-- vim.g.neovide_scroll_animation_length = 0.50
+-- vim.g.neovide_transparency = 0.95
 
 
   local function toggle_transparency()
     if vim.g.neovide_transparency == 1.0 then
       vim.cmd "let g:neovide_transparency=0.8"
     else
-      vim.cmd "let g:neovide_transparency=0.8"
+      vim.cmd "let g:neovide_transparency=1.0 "
     end
   end
 

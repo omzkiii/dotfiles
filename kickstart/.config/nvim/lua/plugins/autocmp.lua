@@ -58,7 +58,14 @@ return {
         completion = { completeopt = "menu,menuone,noinsert" },
         window = {
           completion = cmp.config.window.bordered(),
+          -- completion = {
+          --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+          -- },
           documentation = cmp.config.window.bordered(),
+          -- documentation = {
+          --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+          --   padding = 2,
+          -- },
         },
 
         formatting = {

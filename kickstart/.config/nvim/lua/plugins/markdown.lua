@@ -30,6 +30,18 @@ return {
           },
         },
         heading = {
+          width = "block",
+          -- Amount of padding to add to the left of headings
+          left_pad = 0,
+          -- Amount of padding to add to the right of headings when width is 'block'
+          right_pad = 3,
+          -- Minimum width to use for headings when width is 'block'
+          min_width = 0,
+          -- Determines how the icon fills the available space:
+          --  inline:  underlying '#'s are concealed resulting in a left aligned icon
+          --  overlay: result is left padded with spaces to hide any additional '#'
+          position = "inline",
+
           -- Replaces '#+' of 'atx_h._marker'
           -- The number of '#' in the heading determines the 'level'
           -- The 'level' is used to index into the array using a cycle
@@ -40,8 +52,9 @@ return {
           -- Added to the sign column
           -- The 'level' is used to index into the array using a cycle
           -- signs = { '󰫎 ' },
+          sign = false,
           -- signs = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-          signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+          -- signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
           -- The 'level' is used to index into the array using a clamp
           -- Highlight for the heading icon and extends through the entire line
           -- backgrounds = { 'DiffAdd', 'DiffChange', 'DiffDelete' },
@@ -54,12 +67,12 @@ return {
             "Boolean",
           },
           -- backgrounds = {
-          --   "RenderMarkdownH5",
-          --   "Number",
-          --   "Function",
-          --   "CmpItemKindClass",
-          --   "CmpItemKindEnum",
-          --   "Boolean",
+          --   "RenderMarkdownH6Bg",
+          --   "RenderMarkdownH5Bg",
+          --   "RenderMarkdownH4Bg",
+          --   "RenderMarkdownH3Bg",
+          --   "RenderMarkdownH2Bg",
+          --   "RenderMarkdownH1Bg",
           -- },
           -- The 'level' is used to index into the array using a clamp
           -- Highlight for the heading and sign icons
@@ -142,7 +155,7 @@ return {
           --  normal: adds highlight group to code blocks & inline code, adds padding to code blocks
           --  language: adds language icon to sign column if enabled and icon + name above code blocks
           --  full: normal + language
-          style = "language",
+          style = "full",
           -- Amount of padding to add to the left of code blocks
           left_pad = 0,
           -- Amount of padding to add to the right of code blocks when width is 'block'
