@@ -25,7 +25,7 @@ configuration {
     general-padding:             20px;
     element-padding:             0px 0px;
     element-radius:              100%;
-    general-radius:              3px;
+    general-radius:              0px;
     element-font:                "feather 52";
 }
 
@@ -44,8 +44,8 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      2px solid;
-    border-radius:               5px;
+    border:                      3px solid;
+    border-radius:               0px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
@@ -171,8 +171,8 @@ element-text {
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
+    vertical-align:              0.4;
+    horizontal-align:            0.4;
 }
 element selected.normal {
     background-color:            var(selected);

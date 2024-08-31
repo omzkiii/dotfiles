@@ -12,6 +12,15 @@ return {
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     "folke/tokyonight.nvim",
     lazy = true,
+    config = function()
+      require("tokyonight").setup {
+        on_highlights = function(hl, c)
+          hl.TelescopeSelection = {
+            bg = c.blue0,
+          }
+        end,
+      }
+    end,
     -- init = function()
     -- Load the colorscheme here.
     -- Like many other themes, this one has different styles, and you could load
@@ -91,7 +100,9 @@ return {
         SignColumn = { fg = "None", bg = "#1d2021", style = "NONE" },
         TelescopeSelection = { fg = "#fbf1c7", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
-        -- IblScope = { fg = "#928374", bg = "NONE", style = "NONE" },
+        FlashCurrent = { fg = "NONE", bg = "#d65d0e", style = "NONE" },
+        FlashMatch = { fg = "#fbf1c7", bg = "NONE", style = "NONE" },
+        WinSeparator = { fg = "#928374", bg = "NONE", style = "NONE" },
         IblScope = { fg = "#a89984", bg = "NONE", style = "NONE" },
         IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
       }
@@ -134,6 +145,7 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
+    lazy = true,
     config = function()
       require("kanagawa").setup {
         overrides = function(colors)
@@ -171,6 +183,7 @@ return {
   },
   {
     "rose-pine/neovim",
+    lazy = true,
     name = "rose-pine",
     config = function()
       require("rose-pine").setup {

@@ -9,7 +9,7 @@ return {
         -- * an absolute number of cells when > 1
         -- * a percentage of the width / height of the editor when <= 1
         -- * a function that returns the width or the height
-        width = 120, -- width of the Zen window
+        width = 100, -- width of the Zen window
         height = 1, -- height of the Zen window
         -- by default, no options are changed for the Zen window
         -- uncomment any of the options below, or add other vim.wo options you want to apply
@@ -43,7 +43,7 @@ return {
         -- - listen_on unix:/tmp/kitty
         kitty = {
           enabled = true,
-          font = "+32", -- font size increment
+          font = "+4", -- font size increment
         },
       },
       -- callback where you can add custom code when the Zen window opens
@@ -59,6 +59,7 @@ return {
 
   {
     "folke/twilight.nvim",
+    lazy = true,
     opts = {
       dimming = {
         alpha = 0.25, -- amount of dimming
@@ -67,11 +68,12 @@ return {
         term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
         inactive = false, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
       },
-      context = 10, -- amount of lines we will try to show around the current line
+      context = 5, -- amount of lines we will try to show around the current line
       treesitter = true, -- use treesitter when available for the filetype
       -- treesitter is used to automatically expand the visible text,
       -- but you can further control the types of nodes that should always be fully expanded
       expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
+        "headings",
         "function",
         "method",
         "table",

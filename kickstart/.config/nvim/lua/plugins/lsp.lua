@@ -183,6 +183,7 @@ return {
         clangd = {},
         gopls = {},
         pyright = {},
+        ruff_lsp = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -192,6 +193,15 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         jdtls = {},
         tsserver = {},
+        htmx = {
+          filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        },
+        emmet_language_server = {
+          filetypes = { "javascriptreact", "javascript", "html" },
+        },
+        tailwindcss = {
+          filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        },
         --
 
         lua_ls = {

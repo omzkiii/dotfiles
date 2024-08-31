@@ -26,6 +26,14 @@ return {
           replace = "<M-s>r", -- Replace surrounding
           update_n_lines = "<M-s>n", -- Update `n_lines`
 
+          -- add = "sa", -- Add surrounding in Normal and Visual modes
+          -- delete = "sd", -- Delete surrounding
+          -- find = "sf", -- Find surrounding (to the right)
+          -- find_left = "sF", -- Find surrounding (to the left)
+          -- highlight = "sh", -- Highlight surrounding
+          -- replace = "sr", -- Replace surrounding
+          -- update_n_lines = "sn", -- Update `n_lines`
+
           suffix_last = "l", -- Suffix to search with "prev" method
           suffix_next = "n", -- Suffix to search with "next" method
         },
@@ -83,15 +91,16 @@ return {
           },
         },
         cursor = {
-          -- Animate for 200 milliseconds with linear easing
-          timing = animate.gen_timing.cubic { duration = 20, unit = "total" },
-
-          -- Animate with shortest line for any cursor move
-          path = animate.gen_path.line {
-            predicate = function()
-              return true
-            end,
-          },
+          enable = false,
+          -- -- Animate for 200 milliseconds with linear easing
+          -- timing = animate.gen_timing.cubic { duration = 20, unit = "total" },
+          --
+          -- -- Animate with shortest line for any cursor move
+          -- path = animate.gen_path.line {
+          --   predicate = function()
+          --     return true
+          --   end,
+          -- },
         },
       }
     end,

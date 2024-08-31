@@ -6,7 +6,8 @@ lua << EOF
 
 if vim.g.GuiLoaded then
   local font_name = "Iosevka Nerd Font"
-  local font_size = 14
+  -- local font_name = "InconsolataGo Nerd Font"
+  local font_size = 12
   local not_transparent = false
 
   local function toggle_transparency()
@@ -42,9 +43,10 @@ end
 -------------
 
 if vim.g.neovide then
-  vim.opt.guifont = "Iosevka Nerd Font:h14"
-  vim.g.remember_window_size = true
-  vim.g.remember_window_position = true
+  vim.opt.guifont = "Iosevka Nerd Font:h12"
+  -- vim.opt.guifont = "InconsolataGo Nerd Font:h15"
+  vim.g.remember_window_size = false
+  vim.g.remember_window_position = false
   -- vim.g.neovide_transparency = 0.95
   vim.g.experimental_layer_grouping = false
   vim.g.neovide_floating_shadow = false
@@ -64,6 +66,23 @@ vim.g.neovide_cursor_animation_length = 0.03
 -- vim.g.neovide_transparency = 0.95
 
 
+
+
+  local function IncreaseFontSize()
+      local current_font = vim.opt.guifont:get()
+      local font_name, current_size = string.match(current_font[1], "([^:]+):h(%d+)")
+      current_size = tonumber(current_size) + 1
+      vim.opt.guifont = font_name .. ":h" .. current_size
+  end
+
+  local function DecreaseFontSize()
+      local current_font = vim.opt.guifont:get()
+      local font_name, current_size = string.match(current_font[1], "([^:]+):h(%d+)")
+      current_size = tonumber(current_size) - 1
+      vim.opt.guifont = font_name .. ":h" .. current_size
+  end
+
+
   local function toggle_transparency()
     if vim.g.neovide_transparency == 1.0 then
       vim.cmd "let g:neovide_transparency=0.8"
@@ -79,7 +98,8 @@ vim.g.neovide_cursor_animation_length = 0.03
       vim.cmd "let g:neovide_fullscreen=v:false"
     end
   end
-
+  vim.keymap.set('n', '<C-=>', IncreaseFontSize, { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-->', DecreaseFontSize, { noremap = true, silent = true })
   vim.keymap.set("n", "<F11>", toggle_fullscreen, { silent = true })
   vim.keymap.set("n", "<F10>", toggle_transparency, { silent = true })
 end

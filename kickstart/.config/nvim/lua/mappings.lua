@@ -23,6 +23,9 @@ local key_mappings = {
     ["j"] = { "gj", "Down" },
     ["<k>"] = { "gk", "Up" },
 
+    -- ["<M-;>"] = { ";", "Next FTft" },
+    -- ["<M-,>"] = { ",", "Previous FTft" },
+
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
 
@@ -48,6 +51,9 @@ local key_mappings = {
   v = {
     ["J"] = { ":m '>+1<CR>gvgv=gv" },
     ["K"] = { ":m '<-2<CR>gvgv=gv" },
+
+    [">"] = { ">gv" },
+    ["<"] = { "<gv" },
   },
 }
 
@@ -59,7 +65,7 @@ set_key_mappings(key_mappings)
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("n", ";", ":")
+-- vim.keymap.set("n", ";", ":")
 vim.keymap.set({ "n", "v" }, "j", function()
   return vim.v.count > 0 and "j" or "gj"
 end, { expr = true, desc = "Move down" })

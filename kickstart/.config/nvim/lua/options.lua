@@ -1,6 +1,8 @@
 -- vim.g.vim_markdown_folding_style_pythonic = 1
 -- vim.g.vim_markdown_folding_level = 6
-vim.g.vim_markdown_conceal = 5
+vim.g.vim_markdown_conceal = 3
+vim.g.vim_markdown_conceal_links = 1
+vim.g.maplocalleader = "\\"
 vim.g.vim_markdown_borderless_table = 1
 vim.g.vim_markdown_folding_disabled = 1 -- markdown folding
 vim.opt.wrap = true -- Enable line wrapping
@@ -131,7 +133,7 @@ function OpenURL()
   local current_line = vim.api.nvim_get_current_line()
 
   -- Extract the URL from within quotes
-  local url = current_line:match '"(https?://[^"]+)"'
+  local url = current_line:match 'https?://[^%)%s"]+'
 
   if not url then
     print "No URL found between quotes in the current line."
@@ -157,7 +159,7 @@ function OpenPDFWithZathura()
   local current_line = vim.api.nvim_get_current_line()
 
   -- Extract the file path from within quotes
-  local file_path = current_line:match "'(.+)'"
+  local file_path = current_line:match "[(.+)]"
 
   if not file_path then
     print "No file path found between quotes in the current line."

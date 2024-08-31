@@ -15,8 +15,8 @@ return {
           -- See :h 'conceallevel'
           conceallevel = {
             -- Used when not being rendered, get user setting
-            -- default = vim.api.nvim_get_option_value('conceallevel', {}),
-            default = 3,
+            default = vim.api.nvim_get_option_value("conceallevel", {}),
+            -- default = 1,
             -- Used when being rendered, concealed text is completely hidden
             rendered = 3,
           },
@@ -47,9 +47,9 @@ return {
           -- The 'level' is used to index into the array using a cycle
           -- The result is left padded with spaces to hide any additional '#'
           -- icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
-          icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-          -- icons = { " ", " ", " ", "󰠖 ", "✸ ", " " },
-          -- Added to the sign column
+          -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
+          icons = { "󰪥 ", "⭗ ", " ", "󰠖 ", "✸ ", " " },
+          -- Added to the sign column⭗
           -- The 'level' is used to index into the array using a cycle
           -- signs = { '󰫎 ' },
           sign = false,
@@ -98,7 +98,7 @@ return {
           -- How deeply nested the list is determines the 'level'
           -- The 'level' is used to index into the array using a cycle
           -- If the item is a 'checkbox' a conceal is used to hide the bullet instead
-          icons = { "•", "", "◆", "◇" },
+          icons = { "•" },
           -- icons = { '• ', ' ', '◆ ', '◇ ' },
           -- Highlight for the bullet icon
           highlight = "Normal",
@@ -106,16 +106,16 @@ return {
         checkbox = {
           unchecked = {
             -- Replaces '[ ]' of 'task_list_marker_unchecked'
-            icon = "󰄱 ",
+            icon = "• 󰄱 ",
             -- Highlight for the unchecked icon
-            highlight = "@markup.list.unchecked",
+            highlight = "@neorg.todo_items.undone",
           },
           checked = {
             -- Replaces '[x]' of 'task_list_marker_checked'
-            icon = " ",
+            icon = "•  ",
             -- icon = '󰱒 ',
             -- Highligh for the checked icon
-            highlight = "@markup.heading",
+            highlight = "@neorg.todo_items.done",
           },
           -- Define custom checkbox states, more involved as they are not part of the markdown grammar
           -- As a result this requires neovim >= 0.10.0 since it relies on 'inline' extmarks
@@ -125,7 +125,9 @@ return {
           --   'rendered': Replaces the 'raw' value when rendering
           --   'highlight': Highlight for the 'rendered' icon
           custom = {
-            todo = { raw = "[>]", rendered = "󰥔 ", highlight = "@markup.raw" },
+            pending = { raw = "[>]", rendered = "• 󰥔 ", highlight = "@neorg.todo_items.pending" },
+            cancelled = { raw = "[~]", rendered = "• 󰰱 ", highlight = "@neorg.todo_items.cancelled" },
+            urgent = { raw = "[!]", rendered = "•  ", highlight = "@neorg.todo_items.urgent" },
           },
         },
         callout = {
@@ -175,6 +177,27 @@ return {
           -- Highlight for code blocks & inline code
           highlight = "RenderMarkdownCode",
           highlight_inline = "RenderMarkdownCodeInline",
+        },
+        link = {
+          -- Turn on / off inline link icon rendering
+          enabled = true,
+          -- Inlined with 'image' elements
+          image = "󰥶 ",
+          -- Fallback icon for 'inline_link' elements
+          -- hyperlink = "󰌹 ",
+          hyperlink = "",
+          -- Applies to the fallback inlined icon
+          highlight = "RenderMarkdownLink",
+          -- Define custom destination patterns so icons can quickly inform you of what a link
+          -- contains. Applies to 'inline_link' and wikilink nodes.
+          -- Can specify as many additional values as you like following the 'web' pattern below
+          --   The key in this case 'web' is for healthcheck and to allow users to change its values
+          --   'pattern':   Matched against the destination text see :h lua-pattern
+          --   'icon':      Gets inlined before the link text
+          --   'highlight': Highlight for the 'icon'
+          custom = {
+            web = { pattern = "^http[s]?://", icon = "󰖟 ", highlight = "RenderMarkdownLink" },
+          },
         },
       }
     end,

@@ -22,7 +22,7 @@ return {
         vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up")
         vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
       end,
-      vim.keymap.set("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Nvim-Tree Focus" }),
+      vim.keymap.set("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "Nvim-Tree Toggle" }),
 
       filters = {
         dotfiles = false,
@@ -35,7 +35,7 @@ return {
       sync_root_with_cwd = true,
       update_focused_file = {
         enable = true,
-        update_root = false,
+        update_root = true,
       },
       view = {
         adaptive_size = false,
@@ -44,8 +44,8 @@ return {
         preserve_window_proportions = true,
       },
       git = {
-        enable = false,
-        ignore = true,
+        enable = true,
+        ignore = false,
       },
       filesystem_watchers = {
         enable = true,
