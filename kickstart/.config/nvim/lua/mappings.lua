@@ -45,7 +45,7 @@ local key_mappings = {
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
     ["<Tab>"] = { "<cmd> bn <CR>", "Next buffer" },
     ["<S-Tab>"] = { "<cmd> bp <CR>", "Previous buffer" },
-    ["<M-d>"] = { "<cmd> bd <CR>", "Close buffer" },
+    ["<M-d>"] = { "<cmd> bd! <CR>", "Close buffer" },
   },
   i = {},
   v = {

@@ -27,6 +27,12 @@ return {
         --   },
         -- },
         ["core.qol.toc"] = {},
+        ["core.export"] = {},
+        ["core.export.markdown"] = {
+          config = {
+            extensions = "all",
+          },
+        },
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {

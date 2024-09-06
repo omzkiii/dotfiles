@@ -37,11 +37,13 @@ return {
   {
     "maxmx03/solarized.nvim",
     lazy = true,
-    config = function()
+    opts = {},
+    config = function(_, opts)
       require("solarized").setup {
-        theme = "neo", -- or comment to use solarized default theme.
-        -- pallete = "solarized",
-        colors = function(colors, colorhelper)
+        -- theme = "neo", -- or comment to use solarized default theme.
+        variant = "spring",
+        pallete = "solarized",
+        on_colors = function(colors, colorhelper)
           local darken = colorhelper.darken
           local lighten = colorhelper.lighten
           local blend = colorhelper.blend
@@ -61,26 +63,33 @@ return {
             yellow = lighten(colors.yellow, 20),
           }
         end,
-        highlights = function(colors, colorhelper)
+
+        on_highlights = function(colors, colorhelper)
           local darken = colorhelper.darken
           local lighten = colorhelper.lighten
           local blend = colorhelper.blend
-          local c = colors
-          return {
-            Normal = { fg = c.base3 },
+
+          ---@type solarized.highlights
+          local groups = {
+            Normal = { fg = colors.base3 },
             -- LineNr = { fg = c.base1, bg = c.base02 },
             -- CursorLineNr = { bg = lighten(c.base03, 10) },
-            CursorLine = { bg = lighten(c.base03, 10) },
-            Visual = { bg = darken(c.base03, 30) },
-            IblScope = { fg = c.base1, bg = "NONE" },
-            IblIndent = { fg = c.base02, bg = "NONE" },
-            b = { bg = c.base01 },
+            CursorLine = { bg = lighten(colors.base03, 10) },
+            Visual = { bg = darken(colors.base03, 30) },
+            IblScope = { fg = colors.base1, bg = "NONE" },
+            IblIndent = { fg = colors.base02, bg = "NONE" },
+            b = { bg = colors.base01 },
             FloatBorder = { bg = "NONE" },
-            NormalFloat = { fg = c.base3 },
-            -- PmenuThumb = { fg = c.yellow, bg = c.yellow },
+            NormalFloat = { fg = colors.base3 },
+            SignColumn = { bg = colors.base03 },
+            ColorColumn = { bg = colors.base03 },
+            RenderMarkdownLink = { fg = colors.cyan },
+            LineNr = { bg = colors.base03 },
+            -- PmenuThumb = { fg = colors.yellow, bg = colors.yellow },
             -- Function = { italic = false },
             -- Visual = { bg = c.base02 },
           }
+          return groups
         end,
       }
     end,

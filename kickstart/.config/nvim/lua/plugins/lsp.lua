@@ -193,14 +193,15 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         jdtls = {},
         tsserver = {},
+        eslint_d = {},
         htmx = {
-          filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+          filetypes = { "html", "css", "scss", "typescript" },
         },
         emmet_language_server = {
-          filetypes = { "javascriptreact", "javascript", "html" },
+          filetypes = { "javascriptreact", "html" },
         },
         tailwindcss = {
-          filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+          filetypes = { "html", "css", "scss", "javascriptreact", "typescript", "typescriptreact" },
         },
         --
 

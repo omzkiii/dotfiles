@@ -1,5 +1,5 @@
 return {
   "dhruvasagar/vim-table-mode",
-  ft = "markdown",
+  ft = "markdown, norg",
   -- lazy = true,
 }

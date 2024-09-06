@@ -182,10 +182,10 @@ require("lazy").setup({
   },
 })
 
-vim.cmd.colorscheme "catppuccin-mocha"
+-- vim.cmd.colorscheme "catppuccin-mocha"
 -- vim.cmd.colorscheme "ayu-dark"
 -- vim.cmd.colorscheme "nord"
--- vim.cmd.colorscheme "kanagawa"
+vim.cmd.colorscheme "kanagawa"
 -- vim.cmd.colorscheme "solarized"
 -- vim.cmd.colorscheme "gruvbox"
 -- vim.cmd.colorscheme "gruvbox-baby"

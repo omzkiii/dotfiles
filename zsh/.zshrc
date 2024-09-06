@@ -179,7 +179,7 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # eval "$(starship init zsh)"
 export PATH=$PATH:/home/geo/.cargo/bin
-export JAVA_HOME=/usr/lib/jvm/java-22-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export QT_QPA_PLATFORM='wayland;xcb'
 # export QT_STYLE_OVERRIDE='gtk2'
 # export QT_QPA_PLATFORM=wayland-xcomposite-glx

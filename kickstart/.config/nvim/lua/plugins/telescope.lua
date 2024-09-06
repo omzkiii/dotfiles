@@ -130,6 +130,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "[S]earch [R]esume" })
     vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = '[S]earch [O]ld Files ("." for repeat)' })
+    vim.keymap.set("n", "<leader>st", ":TodoTelescope cwd=.<cr>", { desc = "[S]earch [T]ODO" })
     -- vim.keymap.set("n", "<M-tab>", builtin.buffers, { desc = "[ ] Find existing buffers" })
     -- vim.keymap.set("n", "<M-x>", "<cmd>lua require('telescope.actions').delete_buffer <CR>", { desc = "Close Buffer" })
 

@@ -48,41 +48,48 @@ return {
           -- The result is left padded with spaces to hide any additional '#'
           -- icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
           -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-          icons = { "󰪥 ", "⭗ ", " ", "󰠖 ", "✸ ", " " },
+          icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
           -- Added to the sign column⭗
           -- The 'level' is used to index into the array using a cycle
           -- signs = { '󰫎 ' },
           sign = false,
           -- signs = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
           -- signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+          border = false,
+          -- Highlight the start of the border using the foreground highlight
+          border_prefix = false,
+          -- Used above heading for border
+          above = "▄",
+          -- Used below heading for border
+          below = "▀",
           -- The 'level' is used to index into the array using a clamp
           -- Highlight for the heading icon and extends through the entire line
-          -- backgrounds = { 'DiffAdd', 'DiffChange', 'DiffDelete' },
+          -- backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
           backgrounds = {
-            "RenderMarkdownH5",
-            "Added",
+            "Bold",
             "Changed",
             "Number",
             "CmpItemKind",
-            "Boolean",
+            "CmpItemKindConstant",
+            "Added",
           },
           -- backgrounds = {
-          --   "RenderMarkdownH6Bg",
-          --   "RenderMarkdownH5Bg",
-          --   "RenderMarkdownH4Bg",
-          --   "RenderMarkdownH3Bg",
-          --   "RenderMarkdownH2Bg",
           --   "RenderMarkdownH1Bg",
+          --   "RenderMarkdownH2Bg",
+          --   "RenderMarkdownH3Bg",
+          --   "RenderMarkdownH4Bg",
+          --   "RenderMarkdownH5Bg",
+          --   "RenderMarkdownH6Bg",
           -- },
           -- The 'level' is used to index into the array using a clamp
           -- Highlight for the heading and sign icons
           foregrounds = {
             "RenderMarkdownH5",
-            "Added",
             "Changed",
             "Number",
             "CmpItemKind",
-            "Boolean",
+            "CmpItemKindConstant",
+            "Added",
           },
           -- foregrounds = {
           --   "RenderMarkdownH6",

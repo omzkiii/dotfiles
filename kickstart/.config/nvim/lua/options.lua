@@ -1,10 +1,10 @@
--- vim.g.vim_markdown_folding_style_pythonic = 1
--- vim.g.vim_markdown_folding_level = 6
+vim.g.vim_markdown_folding_style_pythonic = 2
+vim.g.vim_markdown_folding_level = 6
 vim.g.vim_markdown_conceal = 3
 vim.g.vim_markdown_conceal_links = 1
-vim.g.maplocalleader = "\\"
+-- vim.g.maplocalleader = "\\"
 vim.g.vim_markdown_borderless_table = 1
-vim.g.vim_markdown_folding_disabled = 1 -- markdown folding
+-- vim.g.vim_markdown_folding_disabled = 1 -- markdown folding
 vim.opt.wrap = true -- Enable line wrapping
 vim.opt.linebreak = true -- Allow breaking within lines
 vim.opt.breakat = vim.o.breakat -- Set break indent to vim default (using arabic characters to avoid keyword conflict)
