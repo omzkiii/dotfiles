@@ -84,7 +84,8 @@ return {
                 -- modified = "DiffChange", -- Changes the diff's modified color
                 -- removed = "DiffDelete", -- Changes the diff's removed color you
               },
-              symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
+              -- symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
+              symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
             },
             "diagnostics",
           },

@@ -2,6 +2,7 @@ return {
   {
     "linux-cultist/venv-selector.nvim",
     lazy = true,
+    branch = "regexp", -- This is the regexp branch, use this for the new version
     ft = "python",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     opts = {
@@ -9,8 +10,15 @@ return {
       name = "env",
       auto_refresh = true,
       stay_on_this_version = true,
+      settings = {
+        search = {
+          my_venvs = {
+            command = "fd '/bin/python$' $CWD --full-path --color never -E /proc -I -a -L",
+          },
+        },
+      },
     },
-    -- event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
     keys = {
       -- Keymap to open VenvSelector to pick a venv.
       { "<leader>vs", "<cmd>VenvSelect<cr>" },

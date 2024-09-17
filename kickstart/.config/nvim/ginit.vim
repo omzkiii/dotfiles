@@ -7,7 +7,7 @@ lua << EOF
 if vim.g.GuiLoaded then
   local font_name = "Iosevka Nerd Font"
   -- local font_name = "InconsolataGo Nerd Font"
-  local font_size = 15
+  local font_size = 12
   local not_transparent = false
 
   local function toggle_transparency()
@@ -43,7 +43,7 @@ end
 -------------
 
 if vim.g.neovide then
-  vim.opt.guifont = "Iosevka Nerd Font:h15"
+  vim.opt.guifont = "Iosevka Nerd Font:h12"
   -- vim.opt.guifont = "InconsolataGo Nerd Font:h15"
   vim.g.remember_window_size = false
   vim.g.remember_window_position = false

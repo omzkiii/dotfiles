@@ -192,7 +192,8 @@ return {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         jdtls = {},
-        tsserver = {},
+        -- tsserver = {},
+        ts_ls = {},
         eslint_d = {},
         htmx = {
           filetypes = { "html", "css", "scss", "typescript" },

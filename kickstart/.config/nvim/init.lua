@@ -185,10 +185,10 @@ require("lazy").setup({
 -- vim.cmd.colorscheme "catppuccin-mocha"
 -- vim.cmd.colorscheme "ayu-dark"
 -- vim.cmd.colorscheme "nord"
-vim.cmd.colorscheme "kanagawa"
+-- vim.cmd.colorscheme "kanagawa"
 -- vim.cmd.colorscheme "solarized"
 -- vim.cmd.colorscheme "gruvbox"
--- vim.cmd.colorscheme "gruvbox-baby"
+vim.cmd.colorscheme "gruvbox-baby"
 -- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "tokyonight-night"
 -- The line beneath this is called `modeline`. See `:help modeline`

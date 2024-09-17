@@ -49,12 +49,16 @@ return {
           -- icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
           -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
           icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
+          -- icons = { "", "", "", "", "", "" },
           -- Added to the sign column⭗
           -- The 'level' is used to index into the array using a cycle
           -- signs = { '󰫎 ' },
           sign = false,
+          -- signs = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
+          -- signs = { "󰐣 " },
+          -- signs = { "󰶻 󰐣" },
           -- signs = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-          -- signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+          signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
           border = false,
           -- Highlight the start of the border using the foreground highlight
           border_prefix = false,
@@ -153,6 +157,19 @@ return {
           bug = { raw = "[!BUG]", rendered = "󰨰 Bug", highlight = "DiagnosticError" },
           example = { raw = "[!EXAMPLE]", rendered = "󰉹 Example", highlight = "DiagnosticHint" },
           quote = { raw = "[!QUOTE]", rendered = "󱆨 Quote", highlight = "@markup.quote" },
+        },
+        -- Mimic org-indent-mode behavior by indenting everything under a heading based on the
+        -- level of the heading. Indenting starts from level 2 headings onward.
+        indent = {
+          -- Turn on / off org-indent-mode
+          enabled = true,
+          -- Amount of additional padding added for each heading level
+          per_level = 2,
+          -- Heading levels <= this value will not be indented
+          -- Use 0 to begin indenting from the very first level
+          skip_level = 1,
+          -- Do not indent heading titles, only the body
+          skip_heading = false,
         },
         code = {
           -- Turn on / off code block & inline code rendering
