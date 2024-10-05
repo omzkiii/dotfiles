@@ -2,22 +2,24 @@ return {
   {
     "linux-cultist/venv-selector.nvim",
     lazy = true,
-    branch = "regexp", -- This is the regexp branch, use this for the new version
+    -- branch = "regexp", -- This is the regexp branch, use this for the new version
     ft = "python",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-    opts = {
-      -- Your options go here
-      name = "env",
-      auto_refresh = true,
-      stay_on_this_version = true,
-      settings = {
-        search = {
-          my_venvs = {
-            command = "fd '/bin/python$' $CWD --full-path --color never -E /proc -I -a -L",
-          },
-        },
-      },
-    },
+    config = function()
+      require("venv-selector").setup {
+        -- Your options go here
+        name = "env",
+        auto_refresh = true,
+        stay_on_this_version = true,
+        -- settings = {
+        --   search = {
+        --     my_venvs = {
+        --       command = "fd 'env/bin/python$' ../$CWD --full-path -a -",
+        --     },
+        --   },
+        -- },
+      }
+    end,
     event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
     keys = {
       -- Keymap to open VenvSelector to pick a venv.

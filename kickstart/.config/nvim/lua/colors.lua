@@ -101,8 +101,9 @@ return {
     "luisiacc/gruvbox-baby",
     lazy = true,
     config = function()
-      -- vim.g.gruvbox_baby_keyword_style = "normal"
-      -- vim.g.gruvbox_baby_use_original_palette = "true"
+      vim.g.gruvbox_baby_keyword_style = "NONE"
+      vim.g.gruvbox_baby_use_original_palette = "false"
+      vim.g.gruvbox_baby_function_style = "NONE"
       vim.g.gruvbox_baby_background_color = "medium"
       vim.g.gruvbox_baby_highlights = {
         Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
@@ -114,6 +115,8 @@ return {
         WinSeparator = { fg = "#928374", bg = "NONE", style = "NONE" },
         IblScope = { fg = "#a89984", bg = "NONE", style = "NONE" },
         IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
+
+        -- Function = { fg = "#fabd2f", bg = "NONE", style = "NONE" },
       }
     end,
   },
@@ -144,8 +147,8 @@ return {
         contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {
-          Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
-          SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
+          -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
+          -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
         },
         dim_inactive = false,
         transparent_mode = true,

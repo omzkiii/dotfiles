@@ -30,7 +30,6 @@ vim.g.have_nerd_font = true
 vim.opt.signcolumn = "number"
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 1
@@ -124,6 +123,16 @@ vim.opt.scrolloff = 10
 -- end
 --
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt.numberwidth = 2
+    -- vim.opt.foldcolumn = "2"
+    -- vim.opt.foldenable = false
+  end,
+})
 -- Key mapping
 vim.api.nvim_set_keymap("n", "<leader>g", ":lua OpenURL()<CR>", { noremap = true, silent = true })
 

@@ -6,7 +6,7 @@ lua << EOF
 
 if vim.g.GuiLoaded then
   local font_name = "Iosevka Nerd Font"
-  -- local font_name = "InconsolataGo Nerd Font"
+  -- local font_name = "MesloLGS Nerd Font"
   local font_size = 12
   local not_transparent = false
 
@@ -30,12 +30,14 @@ if vim.g.GuiLoaded then
   end
 
   vim.keymap.set("n", "<F11>", toggle_fullscreen, { silent = true })
+  
 
   vim.cmd [[
   GuiTabline 0
   GuiPopupmenu 0
   ]]
   vim.cmd("GuiFont! " .. font_name .. ":h" .. font_size)
+
 end
 
 -------------
@@ -43,8 +45,9 @@ end
 -------------
 
 if vim.g.neovide then
+vim.opt.linespace = 1
   vim.opt.guifont = "Iosevka Nerd Font:h12"
-  -- vim.opt.guifont = "InconsolataGo Nerd Font:h15"
+  -- vim.opt.guifont = "MesloLGS Nerd Font:h12"
   vim.g.remember_window_size = false
   vim.g.remember_window_position = false
   -- vim.g.neovide_transparency = 0.95
@@ -67,6 +70,10 @@ vim.g.neovide_cursor_animation_length = 0.03
 
 
 
+vim.g.neovide_padding_top = 5
+vim.g.neovide_padding_bottom = 5
+vim.g.neovide_padding_right = 10
+vim.g.neovide_padding_left = 10
 
   local function IncreaseFontSize()
       local current_font = vim.opt.guifont:get()

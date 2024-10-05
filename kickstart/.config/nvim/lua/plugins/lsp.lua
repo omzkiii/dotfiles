@@ -205,7 +205,118 @@ return {
           filetypes = { "html", "css", "scss", "javascriptreact", "typescript", "typescriptreact" },
         },
         --
+        harper_ls = {
+          filetypes = { "html", "markdown" },
+          settings = {
+            ["harper-ls"] = {
+              codeActions = {
+                forceStable = true,
+              },
+              linters = {
+                spell_check = true,
+                spelled_numbers = false,
+                an_a = true,
+                sentence_capitalization = false,
+                unclosed_quotes = true,
+                wrong_quotes = false,
+                long_sentences = false,
+                repeated_words = true,
+                spaces = true,
+                matcher = true,
+                correct_number_suffix = true,
+                number_suffix_capitalization = true,
+                multiple_sequential_pronouns = true,
+                linking_verbs = false,
+                avoid_curses = false,
+                terminating_conjunctions = true,
+              },
+              userDictPath = "~/.config/nvim/spell/en.utf-8.add.spl",
+              fileDictPath = "~/.config/nvim/spell/en.utf-8.add",
+            },
+          },
+        },
 
+        -- textLSP = {
+        --   analysers = {
+        --     languagetool = {
+        --       enabled = true,
+        --       check_text = {
+        --         on_open = true,
+        --         on_save = true,
+        --         on_change = false,
+        --       },
+        --     },
+        --     ollama = {
+        --       enabled = true,
+        --       check_text = {
+        --         on_open = false,
+        --         on_save = true,
+        --         on_change = false,
+        --       },
+        --       model = "phi3:3.8b-instruct", -- smaller but faster model
+        --       -- model = "phi3:14b-instruct",  -- more accurate
+        --       max_token = 50,
+        --     },
+        --     gramformer = {
+        --       -- gramformer dependency needs to be installed manually
+        --       enabled = false,
+        --       gpu = false,
+        --       check_text = {
+        --         on_open = false,
+        --         on_save = true,
+        --         on_change = false,
+        --       },
+        --     },
+        --     hf_checker = {
+        --       enabled = false,
+        --       gpu = false,
+        --       quantize = 32,
+        --       model = "pszemraj/flan-t5-large-grammar-synthesis",
+        --       min_length = 40,
+        --       check_text = {
+        --         on_open = false,
+        --         on_save = true,
+        --         on_change = false,
+        --       },
+        --     },
+        --     hf_instruction_checker = {
+        --       enabled = false,
+        --       gpu = false,
+        --       quantize = 32,
+        --       model = "grammarly/coedit-large",
+        --       min_length = 40,
+        --       check_text = {
+        --         on_open = false,
+        --         on_save = true,
+        --         on_change = false,
+        --       },
+        --     },
+        --     hf_completion = {
+        --       enabled = false,
+        --       gpu = false,
+        --       quantize = 32,
+        --       model = "bert-base-multilingual-cased",
+        --       topk = 5,
+        --     },
+        --   },
+        --   documents = {
+        --     -- the language of the documents, could be set to `auto` of `auto:<fallback>`
+        --     -- to detect automatically, default: auto:en
+        --     language = "auto:en",
+        --     -- do not autodetect documents with fewer characters
+        --     min_length_language_detect = 20,
+        --     org = {
+        --       org_todo_keywords = {
+        --         "TODO",
+        --         "IN_PROGRESS",
+        --         "DONE",
+        --       },
+        --     },
+        --     txt = {
+        --       parse = true,
+        --     },
+        --   },
+        -- },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},

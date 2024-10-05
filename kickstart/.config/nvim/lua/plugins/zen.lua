@@ -17,7 +17,7 @@ return {
           -- signcolumn = "no", -- disable signcolumn
           number = false, -- disable number column
           relativenumber = false, -- disable relative numbers
-          -- cursorline = false, -- disable cursorline
+          cursorline = false, -- disable cursorline
           -- cursorcolumn = false, -- disable cursor column
           -- foldcolumn = "0", -- disable fold column
           -- list = false, -- disable whitespace characters
@@ -51,7 +51,7 @@ return {
       -- callback where you can add custom code when the Zen window closes
       on_close = function() end,
     },
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    event = "VeryLazy",
     keys = {
       { "<C-S-Z>", "<cmd>ZenMode<cr>" },
     },

@@ -17,7 +17,8 @@ return {
           theme = "auto",
           component_separators = { left = "╱", right = "╲" },
           -- component_separators = { left = "|", right = "|" },
-          section_separators = { left = " ", right = "" },
+          -- section_separators = { left = " ", right = "" },
+          section_separators = { left = " ", right = "" },
           -- section_separators = { left = "█ ", right = " █" },
           -- section_separators = { left = " ", right = " " },
           disabled_filetypes = {
@@ -32,9 +33,39 @@ return {
             -- tabline = 1000,
             -- winbar = 1000,
           },
+          -- fmt = string.lower,
         },
+
         sections = {
-          lualine_a = { "mode" },
+          lualine_a = {
+            {
+              "mode",
+              fmt = function(str)
+                local mode_map = {
+                  ["NORMAL"] = "N",
+                  ["INSERT"] = "I",
+                  ["VISUAL"] = "V",
+                  ["V-LINE"] = "V-L",
+                  ["V-BLOCK"] = "V-B",
+                  ["COMMAND"] = "C",
+                  ["SELECT"] = "S",
+                  ["S-LINE"] = "SL",
+                  ["S-BLOCK"] = "SB",
+                  -- ["NORMAL"] = "",
+                  -- ["INSERT"] = "󰏪",
+                  -- ["VISUAL"] = "󰴲",
+                  -- ["V-LINE"] = "󱊅",
+                  -- ["V-BLOCK"] = "󰒉",
+                  -- ["COMMAND"] = "",
+                  -- ["SELECT"] = "S",
+                  -- ["SELECT LINE"] = "SL",
+                  -- ["SELECT BLOCK"] = "SB",
+                }
+
+                return mode_map[str]
+              end,
+            },
+          },
           lualine_b = {
             {
               "filetype",

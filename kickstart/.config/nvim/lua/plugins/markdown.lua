@@ -30,7 +30,9 @@ return {
           },
         },
         heading = {
-          width = "block",
+          enabled = true,
+          -- width = "block",
+          width = "full",
           -- Amount of padding to add to the left of headings
           left_pad = 0,
           -- Amount of padding to add to the right of headings when width is 'block'
@@ -78,12 +80,12 @@ return {
             "Added",
           },
           -- backgrounds = {
-          --   "RenderMarkdownH1Bg",
-          --   "RenderMarkdownH2Bg",
-          --   "RenderMarkdownH3Bg",
-          --   "RenderMarkdownH4Bg",
-          --   "RenderMarkdownH5Bg",
-          --   "RenderMarkdownH6Bg",
+          -- "RenderMarkdownH1Bg",
+          -- "RenderMarkdownH2Bg",
+          -- "RenderMarkdownH3Bg",
+          -- "RenderMarkdownH4Bg",
+          -- "RenderMarkdownH5Bg",
+          -- "RenderMarkdownH6Bg",
           -- },
           -- The 'level' is used to index into the array using a clamp
           -- Highlight for the heading and sign icons
@@ -117,16 +119,16 @@ return {
         checkbox = {
           unchecked = {
             -- Replaces '[ ]' of 'task_list_marker_unchecked'
-            icon = "• 󰄱 ",
+            icon = "󰄱 ",
             -- Highlight for the unchecked icon
             highlight = "@neorg.todo_items.undone",
           },
           checked = {
             -- Replaces '[x]' of 'task_list_marker_checked'
-            icon = "•  ",
+            icon = " ",
             -- icon = '󰱒 ',
             -- Highligh for the checked icon
-            highlight = "@neorg.todo_items.done",
+            highlight = "",
           },
           -- Define custom checkbox states, more involved as they are not part of the markdown grammar
           -- As a result this requires neovim >= 0.10.0 since it relies on 'inline' extmarks
@@ -136,7 +138,7 @@ return {
           --   'rendered': Replaces the 'raw' value when rendering
           --   'highlight': Highlight for the 'rendered' icon
           custom = {
-            pending = { raw = "[>]", rendered = "• 󰥔 ", highlight = "@neorg.todo_items.pending" },
+            -- pending = { raw = "[>]", rendered = "• 󰥔 ", highlight = "@neorg.todo_items.pending" },
             cancelled = { raw = "[~]", rendered = "• 󰰱 ", highlight = "@neorg.todo_items.cancelled" },
             urgent = { raw = "[!]", rendered = "•  ", highlight = "@neorg.todo_items.urgent" },
           },
@@ -260,4 +262,9 @@ return {
     "preservim/vim-markdown",
     ft = "markdown",
   },
+  -- {
+  --   "lukas-reineke/headlines.nvim",
+  --   dependencies = "nvim-treesitter/nvim-treesitter",
+  --   config = true, -- or `opts = {}`
+  -- },
 }
