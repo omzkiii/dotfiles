@@ -1,0 +1,8 @@
+
+#!/usr/bin/env bash
+
+dir="$HOME/.config/rofi/launchers/type-1"
+theme='style-3'
+
+rofi -modi calc -show calc  -theme ${dir}/${theme}.rasi -no-show-match -no-history -no-sort -calc-command "echo -n '{result}' | wl-copy"
+

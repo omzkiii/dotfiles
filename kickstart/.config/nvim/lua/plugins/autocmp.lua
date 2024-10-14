@@ -46,46 +46,43 @@ return {
       local luasnip = require "luasnip"
       local lspkind = require "lspkind"
       local cmp_tailwind = require "tailwindcss-colorizer-cmp"
-
-      luasnip.config.setup {}
-
-      cmp.setup {
+      local options = {
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = "menu,menuone,noinsert" },
-        window = {
-          completion = cmp.config.window.bordered(),
-          -- completion = {
-          --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-          -- },
-          documentation = cmp.config.window.bordered(),
-          -- documentation = {
-          --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-          --   padding = 2,
-          -- },
-        },
-
-        formatting = {
-          fields = { "abbr", "kind", "menu" },
-
-          format = lspkind.cmp_format {
-            mode = "symbol_text", -- show only symbol annotations
-            maxwidth = function()
-              return math.floor(0.45 * vim.o.columns)
-            end,
-            ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-            show_labelDetails = false, -- show labelDetails in menu. Disabled by default
-
-            before = function(entry, vim_item)
-              cmp_tailwind.formatter(entry, vim_item)
-              vim_item.menu = " "
-              return vim_item
-            end,
-          },
-        },
+        -- completion = { completeopt = "menu,menuone,noinsert" },
+        -- window = {
+        --   completion = cmp.config.window.bordered(),
+        --   -- completion = {
+        --   --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+        --   -- },
+        --   documentation = cmp.config.window.bordered(),
+        --   -- documentation = {
+        --   --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+        --   --   padding = 2,
+        --   -- },
+        -- },
+        --
+        -- formatting = {
+        --   fields = { "abbr", "kind", "menu" },
+        --
+        --   format = lspkind.cmp_format {
+        --     mode = "symbol_text", -- show only symbol annotations
+        --     maxwidth = function()
+        --       return math.floor(0.45 * vim.o.columns)
+        --     end,
+        --     ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+        --     show_labelDetails = false, -- show labelDetails in menu. Disabled by default
+        --
+        --     before = function(entry, vim_item)
+        --       cmp_tailwind.formatter(entry, vim_item)
+        --       vim_item.menu = " "
+        --       return vim_item
+        --     end,
+        --   },
+        -- },
 
         -- before = function(entry, vim_item)
         --   cmp_tailwind.formatter(entry, vim_item)
@@ -156,6 +153,10 @@ return {
           { name = "path" },
         },
       }
+      options = vim.tbl_deep_extend("force", options, require "nvchad.cmp")
+      cmp.setup(options)
+
+      luasnip.config.setup {}
     end,
   },
 }

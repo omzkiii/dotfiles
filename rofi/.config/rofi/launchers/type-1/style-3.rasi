@@ -1,3 +1,4 @@
+
 /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -46,12 +47,12 @@ configuration {
 window {
     /* properties for window widget */
     transparency:                "background";
-    location:                    center;
-    anchor:                      center;
+    location:                    north;
+    anchor:                      north;
     fullscreen:                  false;
-    width:                       500px;
+    width:                       900px;
     x-offset:                    0px;
-    y-offset:                    0px;
+    y-offset:                    300px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -108,7 +109,7 @@ prompt {
     padding:                     5px 5px 10px 5px;
 }
 textbox-prompt-colon {
-    font:                        "MesloLGS Nerd Font 19";
+    font:                        "MesloLGS Nerd Font 24";
     enabled:                     false;
     expand:                      false;
    // str:                         "";
@@ -140,7 +141,7 @@ textbox-num-sep {
 }
 num-rows {
     enabled:                     true;
-    expand:                      false;
+    expand:                      true;
     background-color:            inherit;
     text-color:                  inherit;
 }
@@ -154,13 +155,13 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       20;
+    lines:                       0;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   true;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                true;
+    fixed-height:                false;
     fixed-columns:               true;
     spacing:                     5px;
     margin:                      0px;
@@ -173,7 +174,7 @@ listview {
     cursor:                      "default";
 }
 scrollbar {
-    handle-width:                5px ;
+    handle-width:                0px ;
     handle-color:                @handle-color;
     border-radius:               0px;
     background-color:            @alternate-background;
@@ -181,7 +182,7 @@ scrollbar {
 
 /*****----- Elements -----*****/
 element {
-    enabled:                     true;
+    enabled:                     false;
     spacing:                     20px;
     margin:                      0px;
     padding:                     5px 5px;

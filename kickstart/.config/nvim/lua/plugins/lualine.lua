@@ -13,6 +13,7 @@ return {
       end
       require("lualine").setup {
         options = {
+          -- color = "Normal",
           icons_enabled = true,
           theme = "auto",
           component_separators = { left = "╱", right = "╲" },
@@ -70,7 +71,7 @@ return {
             {
               "filetype",
               color = "CursorLine",
-              separator = "",
+              separator = "",
               colored = false, -- Displays filetype icon in color if set to true
               icon_only = true, -- Display only an icon for filetype
               align = "right",

@@ -1,5 +1,4 @@
 --[[
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -86,6 +85,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 
 require "options"
 require "mappings"
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46_cache/"
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -170,6 +170,7 @@ require("lazy").setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
 }, {
+
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
@@ -182,14 +183,21 @@ require("lazy").setup({
   },
 })
 
+-- vim.cmd.colorscheme "nvchad"
 -- vim.cmd.colorscheme "catppuccin-mocha"
 -- vim.cmd.colorscheme "ayu-dark"
 -- vim.cmd.colorscheme "nord"
 -- vim.cmd.colorscheme "kanagawa"
 -- vim.cmd.colorscheme "solarized"
 -- vim.cmd.colorscheme "gruvbox"
-vim.cmd.colorscheme "gruvbox-baby"
 -- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "tokyonight-night"
+dofile(vim.g.base46_cache .. "defaults")
+-- dofile(vim.g.base46_cache .. "statusline")
+-- dofile(vim.g.base46_cache .. "syntax")
+-- dofile(vim.g.base46_cache .. "treesitter")
+dofile(vim.g.base46_cache .. "telescope")
+dofile(vim.g.base46_cache .. "cmp")
+vim.cmd.colorscheme "gruvbox-baby"
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,3 +1,4 @@
+vim.opt.laststatus = 3
 vim.g.vim_markdown_folding_style_pythonic = 2
 vim.g.vim_markdown_folding_level = 6
 vim.g.vim_markdown_conceal = 3
@@ -134,7 +135,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 -- Key mapping
-vim.api.nvim_set_keymap("n", "<leader>g", ":lua OpenURL()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>gg", ":lua OpenURL()<CR>", { noremap = true, silent = true })
 
 -- Function to open URL
 function OpenURL()
@@ -168,7 +169,7 @@ function OpenPDFWithZathura()
   local current_line = vim.api.nvim_get_current_line()
 
   -- Extract the file path from within quotes
-  local file_path = current_line:match "[(.+)]"
+  local file_path = current_line:match "[h+]"
 
   if not file_path then
     print "No file path found between quotes in the current line."

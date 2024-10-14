@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export PATH="${PATH}:${HOME}/.local/bin/"
+
+dir="$HOME/.config/wofi/launchers/type-1"
+theme='style-2'
+
+themes=$HOME/Themes/
+picked="$(ls $themes | wofi -dmenu -i -p "  Themes:")"
+
+
+for script in "$themes$picked"/*.sh; do
+    if [ -f "$script" ]; then
+        echo "Executing $script"
+        bash "$script"
+    fi
+done

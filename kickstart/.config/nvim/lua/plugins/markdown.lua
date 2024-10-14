@@ -11,6 +11,14 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     config = function()
       require("render-markdown").setup {
+        latex = {
+          enabled = false,
+        },
+        paragraph = {
+          enabled = false,
+          left_margin = 0.5,
+          min_width = 30,
+        },
         win_options = {
           -- See :h 'conceallevel'
           conceallevel = {
@@ -73,11 +81,11 @@ return {
           -- backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
           backgrounds = {
             "Bold",
-            "Changed",
             "Number",
             "CmpItemKind",
             "CmpItemKindConstant",
             "Added",
+            "Changed",
           },
           -- backgrounds = {
           -- "RenderMarkdownH1Bg",
@@ -91,11 +99,11 @@ return {
           -- Highlight for the heading and sign icons
           foregrounds = {
             "RenderMarkdownH5",
-            "Changed",
             "Number",
             "CmpItemKind",
             "CmpItemKindConstant",
             "Added",
+            "Changed",
           },
           -- foregrounds = {
           --   "RenderMarkdownH6",
@@ -139,8 +147,8 @@ return {
           --   'highlight': Highlight for the 'rendered' icon
           custom = {
             -- pending = { raw = "[>]", rendered = "• 󰥔 ", highlight = "@neorg.todo_items.pending" },
-            cancelled = { raw = "[~]", rendered = "• 󰰱 ", highlight = "@neorg.todo_items.cancelled" },
-            urgent = { raw = "[!]", rendered = "•  ", highlight = "@neorg.todo_items.urgent" },
+            cancelled = { raw = "[~]", rendered = "󰰱 ", highlight = "@neorg.todo_items.cancelled" },
+            urgent = { raw = "[!]", rendered = " ", highlight = "@neorg.todo_items.urgent" },
           },
         },
         callout = {
@@ -171,7 +179,7 @@ return {
           -- Use 0 to begin indenting from the very first level
           skip_level = 1,
           -- Do not indent heading titles, only the body
-          skip_heading = false,
+          skip_heading = true,
         },
         code = {
           -- Turn on / off code block & inline code rendering
@@ -214,6 +222,7 @@ return {
           hyperlink = "",
           -- Applies to the fallback inlined icon
           highlight = "RenderMarkdownLink",
+          wiki = { icon = "", highlight = "RenderMarkdownWikiLink" },
           -- Define custom destination patterns so icons can quickly inform you of what a link
           -- contains. Applies to 'inline_link' and wikilink nodes.
           -- Can specify as many additional values as you like following the 'web' pattern below
@@ -226,6 +235,16 @@ return {
           },
         },
       }
+    end,
+  },
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup()
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
     end,
   },
   -- {
@@ -262,6 +281,30 @@ return {
     "preservim/vim-markdown",
     ft = "markdown",
   },
+  {
+    "jbyuki/nabla.nvim",
+    lazy = false,
+    -- ft = "markdown",
+    -- config = function()
+    --   require("nabla").enable_virt()
+    -- end,
+    vim.api.nvim_set_keymap(
+      "n",
+      "<M-m>",
+      [[:lua require("nabla").popup({border = 'single'})<CR>]],
+      { noremap = true, silent = true }
+    ),
+  },
+
+  -- {
+  --   "lervag/vimtex",
+  --   lazy = false, -- we don't want to lazy load VimTeX
+  --   -- tag = "v2.15", -- uncomment to pin to a specific release
+  --   init = function()
+  --     -- VimTeX configuration goes here, e.g.
+  --     vim.g.vimtex_view_method = "zathura"
+  --   end,
+  -- },
   -- {
   --   "lukas-reineke/headlines.nvim",
   --   dependencies = "nvim-treesitter/nvim-treesitter",

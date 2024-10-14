@@ -111,13 +111,25 @@ return {
         TelescopeSelection = { fg = "#fbf1c7", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
         FlashCurrent = { fg = "NONE", bg = "#d65d0e", style = "NONE" },
-        FlashMatch = { fg = "#fbf1c7", bg = "NONE", style = "NONE" },
+        LeapMatch = { fg = "#fabd2f", bg = "#fabd2f", style = "bold" },
+        LeapLabelPrimary = { fg = "#1d2021", bg = "#fabd2f", style = "bold" },
         WinSeparator = { fg = "#928374", bg = "NONE", style = "NONE" },
         IblScope = { fg = "#a89984", bg = "NONE", style = "NONE" },
         IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
+        LeapBackdrop = { fg = "#504945", bg = "NONE", style = "NONE" },
+        SpecialComment = { fg = "#504945", bg = "NONE", style = "italic" },
+        Comments = { fg = "#504945", bg = "NONE", style = "italic" },
+        comment = { fg = "#504945", bg = "NONE", style = "italic" },
+        comments = { fg = "#504945", bg = "NONE", style = "italic" },
 
-        -- Function = { fg = "#fabd2f", bg = "NONE", style = "NONE" },
+        -- TelescopeSelection = { fg = "#504945", bg = "#fabd2f", style = "NONE" },
       }
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = function()
+          vim.api.nvim_set_hl(0, "@comment", { fg = "#504945", bg = "NONE", italic = true })
+        end,
+      })
     end,
   },
 
@@ -148,6 +160,7 @@ return {
         palette_overrides = {},
         overrides = {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
+          -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
           -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
         },
         dim_inactive = false,

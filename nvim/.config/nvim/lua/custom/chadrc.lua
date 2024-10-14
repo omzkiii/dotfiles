@@ -5,8 +5,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "catppuccin",
-  theme_toggle = { "catppuccin", "catppuccin" },
+  theme = "gruvbox",
+  theme_toggle = { "gruvbox", "gruvbox" },
 
   changed_themes = {
     gruvbox = {
@@ -21,7 +21,7 @@ M.ui = {
   -- hl_override = highlights.override,
   -- hl_add = highlights.add,
 
- hl_override = {
+  hl_override = {
     Comment = {
       italic = true,
     },
@@ -62,48 +62,48 @@ M.ui = {
   statusline = {
     theme = "default",
     overriden_modules = function(modules)
-      local file_info = function ()
-          local function stbufnr()
-            return vim.api.nvim_win_get_buf(vim.g.statusline_winid)
-          end
-          local icon = " 󰈚 "
-          local indicator = ""
-          local path = vim.api.nvim_buf_get_name(stbufnr())
+      local file_info = function()
+        local function stbufnr()
+          return vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+        end
+        local icon = " 󰈚 "
+        local indicator = ""
+        local path = vim.api.nvim_buf_get_name(stbufnr())
         local name
         if path == "" then
           name = "Empty "
         else
           -- Get the parent directory and file name
-          local parent, file = path:match("(.+)/([^/]+)$")
+          local parent, file = path:match "(.+)/([^/]+)$"
           if parent and file then
             -- Use only the last directory in the path
-            parent = parent:match("([^/]+)$") or ""
+            parent = parent:match "([^/]+)$" or ""
             name = parent .. "/" .. file
           else
-            name = path:match("([^/]+)$") or "Empty"
+            name = path:match "([^/]+)$" or "Empty"
           end
         end
 
-          if name ~= "Empty " then
-            local devicons_present, devicons = pcall(require, "nvim-web-devicons")
+        if name ~= "Empty " then
+          local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 
-            if devicons_present then
-              local ft_icon = devicons.get_icon(name)
-              icon = (ft_icon ~= nil and " " .. ft_icon) or icon
-            end
-
-            name = " " .. name .. " "
+          if devicons_present then
+            local ft_icon = devicons.get_icon(name)
+            icon = (ft_icon ~= nil and " " .. ft_icon) or icon
           end
+
+          name = " " .. name .. " "
+        end
         if vim.bo.modified then
-        return "%#St_file_info#" .. icon .. name .. indicator .. "%#St_file_sep#"  .. "█"
+          return "%#St_file_info#" .. icon .. name .. indicator .. "%#St_file_sep#" .. "█"
         -- elseif not vim.bo.modifiable or vim.bo.readonly thenfdfdfd
-      else
-        return "%#St_file_info#" .. icon .. name .. "%#St_file_sep#" .. "█"
+        else
+          return "%#St_file_info#" .. icon .. name .. "%#St_file_sep#" .. "█"
         end
-       end
+      end
       modules[2] = file_info()
-    end
-  }
+    end,
+  },
 }
 
 --   -- Override the fileInfo function

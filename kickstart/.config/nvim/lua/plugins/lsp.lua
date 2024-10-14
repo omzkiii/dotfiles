@@ -236,87 +236,6 @@ return {
           },
         },
 
-        -- textLSP = {
-        --   analysers = {
-        --     languagetool = {
-        --       enabled = true,
-        --       check_text = {
-        --         on_open = true,
-        --         on_save = true,
-        --         on_change = false,
-        --       },
-        --     },
-        --     ollama = {
-        --       enabled = true,
-        --       check_text = {
-        --         on_open = false,
-        --         on_save = true,
-        --         on_change = false,
-        --       },
-        --       model = "phi3:3.8b-instruct", -- smaller but faster model
-        --       -- model = "phi3:14b-instruct",  -- more accurate
-        --       max_token = 50,
-        --     },
-        --     gramformer = {
-        --       -- gramformer dependency needs to be installed manually
-        --       enabled = false,
-        --       gpu = false,
-        --       check_text = {
-        --         on_open = false,
-        --         on_save = true,
-        --         on_change = false,
-        --       },
-        --     },
-        --     hf_checker = {
-        --       enabled = false,
-        --       gpu = false,
-        --       quantize = 32,
-        --       model = "pszemraj/flan-t5-large-grammar-synthesis",
-        --       min_length = 40,
-        --       check_text = {
-        --         on_open = false,
-        --         on_save = true,
-        --         on_change = false,
-        --       },
-        --     },
-        --     hf_instruction_checker = {
-        --       enabled = false,
-        --       gpu = false,
-        --       quantize = 32,
-        --       model = "grammarly/coedit-large",
-        --       min_length = 40,
-        --       check_text = {
-        --         on_open = false,
-        --         on_save = true,
-        --         on_change = false,
-        --       },
-        --     },
-        --     hf_completion = {
-        --       enabled = false,
-        --       gpu = false,
-        --       quantize = 32,
-        --       model = "bert-base-multilingual-cased",
-        --       topk = 5,
-        --     },
-        --   },
-        --   documents = {
-        --     -- the language of the documents, could be set to `auto` of `auto:<fallback>`
-        --     -- to detect automatically, default: auto:en
-        --     language = "auto:en",
-        --     -- do not autodetect documents with fewer characters
-        --     min_length_language_detect = 20,
-        --     org = {
-        --       org_todo_keywords = {
-        --         "TODO",
-        --         "IN_PROGRESS",
-        --         "DONE",
-        --       },
-        --     },
-        --     txt = {
-        --       parse = true,
-        --     },
-        --   },
-        -- },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -410,8 +329,18 @@ return {
           TypeParameter = " ",
         },
       }
+      local sharpborder = {
+        { "🭽", "FloatBorder" },
+        { "▔", "FloatBorder" },
+        { "🭾", "FloatBorder" },
+        { "▕", "FloatBorder" },
+        { "🭿", "FloatBorder" },
+        { "▁", "FloatBorder" },
+        { "🭼", "FloatBorder" },
+        { "▏", "FloatBorder" },
+      }
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
+        border = sharpborder,
       })
     end,
   },

@@ -16,36 +16,27 @@ configuration {
 @import                          "shared/colors.rasi"
 @import                          "shared/fonts.rasi"
 
-* {
-    /* Resolution : 1920x1080 */
-    box-spacing:                 50px;
-    box-margin:                  50px 50px;
-    inputbar-spacing:            10px;
-    list-spacing:                70px;
-    general-padding:             20px;
-    element-padding:             0px 0px;
-    element-radius:              100%;
-    general-radius:              0px;
-    element-font:                "feather 52";
-}
+/*
+USE_BUTTONS=YES
+*/
 
 /*****----- Main Window -----*****/
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    center;
-    anchor:                      center;
+    location:                    south;
+    anchor:                      south;
     fullscreen:                  false;
+    width:                       374px;
     x-offset:                    0px;
-    y-offset:                    0px;
+    y-offset:                    10px;
 
     /* properties for all widgets */
-    width:                       700px; 
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               3px;
+    border:                      2px 2px 0px 2px solid;
+    border-radius:               10px 10px 0px 0px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
@@ -54,9 +45,9 @@ window {
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     var(box-spacing);
+    spacing:                     20px;
     margin:                      0px;
-    padding:                     var(box-margin);
+    padding:                     20px;
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
@@ -66,8 +57,8 @@ mainbox {
 
 /*****----- Inputbar -----*****/
 inputbar {
-    enabled:                     true;
-    spacing:                     var(inputbar-spacing);
+    enabled:                     false;
+    spacing:                     0px;
     margin:                      0px;
     padding:                     0px;
     border:                      0px;
@@ -75,7 +66,7 @@ inputbar {
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
-    children:                    [ "dummy", "textbox-prompt-colon", "prompt", "dummy"];
+    children:                    [ "textbox-prompt-colon", "prompt"];
 }
 
 dummy {
@@ -83,19 +74,18 @@ dummy {
 }
 
 textbox-prompt-colon {
-    enabled:                     true;
+    enabled:                     false;
     expand:                      false;
-    font:                        "MesloLGS Nerd Font 35";
-    str:                         "󰣇";
-    padding:                     0px 25px -5px 10px;
-    border-radius:               7px 0px 0px 7px;
+    str:                         "󰦚 ";
+    padding:                     12px 18px;
+    border-radius:               100%;
     background-color:            @urgent;
     text-color:                  @background;
 }
 prompt {
     enabled:                     true;
-    padding:                     var(general-padding);
-    border-radius:               0px 7px 7px 0px;
+    padding:                     12px;
+    border-radius:               100%;
     background-color:            @active;
     text-color:                  @background;
 }
@@ -104,9 +94,9 @@ prompt {
 message {
     enabled:                     true;
     margin:                      0px;
-    padding:                     var(general-padding);
+    padding:                     12px;
     border:                      0px solid;
-    border-radius:               var(general-radius);
+    border-radius:               100%;
     border-color:                @selected;
     background-color:            @background-alt;
     text-color:                  @foreground;
@@ -121,9 +111,9 @@ textbox {
     markup:                      true;
 }
 error-message {
-    padding:                     var(general-padding);
+    padding:                     12px;
     border:                      0px solid;
-    border-radius:               var(general-radius);
+    border-radius:               0px;
     border-color:                @selected;
     background-color:            @background;
     text-color:                  @foreground;
@@ -132,7 +122,7 @@ error-message {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     4;
+    columns:                     3;
     lines:                       1;
     cycle:                       true;
     dynamic:                     true;
@@ -142,7 +132,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     var(list-spacing);
+    spacing:                     0px;
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
@@ -157,22 +147,22 @@ listview {
 element {
     enabled:                     true;
     spacing:                     0px;
-    margin:                      0px;
-    padding:                     var(element-padding);
+    margin:                      10px;
+    padding:                     15px 0px;
     border:                      0px solid;
-    border-radius:               var(element-radius);
+    border-radius:               100%;
     border-color:                @selected;
     background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 element-text {
-    font:                        var(element-font);
+    font:                        "feather bold 32";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0.4;
-    horizontal-align:            0.4;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
 }
 element selected.normal {
     background-color:            var(selected);

@@ -5,8 +5,8 @@ lua << EOF
 -------------
 
 if vim.g.GuiLoaded then
-  local font_name = "Iosevka Nerd Font"
-  -- local font_name = "MesloLGS Nerd Font"
+  -- local font_name = "Iosevka Nerd Font"
+  local font_name = "MesloLGS Nerd Font"
   local font_size = 12
   local not_transparent = false
 
@@ -46,8 +46,8 @@ end
 
 if vim.g.neovide then
 vim.opt.linespace = 1
+-- vim.opt.guifont = "MesloLGS Nerd Font:h12"
   vim.opt.guifont = "Iosevka Nerd Font:h12"
-  -- vim.opt.guifont = "MesloLGS Nerd Font:h12"
   vim.g.remember_window_size = false
   vim.g.remember_window_position = false
   -- vim.g.neovide_transparency = 0.95
