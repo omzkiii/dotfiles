@@ -102,7 +102,7 @@ return {
     lazy = true,
     config = function()
       vim.g.gruvbox_baby_keyword_style = "NONE"
-      vim.g.gruvbox_baby_use_original_palette = "false"
+      vim.g.gruvbox_baby_use_original_palette = "true"
       vim.g.gruvbox_baby_function_style = "NONE"
       vim.g.gruvbox_baby_background_color = "medium"
       vim.g.gruvbox_baby_highlights = {
@@ -113,23 +113,23 @@ return {
         FlashCurrent = { fg = "NONE", bg = "#d65d0e", style = "NONE" },
         LeapMatch = { fg = "#fabd2f", bg = "#fabd2f", style = "bold" },
         LeapLabelPrimary = { fg = "#1d2021", bg = "#fabd2f", style = "bold" },
-        WinSeparator = { fg = "#928374", bg = "NONE", style = "NONE" },
-        IblScope = { fg = "#a89984", bg = "NONE", style = "NONE" },
-        IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
-        LeapBackdrop = { fg = "#504945", bg = "NONE", style = "NONE" },
-        SpecialComment = { fg = "#504945", bg = "NONE", style = "italic" },
-        Comments = { fg = "#504945", bg = "NONE", style = "italic" },
-        comment = { fg = "#504945", bg = "NONE", style = "italic" },
-        comments = { fg = "#504945", bg = "NONE", style = "italic" },
+        WinSeparator = { fg = "#1d2021", bg = "NONE", style = "NONE" },
+        IblScope = { fg = "#665c54", bg = "NONE", style = "NONE" },
+        IblIndent = { fg = "#32392f", bg = "NONE", style = "italic" },
+        LeapBackdrop = { fg = "#928374", bg = "NONE", style = "NONE" },
+        -- SpecialComment = { fg = "#504945", bg = "NONE", style = "italic" },
+        -- Comments = { fg = "#504945", bg = "NONE", style = "italic" },
+        -- comment = { fg = "#504945", bg = "NONE", style = "italic" },
+        -- comments = { fg = "#504945", bg = "NONE", style = "italic" },
 
         -- TelescopeSelection = { fg = "#504945", bg = "#fabd2f", style = "NONE" },
       }
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = function()
-          vim.api.nvim_set_hl(0, "@comment", { fg = "#504945", bg = "NONE", italic = true })
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("ColorScheme", {
+      --   pattern = "*",
+      --   callback = function()
+      --     vim.api.nvim_set_hl(0, "@comment", { fg = "#504945", bg = "NONE", italic = true })
+      --   end,
+      -- })
     end,
   },
 

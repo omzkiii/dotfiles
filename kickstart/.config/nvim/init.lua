@@ -184,7 +184,6 @@ require("lazy").setup({
 })
 
 -- vim.cmd.colorscheme "nvchad"
--- vim.cmd.colorscheme "catppuccin-mocha"
 -- vim.cmd.colorscheme "ayu-dark"
 -- vim.cmd.colorscheme "nord"
 -- vim.cmd.colorscheme "kanagawa"
@@ -192,6 +191,7 @@ require("lazy").setup({
 -- vim.cmd.colorscheme "gruvbox"
 -- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "tokyonight-night"
+-- vim.cmd.colorscheme "catppuccin-mocha"
 dofile(vim.g.base46_cache .. "defaults")
 -- dofile(vim.g.base46_cache .. "statusline")
 -- dofile(vim.g.base46_cache .. "syntax")

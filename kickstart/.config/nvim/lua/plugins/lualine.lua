@@ -16,7 +16,7 @@ return {
           -- color = "Normal",
           icons_enabled = true,
           theme = "auto",
-          component_separators = { left = "╱", right = "╲" },
+          component_separators = { left = " ╱ ", right = "   " },
           -- component_separators = { left = "|", right = "|" },
           -- section_separators = { left = " ", right = "" },
           section_separators = { left = " ", right = "" },
@@ -95,7 +95,7 @@ return {
               -- for other components. (terrible name, any suggestions?)
               symbols = {
                 modified = "●",
-                readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+                readonly = " ", -- Text to show when the file is non-modifiable or readonly.
                 unnamed = "[No Name]", -- Text to show for unnamed buffers.
                 newfile = "[New]", -- Text to show for newly created file before first write
               },

@@ -8,6 +8,22 @@ local function set_key_mappings(mappings)
   end
 end
 
+local diagnostics_active = true
+
+function ToggleDiagnostics()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.enable()
+    print "Diagnostics enabled"
+  else
+    vim.diagnostic.enable(false)
+    print "Diagnostics disabled"
+  end
+end
+
+-- Map the function to a key (e.g., <leader>d)
+vim.api.nvim_set_keymap("n", "<leader>lo", ":lua ToggleDiagnostics()<CR>", { noremap = true, silent = true })
+
 local key_mappings = {
   n = {
     ["<C-h>"] = { "<C-w>h", "Window left" },

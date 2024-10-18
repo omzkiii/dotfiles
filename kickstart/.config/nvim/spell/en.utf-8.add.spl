@@ -15,6 +15,7 @@ FWA
 pdf
 oop
 btw
+OSM
 APSP
 Alam
 Doja
@@ -23,6 +24,8 @@ algo
 TODOs
 const
 beens
+Pyvis
+OSMnx
 Biswas
 Berman
 malloc
@@ -40,12 +43,16 @@ Charikar
 splitter
 useState
 superset
+NetworkX
 quicksort
 undirected
 frasurbane
 useContext
 iteratively
 dereference
+CytoscapeJS
+betweenness
 approximable
+OpenStreetMap
 AcademicPapers
 polylogarithmic

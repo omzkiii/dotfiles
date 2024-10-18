@@ -5,6 +5,14 @@ local options = {
     hl_override = {},
     integrations = {},
     changed_themes = {
+      catppuccin = {
+        base_16 = {
+          base00 = "#1e1e2f",
+        },
+        base_30 = {
+          black = "#1e1e2f",
+        },
+      },
       gruvbox = {
         base_16 = {
           base00 = "#1d2021",
