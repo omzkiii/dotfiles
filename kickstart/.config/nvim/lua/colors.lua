@@ -113,7 +113,7 @@ return {
         FlashCurrent = { fg = "NONE", bg = "#d65d0e", style = "NONE" },
         LeapMatch = { fg = "#fabd2f", bg = "#fabd2f", style = "bold" },
         LeapLabelPrimary = { fg = "#1d2021", bg = "#fabd2f", style = "bold" },
-        WinSeparator = { fg = "#1d2021", bg = "NONE", style = "NONE" },
+        WinSeparator = { fg = "#32392f", bg = "NONE", style = "NONE" },
         IblScope = { fg = "#665c54", bg = "NONE", style = "NONE" },
         IblIndent = { fg = "#32392f", bg = "NONE", style = "italic" },
         LeapBackdrop = { fg = "#928374", bg = "NONE", style = "NONE" },

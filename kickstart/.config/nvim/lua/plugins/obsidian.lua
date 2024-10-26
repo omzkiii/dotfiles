@@ -96,7 +96,7 @@ return {
         opts = { buffer = true },
       },
 
-      ["<leader>ol"] = {
+      ["<M-CR>"] = {
         action = function()
           return vim.cmd ":ObsidianLinks"
         end,
@@ -133,6 +133,12 @@ return {
       ["<leader>ot"] = {
         action = function()
           return vim.cmd ":ObsidianTemplate Tagline"
+        end,
+        opts = { buffer = true },
+      },
+      ["<leader>ou"] = {
+        action = function()
+          return vim.cmd ":ObsidianTags #unfinished"
         end,
         opts = { buffer = true },
       },

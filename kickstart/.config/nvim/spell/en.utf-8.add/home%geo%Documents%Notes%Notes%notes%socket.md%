@@ -1,0 +1,15 @@
+ip
+tcp
+udp
+recv
+fctl
+unix
+inet
+pton
+fcntl
+sprintf
+getsockopt
+socketpair
+getsockname
+getpeername
+getprotoent

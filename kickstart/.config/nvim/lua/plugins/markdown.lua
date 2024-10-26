@@ -172,7 +172,7 @@ return {
         -- level of the heading. Indenting starts from level 2 headings onward.
         indent = {
           -- Turn on / off org-indent-mode
-          enabled = true,
+          enabled = false,
           -- Amount of additional padding added for each heading level
           per_level = 2,
           -- Heading levels <= this value will not be indented
