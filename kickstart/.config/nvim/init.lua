@@ -185,19 +185,20 @@ require("lazy").setup({
 
 -- vim.cmd.colorscheme "nvchad"
 -- vim.cmd.colorscheme "ayu-dark"
--- vim.cmd.colorscheme "nord"
 -- vim.cmd.colorscheme "kanagawa"
 -- vim.cmd.colorscheme "solarized"
 -- vim.cmd.colorscheme "gruvbox"
 -- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "tokyonight-night"
 -- vim.cmd.colorscheme "catppuccin-mocha"
+-- vim.cmd.colorscheme "everforest"
 dofile(vim.g.base46_cache .. "defaults")
 -- dofile(vim.g.base46_cache .. "statusline")
 -- dofile(vim.g.base46_cache .. "syntax")
 -- dofile(vim.g.base46_cache .. "treesitter")
 dofile(vim.g.base46_cache .. "telescope")
 dofile(vim.g.base46_cache .. "cmp")
+-- vim.cmd.colorscheme "nord"
 vim.cmd.colorscheme "gruvbox-baby"
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

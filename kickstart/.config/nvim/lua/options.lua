@@ -193,3 +193,7 @@ end
 
 vim.api.nvim_set_keymap("n", "<leader>c=", ":set cmdheight=1<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>c-", ":set cmdheight=0<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-j>", ":cnext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-k>", ":cprev<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-q>", ":cclose<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-c>", ":copen<CR>", { noremap = true, silent = true })

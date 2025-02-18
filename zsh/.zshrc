@@ -1,5 +1,5 @@
 # echo && fortune && echo
-toilet -f term -F border " It only takes two weeks. " && echo
+# toilet -f term -F border " It only takes two weeks. " && echo
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -186,7 +186,7 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # eval "$(starship init zsh)"
 export PATH=$PATH:/home/geo/.cargo/bin
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-23-openjdk
 export QT_QPA_PLATFORM='wayland;xcb'
 # export QT_STYLE_OVERRIDE='gtk2'
 # export QT_QPA_PLATFORM=wayland-xcomposite-glx
@@ -197,5 +197,8 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # export QT_QPA_PLATFORMTHEME="xcb"
 # export PATH_TO_FX="/home/geo/Documents/Projects/Class Code/Parallel Distribution/Schedule Management/javafx/lib"
 export PATH="$HOME/.emacs.d/bin:$PATH"
+export BAT_THEME="base16"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 

@@ -21,6 +21,14 @@ local options = {
           black = "#1d2021",
         },
       },
+      everforest = {
+        base_16 = {
+          base00 = "#272e33",
+        },
+        base_30 = {
+          black = "#272e33",
+        },
+      },
     },
     transparency = false,
     -- theme_toggle = { "onedark", "one_light" },

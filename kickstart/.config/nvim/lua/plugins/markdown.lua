@@ -171,6 +171,7 @@ return {
         -- Mimic org-indent-mode behavior by indenting everything under a heading based on the
         -- level of the heading. Indenting starts from level 2 headings onward.
         indent = {
+          render_modes = false,
           -- Turn on / off org-indent-mode
           enabled = false,
           -- Amount of additional padding added for each heading level

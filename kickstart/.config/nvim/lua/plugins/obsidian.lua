@@ -138,7 +138,14 @@ return {
       },
       ["<leader>ou"] = {
         action = function()
-          return vim.cmd ":ObsidianTags #unfinished"
+          require("telescope.builtin").grep_string {
+            prompt_title = "Unfinished Notes", -- Set custom prompt title
+            search = "#unfinished",
+            only_sort_text = true,
+            path_display = function(_, path)
+              return vim.fn.fnamemodify(path, ":t")
+            end,
+          }
         end,
         opts = { buffer = true },
       },

@@ -32,6 +32,22 @@ return {
     -- end,
   },
   { "catppuccin/nvim", name = "catppuccin", lazy = true },
+  {
+    "neanias/everforest-nvim",
+    lazy = true,
+    -- version = false,
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup {
+
+        background = "hard",
+        on_highlights = function(hl, palette)
+          hl.LeapMatch = { fg = palette.yellow, bg = palette.yellow }
+          hl.LeapLabelPrimary = { fg = palette.bg0, bg = palette.yellow, bold = true }
+        end,
+      }
+    end,
+  },
 
   -- Highlight todo, notes, etc in comments
   {

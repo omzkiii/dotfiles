@@ -48,7 +48,7 @@ map <c-space> :up; toggle
 cmd touch %touch "$@"
 map i push :touch<space>
 map sr set reverse!
-map st :set sortby time; set info time; set reverse
+map st :set sortby time; set info time; bottom
 
 
 

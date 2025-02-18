@@ -7,7 +7,7 @@ lua << EOF
 if vim.g.GuiLoaded then
   -- local font_name = "Iosevka Nerd Font"
   local font_name = "MesloLGS Nerd Font"
-  local font_size = 12
+  local font_size = 15
   local not_transparent = false
 
   local function toggle_transparency()
@@ -47,7 +47,7 @@ end
 if vim.g.neovide then
 vim.opt.linespace = 1
 -- vim.opt.guifont = "MesloLGS Nerd Font:h12"
-  vim.opt.guifont = "Iosevka Nerd Font:h12"
+  vim.opt.guifont = "Iosevka NFM:h15"
   vim.g.remember_window_size = false
   vim.g.remember_window_position = false
   -- vim.g.neovide_transparency = 0.95
@@ -75,6 +75,33 @@ vim.g.neovide_padding_bottom = 5
 vim.g.neovide_padding_right = 10
 vim.g.neovide_padding_left = 10
 
+  local function IncreasePadding()
+      -- Get the current padding values or default to 0 if not set
+      local right = tonumber(vim.g.neovide_padding_right or 10)
+      local left = tonumber(vim.g.neovide_padding_left or 10)
+
+      -- Increment the padding values
+      right = right + 10
+      left = left + 10
+
+      -- Set the updated values back to vim.g
+      vim.g.neovide_padding_right = right
+      vim.g.neovide_padding_left = left
+  end
+  local function DecreasePadding()
+      -- Get the current padding values or default to 0 if not set
+      local right = tonumber(vim.g.neovide_padding_right or 0)
+      local left = tonumber(vim.g.neovide_padding_left or 0)
+
+      -- Increment the padding values
+      right = right - 10
+      left = left - 10
+
+      -- Set the updated values back to vim.g
+      vim.g.neovide_padding_right = right
+      vim.g.neovide_padding_left = left
+  end
+  
   local function IncreaseFontSize()
       local current_font = vim.opt.guifont:get()
       local font_name, current_size = string.match(current_font[1], "([^:]+):h(%d+)")
@@ -107,6 +134,9 @@ vim.g.neovide_padding_left = 10
   end
   vim.keymap.set('n', '<C-=>', IncreaseFontSize, { noremap = true, silent = true })
   vim.keymap.set('n', '<C-->', DecreaseFontSize, { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-->', DecreaseFontSize, { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-+>', IncreasePadding, { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-_>', DecreasePadding, { noremap = true, silent = true })
   vim.keymap.set("n", "<F11>", toggle_fullscreen, { silent = true })
   vim.keymap.set("n", "<F10>", toggle_transparency, { silent = true })
 end
