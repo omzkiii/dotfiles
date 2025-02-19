@@ -195,7 +195,6 @@ export QT_QPA_PLATFORM='wayland;xcb'
 # export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 # export QT_QPA_PLATFORMTHEME="xcb"
-# export PATH_TO_FX="/home/geo/Documents/Projects/Class Code/Parallel Distribution/Schedule Management/javafx/lib"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export BAT_THEME="base16"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
