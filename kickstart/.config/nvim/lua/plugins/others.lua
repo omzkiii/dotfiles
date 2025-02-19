@@ -1,12 +1,15 @@
 return {
   {
     "max397574/better-escape.nvim",
+    event = "VeryLazy",
+    -- lazy = true,
     config = function()
       require("better_escape").setup()
     end,
   },
   {
     "norcalli/nvim-colorizer.lua",
+    event = "VeryLazy",
     config = function()
       require("colorizer").setup()
       vim.defer_fn(function()
@@ -15,10 +18,11 @@ return {
     end,
   },
   { "nvim-tree/nvim-web-devicons", event = "User FilePost" },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", event = "VeryLazy", opts = {} },
   {
     "alexghergh/nvim-tmux-navigation",
-    lazy = false,
+    -- lazy = true,
+    event = "VeryLazy",
     config = function()
       local nvim_tmux_nav = require "nvim-tmux-navigation"
 
@@ -36,6 +40,7 @@ return {
   },
   {
     "ggandor/leap.nvim",
+    event = "VeryLazy",
     config = function()
       -- require("leap").create_default_mappings()
       -- vim.keymap.set("n", "f", "<Plug>(leap)")

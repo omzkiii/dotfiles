@@ -1,6 +1,7 @@
 return {
   "filipdutescu/renamer.nvim",
   -- lazy = true,
+  event = "VeryLazy",
   branch = "master",
   requires = { { "nvim-lua/plenary.nvim" } },
   config = function()

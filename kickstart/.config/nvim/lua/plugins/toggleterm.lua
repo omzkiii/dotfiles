@@ -2,6 +2,7 @@ return {
   "akinsho/toggleterm.nvim",
   version = "*",
   -- lazy = true,
+  event = "VeryLazy",
   opts = function()
     require("toggleterm").setup {
       shade_terminals = false,

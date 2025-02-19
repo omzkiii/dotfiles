@@ -3,7 +3,7 @@ return {
     "linux-cultist/venv-selector.nvim",
     lazy = true,
     -- branch = "regexp", -- This is the regexp branch, use this for the new version
-    ft = "python",
+    ft = { "python" },
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     config = function()
       require("venv-selector").setup {
@@ -18,9 +18,14 @@ return {
         --     },
         --   },
         -- },
+        --
       }
+      local venv = require("venv-selector").get_active_venv()
+      if venv then
+        require("dap-python").setup(venv .. "/bin/python")
+      end
     end,
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    -- event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
     keys = {
       -- Keymap to open VenvSelector to pick a venv.
       { "<leader>vs", "<cmd>VenvSelect<cr>" },
@@ -29,5 +34,5 @@ return {
     },
   },
 
-  { "mfussenegger/nvim-dap-python", ft = "python", lazy = true },
+  -- { "mfussenegger/nvim-dap-python", ft = "python", lazy = true },
 }

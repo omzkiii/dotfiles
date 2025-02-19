@@ -31,9 +31,11 @@ return {
         javascript = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
-        python = { "prettier" },
+        python = { "black" },
+        c = { "clang-format" },
 
         sh = { "shfmt" },
+        go = { "gopls" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -44,6 +46,8 @@ return {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
+    -- event = "VeryLazy",
+    lazy = true,
     ft = "*",
     opts = {
       on_attach = function(client, bufnr)

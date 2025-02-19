@@ -1,6 +1,7 @@
 return {
   {
     "numToStr/Comment.nvim",
+    event = "VeryLazy",
     -- keys = {
     --   { "<leader>/", mode = "n", desc = "Comment toggle current line" },
     --   { "<leader>/", mode = { "n", "o" }, desc = "Comment toggle linewise" },

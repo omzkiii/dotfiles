@@ -3,6 +3,7 @@ return {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     "folke/lazydev.nvim",
+    lazy = true,
     ft = "lua",
     opts = {
       library = {
@@ -15,6 +16,9 @@ return {
   {
     -- Main LSP Configuration
     "neovim/nvim-lspconfig",
+    event = { "BufReadPost", "BufNewFile" },
+    -- event = "VimEnter",
+    -- lazy = true,
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
@@ -184,6 +188,8 @@ return {
         gopls = {},
         pyright = {},
         ruff = {},
+        debugpy = {},
+        codelldb = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -199,10 +205,10 @@ return {
           filetypes = { "html", "css", "scss", "typescript" },
         },
         emmet_language_server = {
-          filetypes = { "javascriptreact", "html" },
+          filetypes = { "javascriptreact", "html", "typescriptreact" },
         },
         tailwindcss = {
-          filetypes = { "html", "css", "scss", "javascriptreact", "typescript", "typescriptreact" },
+          filetypes = { "html", "javascriptreact", "typescript", "typescriptreact" },
         },
         --
         harper_ls = {

@@ -8,7 +8,7 @@ return {
       --
 
       "onsails/lspkind.nvim",
-      "roobert/tailwindcss-colorizer-cmp.nvim",
+      -- "roobert/tailwindcss-colorizer-cmp.nvim",
 
       {
         "L3MON4D3/LuaSnip",
@@ -45,7 +45,7 @@ return {
       local cmp = require "cmp"
       local luasnip = require "luasnip"
       local lspkind = require "lspkind"
-      local cmp_tailwind = require "tailwindcss-colorizer-cmp"
+      -- local cmp_tailwind = require "tailwindcss-colorizer-cmp"
       local options = {
         snippet = {
           expand = function(args)

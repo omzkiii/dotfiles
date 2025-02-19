@@ -1,7 +1,8 @@
 return {
   { -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
-    lazy = true,
+    -- lazy = true,
+    event = "VeryLazy",
     build = ":TSUpdate",
     opts = {
       ensure_installed = {

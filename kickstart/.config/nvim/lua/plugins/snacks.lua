@@ -2,8 +2,11 @@ return {
   -- lazy.nvim
   {
     "folke/snacks.nvim",
+    -- event = "VeryLazy",
+    lazy = true,
     ---@type snacks.Config
     opts = {
+      -- image = {},
       picker = {
         prompt = " ",
         auto_close = true,
@@ -215,13 +218,13 @@ return {
         end,
         desc = "Registers",
       },
-      {
-        "<leader>s/",
-        function()
-          Snacks.picker.search_history(opts)
-        end,
-        desc = "Search History",
-      },
+      -- {
+      --   "<leader>s/",
+      --   function()
+      --     Snacks.picker.search_history(opts)
+      --   end,
+      --   desc = "Search History",
+      -- },
       {
         "<leader>sa",
         function()

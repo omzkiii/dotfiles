@@ -2,8 +2,8 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     -- commit = "81566202651c4a65cd19d2b7353ca6a1eee34448",
-    ft = "markdown",
-    -- lazy = true,
+    ft = { "markdown" },
+    lazy = true,
     -- event = "VeryLazy",
     -- enabled = true,
     name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
@@ -282,20 +282,21 @@ return {
     "preservim/vim-markdown",
     ft = "markdown",
   },
-  {
-    "jbyuki/nabla.nvim",
-    lazy = false,
-    -- ft = "markdown",
-    -- config = function()
-    --   require("nabla").enable_virt()
-    -- end,
-    vim.api.nvim_set_keymap(
-      "n",
-      "<M-m>",
-      [[:lua require("nabla").popup({border = 'single'})<CR>]],
-      { noremap = true, silent = true }
-    ),
-  },
+  -- {
+  --   "jbyuki/nabla.nvim",
+  --   lazy = false,
+  --
+  --   -- ft = "markdown",
+  --   -- config = function()
+  --   --   require("nabla").enable_virt()
+  --   -- end,
+  --   vim.api.nvim_set_keymap(
+  --     "n",
+  --     "<M-m>",
+  --     [[:lua require("nabla").popup({border = 'single'})<CR>]],
+  --     { noremap = true, silent = true }
+  --   ),
+  -- },
 
   -- {
   --   "lervag/vimtex",
