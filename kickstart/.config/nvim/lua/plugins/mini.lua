@@ -54,56 +54,86 @@ return {
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  -- {
+  --   "echasnovski/mini.animate",
+  --   event = "VeryLazy",
+  --   opts = function()
+  --     -- don't use animate when scrolling with the mouse
+  --     local mouse_scrolled = false
+  --     for _, scroll in ipairs { "Up", "Down" } do
+  --       local key = "<ScrollWheel" .. scroll .. ">"
+  --       vim.keymap.set({ "", "i" }, key, function()
+  --         mouse_scrolled = true
+  --         return key
+  --       end, { expr = true })
+  --     end
+  --
+  --     local animate = require "mini.animate"
+  --     return {
+  --       resize = {
+  --         enable = false,
+  --       },
+  --       open = {
+  --         enable = false,
+  --       },
+  --       close = {
+  --         enable = false,
+  --       },
+  --       scroll = {
+  --         timing = animate.gen_timing.linear { duration = 70, unit = "total" },
+  --         subscroll = animate.gen_subscroll.equal {
+  --           predicate = function(total_scroll)
+  --             if mouse_scrolled then
+  --               mouse_scrolled = false
+  --               return false
+  --             end
+  --             return total_scroll > 1
+  --           end,
+  --         },
+  --       },
+  --       cursor = {
+  --         enable = false,
+  --         -- -- Animate for 200 milliseconds with linear easing
+  --         -- timing = animate.gen_timing.cubic { duration = 20, unit = "total" },
+  --         --
+  --         -- -- Animate with shortest line for any cursor move
+  --         -- path = animate.gen_path.line {
+  --         --   predicate = function()
+  --         --     return true
+  --         --   end,
+  --         -- },
+  --       },
+  --     }
+  --   end,
+  -- },
   {
-    "echasnovski/mini.animate",
+    "karb94/neoscroll.nvim",
     event = "VeryLazy",
-    opts = function()
-      -- don't use animate when scrolling with the mouse
-      local mouse_scrolled = false
-      for _, scroll in ipairs { "Up", "Down" } do
-        local key = "<ScrollWheel" .. scroll .. ">"
-        vim.keymap.set({ "", "i" }, key, function()
-          mouse_scrolled = true
-          return key
-        end, { expr = true })
-      end
-
-      local animate = require "mini.animate"
-      return {
-        resize = {
-          enable = false,
-        },
-        open = {
-          enable = false,
-        },
-        close = {
-          enable = false,
-        },
-        scroll = {
-          timing = animate.gen_timing.linear { duration = 70, unit = "total" },
-          subscroll = animate.gen_subscroll.equal {
-            predicate = function(total_scroll)
-              if mouse_scrolled then
-                mouse_scrolled = false
-                return false
-              end
-              return total_scroll > 1
-            end,
-          },
-        },
-        cursor = {
-          enable = false,
-          -- -- Animate for 200 milliseconds with linear easing
-          -- timing = animate.gen_timing.cubic { duration = 20, unit = "total" },
-          --
-          -- -- Animate with shortest line for any cursor move
-          -- path = animate.gen_path.line {
-          --   predicate = function()
-          --     return true
-          --   end,
-          -- },
-        },
-      }
-    end,
+    opts = {
+      mappings = { -- Keys to be mapped to their corresponding default scrolling animation
+        "<C-u>",
+        "<C-d>",
+        "<C-b>",
+        "<C-f>",
+        "<C-y>",
+        "<C-e>",
+        "zt",
+        "zz",
+        "zb",
+      },
+      hide_cursor = true, -- Hide cursor while scrolling
+      stop_eof = false, -- Stop at <EOF> when scrolling downwards
+      respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+      cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+      duration_multiplier = 0.5, -- Global duration multiplier
+      easing = "linear", -- Default easing function
+      pre_hook = nil, -- Function to run before the scrolling animation starts
+      post_hook = nil, -- Function to run after the scrolling animation ends
+      performance_mode = false, -- Disable "Performance Mode" on all buffers.
+      ignored_events = { -- Events ignored while scrolling
+        "WinScrolled",
+        "CursorMoved",
+      },
+    },
   },
 }

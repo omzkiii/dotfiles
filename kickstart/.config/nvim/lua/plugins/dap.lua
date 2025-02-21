@@ -1,7 +1,9 @@
 return {
   { "mfussenegger/nvim-dap", event = "VeryLazy" },
+  { "nvim-neotest/nvim-nio", event = "VeryLazy" },
   {
     "rcarriga/nvim-dap-ui",
+    -- cmd = { "DapContinue", "DapToggleBreakpoint" },
     event = "VeryLazy",
     -- lazy = true,
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -78,18 +80,20 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
-    event = "VeryLazy",
-    -- lazy = true,
+    lazy = true,
+    -- cmd = { "DapContinue", "DapToggleBreakpoint" },
+    -- event = "VeryLazy",
     dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
     opts = {
       handlers = {},
-      ensure_installed = { "debugpy", "codelldb", "delve" },
+      ensure_installed = { "debugpy", "codelldb", "delve", "jdtls" },
     },
   },
   {
     "mfussenegger/nvim-dap-python",
-    event = "VeryLazy",
-    -- lazy = true,
+    -- cmd = { "DapContinue", "DapToggleBreakpoint" },
+    -- event = "VeryLazy",
+    lazy = true,
     ft = "python",
     dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
     config = function()

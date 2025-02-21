@@ -184,7 +184,12 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          cmd = { "clangd", "--compile-commands-dir=./build" },
+          on_attach = function(client, bufnr)
+            -- Custom config if needed
+          end,
+        },
         gopls = {},
         pyright = {},
         ruff = {},
@@ -197,22 +202,39 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        jdtls = {},
+        jdtls = {
+          function()
+            require("lspconfig").jdtls.setup {
+              settings = {
+                java = {
+                  configuration = {
+                    runtimes = {
+                      {
+                        name = "jdk-23",
+                        path = "/usr/lib/jvm/default",
+                        default = true,
+                      },
+                    },
+                  },
+                },
+              },
+            }
+          end,
+        },
         -- tsserver = {},
         ts_ls = {},
         eslint_d = {},
         htmx = {
           filetypes = { "html", "css", "scss", "typescript" },
         },
-        emmet_language_server = {
-          filetypes = { "javascriptreact", "html", "typescriptreact" },
-        },
+        -- emmet_language_server = {
+        --   filetypes = { "javascriptreact", "html", "typescriptreact" },
+        -- },
         tailwindcss = {
           filetypes = { "html", "javascriptreact", "typescript", "typescriptreact" },
         },
-        --
         harper_ls = {
-          filetypes = { "html", "markdown" },
+          filetypes = { "html", "markdown", "txt" },
           settings = {
             ["harper-ls"] = {
               codeActions = {
@@ -281,11 +303,33 @@ return {
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
+            if server_name ~= "jdtls" then
+              server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+              require("lspconfig")[server_name].setup(server)
+            else
+              require("lspconfig").jdtls.setup {}
+              require("java").setup()
+              require("lspconfig")[server_name].setup(server)
+              -- require("lspconfig").jdtls.setup {
+              --   settings = {
+              --     java = {
+              --       configuration = {
+              --         runtimes = {
+              --           {
+              --             name = "jdk-23",
+              --             path = "/usr/lib/jvm/default",
+              --             default = true,
+              --           },
+              --         },
+              --       },
+              --     },
+              --   },
+              -- },
+            end
           end,
         },
       }
+
       require("lspkind").setup {
         -- DEPRECATED (use mode instead): enables text annotations
         --
@@ -350,4 +394,8 @@ return {
       })
     end,
   },
+  -- {
+  --   "mfussenegger/nvim-jdtls",
+  -- },
+  { "nvim-java/nvim-java", lazy = true },
 }

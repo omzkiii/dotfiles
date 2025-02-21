@@ -2,11 +2,19 @@ return {
   -- lazy.nvim
   {
     "folke/snacks.nvim",
-    -- event = "VeryLazy",
-    lazy = true,
+    event = "VeryLazy",
+    -- lazy = false,
     ---@type snacks.Config
     opts = {
-      -- image = {},
+      -- image = {
+      --   enabled = true,
+      -- },
+      -- animate = {
+      --   enabled = true,
+      --   duration = 50, -- ms per step
+      --   easing = "linear",
+      --   fps = 60, -- frames per second. Global setting for all animations
+      -- },
       picker = {
         prompt = " ",
         auto_close = true,
