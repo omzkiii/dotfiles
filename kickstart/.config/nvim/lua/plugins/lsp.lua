@@ -21,7 +21,6 @@ return {
     -- lazy = true,
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
@@ -45,7 +44,7 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
-      diagnostic_signs = signs
+      -- diagnostic_signs = signs
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -83,9 +82,10 @@ return {
           -- In this case, we create a function that lets us more easily define mappings specific
           -- for LSP related items. It sets the mode, buffer and description for us each time.
           local map = function(keys, func, desc)
-            vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+            vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc, noremap = true })
           end
 
+          map("<leader>ra", "<cmd>lua vim.lsp.buf.rename(); vim.cmd('wa')<CR>", "Rename")
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
@@ -119,8 +119,26 @@ return {
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
           map("<leader>lf", function()
-            vim.diagnostic.open_float { border = "rounded" }
+            -- vim.diagnostic.open_float { border = "single" }
+            vim.diagnostic.config { virtual_lines = { current_line = true }, virtual_text = false }
+            vim.api.nvim_create_autocmd("CursorMoved", {
+              group = vim.api.nvim_create_augroup("line-diagnostics", { clear = true }),
+              callback = function()
+                vim.diagnostic.config { virtual_lines = false, virtual_text = false }
+                return true
+              end,
+            })
           end, "Floating Diagnostics")
+          map("K", function()
+            vim.lsp.buf.hover { border = "single" }
+          end, "Hover")
+
+          -- vim.o.updatetime = 250
+          -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+          --   callback = function()
+          --     vim.diagnostic.open_float(nil, { border = sharpborder, focus = false })
+          --   end,
+          -- })
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -185,7 +203,7 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
-          cmd = { "clangd", "--compile-commands-dir=./build" },
+          cmd = { "clangd", "--log=verbose", "--compile-commands-dir=./build", "--background-index" },
           on_attach = function(client, bufnr)
             -- Custom config if needed
           end,
@@ -379,19 +397,6 @@ return {
           TypeParameter = " ",
         },
       }
-      local sharpborder = {
-        { "🭽", "FloatBorder" },
-        { "▔", "FloatBorder" },
-        { "🭾", "FloatBorder" },
-        { "▕", "FloatBorder" },
-        { "🭿", "FloatBorder" },
-        { "▁", "FloatBorder" },
-        { "🭼", "FloatBorder" },
-        { "▏", "FloatBorder" },
-      }
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = sharpborder,
-      })
     end,
   },
   -- {

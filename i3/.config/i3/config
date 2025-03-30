@@ -56,7 +56,7 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec kitty ~/.config/i3/tmux.sh 
-bindsym $mod+e exec kitty ranger
+bindsym $mod+e exec kitty lf
 bindsym $mod+n exec kitty nvim
 
 # kill focused window

@@ -31,7 +31,7 @@ return {
           always_divide_middle = true,
           globalstatus = true,
           refresh = {
-            statusline = 500,
+            statusline = 100,
             -- tabline = 1000,
             -- winbar = 1000,
           },

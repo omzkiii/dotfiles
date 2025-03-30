@@ -135,30 +135,30 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 -- Key mapping
-vim.api.nvim_set_keymap("n", "<leader>gg", ":lua OpenURL()<CR>", { noremap = true, silent = true })
-
--- Function to open URL
-function OpenURL()
-  -- Get the current line
-  local current_line = vim.api.nvim_get_current_line()
-
-  -- Extract the URL from within quotes
-  local url = current_line:match 'https?://[^%)%s"]+'
-
-  if not url then
-    print "No URL found between quotes in the current line."
-    return
-  end
-
-  -- Construct the command to open the URL
-  local cmd = string.format('xdg-open "%s" &', url)
-  -- local cmd = string.format('librewolf "%s" &', url)
-
-  -- Execute the command
-  vim.fn.jobstart(cmd, { detach = true })
-
-  -- print("Opening URL: " .. url)
-end
+-- vim.api.nvim_set_keymap("n", "<leader>gg", ":lua OpenURL()<CR>", { noremap = true, silent = true })
+--
+-- -- Function to open URL
+-- function OpenURL()
+--   -- Get the current line
+--   local current_line = vim.api.nvim_get_current_line()
+--
+--   -- Extract the URL from within quotes
+--   local url = current_line:match 'https?://[^%)%s"]+'
+--
+--   if not url then
+--     print "No URL found between quotes in the current line."
+--     return
+--   end
+--
+--   -- Construct the command to open the URL
+--   local cmd = string.format('xdg-open "%s" &', url)
+--   -- local cmd = string.format('librewolf "%s" &', url)
+--
+--   -- Execute the command
+--   vim.fn.jobstart(cmd, { detach = true })
+--
+--   -- print("Opening URL: " .. url)
+-- end
 
 -- Key mapping
 vim.api.nvim_set_keymap("n", "<leader>p", ":lua OpenPDFWithZathura()<CR>", { noremap = true, silent = true })
@@ -190,6 +190,17 @@ function OpenPDFWithZathura()
 
   -- print("Opening PDF with Zathura: " .. file_path)
 end
+
+vim.diagnostic.config {
+  virtual_text = false,
+}
+
+-- vim.o.updatetime = 250
+-- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--   callback = function()
+--     vim.diagnostic.open_float(nil, { focus = false })
+--   end,
+-- })
 
 vim.api.nvim_set_keymap("n", "<leader>c=", ":set cmdheight=1<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>c-", ":set cmdheight=0<CR>", { noremap = true, silent = true })

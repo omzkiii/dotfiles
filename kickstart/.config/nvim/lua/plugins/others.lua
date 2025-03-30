@@ -1,12 +1,14 @@
 return {
-  {
-    "max397574/better-escape.nvim",
-    event = "VeryLazy",
-    -- lazy = true,
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
+  -- {
+  --   "max397574/better-escape.nvim",
+  --   event = "VeryLazy",
+  --   -- lazy = true,
+  --   config = function()
+  --     require("better_escape").setup()
+  --   end,
+  -- },
+
+  { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
   {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
@@ -18,7 +20,19 @@ return {
     end,
   },
   { "nvim-tree/nvim-web-devicons", event = "User FilePost" },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", event = "VeryLazy", opts = {} },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = "VeryLazy",
+    opts = {
+      indent = { highlight = highlight, char = "│" },
+      whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false,
+      },
+      scope = { enabled = true },
+    },
+  },
   {
     "alexghergh/nvim-tmux-navigation",
     -- lazy = true,
@@ -75,8 +89,8 @@ return {
   --   { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   -- },
   -- },
-  {
-    "preservim/vim-pencil",
-    lazy = true,
-  },
+  -- {
+  --   "preservim/vim-pencil",
+  --   -- lazy = true,
+  -- },
 }

@@ -1,6 +1,6 @@
 {
-    "height": 0, // Waybar height (to be removed for auto height)
-    "layer": "top", // Waybar at top layer
+    //"height": 0, // Waybar height (to be removed for auto height)
+    "layer": "back", // Waybar at top layer
     "position": "top", 
     "margin-top" : 0,
     "margin-right" : 0,
@@ -124,7 +124,7 @@
         "on-scroll-down": "~/.config/waybar/scripts/volume.sh --dec"
     },
     "battery": {
-        "interval": 60,
+        "interval": 1,
         "align": 0,
         "rotate": 0,
         "full-at": 100,

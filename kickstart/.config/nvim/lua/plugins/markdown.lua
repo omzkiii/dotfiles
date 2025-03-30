@@ -39,12 +39,12 @@ return {
         },
         heading = {
           enabled = true,
-          -- width = "block",
-          width = "full",
+          width = "block",
+          -- width = "full",
           -- Amount of padding to add to the left of headings
           left_pad = 0,
           -- Amount of padding to add to the right of headings when width is 'block'
-          right_pad = 3,
+          right_pad = 1,
           -- Minimum width to use for headings when width is 'block'
           min_width = 0,
           -- Determines how the icon fills the available space:
@@ -56,9 +56,9 @@ return {
           -- The number of '#' in the heading determines the 'level'
           -- The 'level' is used to index into the array using a cycle
           -- The result is left padded with spaces to hide any additional '#'
-          -- icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
+          icons = { " 󰎤 ", " 󰎧 ", " 󰎪 ", " 󰎭 ", " 󰎱 ", " 󰎳 " },
           -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-          icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
+          -- icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
           -- icons = { "", "", "", "", "", "" },
           -- Added to the sign column⭗
           -- The 'level' is used to index into the array using a cycle
@@ -79,22 +79,22 @@ return {
           -- The 'level' is used to index into the array using a clamp
           -- Highlight for the heading icon and extends through the entire line
           -- backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
-          backgrounds = {
-            "Bold",
-            "Number",
-            "CmpItemKind",
-            "CmpItemKindConstant",
-            "Added",
-            "Changed",
-          },
           -- backgrounds = {
-          -- "RenderMarkdownH1Bg",
-          -- "RenderMarkdownH2Bg",
-          -- "RenderMarkdownH3Bg",
-          -- "RenderMarkdownH4Bg",
-          -- "RenderMarkdownH5Bg",
-          -- "RenderMarkdownH6Bg",
+          --   "Bold",
+          --   "Number",
+          --   "CmpItemKind",
+          --   "CmpItemKindConstant",
+          --   "Added",
+          --   "Changed",
           -- },
+          backgrounds = {
+            "RenderMarkdownH1Bg",
+            "RenderMarkdownH2Bg",
+            "RenderMarkdownH3Bg",
+            "RenderMarkdownH4Bg",
+            "RenderMarkdownH5Bg",
+            "RenderMarkdownH6Bg",
+          },
           -- The 'level' is used to index into the array using a clamp
           -- Highlight for the heading and sign icons
           foregrounds = {
@@ -171,16 +171,16 @@ return {
         -- Mimic org-indent-mode behavior by indenting everything under a heading based on the
         -- level of the heading. Indenting starts from level 2 headings onward.
         indent = {
-          render_modes = false,
+          render_modes = true,
           -- Turn on / off org-indent-mode
           enabled = false,
           -- Amount of additional padding added for each heading level
-          per_level = 2,
+          per_level = 1,
           -- Heading levels <= this value will not be indented
           -- Use 0 to begin indenting from the very first level
-          skip_level = 1,
+          skip_level = 0,
           -- Do not indent heading titles, only the body
-          skip_heading = true,
+          -- skip_heading = true,
         },
         code = {
           -- Turn on / off code block & inline code rendering
@@ -238,16 +238,16 @@ return {
       }
     end,
   },
-  {
-    "toppair/peek.nvim",
-    event = { "VeryLazy" },
-    build = "deno task --quiet build:fast",
-    config = function()
-      require("peek").setup()
-      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-    end,
-  },
+  -- {
+  --   "toppair/peek.nvim",
+  --   event = { "VeryLazy" },
+  --   build = "deno task --quiet build:fast",
+  --   config = function()
+  --     require("peek").setup()
+  --     vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+  --     vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+  --   end,
+  -- },
   -- {
   --   "OXY2DEV/markview.nvim",
   --   lazy = false, -- Recommended
@@ -260,21 +260,90 @@ return {
   --     "nvim-treesitter/nvim-treesitter",
   --
   --     "nvim-tree/nvim-web-devicons",
-  --     code_blocks = {
-  --       style = "minimal",
-  --       position = nil,
-  --       min_width = 70,
+  --   },
+  --   config = {
   --
-  --       pad_amount = 3,
-  --       pad_char = " ",
+  --     markdown = {
   --
-  --       language_direction = "left",
-  --       language_names = {},
+  --       code_blocks = {
+  --         style = "minimal",
+  --         position = nil,
+  --         min_width = 70,
   --
-  --       hl = "CursorLine",
+  --         pad_amount = 3,
+  --         pad_char = " ",
   --
-  --       sign = true,
-  --       sign_hl = nil,
+  --         language_direction = "left",
+  --         language_names = {},
+  --
+  --         hl = "CursorLine",
+  --
+  --         sign = true,
+  --         sign_hl = nil,
+  --       },
+  --       headings = {
+  --         enable = true,
+  --
+  --         shift_width = 1,
+  --         org_indent = false,
+  --         org_indent_wrap = true,
+  --
+  --         heading_1 = {
+  --           style = "label",
+  --           sign = "󰌕 ",
+  --           sign_hl = "MarkviewHeading1Sign",
+  --
+  --           icon = "󰼏  ",
+  --           hl = "MarkviewHeading1",
+  --         },
+  --         heading_2 = {
+  --           style = "label",
+  --           sign = "󰌖 ",
+  --           sign_hl = "MarkviewHeading2Sign",
+  --
+  --           icon = "󰎨  ",
+  --           hl = "MarkviewHeading2",
+  --         },
+  --         heading_3 = {
+  --           style = "label",
+  --           icon = "󰼑  ",
+  --           hl = "MarkviewHeading3",
+  --         },
+  --         heading_4 = {
+  --           style = "label",
+  --           icon = "󰎲  ",
+  --           hl = "MarkviewHeading4",
+  --         },
+  --         heading_5 = {
+  --           style = "label",
+  --           icon = "󰼓  ",
+  --           hl = "MarkviewHeading5",
+  --         },
+  --         heading_6 = {
+  --           style = "label",
+  --           icon = "󰎴  ",
+  --           hl = "MarkviewHeading6",
+  --         },
+  --
+  --         setext_1 = {
+  --           style = "decorated",
+  --
+  --           sign = "󰌕 ",
+  --           sign_hl = "MarkviewHeading1Sign",
+  --           icon = "  ",
+  --           hl = "MarkviewHeading1",
+  --           border = "▂",
+  --         },
+  --         setext_2 = {
+  --           style = "decorated",
+  --
+  --           sign = "󰌖 ",
+  --           sign_hl = "MarkviewHeading2Sign",
+  --           icon = "  ",
+  --           hl = "MarkviewHeading2",
+  --           border = "▁",
+  --         },
+  --       },
   --     },
   --   },
   -- },

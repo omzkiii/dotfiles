@@ -199,5 +199,8 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 export BAT_THEME="base16"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
+export EDITOR="nvim"
+export VISUAL="nvim"
+alias t="taskwarrior-tui"
 
 

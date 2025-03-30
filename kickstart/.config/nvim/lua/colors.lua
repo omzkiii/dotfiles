@@ -56,8 +56,20 @@ return {
     opts = {},
     config = function(_, opts)
       require("solarized").setup {
+
+        styles = {
+          enabled = true,
+          -- types = { italic = true },
+          -- functions = { bold = true },
+          parameters = { italic = false },
+          comments = { italic = true },
+          strings = {},
+          keywords = { bold = false },
+          variables = {},
+          constants = { bold = true },
+        },
         -- theme = "neo", -- or comment to use solarized default theme.
-        variant = "spring",
+        variant = "autumn",
         pallete = "solarized",
         on_colors = function(colors, colorhelper)
           local darken = colorhelper.darken
@@ -66,17 +78,17 @@ return {
 
           return {
             -- base01 = lighten(colors.base01, 50),
-            base02 = lighten(colors.base02, 5),
-            base00 = lighten(colors.base00, 20),
+            -- base02 = lighten(colors.base02, 5),
+            -- base00 = lighten(colors.base00, 20),
             -- base0 = lighten(colors.base0, 20),
             -- base1 = lighten(colors.base1, 20),
             -- base2 = lighten(colors.base2, 20),
             -- base3 = lighten(colors.base3, 20),
-            green = lighten(colors.green, 20),
-            red = lighten(colors.red, 20),
-            cyan = lighten(colors.cyan, 20),
-            blue = lighten(colors.blue, 20),
-            yellow = lighten(colors.yellow, 20),
+            -- green = lighten(colors.green, 20),
+            -- red = lighten(colors.red, 20),
+            -- cyan = lighten(colors.cyan, 20),
+            -- blue = lighten(colors.blue, 20),
+            -- yellow = lighten(colors.yellow, 20),
           }
         end,
 
@@ -87,7 +99,7 @@ return {
 
           ---@type solarized.highlights
           local groups = {
-            Normal = { fg = colors.base3 },
+            Normal = { fg = colors.base00 },
             -- LineNr = { fg = c.base1, bg = c.base02 },
             -- CursorLineNr = { bg = lighten(c.base03, 10) },
             CursorLine = { bg = lighten(colors.base03, 10) },
@@ -101,8 +113,19 @@ return {
             ColorColumn = { bg = colors.base03 },
             RenderMarkdownLink = { fg = colors.cyan },
             LineNr = { bg = colors.base03 },
+            LeapMatch = { fg = colors.yellow },
+            LeapLabelPrimary = { fg = colors.base03, bg = colors.yellow },
+            Function = { fg = colors.cyan },
+            Constant = { fg = colors.orange },
+            String = { fg = colors.green },
+            Keyword = { fg = colors.yellow },
+            Variable = { fg = colors.base1 },
+            -- Character = { fg = colors.base1 },
+            Special = { fg = colors.blue },
+            Identifier = { fg = colors.blue },
+            Parameter = { fg = colors.magenta },
+            -- Character = { fg = colors.magenta },
             -- PmenuThumb = { fg = colors.yellow, bg = colors.yellow },
-            -- Function = { italic = false },
             -- Visual = { bg = c.base02 },
           }
           return groups
@@ -122,21 +145,36 @@ return {
       vim.g.gruvbox_baby_function_style = "NONE"
       vim.g.gruvbox_baby_background_color = "medium"
       vim.g.gruvbox_baby_highlights = {
-        Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
+        -- Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
+        Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
+        -- Normal = { fg = "#d5c4a1", bg = "#1d2021", style = "NONE" },
         SignColumn = { fg = "None", bg = "#1d2021", style = "NONE" },
-        TelescopeSelection = { fg = "#fbf1c7", bg = "#504945", style = "NONE" },
+        TelescopeSelection = { fg = "#ebdbb2", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
         FlashCurrent = { fg = "NONE", bg = "#d65d0e", style = "NONE" },
         LeapMatch = { fg = "#fabd2f", bg = "#fabd2f", style = "bold" },
         LeapLabelPrimary = { fg = "#1d2021", bg = "#fabd2f", style = "bold" },
         WinSeparator = { fg = "#32392f", bg = "NONE", style = "NONE" },
         IblScope = { fg = "#665c54", bg = "NONE", style = "NONE" },
-        IblIndent = { fg = "#32392f", bg = "NONE", style = "italic" },
+        IblIndent = { fg = "#32392f", bg = "NONE", style = "NONE" },
         LeapBackdrop = { fg = "#928374", bg = "NONE", style = "NONE" },
+        FloatBorder = { fg = "#504945", bg = "#242424", style = "NONE" },
         -- SpecialComment = { fg = "#504945", bg = "NONE", style = "italic" },
         -- Comments = { fg = "#504945", bg = "NONE", style = "italic" },
         -- comment = { fg = "#504945", bg = "NONE", style = "italic" },
         -- comments = { fg = "#504945", bg = "NONE", style = "italic" },
+        RenderMarkdownH1Bg = { fg = "#282828", bg = "#fb4934", style = "bold" },
+        RenderMarkdownH2Bg = { fg = "#282828", bg = "#fabd35", style = "bold" },
+        RenderMarkdownH3Bg = { fg = "#282828", bg = "#d4879c", style = "bold" },
+        RenderMarkdownH4Bg = { fg = "#282828", bg = "#8ec07c", style = "bold" },
+        RenderMarkdownH5Bg = { fg = "#282828", bg = "#7fa2ac", style = "bold" },
+        RenderMarkdownH6Bg = { fg = "#282828", bg = "#98971a", style = "bold" },
+        -- RenderMarkdownH6 = { fg = "", bg = "", style = "" },
+        -- RenderMarkdownH5 = { fg = "", bg = "", style = "" },
+        -- RenderMarkdownH4 = { fg = "", bg = "", style = "" },
+        -- RenderMarkdownH2 = { fg = "", bg = "", style = "" },
+        -- RenderMarkdownH2 = { fg = "", bg = "", style = "" },
+        -- RenderMarkdownH1 = { fg = "#1d2021", bg = "#d65d0e", style = "NONE" },
 
         -- TelescopeSelection = { fg = "#504945", bg = "#fabd2f", style = "NONE" },
       }

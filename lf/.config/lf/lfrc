@@ -15,7 +15,7 @@ set shellopts '-eu'
 
 set icons 'true'
 
-# set previewer ~/.config/lf/scope-lf-wrapper.sh
+set previewer ~/.config/lf/scope-lf-wrapper.sh
 set previewer ~/.config/lf/previewer
 # map i $LESSOPEN='| ~/.config/lf/scope-lf-wrapper.sh %s' less -R $f
 set cleaner ~/.config/lf/cleaner

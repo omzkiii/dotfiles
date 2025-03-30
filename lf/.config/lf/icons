@@ -21,7 +21,7 @@ export LS_COLORS='rs=0:di=01;38;5;12:ln=01;38;5;14:mh=00:pi=40;33:so=01;35:do=01
 # fi      -       # FILE
 
 
-Desktop/       
+Desktop/        
 Documents/      
 Downloads/      
 Dotfiles/       

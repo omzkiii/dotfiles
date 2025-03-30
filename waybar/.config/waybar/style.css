@@ -10,18 +10,19 @@
 
 #waybar {
   background-color: rgba(0, 0, 0, 0);
+  /* -webkit-filter: blur(100px); */
 }
 
-#waybar>box {
+#waybar > box {
   border-radius: 3px;
   background-color: @background;
   margin: 3px 3px 3px 3px;
   padding: 3px;
-  opacity: 0.95;
+  opacity: 1;
   /* background-color: rgba(29, 32, 33, 0.7); */
   /* backdrop-filter: blur(10px); */
   /* box-shadow: 0px 1px 1px 1px rgba(18, 18, 18, 0.5); */
-  /* box-shadow: 0px 1px 2px 2px #121212; */
+  box-shadow: 0px 2px 2px 0px #121212;
   /* box-shadow: 1px 2px 6px 6px #151515; */
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -105,22 +106,23 @@ button:hover {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
+.modules-left > widget:first-child > #workspaces {
   margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
+.modules-right > widget:last-child > #workspaces {
   margin-right: 0;
 }
 
-#tray {}
+#tray {
+}
 
-#tray>.passive {
+#tray > .passive {
   -gtk-icon-effect: dim;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
   -gtk-icon-effect: highlight;
   background-color: #eb4d4b;
 }

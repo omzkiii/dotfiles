@@ -85,6 +85,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 
 require "options"
 require "mappings"
+-- require "lsp"
+
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46_cache/"
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -191,7 +193,7 @@ require("lazy").setup({
 -- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "tokyonight-night"
 -- vim.cmd.colorscheme "catppuccin-mocha"
-vim.cmd.colorscheme "everforest"
+-- vim.cmd.colorscheme "everforest"
 dofile(vim.g.base46_cache .. "defaults")
 -- dofile(vim.g.base46_cache .. "statusline")
 -- dofile(vim.g.base46_cache .. "syntax")
@@ -199,6 +201,7 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "telescope")
 dofile(vim.g.base46_cache .. "cmp")
 -- vim.cmd.colorscheme "nord"
--- vim.cmd.colorscheme "gruvbox-baby"
+vim.cmd.colorscheme "gruvbox-baby"
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
