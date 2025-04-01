@@ -6,5 +6,6 @@
  **/
 
 * {
-    font: "MesloLGM Nerd Font 12";
+    // font: "MesloLGM Nerd Font 12";
+    font: "JetbrainsMono Nerd Font 12";
 }

@@ -45,10 +45,12 @@ end
 -------------
 
 if vim.g.neovide then
-vim.opt.linespace = 5
-vim.opt.guifont = "Inconsolata Nerd Font:h15"
+vim.opt.linespace = 2
+-- vim.opt.guifont = "Liberation Mono:h14"
+vim.opt.guifont = "JetbrainsMono Nerd Font:h13"
+-- vim.opt.guifont = "Inconsolata Nerd Font:h15"
 -- vim.opt.guifont = "MesloLGMDZ Nerd Font:h15"
-  -- vim.opt.guifont = "Iosevka NFM:h15:w10"
+-- vim.opt.guifont = "Iosevka NFM:h15:w10"
   -- vim.opt.guifont = "Iosevka Nerd Font:h15:w0"
   -- vim.opt.guifont = "InconsolataGo Nerd Font:h15"
   -- vim.opt.guifont = "DejaVu Sans Mono:h15"
@@ -80,24 +82,24 @@ vim.g.neovide_padding_right = 10
 vim.g.neovide_padding_left = 10
 
 
-if vim.g.neovide then
-  vim.api.nvim_create_autocmd("VimLeavePre", {
-    callback = function()
-      vim.cmd(":mksession!")
-    end,
-  })
-end
+-- if vim.g.neovide then
+--   vim.api.nvim_create_autocmd("VimLeavePre", {
+--     callback = function()
+--       vim.cmd(":mksession!")
+--     end,
+--   })
+-- end
 
-if vim.g.neovide then
-  vim.api.nvim_create_autocmd("UIEnter", {
-    once= true,
-    callback = function()
-    vim.defer_fn(function()
-      vim.cmd(":source Session.vim")
-    end, 0.1)
-    end,
-  })
-end
+-- if vim.g.neovide then
+--   vim.api.nvim_create_autocmd("UIEnter", {
+--     once= true,
+--     callback = function()
+--     vim.defer_fn(function()
+--       vim.cmd(":source Session.vim")
+--     end, 0.1)
+--     end,
+--   })
+-- end
   local function IncreasePadding()
       -- Get the current padding values or default to 0 if not set
       local right = tonumber(vim.g.neovide_padding_right or 10)

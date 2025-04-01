@@ -57,6 +57,7 @@ return {
           -- The 'level' is used to index into the array using a cycle
           -- The result is left padded with spaces to hide any additional '#'
           icons = { " 󰎤 ", " 󰎧 ", " 󰎪 ", " 󰎭 ", " 󰎱 ", " 󰎳 " },
+          -- icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
           -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
           -- icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
           -- icons = { "", "", "", "", "", "" },

@@ -27,10 +27,15 @@ return {
           end,
           layout = {
             backdrop = false,
-            border = "solid",
+            -- border = "solid",
+
+            borderchars = {
+              prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+              results = { " " },
+              preview = { " " },
+            },
           },
-          -- present = "default",
-          -- layout = { border = "double" },
+          present = "default",
         },
         matcher = {
           fuzzy = true,

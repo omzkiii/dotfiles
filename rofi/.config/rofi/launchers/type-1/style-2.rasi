@@ -101,14 +101,14 @@ inputbar {
 }
 
 prompt {
-    enabled:                     true;
-    font:                        "MesloLGS Nerd Font 14";
+   enabled:                     true;
+    // font:                        "MesloLGS Nerd Font 14";
     background-color:            @background;
     text-color:                  @foreground;
     padding:                     5px 5px 10px 5px;
 }
 textbox-prompt-colon {
-    font:                        "MesloLGS Nerd Font 19";
+    // font:                        "MesloLGS Nerd Font 19";
     enabled:                     false;
     expand:                      false;
    // str:                         "";

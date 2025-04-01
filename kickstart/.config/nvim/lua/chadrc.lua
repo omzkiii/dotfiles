@@ -15,10 +15,12 @@ local options = {
       },
       gruvbox = {
         base_16 = {
-          base00 = "#1d2021",
+          -- base00 = "#1d2021",
+          black = "#282828",
         },
         base_30 = {
-          black = "#1d2021",
+          -- black = "#1d2021",
+          black = "#282828",
         },
       },
       everforest = {

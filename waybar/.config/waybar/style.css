@@ -2,18 +2,22 @@
 /* @import "~/.config/hypr/opacity.conf"; */
 
 * {
-  /* font-family:  Helvetica, Iosevka Nerd Font; */
+  /* font-family: "Helvetica", "Iosevka Nerd Font"; */
   /* font-family:  'GohuFont 11 Nerd Font', Iosevka Nerd Font; */
-  font-family: "MesloLGS Nerd Font";
+  /* font-family: "MesloLGS Nerd Font"; */
+  /* font-family: "Liberation Mono"; */
+  font-family: "JetbrainsMono Nerd Font";
   font-size: 10px;
 }
 
 #waybar {
   background-color: rgba(0, 0, 0, 0);
+  /* color: @foreground; */
   /* -webkit-filter: blur(100px); */
 }
 
 #waybar > box {
+  color: @foreground;
   border-radius: 3px;
   background-color: @background;
   margin: 3px 3px 3px 3px;
@@ -43,7 +47,6 @@
 #custom-launcher,
 #custom-spotify,
 #default {
-  /* color: @foreground; */
   padding: 2px;
   /* background-color: @background; */
   /* margin: 0 3px 0; */
@@ -147,13 +150,6 @@ button:hover {
   /* color: @color12; */
   /* margin-left: 3px; */
   /* border-right: none; */
-}
-
-#network {
-  /* color: @color5; */
-  /* padding-right: 14px; */
-  /* border-right: none; */
-  /* border-left: none; */
 }
 
 #network.disconnected {

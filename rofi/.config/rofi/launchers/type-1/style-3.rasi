@@ -54,7 +54,7 @@ window {
     x-offset:                    0px;
     y-offset:                    300px;
 
-    /* properties for all widgets */
+   /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
@@ -109,7 +109,7 @@ prompt {
     padding:                     5px 5px 10px 5px;
 }
 textbox-prompt-colon {
-    font:                        "MesloLGS Nerd Font 24";
+    // font:                        "MesloLGS Nerd Font 24";
     enabled:                     false;
     expand:                      false;
    // str:                         "";

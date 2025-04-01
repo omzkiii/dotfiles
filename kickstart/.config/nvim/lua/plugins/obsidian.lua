@@ -34,9 +34,9 @@ return {
       -- Optional, if you want to change the date format for the ID of daily notes.
       date_format = "%Y-%m-%d",
       -- Optional, if you want to change the date format of the default alias of daily notes.
-      alias_format = "%B %-d, %Y",
+      -- alias_format = "%B %-d, %Y",
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = nil,
+      template = "Templates/Daily",
     },
     ui = {
       enable = false, -- set to false to disable all additional syntax features

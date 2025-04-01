@@ -140,15 +140,17 @@ return {
     "luisiacc/gruvbox-baby",
     lazy = true,
     config = function()
+      -- vim.g.gruvbox_baby_telescope_theme = 1
       vim.g.gruvbox_baby_keyword_style = "NONE"
       vim.g.gruvbox_baby_use_original_palette = true
       vim.g.gruvbox_baby_function_style = "NONE"
       vim.g.gruvbox_baby_background_color = "medium"
       vim.g.gruvbox_baby_highlights = {
         -- Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
-        Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
+        -- Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
+        Normal = { fg = "#ebdbb2", bg = "#282828", style = "NONE" },
         -- Normal = { fg = "#d5c4a1", bg = "#1d2021", style = "NONE" },
-        SignColumn = { fg = "None", bg = "#1d2021", style = "NONE" },
+        SignColumn = { fg = "None", bg = "NONE", style = "NONE" },
         TelescopeSelection = { fg = "#ebdbb2", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
         FlashCurrent = { fg = "NONE", bg = "#d65d0e", style = "NONE" },
@@ -169,6 +171,12 @@ return {
         RenderMarkdownH4Bg = { fg = "#282828", bg = "#8ec07c", style = "bold" },
         RenderMarkdownH5Bg = { fg = "#282828", bg = "#7fa2ac", style = "bold" },
         RenderMarkdownH6Bg = { fg = "#282828", bg = "#98971a", style = "bold" },
+        -- RenderMarkdownH1Bg = { fg = "#fb4934", bg = "NONE", style = "bold" },
+        -- RenderMarkdownH2Bg = { fg = "#fabd35", bg = "NONE", style = "bold" },
+        -- RenderMarkdownH3Bg = { fg = "#d4879c", bg = "NONE", style = "bold" },
+        -- RenderMarkdownH4Bg = { fg = "#8ec07c", bg = "NONE", style = "bold" },
+        -- RenderMarkdownH5Bg = { fg = "#7fa2ac", bg = "NONE", style = "bold" },
+        -- RenderMarkdownH6Bg = { fg = "#98971a", bg = "NONE", style = "bold" },
         -- RenderMarkdownH6 = { fg = "", bg = "", style = "" },
         -- RenderMarkdownH5 = { fg = "", bg = "", style = "" },
         -- RenderMarkdownH4 = { fg = "", bg = "", style = "" },

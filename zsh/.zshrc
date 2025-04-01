@@ -201,6 +201,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export EDITOR="nvim"
 export VISUAL="nvim"
+alias man='MANWIDTH=$((COLUMNS > 80 ? 80 : COLUMNS)) man'
 alias t="taskwarrior-tui"
+
 
 
