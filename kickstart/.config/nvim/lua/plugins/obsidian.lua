@@ -136,6 +136,12 @@ return {
         end,
         opts = { buffer = true },
       },
+      ["<leader>od"] = {
+        action = function()
+          return vim.cmd ":ObsidianDailies"
+        end,
+        opts = { buffer = true },
+      },
       ["<leader>ou"] = {
         action = function()
           require("telescope.builtin").grep_string {

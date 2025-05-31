@@ -144,7 +144,7 @@ return {
       vim.g.gruvbox_baby_keyword_style = "NONE"
       vim.g.gruvbox_baby_use_original_palette = true
       vim.g.gruvbox_baby_function_style = "NONE"
-      vim.g.gruvbox_baby_background_color = "medium"
+      vim.g.gruvbox_baby_background_color = "soft"
       vim.g.gruvbox_baby_highlights = {
         -- Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
         -- Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
@@ -161,16 +161,18 @@ return {
         IblIndent = { fg = "#32392f", bg = "NONE", style = "NONE" },
         LeapBackdrop = { fg = "#928374", bg = "NONE", style = "NONE" },
         FloatBorder = { fg = "#504945", bg = "#242424", style = "NONE" },
-        -- SpecialComment = { fg = "#504945", bg = "NONE", style = "italic" },
-        -- Comments = { fg = "#504945", bg = "NONE", style = "italic" },
-        -- comment = { fg = "#504945", bg = "NONE", style = "italic" },
-        -- comments = { fg = "#504945", bg = "NONE", style = "italic" },
         RenderMarkdownH1Bg = { fg = "#282828", bg = "#fb4934", style = "bold" },
         RenderMarkdownH2Bg = { fg = "#282828", bg = "#fabd35", style = "bold" },
         RenderMarkdownH3Bg = { fg = "#282828", bg = "#d4879c", style = "bold" },
         RenderMarkdownH4Bg = { fg = "#282828", bg = "#8ec07c", style = "bold" },
         RenderMarkdownH5Bg = { fg = "#282828", bg = "#7fa2ac", style = "bold" },
         RenderMarkdownH6Bg = { fg = "#282828", bg = "#98971a", style = "bold" },
+        SnacksPickerBoxBorder = { fg = "#504945", bg = "#282626", style = "bold" },
+        SnacksPickerListBorder = { fg = "#504945", bg = "#282626", style = "bold" },
+        SnacksPickerPreviewBorder = { fg = "#504945", bg = "#282626", style = "bold" },
+        SnacksPickerInputBorder = { fg = "#504945", bg = "#282626", style = "bold" },
+        DiagnosticUnderlineError = { fg = "NONE", bg = "NONE", style = "underline", sp = "#fb4934" },
+
         -- RenderMarkdownH1Bg = { fg = "#fb4934", bg = "NONE", style = "bold" },
         -- RenderMarkdownH2Bg = { fg = "#fabd35", bg = "NONE", style = "bold" },
         -- RenderMarkdownH3Bg = { fg = "#d4879c", bg = "NONE", style = "bold" },
@@ -183,8 +185,7 @@ return {
         -- RenderMarkdownH2 = { fg = "", bg = "", style = "" },
         -- RenderMarkdownH2 = { fg = "", bg = "", style = "" },
         -- RenderMarkdownH1 = { fg = "#1d2021", bg = "#d65d0e", style = "NONE" },
-
-        -- TelescopeSelection = { fg = "#504945", bg = "#fabd2f", style = "NONE" },
+        lualine_inactive = { fg = "#FFFFFF", bg = "#d65d0e", style = "NONE" },
       }
       -- vim.api.nvim_create_autocmd("ColorScheme", {
       --   pattern = "*",
@@ -218,7 +219,7 @@ return {
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "hard", -- can be "hard", "soft" or empty string
+        contrast = "", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color

@@ -65,8 +65,8 @@ vim.opt.guifont = "JetbrainsMono Nerd Font:h13"
   -- vim.g.neovide_cursor_smooth_blink = true
 
 -- Disable animation
-vim.g.neovide_position_animation_length = 0.03
-vim.g.neovide_cursor_animation_length = 0.03
+vim.g.neovide_position_animation_length = 0.1
+vim.g.neovide_cursor_animation_length = 0.1
 -- vim.g.neovide_cursor_trail_size = 3
 -- vim.g.neovide_cursor_animate_in_insert_mode = false
 -- vim.g.neovide_cursor_animate_command_line = false

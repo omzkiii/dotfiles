@@ -4,10 +4,10 @@ return {
     "folke/snacks.nvim",
     event = "VeryLazy",
     -- lazy = false,
-    ---@type snacks.Config
+    --
     opts = {
       -- image = {
-      --   enabled = true,
+      -- enabled = true,
       -- },
       -- animate = {
       --   enabled = true,
@@ -20,22 +20,38 @@ return {
         auto_close = true,
         sources = {},
         focus = "list",
+        border = "single",
         layout = {
           cycle = true,
+          layout = { -- note: not "preset_layouts"
+            backdrop = false,
+            --
+            -- box = "horizontal",
+            -- width = 0.8,
+            -- height = 0.8,
+            -- {
+            -- box = "vertical",
+            -- border = "single",
+            -- title = "{title} {live} {flags}",
+            -- { win = "input", height = 1, border = "bottom" },
+            -- { win = "list", border = "none" },
+            -- },
+            -- { win = "preview", title = "{preview}", border = "single", width = 0.5 },
+            -- vertical = {
+            --   box = "vertical",
+            --   width = 0.9,
+            --   height = 0.9,
+            --   border = "single",
+            --   title = "{title} {live} {flags}",
+            --   { win = "input", height = 1, border = "bottom" },
+            --   { win = "list", border = "none" },
+            --   { win = "preview", height = 0.4, border = "single", title = "{preview}" },
+            -- },
+          },
           preset = function()
             return vim.o.columns >= 120 and "default" or "vertical"
           end,
-          layout = {
-            backdrop = false,
-            -- border = "solid",
-
-            borderchars = {
-              prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-              results = { " " },
-              preview = { " " },
-            },
-          },
-          present = "default",
+          -- present = "default",
         },
         matcher = {
           fuzzy = true,
@@ -48,7 +64,9 @@ return {
         },
         ui_select = true,
         win = {
-          border = "none", -- Change border style: "none", "single", "double", "rounded", "solid", "shadow"
+          input = { border = "single" }, -- Input window border
+          list = { border = "single" }, -- List window border
+          preview = { border = "single" }, -- Preview window border
         },
       },
 
@@ -72,13 +90,13 @@ return {
         end,
         desc = "Buffers",
       },
-      -- {
-      --   "<leader>/",
-      --   function()
-      --     Snacks.picker.grep()
-      --   end,
-      --   desc = "Grep",
-      -- },
+      {
+        "<leader>sg",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Grep",
+      },
       {
         "<leader>:",
         function()
@@ -108,20 +126,20 @@ return {
       --   end,
       --   desc = "Buffers",
       -- },
-      -- {
-      --   "<leader>fc",
-      --   function()
-      --     Snacks.picker.files { cwd = vim.fn.stdpath "config" }
-      --   end,
-      --   desc = "Find Config File",
-      -- },
-      -- {
-      --   "<leader>ff",
-      --   function()
-      --     Snacks.picker.files(opts)
-      --   end,
-      --   desc = "Find Files",
-      -- },
+      {
+        "<leader>sn",
+        function()
+          Snacks.picker.files { cwd = vim.fn.stdpath "config" }
+        end,
+        desc = "Find Config File",
+      },
+      {
+        "<leader>sf",
+        function()
+          Snacks.picker.files(opts)
+        end,
+        desc = "Find Files",
+      },
       -- {
       --   "<leader>fg",
       --   function()
@@ -136,13 +154,14 @@ return {
         end,
         desc = "Projects",
       },
-      -- {
-      --   "<leader>fr",
-      --   function()
-      --     Snacks.picker.recent(opts)
-      --   end,
-      --   desc = "Recent",
-      -- },
+
+      {
+        "<leader>so",
+        function()
+          Snacks.picker.recent(opts)
+        end,
+        desc = "Old Files",
+      },
       -- git
       -- {
       --   "<leader>gb",
@@ -179,13 +198,13 @@ return {
       --   end,
       --   desc = "Git Stash",
       -- },
-      -- {
-      --   "<leader>gd",
-      --   function()
-      --     Snacks.picker.git_diff(opts)
-      --   end,
-      --   desc = "Git Diff (Hunks)",
-      -- },
+      {
+        "<leader>gd",
+        function()
+          Snacks.picker.git_diff(opts)
+        end,
+        desc = "Git Diff (Hunks)",
+      },
       -- {
       --   "<leader>gf",
       --   function()
@@ -266,20 +285,20 @@ return {
         end,
         desc = "Commands",
       },
-      -- {
-      --   "<leader>sd",
-      --   function()
-      --     Snacks.picker.diagnostics(opts)
-      --   end,
-      --   desc = "Diagnostics",
-      -- },
-      -- {
-      --   "<leader>sD",
-      --   function()
-      --     Snacks.picker.diagnostics_buffer(opts)
-      --   end,
-      --   desc = "Buffer Diagnostics",
-      -- },
+      {
+        "<leader>sd",
+        function()
+          Snacks.picker.diagnostics(opts)
+        end,
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>sD",
+        function()
+          Snacks.picker.diagnostics_buffer(opts)
+        end,
+        desc = "Buffer Diagnostics",
+      },
       {
         "<leader>sh",
         function()
@@ -322,20 +341,20 @@ return {
         end,
         desc = "Location List",
       },
-      -- {
-      --   "<leader>sm",
-      --   function()
-      --     Snacks.picker.marks(opts)
-      --   end,
-      --   desc = "Marks",
-      -- },
-      -- {
-      --   "<leader>sM",
-      --   function()
-      --     Snacks.picker.man(opts)
-      --   end,
-      --   desc = "Man Pages",
-      -- },
+      {
+        "<leader>sm",
+        function()
+          Snacks.picker.marks(opts)
+        end,
+        desc = "Marks",
+      },
+      {
+        "<leader>sM",
+        function()
+          Snacks.picker.man(opts)
+        end,
+        desc = "Man Pages",
+      },
       -- {
       --   "<leader>sp",
       --   function()

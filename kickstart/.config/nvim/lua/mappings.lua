@@ -46,7 +46,7 @@ local key_mappings = {
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
 
     -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
+    ["<C-S-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
@@ -128,3 +128,36 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+vim.api.nvim_set_keymap("n", "<leader>c=", ":set cmdheight=1<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>c-", ":set cmdheight=0<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-j>", ":cnext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-k>", ":cprev<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<M-q>", ":cclose<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-c>", ":copen<CR>", { noremap = true, silent = true })
+
+-- quickfixlist
+local del_qf_item = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local cursor_line = vim.fn.line "."
+  local items = vim.fn.getqflist()
+
+  -- Find index to remove
+  local index_to_remove = nil
+  for i, item in ipairs(items) do
+    if item.bufnr == bufnr and item.lnum == cursor_line then
+      index_to_remove = i
+      break
+    end
+  end
+
+  if index_to_remove then
+    table.remove(items, index_to_remove)
+    vim.fn.setqflist(items, "r")
+  else
+    vim.notify("No matching quickfix item found for current buffer and line.", vim.log.levels.INFO)
+  end
+end
+
+vim.keymap.set("n", "<M-q>", del_qf_item, { silent = true, buffer = true, desc = "Remove entry from QF" })
+vim.keymap.set("v", "D", del_qf_item, { silent = true, buffer = true, desc = "Remove entry from QF" })

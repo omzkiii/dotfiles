@@ -93,4 +93,29 @@ return {
   --   "preservim/vim-pencil",
   --   -- lazy = true,
   -- },
+  {
+    "chipsenkbeil/distant.nvim",
+    branch = "v0.3",
+    config = function()
+      require("distant"):setup {
+        server = {
+          ["*"] = {
+            lsp = {
+              ["pyright"] = {
+                cmd = { "~/.local/share/nvim/mason/bin/pyright" },
+                ft = { "python" },
+              },
+            },
+          },
+        },
+        network = {
+          --   private = true,
+          unix_socket = "~/.cache/nvim/distant.nvim/nvim-6032.sock",
+        },
+        client = {
+          bin = "~/.local/share/nvim/distant.nvim/bin/distant",
+        },
+      }
+    end,
+  },
 }

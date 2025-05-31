@@ -44,6 +44,13 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
+      vim.diagnostic.config {
+        virtual_text = false, -- disables inline text
+        signs = true, -- keep the sign column indicators
+        underline = true, -- optional: disable underline
+        update_in_insert = false, -- optional: don't update in insert mode
+        severity_sort = true, -- optional: sort by severity
+      }
       -- diagnostic_signs = signs
       -- Brief aside: **What is LSP?**
       --
@@ -124,7 +131,7 @@ return {
             vim.api.nvim_create_autocmd("CursorMoved", {
               group = vim.api.nvim_create_augroup("line-diagnostics", { clear = true }),
               callback = function()
-                vim.diagnostic.config { virtual_lines = false, virtual_text = false }
+                vim.diagnostic.config { virtual_lines = false, virtual_text = false, signs = true }
                 return true
               end,
             })
@@ -221,6 +228,7 @@ return {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         jdtls = {
+          filetypes = { "java" },
           function()
             require("lspconfig").jdtls.setup {
               settings = {
@@ -402,5 +410,5 @@ return {
   -- {
   --   "mfussenegger/nvim-jdtls",
   -- },
-  { "nvim-java/nvim-java", lazy = true },
+  { "nvim-java/nvim-java", lazy = true, ft = { "java" } },
 }

@@ -6,7 +6,7 @@ return {
     lazy = true,
     -- event = "VeryLazy",
     -- enabled = true,
-    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    -- name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
     -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     config = function()
@@ -23,7 +23,7 @@ return {
           -- See :h 'conceallevel'
           conceallevel = {
             -- Used when not being rendered, get user setting
-            default = vim.api.nvim_get_option_value("conceallevel", {}),
+            -- default = vim.api.nvim_get_option_value("conceallevel", {}),
             -- default = 1,
             -- Used when being rendered, concealed text is completely hidden
             rendered = 3,
@@ -37,57 +37,146 @@ return {
             rendered = "",
           },
         },
+        -- heading = {
+        --   enabled = true,
+        --   width = "block",
+        --   atx = true,
+        --   setext = true,
+        --   -- width = "full",
+        --   -- Amount of padding to add to the left of headings
+        --   left_pad = 0,
+        --   -- Amount of padding to add to the right of headings when width is 'block'
+        --   right_pad = 1,
+        --   -- Minimum width to use for headings when width is 'block'
+        --   min_width = 0,
+        --   -- Determines how the icon fills the available space:
+        --   --  inline:  underlying '#'s are concealed resulting in a left aligned icon
+        --   --  overlay: result is left padded with spaces to hide any additional '#'
+        --   position = "inline",
+        --
+        --   -- Replaces '#+' of 'atx_h._marker'
+        --   -- The number of '#' in the heading determines the 'level'
+        --   -- The 'level' is used to index into the array using a cycle
+        --   -- The result is left padded with spaces to hide any additional '#'
+        --   icons = { " 󰎤 ", " 󰎧 ", " 󰎪 ", " 󰎭 ", " 󰎱 ", " 󰎳 " },
+        --   -- icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
+        --   -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
+        --   -- icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
+        --   -- icons = { "", "", "", "", "", "" },
+        --   -- Added to the sign column⭗
+        --   -- The 'level' is used to index into the array using a cycle
+        --   -- signs = { '󰫎 ' },
+        --   sign = false,
+        --   -- signs = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
+        --   -- signs = { "󰐣 " },
+        --   -- signs = { "󰶻 󰐣" },
+        --   -- signs = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
+        --   -- signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+        --   border = false,
+        --   -- Highlight the start of the border using the foreground highlight
+        --   border_prefix = false,
+        --   -- Used above heading for border
+        --   above = "▄",
+        --   -- Used below heading for border
+        --   below = "▀",
+        --   -- The 'level' is used to index into the array using a clamp
+        --   -- Highlight for the heading icon and extends through the entire line
+        --   -- backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
+        --   -- backgrounds = {
+        --   --   "Bold",
+        --   --   "Number",
+        --   --   "CmpItemKind",
+        --   --   "CmpItemKindConstant",
+        --   --   "Added",
+        --   --   "Changed",
+        --   -- },
+        --   backgrounds = {
+        --     "RenderMarkdownH1Bg",
+        --     "RenderMarkdownH2Bg",
+        --     "RenderMarkdownH3Bg",
+        --     "RenderMarkdownH4Bg",
+        --     "RenderMarkdownH5Bg",
+        --     "RenderMarkdownH6Bg",
+        --   },
+        --   -- The 'level' is used to index into the array using a clamp
+        --   -- Highlight for the heading and sign icons
+        --   foregrounds = {
+        --     "RenderMarkdownH5",
+        --     "Number",
+        --     "CmpItemKind",
+        --     "CmpItemKindConstant",
+        --     "Added",
+        --     "Changed",
+        --   },
+        --   -- foregrounds = {
+        --   --   "RenderMarkdownH6",
+        --   --   "RenderMarkdownH5",
+        --   --   "RenderMarkdownH4",
+        --   --   "RenderMarkdownH3",
+        --   --   "RenderMarkdownH2",
+        --   --   "RenderMarkdownH1",
+        --   -- },
+        -- },
         heading = {
-          enabled = true,
-          width = "block",
-          -- width = "full",
-          -- Amount of padding to add to the left of headings
-          left_pad = 0,
-          -- Amount of padding to add to the right of headings when width is 'block'
-          right_pad = 1,
-          -- Minimum width to use for headings when width is 'block'
-          min_width = 0,
-          -- Determines how the icon fills the available space:
-          --  inline:  underlying '#'s are concealed resulting in a left aligned icon
-          --  overlay: result is left padded with spaces to hide any additional '#'
-          position = "inline",
+          -- Useful context to have when evaluating values.
+          -- | level    | the number of '#' in the heading marker         |
+          -- | sections | for each level how deeply nested the heading is |
 
-          -- Replaces '#+' of 'atx_h._marker'
-          -- The number of '#' in the heading determines the 'level'
-          -- The 'level' is used to index into the array using a cycle
-          -- The result is left padded with spaces to hide any additional '#'
-          icons = { " 󰎤 ", " 󰎧 ", " 󰎪 ", " 󰎭 ", " 󰎱 ", " 󰎳 " },
-          -- icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
-          -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-          -- icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
-          -- icons = { "", "", "", "", "", "" },
-          -- Added to the sign column⭗
-          -- The 'level' is used to index into the array using a cycle
-          -- signs = { '󰫎 ' },
+          -- Turn on / off heading icon & background rendering.
+          enabled = true,
+          -- Additional modes to render headings.
+          render_modes = true,
+          -- Turn on / off atx heading rendering.
+          atx = true,
+          -- Turn on / off setext heading rendering.
+          setext = true,
+          -- Turn on / off any sign column related rendering.
           sign = false,
-          -- signs = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
-          -- signs = { "󰐣 " },
-          -- signs = { "󰶻 󰐣" },
-          -- signs = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-          signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+          -- Replaces '#+' of 'atx_h._marker'.
+          -- Output is evaluated depending on the type.
+          -- | function | `value(context)`              |
+          -- | string[] | `cycle(value, context.level)` |
+          icons = { " 󰎤 ", " 󰎧 ", " 󰎪 ", " 󰎭 ", " 󰎱 ", " 󰎳 " },
+          -- Determines how icons fill the available space.
+          -- | right   | '#'s are concealed and icon is appended to right side                          |
+          -- | inline  | '#'s are concealed and icon is inlined on left side                            |
+          -- | overlay | icon is left padded with spaces and inserted on left hiding any additional '#' |
+          position = "inline",
+          -- Added to the sign column if enabled.
+          -- Output is evaluated by `cycle(value, context.level)`.
+          signs = { "󰫎 " },
+          -- Width of the heading background.
+          -- | block | width of the heading text |
+          -- | full  | full width of the window  |
+          -- Can also be a list of the above values evaluated by `clamp(value, context.level)`.
+          width = "block",
+          -- Amount of margin to add to the left of headings.
+          -- Margin available space is computed after accounting for padding.
+          -- If a float < 1 is provided it is treated as a percentage of available window space.
+          -- Can also be a list of numbers evaluated by `clamp(value, context.level)`.
+          left_margin = 0,
+          -- Amount of padding to add to the left of headings.
+          -- Output is evaluated using the same logic as 'left_margin'.
+          left_pad = 0,
+          -- Amount of padding to add to the right of headings when width is 'block'.
+          -- Output is evaluated using the same logic as 'left_margin'.
+          right_pad = 1,
+          -- Minimum width to use for headings when width is 'block'.
+          -- Can also be a list of integers evaluated by `clamp(value, context.level)`.
+          min_width = 0,
+          -- Determines if a border is added above and below headings.
+          -- Can also be a list of booleans evaluated by `clamp(value, context.level)`.
           border = false,
-          -- Highlight the start of the border using the foreground highlight
+          -- Always use virtual lines for heading borders instead of attempting to use empty lines.
+          border_virtual = false,
+          -- Highlight the start of the border using the foreground highlight.
           border_prefix = false,
-          -- Used above heading for border
+          -- Used above heading for border.
           above = "▄",
-          -- Used below heading for border
+          -- Used below heading for border.
           below = "▀",
-          -- The 'level' is used to index into the array using a clamp
-          -- Highlight for the heading icon and extends through the entire line
-          -- backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
-          -- backgrounds = {
-          --   "Bold",
-          --   "Number",
-          --   "CmpItemKind",
-          --   "CmpItemKindConstant",
-          --   "Added",
-          --   "Changed",
-          -- },
+          -- Highlight for the heading icon and extends through the entire line.
+          -- Output is evaluated by `clamp(value, context.level)`.
           backgrounds = {
             "RenderMarkdownH1Bg",
             "RenderMarkdownH2Bg",
@@ -96,24 +185,24 @@ return {
             "RenderMarkdownH5Bg",
             "RenderMarkdownH6Bg",
           },
-          -- The 'level' is used to index into the array using a clamp
-          -- Highlight for the heading and sign icons
+          -- Highlight for the heading and sign icons.
+          -- Output is evaluated using the same logic as 'backgrounds'.
           foregrounds = {
+            "RenderMarkdownH1",
+            "RenderMarkdownH2",
+            "RenderMarkdownH3",
+            "RenderMarkdownH4",
             "RenderMarkdownH5",
-            "Number",
-            "CmpItemKind",
-            "CmpItemKindConstant",
-            "Added",
-            "Changed",
+            "RenderMarkdownH6",
           },
-          -- foregrounds = {
-          --   "RenderMarkdownH6",
-          --   "RenderMarkdownH5",
-          --   "RenderMarkdownH4",
-          --   "RenderMarkdownH3",
-          --   "RenderMarkdownH2",
-          --   "RenderMarkdownH1",
-          -- },
+          -- Define custom heading patterns which allow you to override various properties based on
+          -- the contents of a heading.
+          -- The key is for healthcheck and to allow users to change its values, value type below.
+          -- | pattern    | matched against the heading text @see :h lua-patterns |
+          -- | icon       | optional override for the icon                        |
+          -- | background | optional override for the background                  |
+          -- | foreground | optional override for the foreground                  |
+          custom = {},
         },
         bullet = {
           -- Replaces '-'|'+'|'*' of 'list_item'

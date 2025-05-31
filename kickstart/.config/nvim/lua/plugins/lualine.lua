@@ -14,10 +14,9 @@ return {
       end
       require("lualine").setup {
         options = {
-          -- color = "Normal",
           icons_enabled = true,
           theme = "auto",
-          component_separators = { left = " ╱ ", right = "   " },
+          component_separators = { left = " │ ", right = "   " },
           -- component_separators = { left = "|", right = "|" },
           -- section_separators = { left = " ", right = "" },
           section_separators = { left = " ", right = "" },
@@ -36,11 +35,15 @@ return {
             -- winbar = 1000,
           },
           -- fmt = string.lower,
+          --
         },
 
         sections = {
+
           lualine_a = {
+
             {
+
               "mode",
               fmt = function(str)
                 local mode_map = {
@@ -68,6 +71,7 @@ return {
               end,
             },
           },
+
           lualine_b = {
             {
               "filetype",
@@ -102,8 +106,13 @@ return {
               },
             },
           },
-          lualine_c = { "branch", recording },
+          lualine_c = {
+            { "branch" },
+            { recording },
+          },
+
           lualine_x = {
+
             {
               "searchcount",
               maxcount = 999,
@@ -120,7 +129,7 @@ return {
               -- symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
               symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
             },
-            "diagnostics",
+            { "diagnostics" },
           },
           lualine_y = {
             {
@@ -128,7 +137,7 @@ return {
               color = "CursorLine",
             },
           },
-          lualine_z = { "location" },
+          lualine_z = { { "location" } },
         },
         inactive_sections = {
           lualine_a = {},

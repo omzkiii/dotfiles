@@ -18,6 +18,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
       cond = function()
         return vim.fn.executable "make" == 1
       end,
+      config = function()
+        require("telescope").load_extension "fzf"
+      end,
     },
     { "nvim-telescope/telescope-ui-select.nvim" },
 
@@ -57,6 +60,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- },
       -- pickers = {}
       extensions = {
+        fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        },
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
         },
@@ -93,9 +102,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
           height = 0.80,
           preview_cutoff = 120,
         },
-        file_sorter = require("telescope.sorters").get_fuzzy_file,
+        file_sorter = require("telescope.sorters").get_fzf_sorter,
         file_ignore_patterns = { "node_modules" },
-        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+        generic_sorter = require("telescope.sorters").get_generic_fzf_sorter,
         path_display = { "truncate" },
         winblend = 0,
         -- border = {},
@@ -129,13 +138,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local builtin = require "telescope.builtin"
     vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
     vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-    vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+    -- vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
     vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
     vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-    vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-    vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+    -- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+    -- vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "[S]earch [R]egister" })
-    vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = '[S]earch [O]ld Files ("." for repeat)' })
+    -- vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = '[S]earch [O]ld Files ("." for repeat)' })
     vim.keymap.set("n", "<S-backspace>", builtin.resume, { desc = "[S]earch Resume" })
     vim.keymap.set("n", "<leader>st", ":TodoTelescope cwd=.<cr>", { desc = "[S]earch [T]ODO" })
     -- vim.keymap.set("n", "<M-tab>", builtin.buffers, { desc = "[ ] Find existing buffers" })
@@ -185,8 +194,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end, { desc = "[S]earch [/] in Open Files" })
 
     -- Shortcut for searching your Neovim configuration files
-    vim.keymap.set("n", "<leader>sn", function()
-      builtin.find_files { cwd = vim.fn.stdpath "config" }
-    end, { desc = "[S]earch [N]eovim files" })
+    -- vim.keymap.set("n", "<leader>sn", function()
+    --   builtin.find_files { cwd = vim.fn.stdpath "config" }
+    -- end, { desc = "[S]earch [N]eovim files" })
   end,
 }
