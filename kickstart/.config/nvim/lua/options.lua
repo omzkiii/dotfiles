@@ -82,7 +82,7 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "» ",
+  tab = "│ ",
   trail = "·",
   nbsp = "␣",
   -- eol = "↵",
@@ -92,9 +92,10 @@ vim.opt.listchars = {
   -- lead = "·",
   -- multispace = "···+",
 }
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = false
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+-- vim.cmd [[autocmd BufWritePre * :retab]]
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"

@@ -11,6 +11,8 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     config = function()
       require("render-markdown").setup {
+        enabled = true,
+        render_modes = { "n", "c", "t" },
         latex = {
           enabled = false,
         },
@@ -37,86 +39,6 @@ return {
             rendered = "",
           },
         },
-        -- heading = {
-        --   enabled = true,
-        --   width = "block",
-        --   atx = true,
-        --   setext = true,
-        --   -- width = "full",
-        --   -- Amount of padding to add to the left of headings
-        --   left_pad = 0,
-        --   -- Amount of padding to add to the right of headings when width is 'block'
-        --   right_pad = 1,
-        --   -- Minimum width to use for headings when width is 'block'
-        --   min_width = 0,
-        --   -- Determines how the icon fills the available space:
-        --   --  inline:  underlying '#'s are concealed resulting in a left aligned icon
-        --   --  overlay: result is left padded with spaces to hide any additional '#'
-        --   position = "inline",
-        --
-        --   -- Replaces '#+' of 'atx_h._marker'
-        --   -- The number of '#' in the heading determines the 'level'
-        --   -- The 'level' is used to index into the array using a cycle
-        --   -- The result is left padded with spaces to hide any additional '#'
-        --   icons = { " 󰎤 ", " 󰎧 ", " 󰎪 ", " 󰎭 ", " 󰎱 ", " 󰎳 " },
-        --   -- icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
-        --   -- icons = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-        --   -- icons = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
-        --   -- icons = { "", "", "", "", "", "" },
-        --   -- Added to the sign column⭗
-        --   -- The 'level' is used to index into the array using a cycle
-        --   -- signs = { '󰫎 ' },
-        --   sign = false,
-        --   -- signs = { "󰪥 ", "🞇 ", " ", "󰠖 ", "✸ ", " " },
-        --   -- signs = { "󰐣 " },
-        --   -- signs = { "󰶻 󰐣" },
-        --   -- signs = { "󰫎 ", " ", " ", "󰠖 ", "✸ ", " " },
-        --   -- signs = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
-        --   border = false,
-        --   -- Highlight the start of the border using the foreground highlight
-        --   border_prefix = false,
-        --   -- Used above heading for border
-        --   above = "▄",
-        --   -- Used below heading for border
-        --   below = "▀",
-        --   -- The 'level' is used to index into the array using a clamp
-        --   -- Highlight for the heading icon and extends through the entire line
-        --   -- backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
-        --   -- backgrounds = {
-        --   --   "Bold",
-        --   --   "Number",
-        --   --   "CmpItemKind",
-        --   --   "CmpItemKindConstant",
-        --   --   "Added",
-        --   --   "Changed",
-        --   -- },
-        --   backgrounds = {
-        --     "RenderMarkdownH1Bg",
-        --     "RenderMarkdownH2Bg",
-        --     "RenderMarkdownH3Bg",
-        --     "RenderMarkdownH4Bg",
-        --     "RenderMarkdownH5Bg",
-        --     "RenderMarkdownH6Bg",
-        --   },
-        --   -- The 'level' is used to index into the array using a clamp
-        --   -- Highlight for the heading and sign icons
-        --   foregrounds = {
-        --     "RenderMarkdownH5",
-        --     "Number",
-        --     "CmpItemKind",
-        --     "CmpItemKindConstant",
-        --     "Added",
-        --     "Changed",
-        --   },
-        --   -- foregrounds = {
-        --   --   "RenderMarkdownH6",
-        --   --   "RenderMarkdownH5",
-        --   --   "RenderMarkdownH4",
-        --   --   "RenderMarkdownH3",
-        --   --   "RenderMarkdownH2",
-        --   --   "RenderMarkdownH1",
-        --   -- },
-        -- },
         heading = {
           -- Useful context to have when evaluating values.
           -- | level    | the number of '#' in the heading marker         |
@@ -209,12 +131,17 @@ return {
           -- How deeply nested the list is determines the 'level'
           -- The 'level' is used to index into the array using a cycle
           -- If the item is a 'checkbox' a conceal is used to hide the bullet instead
+          --
+          enabled = true,
+          render_modes = true,
           icons = { "•" },
           -- icons = { '• ', ' ', '◆ ', '◇ ' },
           -- Highlight for the bullet icon
           highlight = "Normal",
         },
         checkbox = {
+          enabled = true,
+          render_modes = true,
           unchecked = {
             -- Replaces '[ ]' of 'task_list_marker_unchecked'
             icon = "󰄱 ",
@@ -242,6 +169,7 @@ return {
           },
         },
         callout = {
+
           note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "DiagnosticInfo" },
           tip = { raw = "[!TIP]", rendered = "󰌶 Tip", highlight = "DiagnosticOk" },
           important = { raw = "[!IMPORTANT]", rendered = "󰅾 Important", highlight = "DiagnosticHint" },
@@ -306,6 +234,7 @@ return {
         link = {
           -- Turn on / off inline link icon rendering
           enabled = true,
+          render_modes = true,
           -- Inlined with 'image' elements
           image = "󰥶 ",
           -- Fallback icon for 'inline_link' elements

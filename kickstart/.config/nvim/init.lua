@@ -83,9 +83,9 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+require "lsp"
 require "options"
 require "mappings"
--- require "lsp"
 
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46_cache/"
 

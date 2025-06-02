@@ -157,8 +157,8 @@ return {
         LeapMatch = { fg = "#fabd2f", bg = "#fabd2f", style = "bold" },
         LeapLabelPrimary = { fg = "#1d2021", bg = "#fabd2f", style = "bold" },
         WinSeparator = { fg = "#32392f", bg = "NONE", style = "NONE" },
-        IblScope = { fg = "#665c54", bg = "NONE", style = "NONE" },
-        IblIndent = { fg = "#32392f", bg = "NONE", style = "NONE" },
+        IblScope = { fg = "#928374", bg = "NONE", style = "NONE" },
+        IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
         LeapBackdrop = { fg = "#928374", bg = "NONE", style = "NONE" },
         FloatBorder = { fg = "#504945", bg = "#242424", style = "NONE" },
         RenderMarkdownH1Bg = { fg = "#282828", bg = "#fb4934", style = "bold" },
@@ -172,6 +172,7 @@ return {
         SnacksPickerPreviewBorder = { fg = "#504945", bg = "#282626", style = "bold" },
         SnacksPickerInputBorder = { fg = "#504945", bg = "#282626", style = "bold" },
         DiagnosticUnderlineError = { fg = "NONE", bg = "NONE", style = "underline", sp = "#fb4934" },
+        ContextLine = { fg = "NONE", bg = "NONE", style = "underline", sp = "#928374" },
 
         -- RenderMarkdownH1Bg = { fg = "#fb4934", bg = "NONE", style = "bold" },
         -- RenderMarkdownH2Bg = { fg = "#fabd35", bg = "NONE", style = "bold" },

@@ -47,7 +47,7 @@ return {
       vim.diagnostic.config {
         virtual_text = false, -- disables inline text
         signs = true, -- keep the sign column indicators
-        underline = true, -- optional: disable underline
+        underline = false, -- optional: disable underline
         update_in_insert = false, -- optional: don't update in insert mode
         severity_sort = true, -- optional: sort by severity
       }
@@ -230,13 +230,14 @@ return {
         jdtls = {
           filetypes = { "java" },
           function()
+            require("java").setup()
             require("lspconfig").jdtls.setup {
               settings = {
                 java = {
                   configuration = {
                     runtimes = {
                       {
-                        name = "jdk-23",
+                        name = "jdk-24",
                         path = "/usr/lib/jvm/default",
                         default = true,
                       },
@@ -329,86 +330,67 @@ return {
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
-            if server_name ~= "jdtls" then
-              server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-              require("lspconfig")[server_name].setup(server)
-            else
-              require("lspconfig").jdtls.setup {}
-              require("java").setup()
-              require("lspconfig")[server_name].setup(server)
-              -- require("lspconfig").jdtls.setup {
-              --   settings = {
-              --     java = {
-              --       configuration = {
-              --         runtimes = {
-              --           {
-              --             name = "jdk-23",
-              --             path = "/usr/lib/jvm/default",
-              --             default = true,
-              --           },
-              --         },
-              --       },
-              --     },
-              --   },
-              -- },
-            end
+            -- if server_name ~= "jdtls" then
+            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            require("lspconfig")[server_name].setup(server)
+            -- else
+            --   require("lspconfig").jdtls.setup {}
+            --   require("java").setup()
+            --   require("lspconfig")[server_name].setup(server)
+            -- end
           end,
         },
       }
 
-      require("lspkind").setup {
-        -- DEPRECATED (use mode instead): enables text annotations
-        --
-        -- default: true
-        -- with_text = true,
-
-        -- defines how annotations are shown
-        -- default: symbol
-        -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-        mode = "symbol_text",
-
-        -- default symbol map
-        -- can be either 'default' (requires nerd-fonts font) or
-        -- 'codicons' for codicon preset (requires vscode-codicons font)
-        --
-        -- default: 'default'
-        preset = "default",
-
-        -- override preset symbols
-        --
-        -- default: {}
-        symbol_map = {
-          Text = "󰉿 ",
-          Method = "󰆧 ",
-          Function = "󰊕 ",
-          Constructor = " ",
-          Field = "󰜢 ",
-          Variable = "󰀫 ",
-          Class = "󰠱 ",
-          Interface = " ",
-          Module = " ",
-          Property = "󰜢 ",
-          Unit = "󰑭 ",
-          Value = "󰎠 ",
-          Enum = " ",
-          Keyword = "󰌋 ",
-          Snippet = " ",
-          Color = "󰏘 ",
-          File = "󰈙 ",
-          Reference = "󰈇 ",
-          Folder = "󰉋 ",
-          EnumMember = " ",
-          Constant = "󰏿 ",
-          Struct = "󰙅 ",
-          Event = " ",
-          Operator = "󰆕 ",
-          TypeParameter = " ",
-        },
-      }
+      -- require("lspkind").setup {
+      --   -- DEPRECATED (use mode instead): enables text annotations
+      --   --
+      --   -- default: true
+      --   -- with_text = true,
+      --
+      --   -- defines how annotations are shown
+      --   -- default: symbol
+      --   -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+      --   mode = "symbol_text",
+      --
+      --   -- default symbol map
+      --   -- can be either 'default' (requires nerd-fonts font) or
+      --   -- 'codicons' for codicon preset (requires vscode-codicons font)
+      --   --
+      --   -- default: 'default'
+      --   preset = "default",
+      --
+      --   -- override preset symbols
+      --   --
+      --   -- default: {}
+      --   symbol_map = {
+      --     Text = "󰉿 ",
+      --     Method = "󰆧 ",
+      --     Function = "󰊕 ",
+      --     Constructor = " ",
+      --     Field = "󰜢 ",
+      --     Variable = "󰀫 ",
+      --     Class = "󰠱 ",
+      --     Interface = " ",
+      --     Module = " ",
+      --     Property = "󰜢 ",
+      --     Unit = "󰑭 ",
+      --     Value = "󰎠 ",
+      --     Enum = " ",
+      --     Keyword = "󰌋 ",
+      --     Snippet = " ",
+      --     Color = "󰏘 ",
+      --     File = "󰈙 ",
+      --     Reference = "󰈇 ",
+      --     Folder = "󰉋 ",
+      --     EnumMember = " ",
+      --     Constant = "󰏿 ",
+      --     Struct = "󰙅 ",
+      --     Event = " ",
+      --     Operator = "󰆕 ",
+      --     TypeParameter = " ",
+      --   },
+      -- }
     end,
   },
-  -- {
-  --   "mfussenegger/nvim-jdtls",
-  -- },
-  { "nvim-java/nvim-java", lazy = true, ft = { "java" } },
 }

@@ -30,26 +30,49 @@ return {
       vim.api.nvim_set_keymap("n", "<leader>dt", ":DapTerminate<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<leader>dr", ":DapRestartFrame<CR>", { noremap = true, silent = true })
 
+      -- cpp, c
+      dap.adapters.codelldb = {
+        type = "server",
+        port = "${port}",
+        executable = {
+          command = "codelldb", -- e.g., "/usr/bin/codelldb"
+          args = { "--port", "${port}" },
+        },
+      }
+      dap.configurations.cpp = {
+        {
+          name = "Debug",
+          type = "codelldb",
+          request = "launch",
+          program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = true,
+          args = {},
+        },
+      }
+      dap.configurations.c = dap.configurations.cpp
       -- GO
-      --   dap.adapters.delve = function(callback, config)
-      --     if config.mode == "remote" and config.request == "attach" then
-      --       callback {
-      --         type = "server",
-      --         host = config.host or "127.0.0.1",
-      --         port = config.port or "38697",
-      --       }
-      --     else
-      --       callback {
-      --         type = "server",
-      --         port = "${port}",
-      --         executable = {
-      --           command = "dlv",
-      --           args = { "dap", "-l", "127.0.0.1:${port}", "--log", "--log-output=dap" },
-      --           detached = vim.fn.has "win32" == 0,
-      --         },
-      --       }
-      --     end
-      --   end
+      dap.adapters.delve = function(callback, config)
+        if config.mode == "remote" and config.request == "attach" then
+          callback {
+            type = "server",
+            host = config.host or "127.0.0.1",
+            port = config.port or "38697",
+          }
+        else
+          callback {
+            type = "server",
+            port = "${port}",
+            executable = {
+              command = "dlv",
+              args = { "dap", "-l", "127.0.0.1:${port}", "--log", "--log-output=dap" },
+              detached = vim.fn.has "win32" == 0,
+            },
+          }
+        end
+      end
       --
       --   -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
       dap.configurations.go = {

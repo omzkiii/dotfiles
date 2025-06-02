@@ -28,6 +28,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
 
+        java = { "google-java-format" },
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         javascriptreact = { "prettierd" },
@@ -38,7 +39,7 @@ return {
         c = { "clang-format" },
 
         sh = { "shfmt" },
-        go = { "gopls" },
+        go = { "gofumpt" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
