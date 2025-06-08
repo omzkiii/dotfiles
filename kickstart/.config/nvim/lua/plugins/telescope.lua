@@ -53,11 +53,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      -- defaults = {
-      --   mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
-      -- },
+      defaults = {
+        mappings = {
+          i = { ["<c-enter>"] = "to_fuzzy_refine" },
+        },
+      },
       -- pickers = {}
       extensions = {
         fzf = {
@@ -107,13 +107,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
         generic_sorter = require("telescope.sorters").get_generic_fzf_sorter,
         path_display = { "truncate" },
         winblend = 0,
-        -- border = {},
-        -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        borderchars = {
-          prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-          results = { " " },
-          preview = { " " },
-        },
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+        -- borderchars = {
+        --   prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+        --   results = { " " },
+        --   preview = { " " },
+        -- },
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
@@ -152,46 +151,46 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     local action_state = require "telescope.actions.state"
 
-    vim.keymap.set("n", "<M-tab>", function()
-      builtin.buffers({
-        initial_mode = "normal",
-        attach_mappings = function(prompt_bufnr, map)
-          local delete_buf = function()
-            local current_picker = action_state.get_current_picker(prompt_bufnr)
-            current_picker:delete_selection(function(selection)
-              vim.api.nvim_buf_delete(selection.bufnr, { force = true })
-            end)
-          end
-
-          map("n", "<M-d>", delete_buf)
-
-          return true
-        end,
-      }, {
-        sort_lastused = true,
-        sort_mru = true,
-        theme = "ivy",
-      })
-    end)
+    -- vim.keymap.set("n", "<M-tab>", function()
+    --   builtin.buffers({
+    --     initial_mode = "normal",
+    --     attach_mappings = function(prompt_bufnr, map)
+    --       local delete_buf = function()
+    --         local current_picker = action_state.get_current_picker(prompt_bufnr)
+    --         current_picker:delete_selection(function(selection)
+    --           vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+    --         end)
+    --       end
+    --
+    --       map("n", "<M-d>", delete_buf)
+    --
+    --       return true
+    --     end,
+    --   }, {
+    --     sort_lastused = true,
+    --     sort_mru = true,
+    --     theme = "ivy",
+    --   })
+    -- end)
 
     -- Slightly advanced example of overriding default behavior and theme
-    vim.keymap.set("n", "<leader><leader>", function()
-      -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-      builtin.current_buffer_fuzzy_find {
-        initial_mode = "insert",
-        -- winblend = 10,
-        previewer = true,
-      }
-    end, { desc = "[/] Fuzzily search in current buffer" })
+    -- vim.keymap.set("n", "<leader><leader>", function()
+    --   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+    --   builtin.current_buffer_fuzzy_find {
+    --     initial_mode = "insert",
+    --     -- winblend = 10,
+    --     previewer = true,
+    --   }
+    -- end, { desc = "[/] Fuzzily search in current buffer" })
 
     -- It's also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys
-    vim.keymap.set("n", "<leader>s/", function()
-      builtin.live_grep {
-        grep_open_files = true,
-        prompt_title = "Live Grep in Open Files",
-      }
-    end, { desc = "[S]earch [/] in Open Files" })
+    -- vim.keymap.set("n", "<leader>s/", function()
+    --   builtin.live_grep {
+    --     grep_open_files = true,
+    --     prompt_title = "Live Grep in Open Files",
+    --   }
+    -- end, { desc = "[S]earch [/] in Open Files" })
 
     -- Shortcut for searching your Neovim configuration files
     -- vim.keymap.set("n", "<leader>sn", function()
