@@ -126,12 +126,27 @@ cmd tmux ${{
     name=$(basename "$fx")
 
     if [[ -d $fx ]] then;
-        if tmux has-session -t $name 2>/dev/null; then
-            kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"&
-            lf -remote "send $id quit"
+        if tmux list-clients | grep attached; then
+            if tmux has-session -t $name 2>/dev/null; then
+                tmux switch-client -t "$name"
+                hyprctl dispatch focuswindow title:tmux
+                lf -remote "send $id quit"
+            else
+                tmux new-session -d -s "$name" -c "$fx" "nvim -S Session.vim"
+                tmux switch-client -t "$name"
+                hyprctl dispatch focuswindow title:tmux
+                lf -remote "send $id quit"
+            fi
         else
-            kitty -o background_opacity=$OPACITY --detach tmux new-session -s "$name" -c "$fx" "nvim -S Session.vim"&
-            lf -remote "send $id quit"
+            if tmux has-session -t $name 2>/dev/null; then
+                kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"&
+                hyprctl dispatch focuswindow title:tmux
+                lf -remote "send $id quit"
+            else
+                kitty -o background_opacity=$OPACITY --detach tmux new-session -s "$name" -c "$fx" "nvim -S Session.vim"&
+                hyprctl dispatch focuswindow title:tmux
+                lf -remote "send $id quit"
+            fi
         fi
     else
         echo "not a directory"

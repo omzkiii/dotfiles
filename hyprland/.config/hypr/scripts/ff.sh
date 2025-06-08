@@ -26,9 +26,11 @@ if [[ -n "$dir" ]]; then
     if tmux list-clients | grep attached; then
       if tmux has-session -t $name 2>/dev/null; then
         tmux switch-client -t "$name"
+        hyprctl dispatch focuswindow title:tmux
       else
         tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
         tmux switch-client -t "$name"
+        hyprctl dispatch focuswindow title:tmux
       fi
     else
       if tmux has-session -t $name 2>/dev/null; then
