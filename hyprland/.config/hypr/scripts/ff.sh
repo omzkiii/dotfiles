@@ -9,7 +9,7 @@ HISTORY_FILE="$HOME/.fzf_project_history"
 dir=$( (
   cat "$HISTORY_FILE"
   find -P ~/Documents/Projects/ -type d
-) | fzf --preview="tree -C -C {}" --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black)
+) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black)
 
 name=$(basename "$dir")
 
@@ -23,11 +23,20 @@ if [[ -n "$dir" ]]; then
   mv "$tmp_history" "$HISTORY_FILE" # Replace history file safely
 
   if [[ -d "$dir" ]]; then
-    if tmux has-session -t $name 2>/dev/null; then
-      kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
+    if tmux list-clients | grep attached; then
+      if tmux has-session -t $name 2>/dev/null; then
+        tmux switch-client -t "$name"
+      else
+        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+        tmux switch-client -t "$name"
+      fi
     else
-      tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
-      kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
+      if tmux has-session -t $name 2>/dev/null; then
+        kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
+      else
+        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+        kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
+      fi
     fi
   else
     echo "Selected directory does not exist: $dir"
