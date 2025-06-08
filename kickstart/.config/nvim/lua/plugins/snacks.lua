@@ -84,18 +84,11 @@ return {
       --   desc = "Smart Find Files",
       -- },
       {
-        "<leader>,",
+        "<M-tab>",
         function()
           Snacks.picker.buffers(opts)
         end,
         desc = "Buffers",
-      },
-      {
-        "<leader>sg",
-        function()
-          Snacks.picker.grep()
-        end,
-        desc = "Grep",
       },
       {
         "<leader>:",
@@ -227,13 +220,13 @@ return {
       --   end,
       --   desc = "Grep Open Buffers",
       -- },
-      -- {
-      --   "<leader>sg",
-      --   function()
-      --     Snacks.picker.grep(opts)
-      --   end,
-      --   desc = "Grep",
-      -- },
+      {
+        "<leader>sg",
+        function()
+          Snacks.picker.grep(opts)
+        end,
+        desc = "Grep",
+      },
       -- {
       --   "<leader>sw",
       --   function()
@@ -264,13 +257,6 @@ return {
         end,
         desc = "Autocmds",
       },
-      -- {
-      --   "<leader>sb",
-      --   function()
-      --     Snacks.picker.lines(opts)
-      --   end,
-      --   desc = "Buffer Lines",
-      -- },
       {
         "<leader>sc",
         function()
