@@ -151,7 +151,7 @@ cmd zip ${{
 
 map <a-f> :fzf_cd
 cmd fzf_cd ${{
-    item=$(find . -print0 | fzf --read0 --preview="tree -C {} | head -n 20")
+    item=$(find . -print0 | fzf --read0 --preview="tree -C {} | head -n 20" --layout=reverse --border=sharp --preview-border=sharp --border-label=" Files" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black)
     dir=$(dirname "$item")
     file=$(basename "$item")
     if [ -d "$item" ];then

@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+CONF_FILE="$HOME/.config/hypr/opacity.conf"
+OPACITY=$(sed -n 's/^\$opacity *= *\([0-9.]*\).*/\1/p' "$CONF_FILE")
 
 HISTORY_FILE="$HOME/.fzf_project_history"
 # awk '!seen[$0]++' "$HISTORY_FILE" | sed '/^$/d' >"$HISTORY_FILE.tmp" && mv "$HISTORY_FILE.tmp" "$HISTORY_FILE"
@@ -7,7 +9,7 @@ HISTORY_FILE="$HOME/.fzf_project_history"
 dir=$( (
   cat "$HISTORY_FILE"
   find -P ~/Documents/Projects/ -type d
-) | fzf --preview="tree -C -C {}")
+) | fzf --preview="tree -C -C {}" --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black)
 
 name=$(basename "$dir")
 
@@ -21,19 +23,11 @@ if [[ -n "$dir" ]]; then
   mv "$tmp_history" "$HISTORY_FILE" # Replace history file safely
 
   if [[ -d "$dir" ]]; then
-    if [ -n "$TMUX" ]; then
-      if tmux has-session -t $name 2>/dev/null; then
-        tmux switch-session -t $name
-      else
-        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
-        tmux switch-session -t "$name"
+    if tmux has-session -t $name 2>/dev/null; then
+      kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
     else
-      if tmux has-session -t $name 2>/dev/null; then
-        tmux attach-session -t $name
-      else
-        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
-        tmux attach-session -t "$name"
-      fi
+      tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+      kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
     fi
   else
     echo "Selected directory does not exist: $dir"

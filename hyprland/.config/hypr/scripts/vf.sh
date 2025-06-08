@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 local file
 file=$(find -P . -type f | fzf -m --preview="bat --color=always {}")

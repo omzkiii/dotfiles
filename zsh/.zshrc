@@ -228,5 +228,17 @@ alias man='MANWIDTH=$((COLUMNS > 80 ? 80 : COLUMNS)) man'
 bg=$(head -n 1 ~/.cache/wal/colors)
 alias feh="feh -B '$bg'"
 
+export FZF_DEFAULT_OPTS='
+  --height 40%
+  --layout=reverse
+  --border=sharp
+  --preview-border=sharp
+  --color=16
+  --color=border:cyan
+  --color=current-bg:bright-black
+  --pointer=󰄾 
+  --preview "bat --style=numbers --color=always --line-range :500 {}"
+'
+
 
 
