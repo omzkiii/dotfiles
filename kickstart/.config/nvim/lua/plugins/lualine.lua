@@ -127,9 +127,18 @@ return {
                 -- removed = "DiffDelete", -- Changes the diff's removed color you
               },
               -- symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
-              symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
+              symbols = { added = "  ", modified = "  ", removed = " 󰍵 " }, -- Changes the symbols used by the diff.
             },
-            { "diagnostics" },
+            {
+              "diagnostics",
+
+              symbols = {
+                error = " 󰅙 ",
+                warn = "  ",
+                hint = " 󰌵 ",
+                info = "  ",
+              }, -- Changes the symbols used by the diff.
+            },
           },
           lualine_y = {
             {

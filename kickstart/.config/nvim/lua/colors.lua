@@ -148,8 +148,6 @@ return {
       vim.g.gruvbox_baby_highlights = {
         -- Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
         -- Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
-        Normal = { fg = "#ebdbb2", bg = "#282828", style = "NONE" },
-        -- Normal = { fg = "#d5c4a1", bg = "#1d2021", style = "NONE" },
         SignColumn = { fg = "None", bg = "NONE", style = "NONE" },
         TelescopeSelection = { fg = "#ebdbb2", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
@@ -173,6 +171,18 @@ return {
         SnacksPickerInputBorder = { fg = "#504945", bg = "#282626", style = "bold" },
         DiagnosticUnderlineError = { fg = "NONE", bg = "NONE", style = "underline", sp = "#fb4934" },
         ContextLine = { fg = "NONE", bg = "NONE", style = "underline", sp = "#928374" },
+        Normal = { fg = "#ebdbb2", bg = "#282828", style = "NONE" },
+        CmpSel = { fg = "#282828", bg = "#7fa2ac", style = "NONE" },
+        CmpBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
+        CmpDocBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
+        CmpPmenu = { fg = "#504845", bg = "#282626", style = "NONE" },
+        CmpDoc = { fg = "#504845", bg = "#282626", style = "NONE" },
+        CmpScrollBar = { fg = "#504845", bg = "#282626", style = "NONE" },
+        FloatBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
+        -- SnacksPickerBoxBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
+        -- SnacksPickerInputBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
+        -- SnacksPickerListBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
+        -- SnacksPickerPreviewBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
 
         -- RenderMarkdownH1Bg = { fg = "#fb4934", bg = "NONE", style = "bold" },
         -- RenderMarkdownH2Bg = { fg = "#fabd35", bg = "NONE", style = "bold" },
@@ -186,7 +196,6 @@ return {
         -- RenderMarkdownH2 = { fg = "", bg = "", style = "" },
         -- RenderMarkdownH2 = { fg = "", bg = "", style = "" },
         -- RenderMarkdownH1 = { fg = "#1d2021", bg = "#d65d0e", style = "NONE" },
-        lualine_inactive = { fg = "#FFFFFF", bg = "#d65d0e", style = "NONE" },
       }
       -- vim.api.nvim_create_autocmd("ColorScheme", {
       --   pattern = "*",

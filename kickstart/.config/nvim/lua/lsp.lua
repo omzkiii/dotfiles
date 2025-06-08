@@ -17,7 +17,7 @@ vim.lsp.enable {
   "ruff",
   "debugpy",
   "codelldb",
-  "ts_ls",
+  "typescript-language-server",
   "eslint_d",
   "htmx",
   "tailwindcss",
@@ -25,10 +25,10 @@ vim.lsp.enable {
 }
 
 local signs = {
-  Error = " ",
+  Error = "󰅙 ",
   Warn = " ",
   Hint = "󰌵 ",
-  Info = " ",
+  Info = " ",
 }
 
 for type, icon in pairs(signs) do
@@ -50,12 +50,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     map("<leader>ra", "<cmd>lua vim.lsp.buf.rename(); vim.cmd('wa')<CR>", "Rename")
-    map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-    map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-    map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-    map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-    map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-    map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    -- map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+    -- map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+    -- map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+    -- map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+    -- map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+    -- map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
     map("<leader>lf", function()
       -- vim.diagnostic.open_float { border = "single" }

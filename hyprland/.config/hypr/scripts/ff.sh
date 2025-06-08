@@ -21,11 +21,19 @@ if [[ -n "$dir" ]]; then
   mv "$tmp_history" "$HISTORY_FILE" # Replace history file safely
 
   if [[ -d "$dir" ]]; then
-    if tmux has-session -t $name 2>/dev/null; then
-      tmux attach-session -t $name
+    if [ -n "$TMUX" ]; then
+      if tmux has-session -t $name 2>/dev/null; then
+        tmux switch-session -t $name
+      else
+        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+        tmux switch-session -t "$name"
     else
-      tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
-      tmux attach-session -t "$name"
+      if tmux has-session -t $name 2>/dev/null; then
+        tmux attach-session -t $name
+      else
+        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+        tmux attach-session -t "$name"
+      fi
     fi
   else
     echo "Selected directory does not exist: $dir"

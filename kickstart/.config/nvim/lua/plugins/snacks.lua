@@ -355,27 +355,29 @@ return {
         end,
         desc = "Man Pages",
       },
-      -- {
-      --   "<leader>sp",
-      --   function()
-      --     Snacks.picker.lazy(opts)
-      --   end,
-      --   desc = "Search for Plugin Spec",
-      -- },
-      -- {
-      --   "<leader>sq",
-      --   function()
-      --     Snacks.picker.qflist(opts)
-      --   end,
-      --   desc = "Quickfix List",
-      -- },
-      -- {
-      --   "<leader>sR",
-      --   function()
-      --     Snacks.picker.resume(opts)
-      --   end,
-      --   desc = "Resume",
-      -- },
+      {
+        "<leader>ss",
+        -- function()
+        --   -- Snacks.picker.lazy(opts)
+        -- end,
+        "<cmd> lua Snacks.picker() <CR>",
+        -- desc = "Search for Plugin Spec",
+        desc = "Search for Pickers",
+      },
+      {
+        "<leader>sq",
+        function()
+          Snacks.picker.qflist(opts)
+        end,
+        desc = "Quickfix List",
+      },
+      {
+        "<S-Backspace>",
+        function()
+          Snacks.picker.resume(opts)
+        end,
+        desc = "Resume",
+      },
       {
         "<leader>su",
         function()
@@ -391,56 +393,56 @@ return {
       --   desc = "Colorschemes",
       -- },
       -- LSP
-      -- {
-      --   "gd",
-      --   function()
-      --     Snacks.picker.lsp_definitions(opts)
-      --   end,
-      --   desc = "Goto Definition",
-      -- },
-      -- {
-      --   "gD",
-      --   function()
-      --     Snacks.picker.lsp_declarations(opts)
-      --   end,
-      --   desc = "Goto Declaration",
-      -- },
-      -- {
-      --   "gr",
-      --   function()
-      --     Snacks.picker.lsp_references(opts)
-      --   end,
-      --   nowait = true,
-      --   desc = "References",
-      -- },
-      -- {
-      --   "gI",
-      --   function()
-      --     Snacks.picker.lsp_implementations(opts)
-      --   end,
-      --   desc = "Goto Implementation",
-      -- },
-      -- {
-      --   "gy",
-      --   function()
-      --     Snacks.picker.lsp_type_definitions(opts)
-      --   end,
-      --   desc = "Goto T[y]pe Definition",
-      -- },
-      -- {
-      --   "<leader>ss",
-      --   function()
-      --     Snacks.picker.lsp_symbols(opts)
-      --   end,
-      --   desc = "LSP Symbols",
-      -- },
-      -- {
-      --   "<leader>sS",
-      --   function()
-      --     Snacks.picker.lsp_workspace_symbols(opts)
-      --   end,
-      --   desc = "LSP Workspace Symbols",
-      -- },
+      {
+        "gd",
+        function()
+          Snacks.picker.lsp_definitions(opts)
+        end,
+        desc = "Goto Definition",
+      },
+      {
+        "gD",
+        function()
+          Snacks.picker.lsp_declarations(opts)
+        end,
+        desc = "Goto Declaration",
+      },
+      {
+        "gr",
+        function()
+          Snacks.picker.lsp_references(opts)
+        end,
+        nowait = true,
+        desc = "References",
+      },
+      {
+        "gI",
+        function()
+          Snacks.picker.lsp_implementations(opts)
+        end,
+        desc = "Goto Implementation",
+      },
+      {
+        "gy",
+        function()
+          Snacks.picker.lsp_type_definitions(opts)
+        end,
+        desc = "Goto T[y]pe Definition",
+      },
+      {
+        "<leader>ds",
+        function()
+          Snacks.picker.lsp_symbols(opts)
+        end,
+        desc = "LSP Symbols",
+      },
+      {
+        "<leader>sw",
+        function()
+          Snacks.picker.lsp_workspace_symbols(opts)
+        end,
+        desc = "LSP Workspace Symbols",
+      },
     },
   },
 }

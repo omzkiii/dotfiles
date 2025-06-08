@@ -145,22 +145,45 @@ source <(fzf --zsh)
 # alias ff='cd $(find -P ~/Documents/Projects/ -type d -print0 | fzf --read0) && tmux'
 
 ff() {
-    local dir
-    dir=$(find -P ~/Documents/Projects/ -type d -print0 | fzf --read0 --preview="tree -C {}")
-    name=$(basename "$dir")
-    if [[ -n "$dir" ]]; then
-        if [[ -d "$dir" ]]; then
-            if tmux has-session -t $name 2>/dev/null; then
-                tmux attach-session -t $name
-            else
-                tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
-                tmux attach-session -t "$name"
-            fi
-        else
-            echo "Selected directory does not exist: $dir"
-        fi
-    else
+    HISTORY_FILE="$HOME/.fzf_project_history"
 
+    dir=$( (
+      cat "$HISTORY_FILE"
+      find -P ~/Documents/Projects/ -type d
+    ) | fzf --preview="tree -C -C {}")
+
+    name=$(basename "$dir")
+
+    if [[ -n "$dir" ]]; then
+
+      tmp_history=$(mktemp) # Create a temporary file
+      {
+        echo "$dir"
+        grep -Fxv "$dir" "$HISTORY_FILE"
+      } | sed '/^$/d' | head -n 5 >"$tmp_history"
+      mv "$tmp_history" "$HISTORY_FILE" # Replace history file safely
+
+      if [[ -d "$dir" ]]; then
+        if [ -n "$TMUX" ]; then
+          if tmux has-session -t $name 2>/dev/null; then
+            tmux switch-client -t $name
+          else
+            tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+            tmux switch-client -t "$name"
+          fi
+        else
+          if tmux has-session -t $name 2>/dev/null; then
+            tmux attach-session -t $name
+          else
+            tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+            tmux attach-session -t "$name"
+          fi
+        fi
+      else
+        echo "Selected directory does not exist: $dir"
+      fi
+    else
+      echo "No directory selected."
     fi
 }
 
@@ -202,7 +225,8 @@ export MANROFFOPT="-c"
 export EDITOR="nvim"
 export VISUAL="nvim"
 alias man='MANWIDTH=$((COLUMNS > 80 ? 80 : COLUMNS)) man'
-alias t="taskwarrior-tui"
+bg=$(head -n 1 ~/.cache/wal/colors)
+alias feh="feh -B '$bg'"
 
 
 

@@ -194,12 +194,12 @@ require("lazy").setup({
 -- vim.cmd.colorscheme "tokyonight-night"
 -- vim.cmd.colorscheme "catppuccin-mocha"
 -- vim.cmd.colorscheme "everforest"
-dofile(vim.g.base46_cache .. "defaults")
+-- dofile(vim.g.base46_cache .. "defaults")
 -- dofile(vim.g.base46_cache .. "statusline")
 -- dofile(vim.g.base46_cache .. "syntax")
 -- dofile(vim.g.base46_cache .. "treesitter")
-dofile(vim.g.base46_cache .. "telescope")
-dofile(vim.g.base46_cache .. "cmp")
+-- dofile(vim.g.base46_cache .. "telescope")
+-- dofile(vim.g.base46_cache .. "cmp")
 -- vim.cmd.colorscheme "nord"
 vim.cmd.colorscheme "gruvbox-baby"
 

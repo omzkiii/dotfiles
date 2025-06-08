@@ -1,7 +1,6 @@
 # interpreter for shell commands
 
 set shell zsh
-
 # set env LS_COLORS 'rs=0:di=01;38;5;12:ln=01;38;5;14:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=38;5;12;42:st=37;44:ex=01;38;5;10:'
 
 # set '-eu' options for shell commands
@@ -64,13 +63,19 @@ map O $mimeopen --ask $f
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
+# cmd open &{{
+#     case $(file --mime-type -Lb $f) in
+#         text/*) lf -remote "send $id \$$EDITOR \$fx";;
+#         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+#     esac
+# }}
+
 cmd open &{{
     case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+        text/*) lf -remote "send $id \$vi \$fx";;
+        *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
     esac
 }}
-
 # mkdir command. See wiki if you want it to select created dir
 map a :push %mkdir<space>
 
@@ -93,7 +98,19 @@ cmd delete ${{
     printf "$fx\n"
     printf "delete?[y/n]"
     read ans
-    [ "$ans" = "y" ] && rm -rf $fx
+    #[ "$ans" = "y" ] && rm -rf $fx
+    arr=()
+    while IFS= read -r line; do
+      arr+=("$line")
+    done <<< "$fx"
+    if [ "$ans" = "y" ]; then
+      for file in ${arr[@]}; do
+        echo deleting $file
+        rm -rf $file
+      done
+    else
+      echo "cancelled"
+    fi
 }}
 
 # use '<delete>' key for either 'trash' or 'delete' command
