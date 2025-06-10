@@ -7,6 +7,9 @@ vim.lsp.config("*", {
     },
   },
   root_markers = { ".git" },
+  files = {
+    watch = true,
+  },
 })
 vim.lsp.enable {
   "lua_ls",
@@ -23,27 +26,35 @@ vim.lsp.enable {
   "tailwindcss",
   "harper_ls",
 }
-
-local signs = {
-  Error = "󰅙 ",
-  Warn = " ",
-  Hint = "󰌵 ",
-  Info = " ",
-}
-
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
   callback = function(event)
     vim.diagnostic.config {
       virtual_text = false, -- disables inline text
-      signs = true, -- keep the sign column indicators
       underline = false, -- optional: disable underline
       update_in_insert = false, -- optional: don't update in insert mode
       severity_sort = true, -- optional: sort by severity
+
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "󰅙 ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.HINT] = "󰌵 ",
+          [vim.diagnostic.severity.INFO] = " ",
+        },
+        linehl = {
+          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+          [vim.diagnostic.severity.WARN] = "WarningMsg",
+          [vim.diagnostic.severity.HINT] = "HintMsg",
+          [vim.diagnostic.severity.INFO] = "Info",
+        },
+        numhl = {
+          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+          [vim.diagnostic.severity.WARN] = "WarningMsg",
+          [vim.diagnostic.severity.HINT] = "HintMsg",
+          [vim.diagnostic.severity.INFO] = "Info",
+        },
+      },
     }
     local map = function(keys, func, desc)
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc, noremap = true })

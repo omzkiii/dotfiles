@@ -6,10 +6,12 @@ HISTORY_FILE="$HOME/.fzf_project_history"
 # awk '!seen[$0]++' "$HISTORY_FILE" | sed '/^$/d' >"$HISTORY_FILE.tmp" && mv "$HISTORY_FILE.tmp" "$HISTORY_FILE"
 # dir=$(find -P ~/Documents/Projects/ -type d -print0 | fzf --read0 --preview="tree -C -C {}")
 
-dir=$( (
-  cat "$HISTORY_FILE"
-  find -P ~/Documents/Projects/ -type d
-) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black)
+dir=$(
+  (
+    cat "$HISTORY_FILE"
+    find -P ~/Documents/Projects/ -type d
+  ) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black --prompt=" │"
+)
 
 name=$(basename "$dir")
 

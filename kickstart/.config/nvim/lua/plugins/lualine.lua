@@ -1,9 +1,11 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "echasnovski/mini.nvim" },
     event = "VeryLazy",
     config = function()
+      require("mini.icons").mock_nvim_web_devicons()
       local function recording()
         local reg = vim.fn.reg_recording()
         if reg == "" then

@@ -4,6 +4,7 @@ return {
     event = "VeryLazy",
     -- lazy = true,
     config = function()
+      require("mini.icons").setup {}
       -- Better Around/Inside textobjects
       --
       -- Examples:
@@ -54,6 +55,7 @@ return {
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+
   -- {
   --   "echasnovski/mini.animate",
   --   event = "VeryLazy",

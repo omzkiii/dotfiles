@@ -224,7 +224,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export EDITOR="nvim"
 export VISUAL="nvim"
-alias man='MANWIDTH=$((COLUMNS > 80 ? 80 : COLUMNS)) man'
 bg=$(head -n 1 ~/.cache/wal/colors)
 alias feh="feh -B '$bg'"
 
@@ -238,6 +237,7 @@ export FZF_DEFAULT_OPTS='
   --color=current-bg:bright-black
   --pointer=󰄾 
   --preview "bat --style=numbers --color=always --line-range :500 {}"
+  --prompt=" │"
 '
 
 

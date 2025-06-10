@@ -5,7 +5,7 @@ return {
     cmd = { "VenvSelect", "VenvSelectCached" },
     -- branch = "regexp", -- This is the regexp branch, use this for the new version
     -- ft = { "python" },
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+    dependencies = { "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     config = function()
       require("venv-selector").setup {
         -- Your options go here

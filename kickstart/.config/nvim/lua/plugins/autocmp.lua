@@ -64,7 +64,7 @@ return {
           -- },
           completion = {
             border = "single",
-            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
             scrollbar = false,
           },
           documentation = cmp.config.window.bordered(),

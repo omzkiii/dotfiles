@@ -111,7 +111,6 @@ return {
             NormalFloat = { fg = colors.base3 },
             SignColumn = { bg = colors.base03 },
             ColorColumn = { bg = colors.base03 },
-            RenderMarkdownLink = { fg = colors.cyan },
             LineNr = { bg = colors.base03 },
             LeapMatch = { fg = colors.yellow },
             LeapLabelPrimary = { fg = colors.base03, bg = colors.yellow },
@@ -148,41 +147,21 @@ return {
       vim.g.gruvbox_baby_highlights = {
         -- Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
         -- Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
-        SignColumn = { fg = "None", bg = "NONE", style = "NONE" },
         TelescopeSelection = { fg = "#ebdbb2", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
-        FlashCurrent = { fg = "NONE", bg = "#d65d0e", style = "NONE" },
-        LeapMatch = { fg = "#fabd2f", bg = "#fabd2f", style = "bold" },
-        LeapLabelPrimary = { fg = "#1d2021", bg = "#fabd2f", style = "bold" },
         WinSeparator = { fg = "#32392f", bg = "NONE", style = "NONE" },
         IblScope = { fg = "#928374", bg = "NONE", style = "NONE" },
         IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
-        LeapBackdrop = { fg = "#928374", bg = "NONE", style = "NONE" },
-        FloatBorder = { fg = "#504945", bg = "#242424", style = "NONE" },
         RenderMarkdownH1Bg = { fg = "#282828", bg = "#fb4934", style = "bold" },
         RenderMarkdownH2Bg = { fg = "#282828", bg = "#fabd35", style = "bold" },
         RenderMarkdownH3Bg = { fg = "#282828", bg = "#d4879c", style = "bold" },
         RenderMarkdownH4Bg = { fg = "#282828", bg = "#8ec07c", style = "bold" },
         RenderMarkdownH5Bg = { fg = "#282828", bg = "#7fa2ac", style = "bold" },
         RenderMarkdownH6Bg = { fg = "#282828", bg = "#98971a", style = "bold" },
-        SnacksPickerBoxBorder = { fg = "#504945", bg = "#282626", style = "bold" },
-        SnacksPickerListBorder = { fg = "#504945", bg = "#282626", style = "bold" },
-        SnacksPickerPreviewBorder = { fg = "#504945", bg = "#282626", style = "bold" },
-        SnacksPickerInputBorder = { fg = "#504945", bg = "#282626", style = "bold" },
-        DiagnosticUnderlineError = { fg = "NONE", bg = "NONE", style = "underline", sp = "#fb4934" },
-        ContextLine = { fg = "NONE", bg = "NONE", style = "underline", sp = "#928374" },
         Normal = { fg = "#ebdbb2", bg = "#282828", style = "NONE" },
-        CmpSel = { fg = "#282828", bg = "#7fa2ac", style = "NONE" },
-        CmpBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
-        CmpDocBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
-        CmpPmenu = { fg = "#504845", bg = "#282626", style = "NONE" },
-        CmpDoc = { fg = "#504845", bg = "#282626", style = "NONE" },
-        CmpScrollBar = { fg = "#504845", bg = "#282626", style = "NONE" },
-        FloatBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
-        FloatTitle = { fg = "#282626", bg = "#d79921", style = "bold" },
         TelescopeNormal = { fg = "NONE", bg = "#282626", style = "NONE" },
         TelescopeBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
-        TelescopeTitle = { fg = "#282626", bg = "#d79921", style = "bold" },
+        TelescopeTitle = { fg = "#282626", bg = "#98971a", style = "bold" },
         _,
         -- SnacksPickerBoxBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
         -- SnacksPickerInputBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
@@ -234,15 +213,17 @@ return {
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "", -- can be "hard", "soft" or empty string
+        contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
+          Normal = { bg = "#282828" }, -- explicitly set Normal background color
+          NormalFloat = { bg = "#282626" }, -- explicitly set Normal background color
           -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
           -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
         },
         dim_inactive = false,
-        transparent_mode = true,
+        transparent_mode = false,
       }
     end,
   },
@@ -267,8 +248,74 @@ return {
     end,
   },
   {
-    "shaunsingh/nord.nvim",
+    "gbprod/nord.nvim",
     lazy = true,
+    config = function()
+      require("nord").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        transparent = false, -- Enable this to disable setting the background color
+        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+        diff = { mode = "bg" }, -- enables/disables colorful backgrounds when used in diff mode. values : [bg|fg]
+        borders = true, -- Enable the border between verticaly split windows visible
+        errors = { mode = "bg" }, -- Display mode for errors and diagnostics
+        -- values : [bg|fg|none]
+        search = { theme = "vim" }, -- theme for highlighting search results
+        -- values : [vim|vscode]
+        styles = {
+          -- Style to be applied to different syntax groups
+          -- Value is any valid attr-list value for `:help nvim_set_hl`
+          comments = { italic = true },
+          keywords = {},
+          functions = {},
+          variables = {},
+
+          -- To customize lualine/bufferline
+          bufferline = {
+            current = {},
+            modified = { italic = true },
+          },
+        },
+
+        -- colorblind mode
+        -- see https://github.com/EdenEast/nightfox.nvim#colorblind
+        -- simulation mode has not been implemented yet.
+        colorblind = {
+          enable = false,
+          preserve_background = false,
+          severity = {
+            protan = 0.0,
+            deutan = 0.0,
+            tritan = 0.0,
+          },
+        },
+
+        -- Override the default colors
+        ---@param colors Nord.Palette
+        on_colors = function(colors) end,
+
+        --- You can override specific highlights to use other groups or a hex color
+        --- function will be called with all highlights and the colorScheme table
+        ---@param colors Nord.Palette
+        on_highlights = function(highlights, colors)
+          highlights.NormalFloat = {
+            bg = colors.polar_night.origin,
+          }
+          highlights.CursorColumn = {
+            bg = colors.polar_night.light,
+          }
+          highlights.CursorLine = {
+            bg = colors.polar_night.bright,
+          }
+
+          highlights.SnacksPickerListCursorLine = {
+            -- bg = colors.polar_night.brightest,
+            bg = colors.frost.artic_ocean,
+            fg = colors.snow_storm.brightest,
+          }
+        end,
+      }
+    end,
   },
   {
     "Shatur/neovim-ayu",
@@ -280,6 +327,15 @@ return {
       require("ayu").setup {
         overrides = {
           IblScope = { fg = colors.fg },
+          Normal = { bg = "#0a0e14" },
+          NormalFloat = { bg = colors.black },
+          -- ColorColumn = { bg = "None" },
+          -- SignColumn = { bg = "None" },
+          -- Folded = { bg = "None" },
+          -- FoldColumn = { bg = "None" },
+          -- CursorLine = { bg = "None" },
+          -- CursorColumn = { bg = "None" },
+          -- VertSplit = { bg = "None" },
         },
       }
     end,

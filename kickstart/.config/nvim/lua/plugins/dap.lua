@@ -29,7 +29,24 @@ return {
       vim.api.nvim_set_keymap("n", "<leader>dc", ":DapClearBreakpoints<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<leader>dt", ":DapTerminate<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<leader>dr", ":DapRestartFrame<CR>", { noremap = true, silent = true })
+      -- python
+      dap.adapters.python = {
+        type = "executable",
+        command = "python",
+        args = { "-m", "debugpy.adapter" },
+      }
 
+      dap.configurations.python = {
+        {
+          type = "python",
+          request = "launch",
+          name = "Debug Current File",
+          program = "${file}", -- Debug the currently open file
+          pythonPath = function()
+            return "/usr/bin/python3" -- Adjust to your Python path
+          end,
+        },
+      }
       -- cpp, c
       dap.adapters.codelldb = {
         type = "server",
@@ -101,6 +118,7 @@ return {
       }
     end,
   },
+
   {
     "jay-babu/mason-nvim-dap.nvim",
     lazy = true,

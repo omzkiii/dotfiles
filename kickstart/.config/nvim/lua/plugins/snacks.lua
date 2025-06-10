@@ -74,6 +74,7 @@ return {
         auto_close = true,
       },
     },
+
     keys = {
       -- Top Pickers & Explorer
       -- {
@@ -358,7 +359,7 @@ return {
         desc = "Quickfix List",
       },
       {
-        "<S-Backspace>",
+        "<M-Backspace>",
         function()
           Snacks.picker.resume(opts)
         end,
@@ -371,13 +372,13 @@ return {
         end,
         desc = "Undo History",
       },
-      -- {
-      --   "<leader>uC",
-      --   function()
-      --     Snacks.picker.colorschemes(opts)
-      --   end,
-      --   desc = "Colorschemes",
-      -- },
+      {
+        "<leader>uc",
+        function()
+          Snacks.picker.colorschemes(opts)
+        end,
+        desc = "Colorschemes",
+      },
       -- LSP
       {
         "gd",

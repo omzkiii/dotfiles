@@ -20,11 +20,23 @@ return {
     },
     config = function(_, opts)
       require("treesitter-context").setup(opts)
-      vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Normal" }) -- or LineNr, Normal, etc.
-      vim.api.nvim_set_hl(0, "TreesitterContextSeparator", { link = "IblScope" }) -- or LineNr, Normal, etc.
-      vim.api.nvim_set_hl(0, "TreesitterContextBottom", { link = "ContextLine" }) -- or LineNr, Normal, etc.
-      vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { link = "ContextLine" })
+
+      local colors = function()
+        local ul = vim.api.nvim_get_hl(0, { name = "IblScope" })
+        -- vim.api.nvim_set_hl(0, "LeapLabel", { bg = yellow.fg, fg = norm.bg, bold = true })
+        -- vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
+
+        vim.api.nvim_set_hl(0, "TreesitterContextBottom", { fg = "NONE", bg = "NONE", underline = true, sp = ul.fg })
+        vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { link = "TreesitterContextBottom" })
+        vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Normal" }) -- or LineNr, Normal, etc.
+        vim.api.nvim_set_hl(0, "TreesitterContextSeparator", { link = "IblScope" }) -- or LineNr, Normal, etc.
+        vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { link = "Normal" })
+      end
+      colors()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = colors,
+      })
     end,
   },
 }

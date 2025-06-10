@@ -19,7 +19,7 @@ return {
       end, 0)
     end,
   },
-  { "nvim-tree/nvim-web-devicons", event = "User FilePost" },
+  -- { "nvim-tree/nvim-web-devicons", event = "User FilePost" },
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
@@ -66,6 +66,20 @@ return {
       vim.keymap.set("n", "S", "<Plug>(leap-from-window)")
       vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap-forward)")
       vim.keymap.set({ "x", "o" }, "S", "<Plug>(leap-backward)")
+
+      -- local colors = function()
+      --   local yellow = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn" })
+      --   local norm = vim.api.nvim_get_hl(0, { name = "Normal" })
+      --   vim.api.nvim_set_hl(0, "LeapLabel", { bg = yellow.fg, fg = norm.bg, bold = true })
+      --   vim.api.nvim_set_hl(0, "LeapMatch", { bg = "#FFFFFF", fg = "#FFFFFF" })
+      --   vim.api.nvim_set_hl(0, "LeapLabelDimmed", { bg = "#FFFFFF", fg = "#FFFFFF" })
+      --   -- vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
+      -- end
+      -- colors()
+      -- vim.api.nvim_create_autocmd("ColorScheme", {
+      --   pattern = "*",
+      --   callback = colors,
+      -- })
     end,
   },
   -- {
