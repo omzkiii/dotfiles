@@ -29,32 +29,33 @@ vim.lsp.enable {
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
   callback = function(event)
+    local signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = "󰅙 ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.HINT] = "󰌵 ",
+        [vim.diagnostic.severity.INFO] = " ",
+      },
+      linehl = {
+        -- [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+        -- [vim.diagnostic.severity.WARN] = "WarningMsg",
+        -- [vim.diagnostic.severity.HINT] = "HintMsg",
+        -- [vim.diagnostic.severity.INFO] = "Info",
+      },
+      numhl = {
+        [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+        [vim.diagnostic.severity.WARN] = "WarningMsg",
+        [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+        [vim.diagnostic.severity.INFO] = "DiagnosticsInfo",
+      },
+    }
+
     vim.diagnostic.config {
       virtual_text = false, -- disables inline text
       underline = false, -- optional: disable underline
       update_in_insert = false, -- optional: don't update in insert mode
       severity_sort = true, -- optional: sort by severity
-
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = "󰅙 ",
-          [vim.diagnostic.severity.WARN] = " ",
-          [vim.diagnostic.severity.HINT] = "󰌵 ",
-          [vim.diagnostic.severity.INFO] = " ",
-        },
-        linehl = {
-          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-          [vim.diagnostic.severity.WARN] = "WarningMsg",
-          [vim.diagnostic.severity.HINT] = "HintMsg",
-          [vim.diagnostic.severity.INFO] = "Info",
-        },
-        numhl = {
-          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-          [vim.diagnostic.severity.WARN] = "WarningMsg",
-          [vim.diagnostic.severity.HINT] = "HintMsg",
-          [vim.diagnostic.severity.INFO] = "Info",
-        },
-      },
+      signs = signs,
     }
     local map = function(keys, func, desc)
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc, noremap = true })
@@ -74,7 +75,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.api.nvim_create_autocmd("CursorMoved", {
         group = vim.api.nvim_create_augroup("line-diagnostics", { clear = true }),
         callback = function()
-          vim.diagnostic.config { virtual_lines = false, virtual_text = false, signs = true }
+          vim.diagnostic.config { virtual_lines = false, virtual_text = false, signs = signs }
           return true
         end,
       })

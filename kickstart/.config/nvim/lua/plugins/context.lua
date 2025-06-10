@@ -22,7 +22,7 @@ return {
       require("treesitter-context").setup(opts)
 
       local colors = function()
-        local ul = vim.api.nvim_get_hl(0, { name = "IblScope" })
+        local ul = vim.api.nvim_get_hl(0, { name = "IblScope", link = false })
         -- vim.api.nvim_set_hl(0, "LeapLabel", { bg = yellow.fg, fg = norm.bg, bold = true })
         -- vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
 

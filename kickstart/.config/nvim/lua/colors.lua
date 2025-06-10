@@ -162,7 +162,8 @@ return {
         TelescopeNormal = { fg = "NONE", bg = "#282626", style = "NONE" },
         TelescopeBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
         TelescopeTitle = { fg = "#282626", bg = "#98971a", style = "bold" },
-        _,
+        DiagnosticUnderlineError = { sp = "#fb4934", style = "undercurl" },
+
         -- SnacksPickerBoxBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
         -- SnacksPickerInputBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
         -- SnacksPickerListBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
@@ -213,7 +214,7 @@ return {
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "hard", -- can be "hard", "soft" or empty string
+        contrast = "", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
@@ -221,6 +222,13 @@ return {
           NormalFloat = { bg = "#282626" }, -- explicitly set Normal background color
           -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
           -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
+          ErrorMsg = { link = "GruvboxRed" },
+          WarningMsg = { link = "GruvboxYellow" },
+          DiagnosticSignError = { link = "GruvboxRed" },
+          DiagnosticSignWarn = { link = "GruvboxYellow" },
+          DiagnosticSignHint = { link = "GruvboxAqua" },
+          DiagnosticSignInfo = { link = "GruvboxBlue" },
+          DiagnosticSignOk = { link = "GruvboxGreen" },
         },
         dim_inactive = false,
         transparent_mode = false,

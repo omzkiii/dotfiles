@@ -5,6 +5,7 @@ local colors = function()
   local cursor = vim.api.nvim_get_hl(0, { name = "CursorColumn", link = false })
   local comment = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
   local nFloat = vim.api.nvim_get_hl(0, { name = "NormalFloat", link = false })
+  local err = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
   local add = vim.api.nvim_get_hl(0, { name = "@character", link = false })
 
   local yellow = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn" })
@@ -17,6 +18,10 @@ local colors = function()
   --
   vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE", fg = "NONE" })
   vim.api.nvim_set_hl(0, "RenderMarkdownLink", { underline = true })
+
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = err.fg, undercurl = true })
+
+  vim.api.nvim_set_hl(0, "@ibl.scope.underline.1", { sp = "NONE", underline = true })
 
   vim.api.nvim_set_hl(0, "FloatBorder", { fg = cursor.bg, bg = nFloat.bg })
   vim.api.nvim_set_hl(0, "FloatTitle", { fg = cursor.bg, bg = add.fg })

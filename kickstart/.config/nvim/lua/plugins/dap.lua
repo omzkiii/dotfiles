@@ -29,6 +29,16 @@ return {
       vim.api.nvim_set_keymap("n", "<leader>dc", ":DapClearBreakpoints<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<leader>dt", ":DapTerminate<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<leader>dr", ":DapRestartFrame<CR>", { noremap = true, silent = true })
+      vim.fn.sign_define("DapBreakpoint", {
+        text = "⏺ ", -- Custom icon (e.g., red circle)
+        texthl = "DiagnosticInfo", -- Highlight group for the sign
+        linehl = "", -- Optional: Line highlight
+        numhl = "", -- Optional: Number column highlight
+      })
+      vim.fn.sign_define("DapBreakpointRejected", {
+        text = "󰜺 ", -- Custom icon (e.g., no-entry sign)
+        texthl = "DiagnosticError",
+      })
       -- python
       dap.adapters.python = {
         type = "executable",
