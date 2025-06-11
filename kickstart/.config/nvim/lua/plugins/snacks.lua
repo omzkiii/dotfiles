@@ -2,8 +2,8 @@ return {
   -- lazy.nvim
   {
     "folke/snacks.nvim",
-    event = "VeryLazy",
-    -- lazy = false,
+    -- event = "VeryLazy",
+    lazy = true,
     --
     opts = {
       -- image = {
@@ -21,39 +21,46 @@ return {
         sources = {},
         focus = "list",
         border = "single",
-        layout = {
-          cycle = true,
-          layout = { -- note: not "preset_layouts"
-            backdrop = false,
-            --
-            -- box = "horizontal",
-            -- width = 0.8,
-            -- height = 0.8,
-            -- {
-            -- box = "vertical",
-            -- border = "single",
-            -- title = "{title} {live} {flags}",
-            -- { win = "input", height = 1, border = "bottom" },
-            -- { win = "list", border = "none" },
-            -- },
-            -- { win = "preview", title = "{preview}", border = "single", width = 0.5 },
-            -- vertical = {
-            --   box = "vertical",
-            --   width = 0.9,
-            --   height = 0.9,
-            --   border = "single",
-            --   title = "{title} {live} {flags}",
-            --   { win = "input", height = 1, border = "bottom" },
-            --   { win = "list", border = "none" },
-            --   { win = "preview", height = 0.4, border = "single", title = "{preview}" },
-            -- },
-          },
-          preset = function()
-            return vim.o.columns >= 120 and "default" or "vertical"
-          end,
-          -- present = "default",
-        },
+        layout = function()
+          local default = {
+            layout = {
+
+              backdrop = false,
+              box = "horizontal",
+              width = 0.8,
+              min_width = 120,
+              height = 0.8,
+              {
+                box = "vertical",
+                border = "single",
+                title = "{title} {live} {flags}",
+                { win = "input", height = 1, border = "bottom" },
+                { win = "list", border = "none" },
+              },
+              { win = "preview", title = "{preview}", border = "single", width = 0.5 },
+            },
+          }
+          local vertical = {
+            layout = {
+
+              backdrop = false,
+              width = 0.5,
+              min_width = 80,
+              height = 0.8,
+              min_height = 30,
+              box = "vertical",
+              border = "single",
+              title = "{title} {live} {flags}",
+              title_pos = "center",
+              { win = "input", height = 1, border = "bottom" },
+              { win = "list", border = "none" },
+              { win = "preview", title = "{preview}", height = 0.4, border = "top" },
+            },
+          }
+          return vim.o.columns >= 120 and default or vertical
+        end,
         matcher = {
+
           fuzzy = true,
           smartcase = true,
           ignorecase = true,
