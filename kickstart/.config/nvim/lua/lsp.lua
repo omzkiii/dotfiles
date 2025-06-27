@@ -17,7 +17,7 @@ vim.lsp.enable {
   "gopls",
   "dockerfile",
   "dockercompose",
-  -- "jdtls",
+  "emmet",
   "clangd",
   "css",
   "debugpy",
