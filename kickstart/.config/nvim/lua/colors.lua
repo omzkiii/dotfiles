@@ -214,14 +214,14 @@ return {
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "", -- can be "hard", "soft" or empty string
+        contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
           Normal = { bg = "#282828" }, -- explicitly set Normal background color
           NormalFloat = { bg = "#282626" }, -- explicitly set Normal background color
-          -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
-          -- SignColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
+          CursorColumn = { bg = "#3c3836" },
+          -- SignColumn = { bg = "#1d2021" },
           ErrorMsg = { link = "GruvboxRed" },
           WarningMsg = { link = "GruvboxYellow" },
           DiagnosticSignError = { link = "GruvboxRed" },
@@ -247,9 +247,13 @@ return {
             -- theme colors will update dynamically when you change theme!
             -- SomePluginHl = { fg = colors.theme.syn.type, bold = true },
             SignColumn = { bg = colors.palette.sumiInk3 },
-            CursorLineNr = { bg = colors.palette.sumiInk3 },
-            Visual = { bg = colors.palette.sumiInk6 },
-            LineNr = { bg = colors.palette.sumiInk3 },
+            -- CursorLineNr = { bg = colors.palette.sumiInk2 },
+            -- Visual = { bg = colors.palette.sumiInk6 },
+            LineNr = { bg = colors.palette.sumiInk0, fg = colors.palette.sumiInk4 },
+            LineNrAbove = { bg = colors.palette.sumiInk3, fg = colors.palette.springViolet1 },
+            LineNrBelow = { bg = colors.palette.sumiInk3, fg = colors.palette.springViolet1 },
+            SnacksPickerCol = { bg = colors.palette.sumiInk0, fg = colors.palette.sumiInk4 },
+            SnacksPickerTree = { bg = colors.palette.sumiInk0, fg = colors.palette.sumiInk4 },
           }
         end,
       }

@@ -1,4 +1,4 @@
 return {
-  cmd = { "htmx" },
+  cmd = { "htmx-lsp", "--stdio" },
   filetypes = { "html", "css", "scss", "typescript" },
 }

@@ -30,7 +30,7 @@ return {
         vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", { link = "TreesitterContextBottom" })
         vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Normal" }) -- or LineNr, Normal, etc.
         vim.api.nvim_set_hl(0, "TreesitterContextSeparator", { link = "IblScope" }) -- or LineNr, Normal, etc.
-        vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { link = "Normal" })
+        vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { link = "LineNr" })
       end
       colors()
       vim.api.nvim_create_autocmd("ColorScheme", {

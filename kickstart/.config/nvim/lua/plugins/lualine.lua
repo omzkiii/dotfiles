@@ -11,22 +11,22 @@ return {
         if reg == "" then
           return ""
         else
-          return "rec @" .. reg .. ""
+          return "[ @" .. reg .. "]"
         end
       end
       require("lualine").setup {
         options = {
           icons_enabled = true,
           theme = "auto",
-          component_separators = { left = " │ ", right = "   " },
+          component_separators = { left = "   ", right = "｜" },
           -- component_separators = { left = "|", right = "|" },
           -- section_separators = { left = " ", right = "" },
           section_separators = { left = " ", right = "" },
           -- section_separators = { left = "█ ", right = " █" },
           -- section_separators = { left = " ", right = " " },
           disabled_filetypes = {
-            statusline = {},
-            winbar = {},
+            -- statusline = {},
+            -- winbar = {},
           },
           ignore_focus = {},
           always_divide_middle = true,
@@ -34,7 +34,7 @@ return {
           refresh = {
             statusline = 100,
             -- tabline = 1000,
-            -- winbar = 1000,
+            -- winbar = 100,
           },
           -- fmt = string.lower,
           --
@@ -75,11 +75,12 @@ return {
           },
 
           lualine_b = {
+
             {
               "filetype",
-              color = "CursorLine",
+              color = "CursorColumn",
               separator = "",
-              colored = false, -- Displays filetype icon in color if set to true
+              colored = true, -- Displays filetype icon in color if set to true
               icon_only = true, -- Display only an icon for filetype
               align = "right",
               -- separator = "",
@@ -87,7 +88,7 @@ return {
             },
             {
               "filename",
-              color = "CursorLine",
+              color = "CursorColumn",
               separator = "",
               file_status = true, -- Displays file status (readonly status, modified status)
               padding = { right = 1, left = 1 },
@@ -114,7 +115,6 @@ return {
           },
 
           lualine_x = {
-
             {
               "searchcount",
               maxcount = 999,
@@ -129,23 +129,33 @@ return {
                 -- removed = "DiffDelete", -- Changes the diff's removed color you
               },
               -- symbols = { added = "  ", modified = "  ", removed = "  " }, -- Changes the symbols used by the diff.
-              symbols = { added = "  ", modified = "  ", removed = " 󰍵 " }, -- Changes the symbols used by the diff.
+              symbols = { added = " ", modified = " ", removed = "󰍵 " }, -- Changes the symbols used by the diff.
             },
             {
               "diagnostics",
 
               symbols = {
-                error = " 󰅙 ",
-                warn = "  ",
-                hint = " 󰌵 ",
-                info = "  ",
+                error = "󰅙 ",
+                warn = " ",
+                hint = "󰌵 ",
+                info = " ",
               }, -- Changes the symbols used by the diff.
+            },
+            {
+              "harpoon2",
+              -- color = "CursorColumn",
+              icon = "󰛢",
+              -- indicators = { "1", "2", "q", "w" },
+              -- active_indicators = { "A", "S", "Q", "W" },
+              color_active = "DiagnosticWarn",
+              _separator = " ",
+              no_harpoon = "Harpoon not loaded",
             },
           },
           lualine_y = {
             {
               "progress",
-              color = "CursorLine",
+              color = "CursorColumn",
             },
           },
           lualine_z = { { "location" } },
@@ -159,11 +169,30 @@ return {
           lualine_z = {},
         },
         tabline = {},
-        winbar = {},
+        winbar = {
+          -- lualine_c = {
+          --   {
+          --     "navic",
+          --     -- color_correction = nil,
+          --     -- navic_opts = nil,
+          --   },
+          -- },
+        },
         inactive_winbar = {},
         extensions = {},
       }
     end,
+  },
+  {
+    "letieu/harpoon-lualine",
+
+    event = "VeryLazy",
+    dependencies = {
+      {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+      },
+    },
   },
   -- {
   --   {

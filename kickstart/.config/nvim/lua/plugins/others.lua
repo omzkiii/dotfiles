@@ -133,5 +133,13 @@ return {
     end,
   },
 
-  { "j-hui/fidget.nvim", event = "VeryLazy", opts = {} },
+  {
+    "j-hui/fidget.nvim",
+    event = "VeryLazy",
+    opts = {
+      notification = {
+        override_vim_notify = true, -- Automatically override vim.notify() with Fidget
+      },
+    },
+  },
 }

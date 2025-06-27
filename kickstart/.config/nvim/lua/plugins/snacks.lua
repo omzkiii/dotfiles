@@ -16,7 +16,7 @@ return {
       --   fps = 60, -- frames per second. Global setting for all animations
       -- },
       picker = {
-        prompt = " ",
+        prompt = "   ",
         auto_close = true,
         sources = {},
         focus = "list",
@@ -24,7 +24,6 @@ return {
         layout = function()
           local default = {
             layout = {
-
               backdrop = false,
               box = "horizontal",
               width = 0.8,
@@ -32,10 +31,10 @@ return {
               height = 0.8,
               {
                 box = "vertical",
-                border = "single",
-                title = "{title} {live} {flags}",
-                { win = "input", height = 1, border = "bottom" },
-                { win = "list", border = "none" },
+                border = "none",
+                -- title = "{title} {live} {flags}",
+                { win = "input", height = 1, title = "{title} {live} {flags}", border = "single" },
+                { win = "list", border = "single" },
               },
               { win = "preview", title = "{preview}", border = "single", width = 0.5 },
             },
@@ -70,15 +69,6 @@ return {
           fields = { "score:desc", "#text", "idx" },
         },
         ui_select = true,
-        win = {
-          input = { border = "single" }, -- Input window border
-          list = { border = "single" }, -- List window border
-          preview = { border = "single" }, -- Preview window border
-        },
-      },
-
-      explorer = {
-        auto_close = true,
       },
     },
 
@@ -115,7 +105,26 @@ return {
       {
         "<leader>e",
         function()
-          Snacks.explorer { win = { border = "shadow" }, auto_close = true }
+          Snacks.explorer {
+            finder = "explorer",
+            sort = { fields = { "sort" } },
+            supports_live = true,
+            tree = true,
+            watch = true,
+            diagnostics = true,
+            diagnostics_open = true,
+            git_status = true,
+            git_status_open = true,
+            git_untracked = true,
+            follow_file = true,
+            focus = "list",
+            auto_close = true,
+            jump = { close = false },
+            layout = { preset = "sidebar", preview = false },
+            config = function(opts)
+              return require("snacks.picker.source.explorer").setup(opts)
+            end,
+          }
         end,
         desc = "File Explorer",
       },

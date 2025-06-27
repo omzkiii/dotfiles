@@ -17,11 +17,11 @@ vim.lsp.enable {
   "gopls",
   -- "jdtls",
   "clangd",
-  "ruff",
+  -- "ruff",
   "debugpy",
   "codelldb",
   "typescript-language-server",
-  "eslint_d",
+  "eslint",
   "htmx",
   "tailwindcss",
   "harper_ls",
@@ -29,6 +29,7 @@ vim.lsp.enable {
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
   callback = function(event)
+    -- OPTIONS
     local signs = {
       text = {
         [vim.diagnostic.severity.ERROR] = "󰅙 ",
@@ -57,6 +58,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       severity_sort = true, -- optional: sort by severity
       signs = signs,
     }
+
+    -- MAPPINGS
     local map = function(keys, func, desc)
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc, noremap = true })
     end
@@ -81,9 +84,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end, "Floating Diagnostics")
     map("K", function()
-      vim.lsp.buf.hover { border = "single" }
+      vim.lsp.buf.hover { border = "single", max_width = 80 }
     end, "Hover")
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+    -- AUTOCMD
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
       local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -112,5 +117,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
       end, "[T]oggle Inlay [H]ints")
     end
+
+    -- PLUGINS
+    -- local navic = require "nvim-navic"
+    -- function get_name()
+    --   local icons = require "mini.icons"
+    --   local parent = vim.fn.fnamemodify(vim.fn.expand "%:h", ":t")
+    --   local filename = vim.fn.expand "%:t" .. " %#IblIndent# "
+    --   local display_name = parent .. "/" .. filename .. "  "
+    --   local extension = vim.fn.expand "%:e"
+    --   local icon, icon_hl = icons.get("extension", extension)
+    --   -- local icon = icon_data.icon or " "
+    --   -- local icon_hl = icon_data.hl or "MiniIconsDefault"
+    --   local result = "%#" .. icon_hl .. "#" .. icon .. "%* " .. filename
+    --   if navic.is_available() then
+    --     return result .. navic.get_location()
+    --   else
+    --     return result
+    --   end
+    -- end
+
+    -- navic.attach(client, event.buf)
+    -- print "NAVIC"
+    -- vim.o.winbar = "%{%v:lua.get_name()%}"
+    -- vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
   end,
 })

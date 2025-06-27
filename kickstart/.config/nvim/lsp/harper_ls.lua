@@ -1,5 +1,5 @@
 return {
-  cmd = { "harper_ls" },
+  cmd = { "harper-ls" },
   filetypes = { "html", "markdown", "txt" },
   settings = {
     ["harper-ls"] = {

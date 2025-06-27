@@ -1,4 +1,4 @@
 return {
-  cmd = { "tailwindcss" },
+  cmd = { "tailwindcss-language-server" },
   filetypes = { "html", "javascriptreact", "typescript", "typescriptreact" },
 }
