@@ -14,7 +14,7 @@ return {
       columns = {
         "icon",
         "permissions",
-        "size",
+        -- "size",
         -- "mtime",
       },
       -- Buffer-local options to use for oil buffers
@@ -24,8 +24,8 @@ return {
       },
       -- Window-local options to use for oil buffers
       win_options = {
-        wrap = false,
-        signcolumn = "no",
+        wrap = true,
+        signcolumn = "yes",
         cursorcolumn = false,
         foldcolumn = "0",
         spell = false,
@@ -71,9 +71,9 @@ return {
         ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
         ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
-        ["<C-c>"] = "actions.close",
+        ["-"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
+        ["<BS>"] = "actions.parent",
         ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",
         ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory", mode = "n" },
@@ -86,14 +86,14 @@ return {
       use_default_keymaps = true,
       view_options = {
         -- Show files and directories that start with "."
-        show_hidden = false,
+        show_hidden = true,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
           return vim.startswith(name, ".")
         end,
         -- This function defines what will never be shown, even when `show_hidden` is set
         is_always_hidden = function(name, bufnr)
-          return false
+          return name == ".." or name == ".git"
         end,
         -- Sort file names in a more intuitive order for humans. Is less performant,
         -- so you may want to set to false if you work with large directories.
@@ -128,7 +128,7 @@ return {
         padding = 2,
         max_width = 0,
         max_height = 0,
-        border = "rounded",
+        border = "single",
         win_options = {
           winblend = 0,
         },
@@ -160,7 +160,7 @@ return {
         min_height = { 5, 0.1 },
         -- optionally define an integer/float for the exact height of the preview window
         height = nil,
-        border = "rounded",
+        border = "single",
         win_options = {
           winblend = 0,
         },
@@ -175,7 +175,7 @@ return {
         max_height = { 10, 0.9 },
         min_height = { 5, 0.1 },
         height = nil,
-        border = "rounded",
+        border = "single",
         minimized_border = "none",
         win_options = {
           winblend = 0,
@@ -183,11 +183,11 @@ return {
       },
       -- Configuration for the floating SSH window
       ssh = {
-        border = "rounded",
+        border = "single",
       },
       -- Configuration for the floating keymaps help window
       keymaps_help = {
-        border = "rounded",
+        border = "single",
       },
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
     },

@@ -53,6 +53,11 @@ return {
     end,
   },
   {
+
+    "tpope/vim-repeat",
+    event = "VeryLazy",
+  },
+  {
     "ggandor/leap.nvim",
     event = "VeryLazy",
     config = function()
@@ -61,11 +66,31 @@ return {
       -- vim.keymap.set("n", "F", "<Plug>(leap-from-window)")
       -- vim.keymap.set({ "x", "o" }, "f", "<Plug>(leap-forward)")
       -- vim.keymap.set({ "x", "o" }, "F", "<Plug>(leap-backward)")
-
+      -- require("leap").opts.safe_labels = {}
       vim.keymap.set("n", "s", "<Plug>(leap)")
       vim.keymap.set("n", "S", "<Plug>(leap-from-window)")
-      vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap-forward)")
-      vim.keymap.set({ "x", "o" }, "S", "<Plug>(leap-backward)")
+      vim.keymap.set({ "x", "o" }, "S", "<Plug>(leap)")
+      -- vim.keymap.set({ "x", "o" }, "S", "<Plug>(leap-backward)")
+      vim.keymap.set({ "n", "x", "o" }, "gs", function()
+        require("leap.remote").action()
+      end)
+      vim.keymap.set({ "x", "o" }, "s", function()
+        local sk = vim.deepcopy(require("leap").opts.special_keys)
+        -- The items in `special_keys` can be both strings or tables - the
+        -- shortest workaround might be the below one.
+        sk.next_target = vim.fn.flatten(vim.list_extend({ "s" }, { sk.next_target }))
+        sk.prev_target = vim.fn.flatten(vim.list_extend({ "S" }, { sk.prev_target }))
+        -- Remove these temporary traversal keys from `safe_labels`.
+        local sl = {}
+        for _, label in ipairs(vim.deepcopy(require("leap").opts.safe_labels)) do
+          if label ~= "s" and label ~= "S" then
+            table.insert(sl, label)
+          end
+        end
+        require("leap.treesitter").select {
+          opts = { special_keys = sk, safe_labels = sl },
+        }
+      end)
 
       -- local colors = function()
       --   local yellow = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn" })

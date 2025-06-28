@@ -19,6 +19,7 @@ vim.lsp.enable {
   "dockercompose",
   "emmet",
   "clangd",
+  "eslint",
   "css",
   "debugpy",
   "codelldb",

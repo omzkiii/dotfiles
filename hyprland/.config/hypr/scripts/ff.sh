@@ -10,7 +10,7 @@ dir=$(
   (
     cat "$HISTORY_FILE"
     find -P ~/Documents/Projects/ -type d
-  ) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black --prompt=" │"
+  ) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black --prompt=" │" --bind="j:down" --bind="k:up" --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)" --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)"
 )
 
 name=$(basename "$dir")
@@ -48,3 +48,4 @@ if [[ -n "$dir" ]]; then
 else
   echo "No directory selected."
 fi
+exit

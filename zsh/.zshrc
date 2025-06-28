@@ -238,7 +238,12 @@ export FZF_DEFAULT_OPTS='
   --pointer=󰄾 
   --preview "bat --style=numbers --color=always --line-range :500 {}"
   --prompt=" │"
+  --bind="j:down" 
+  --bind="k:up" 
+  --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)"
+  --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)" 
 '
+  # --bind="load:unbind(j)+unbind(k)+unbind(i)" 
 
 
 
