@@ -1,27 +1,33 @@
 #!/bin/sh
 
 while true; do
+	player=$(playerctl -l 2>/dev/null | grep -E 'spotify_player|spotify' | head -n 1)
 
-	player_status=$(playerctl -p spotify status 2>/dev/null)
+	if [ -z "$player" ]; then
+		echo ""
+		sleep 1
+		continue
+	fi
 
-	if [ -z "$(playerctl -p spotify metadata album)" ]; then
+	player_status=$(playerctl -p "$player" status 2>/dev/null)
+
+	if [ -z "$(playerctl -p "$player" metadata album 2>/dev/null)" ]; then
 		if [ "$player_status" = "Playing" ]; then
-			echo "$(playerctl -p spotify metadata artist) - $(playerctl -p spotify metadata title)"
+			echo "$(playerctl -p "$player" metadata artist) - $(playerctl -p "$player" metadata title)"
 		elif [ "$player_status" = "Paused" ]; then
-			echo "   $(playerctl -p spotify metadata artist) - $(playerctl -p spotify metadata title)"
-    else
+			echo "   $(playerctl -p "$player" metadata artist) - $(playerctl -p "$player" metadata title)"
+		else
 			echo ""
 		fi
 	else
 		if [ "$player_status" = "Playing" ]; then
-			echo "<span color='#1db954'></span> $(playerctl -p spotify metadata artist) - $(playerctl -p spotify metadata title)"
+			echo "<span color='#1db954'></span> $(playerctl -p "$player" metadata artist) - $(playerctl -p "$player" metadata title)"
 		elif [ "$player_status" = "Paused" ]; then
-			echo "<span color='#1db954'></span>    $(playerctl -p spotify metadata artist) - $(playerctl -p spotify metadata title)"
-    else
+			echo "<span color='#1db954'></span>    $(playerctl -p "$player" metadata artist) - $(playerctl -p "$player" metadata title)"
+		else
 			echo ""
 		fi
 	fi
 
 	sleep 1
-
 done

@@ -3,13 +3,15 @@
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-1"
 theme='style-3'
+CONF_FILE="$HOME/.config/hypr/opacity.conf"
+OPACITY=$(sed -n 's/^\$opacity *= *\([0-9.]*\).*/\1/p' "$CONF_FILE")
 
 # CMDs
 #
 artist="$(playerctl metadata artist)"
 title="$(playerctl metadata title)"
-status="$(playerctl -p spotify status)"
-
+status="$(playerctl -p "$player" status)"
+player=$(playerctl -l 2>/dev/null | grep -E 'spotifyd|spotify' | head -n 1)
 
 # Options
 play='󰐊'
@@ -20,6 +22,7 @@ next='󰒭'
 
 # Rofi CMD
 rofi_cmd() {
+
 	rofi -dmenu \
 		-p "$artist - $title" \
 		-theme ${dir}/${theme}.rasi
@@ -28,48 +31,52 @@ rofi_cmd() {
 echo $status
 # Pass variables to rofi dmenu
 run_rofi() {
-if [[ $status == 'Playing' ]]; then
-	echo -e "$prev\n$pause\n$next" | rofi_cmd
-elif [[ $status == 'Paused' ]]; then
-  echo -e "$prev\n$play\n$next" | rofi_cmd
-fi
+	if [[ $player == "" ]]; then
+		kitty -o background_opacity=$OPACITY spotify_player
+	fi
+	if [[ $status == 'Playing' ]]; then
+		echo -e "$prev\n$pause\n$next" | rofi_cmd
+	elif [[ $status == 'Paused' ]]; then
+		echo -e "$prev\n$play\n$next" | rofi_cmd
+	fi
 
 	# echo -e "$prev\n$play\n$stop\n$next" | rofi_cmd
 }
 
 # Execute Command
 run_cmd() {
-  if [[ $1 == '--stop' ]]; then
-    playerctl -p spotify stop
-  elif [[ $1 == '--play' ]]; then
-    playerctl -p spotify play
-  elif [[ $1 == '--pause' ]]; then
-    playerctl -p spotify pause
-  elif [[ $1 == '--prev' ]]; then
-    playerctl -p spotify previous
-  elif [[ $1 == '--next' ]]; then
-    playerctl -p spotify next
-  fi
+
+	if [[ $1 == '--stop' ]]; then
+		playerctl -p "$player" stop
+	elif [[ $1 == '--play' ]]; then
+		playerctl -p "$player" play
+	elif [[ $1 == '--pause' ]]; then
+		playerctl -p "$player" pause
+	elif [[ $1 == '--prev' ]]; then
+		playerctl -p "$player" previous
+	elif [[ $1 == '--next' ]]; then
+		playerctl -p "$player" next
+	fi
 }
 
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-    $prev)
-		run_cmd --prev
-        ;;
-    $pause)
-    run_cmd --pause
-    echo PAUSE
-        ;;
-    $play)
-    echo PLAY
-		run_cmd --play
-        ;;
-    $stop)
-    run_cmd --stop
-        ;;
-    $next)
-		run_cmd --next
-        ;;
+$prev)
+	run_cmd --prev
+	;;
+$pause)
+	run_cmd --pause
+	echo PAUSE
+	;;
+$play)
+	echo PLAY
+	run_cmd --play
+	;;
+$stop)
+	run_cmd --stop
+	;;
+$next)
+	run_cmd --next
+	;;
 esac

@@ -144,7 +144,7 @@
         "tooltip": true
     },
     "custom/spotify": {
-        "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify",
+        "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py",
         "format": "    {}",
         "return-type": "json",
         "on-click": "playerctl play-pause",

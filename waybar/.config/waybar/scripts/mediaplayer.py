@@ -91,8 +91,13 @@ def parse_arguments():
     parser.add_argument("-v", "--verbose", action="count", default=0)
 
     # Define for which player we're listening
-    parser.add_argument("--player")
+    # parser.add_argument("--player")
 
+    # parser.add_argument(
+    #     "--player",
+    #     help="Specify player name like 'spotifyd' or 'spotify'",
+    #     default=None,
+    # )
     return parser.parse_args()
 
 
@@ -116,24 +121,35 @@ def main():
     manager = Playerctl.PlayerManager()
     loop = GLib.MainLoop()
 
+    # addition
+    valid_players = ["spotify", "spotify_player"]
     manager.connect(
-        "name-appeared", lambda *args: on_player_appeared(*args, arguments.player)
+        "name-appeared",
+        lambda m, p: on_player_appeared(m, p) if p.name in valid_players else None,
     )
+    # manager.connect(
+    #     "name-appeared", lambda *args: on_player_appeared(*args, arguments.player)
+    # )
     manager.connect("player-vanished", on_player_vanished)
 
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
     signal.signal(signal.SIGPIPE, signal.SIG_DFL)
 
-    for player in manager.props.player_names:
-        if arguments.player is not None and arguments.player != player.name:
-            logger.debug(
-                "{player} is not the filtered player, skipping it".format(
-                    player=player.name
-                )
-            )
-            continue
+    # for player in manager.props.player_names:
+    #     if arguments.player is not None and arguments.player != player.name:
+    #         logger.debug(
+    #             "{player} is not the filtered player, skipping it".format(
+    #                 player=player.name
+    #             )
+    #         )
+    #         continue
+    #
+    #     init_player(manager, player)
 
+    for player in manager.props.player_names:
+        if player.name not in valid_players:
+            continue
         init_player(manager, player)
 
     loop.run()
