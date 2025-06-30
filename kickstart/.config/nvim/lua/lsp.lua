@@ -12,6 +12,7 @@ vim.lsp.config("*", {
   },
 })
 vim.lsp.enable {
+  "bash",
   "lua_ls",
   "pyright",
   "gopls",

@@ -10,8 +10,8 @@ OPACITY=$(sed -n 's/^\$opacity *= *\([0-9.]*\).*/\1/p' "$CONF_FILE")
 #
 artist="$(playerctl metadata artist)"
 title="$(playerctl metadata title)"
+player=$(playerctl -l 2>/dev/null | grep -E 'spotify_player|spotify' | head -n 1)
 status="$(playerctl -p "$player" status)"
-player=$(playerctl -l 2>/dev/null | grep -E 'spotifyd|spotify' | head -n 1)
 
 # Options
 play='󰐊'
@@ -33,11 +33,12 @@ echo $status
 run_rofi() {
 	if [[ $player == "" ]]; then
 		kitty -o background_opacity=$OPACITY spotify_player
-	fi
-	if [[ $status == 'Playing' ]]; then
-		echo -e "$prev\n$pause\n$next" | rofi_cmd
-	elif [[ $status == 'Paused' ]]; then
-		echo -e "$prev\n$play\n$next" | rofi_cmd
+	else
+		if [[ $status == 'Playing' ]]; then
+			echo -e "$prev\n$pause\n$next" | rofi_cmd
+		elif [[ $status == 'Paused' ]]; then
+			echo -e "$prev\n$play\n$next" | rofi_cmd
+		fi
 	fi
 
 	# echo -e "$prev\n$play\n$stop\n$next" | rofi_cmd

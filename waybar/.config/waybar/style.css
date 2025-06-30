@@ -191,7 +191,7 @@ button:hover {
   font-weight: bold;
   border-radius: 3px;
   /* padding: 0 0px 0 0px; */
-  background-color: @color2;
+  background-color: @color11;
 }
 
 #custom-power-menu {
