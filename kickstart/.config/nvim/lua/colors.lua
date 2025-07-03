@@ -38,17 +38,49 @@ return {
     -- version = false,
     -- Optional; default configuration will be used if setup isn't called.
     config = function()
+      vim.g.terminal_color_0 = "#2b3339" -- black
+      vim.g.terminal_color_1 = "#e67e80" -- red
+      vim.g.terminal_color_2 = "#a7c080" -- green
+      vim.g.terminal_color_3 = "#dbbc7f" -- yellow
+      vim.g.terminal_color_4 = "#7fbbb3" -- blue
+      vim.g.terminal_color_5 = "#d699b6" -- magenta
+      vim.g.terminal_color_6 = "#83c092" -- cyan
+      vim.g.terminal_color_7 = "#d3c6aa" -- white
+      vim.g.terminal_color_8 = "#7a8478" -- bright black (gray)
+      vim.g.terminal_color_9 = "#e67e80"
+      vim.g.terminal_color_10 = "#a7c080"
+      vim.g.terminal_color_11 = "#dbbc7f"
+      vim.g.terminal_color_12 = "#7fbbb3"
+      vim.g.terminal_color_13 = "#d699b6"
+      vim.g.terminal_color_14 = "#83c092"
+      vim.g.terminal_color_15 = "#d3c6aa"
       require("everforest").setup {
 
         background = "hard",
         on_highlights = function(hl, palette)
+          hl.Normal = { fg = palette.fg, bg = palette.bg0 }
           hl.LeapMatch = { fg = palette.yellow, bg = palette.yellow }
           hl.LeapLabelPrimary = { fg = palette.bg0, bg = palette.yellow, bold = true }
+          hl.CursorColumn = { fg = palette.fg, bg = palette.bg3, bold = true }
+          hl.NormalFloat = { fg = palette.fg, bg = palette.bg1, bold = true }
+          hl.CursorLine = { fg = palette.fg, bg = palette.bg2 }
+          hl.Terminal = { fg = palette.bg, bg = palette.fg }
         end,
       }
     end,
   },
-
+  -- {
+  --   "sainnhe/everforest",
+  --   config = function()
+  --     vim.api.nvim_set_hl(0, "Normal", { fg = "#d3c6aa", bg = "#2b3339" })
+  --     vim.api.nvim_set_hl(0, "LeapMatch", { fg = "#dbbc7f", bg = "#dbbc7f" })
+  --     vim.api.nvim_set_hl(0, "LeapLabelPrimary", { fg = "#2b3339", bg = "#dbbc7f", bold = true })
+  --     vim.api.nvim_set_hl(0, "CursorColumn", { fg = "#d3c6aa", bg = "#3c4841", bold = true })
+  --     vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#d3c6aa", bg = "#323d3f", bold = true })
+  --     vim.api.nvim_set_hl(0, "CursorLine", { fg = "#d3c6aa", bg = "#3a4647" })
+  --     vim.g.everforest_enable_italic = true
+  --   end,
+  -- },
   -- Highlight todo, notes, etc in comments
   {
     "maxmx03/solarized.nvim",
@@ -360,7 +392,7 @@ return {
       require("rose-pine").setup {
         enable = {
           terminal = true,
-          legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+          legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
           migrations = true, -- Handle deprecated options automatically
         },
         highlight_groups = {
