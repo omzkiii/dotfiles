@@ -3,8 +3,6 @@ CONF_FILE="$HOME/.config/hypr/opacity.conf"
 OPACITY=$(sed -n 's/^\$opacity *= *\([0-9.]*\).*/\1/p' "$CONF_FILE")
 
 HISTORY_FILE="$HOME/.fzf_project_history"
-# awk '!seen[$0]++' "$HISTORY_FILE" | sed '/^$/d' >"$HISTORY_FILE.tmp" && mv "$HISTORY_FILE.tmp" "$HISTORY_FILE"
-# dir=$(find -P ~/Documents/Projects/ -type d -print0 | fzf --read0 --preview="tree -C -C {}")
 
 dir=$(
   (
@@ -25,7 +23,7 @@ if [[ -n "$dir" ]]; then
   mv "$tmp_history" "$HISTORY_FILE" # Replace history file safely
 
   if [[ -d "$dir" ]]; then
-    if tmux list-clients | grep attached; then
+    if tmux list-clients | grep "attached"; then
       if tmux has-session -t $name 2>/dev/null; then
         tmux switch-client -t "$name"
         hyprctl dispatch focuswindow title:tmux
@@ -48,4 +46,4 @@ if [[ -n "$dir" ]]; then
 else
   echo "No directory selected."
 fi
-exit
+# kill -9 $PPID
