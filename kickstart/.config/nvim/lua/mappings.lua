@@ -25,6 +25,7 @@ end
 vim.api.nvim_set_keymap("n", "<leader>lo", ":lua ToggleDiagnostics()<CR>", { noremap = true, silent = true })
 
 local key_mappings = {
+
   n = {
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
@@ -36,8 +37,8 @@ local key_mappings = {
     ["<C-u>"] = { "Hzz", "Move up page" },
     ["<C-d>"] = { "Lzz", "Move down page" },
 
-    ["j"] = { "gj", "Down" },
-    ["<k>"] = { "gk", "Up" },
+    -- ["j"] = { "gj", "Down" },
+    -- ["<k>"] = { "gk", "Up" },
 
     -- ["<M-;>"] = { ";", "Next FTft" },
     -- ["<M-,>"] = { ",", "Previous FTft" },
@@ -65,11 +66,11 @@ local key_mappings = {
   },
   i = {},
   v = {
-    ["J"] = { ":m '>+1<CR>gvgv=gv" },
-    ["K"] = { ":m '<-2<CR>gvgv=gv" },
+    ["J"] = { ":m '>+1<CR>gvgv=gv", "Move Block Down" },
+    ["K"] = { ":m '<-2<CR>gvgv=gv", "Move Block Up" },
 
-    [">"] = { ">gv" },
-    ["<"] = { "<gv" },
+    [">"] = { ">gv", "Move Block Left" },
+    ["<"] = { "<gv", "Move Block Right" },
   },
 }
 

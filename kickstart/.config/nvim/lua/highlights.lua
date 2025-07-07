@@ -1,4 +1,4 @@
--- HIGHLIGHTconS
+-- HIGHLIGHTS
 local colors = function()
   local norm = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
   local hint = vim.api.nvim_get_hl(0, { name = "Comment", link = false })

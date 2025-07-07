@@ -100,7 +100,7 @@ return {
           variables = {},
           constants = { bold = true },
         },
-        -- theme = "neo", -- or comment to use solarized default theme.
+        theme = "neo", -- or comment to use solarized default theme.
         variant = "autumn",
         pallete = "solarized",
         on_colors = function(colors, colorhelper)
@@ -142,7 +142,7 @@ return {
             FloatBorder = { bg = "NONE" },
             NormalFloat = { fg = colors.base3 },
             SignColumn = { bg = colors.base03 },
-            ColorColumn = { bg = colors.base03 },
+            ColorColumn = { bg = colors.base0, fg = colors.base03 },
             LineNr = { bg = colors.base03 },
             LeapMatch = { fg = colors.yellow },
             LeapLabelPrimary = { fg = colors.base03, bg = colors.yellow },
@@ -397,6 +397,7 @@ return {
         },
         highlight_groups = {
           TelescopeSelection = { fg = "gold", bg = "overlay" },
+          IblIndent = { fg = "highlight_med" },
           -- Comment = { fg = "foam" },
           -- VertSplit = { fg = "muted", bg = "muted" },
         },
