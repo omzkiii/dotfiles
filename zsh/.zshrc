@@ -216,7 +216,6 @@ export QT_QPA_PLATFORM='wayland;xcb'
 # export QT_QPA_PLATFORM=wayland-xcomposite-glx
 # export QT_QPA_PLATFORM=wayland-xcomposite-egl
 # export QT_QPA_PLATFORM=xcb
-# export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 # export QT_QPA_PLATFORMTHEME="xcb"
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -227,7 +226,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 bg=$(head -n 1 ~/.cache/wal/colors)
 alias feh="feh -B '$bg'"
-alias ff="$HOME/.config/hypr/scripts/ff.sh"
+alias ff="$HOME/.config/hypr/scripts/ff.sh; kill -9 $PPID"
 
 export FZF_DEFAULT_OPTS='
   --height 40%
