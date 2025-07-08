@@ -6,9 +6,9 @@ return {
     lazy = true,
     --
     opts = {
-      -- image = {
-      -- enabled = true,
-      -- },
+      image = {
+        enabled = true,
+      },
       -- animate = {
       --   enabled = true,
       --   duration = 50, -- ms per step
