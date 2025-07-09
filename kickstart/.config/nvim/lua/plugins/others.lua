@@ -20,19 +20,19 @@ return {
     end,
   },
   -- { "nvim-tree/nvim-web-devicons", event = "User FilePost" },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = "VeryLazy",
-    opts = {
-      indent = { highlight = highlight, char = "│" },
-      whitespace = {
-        highlight = highlight,
-        remove_blankline_trail = false,
-      },
-      scope = { enabled = true },
-    },
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     indent = { highlight = highlight, char = "│" },
+  --     whitespace = {
+  --       highlight = highlight,
+  --       remove_blankline_trail = false,
+  --     },
+  --     scope = { enabled = true },
+  --   },
+  -- },
   {
     "alexghergh/nvim-tmux-navigation",
     -- lazy = true,
