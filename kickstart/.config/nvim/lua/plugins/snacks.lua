@@ -2,19 +2,60 @@ return {
   -- lazy.nvim
   {
     "folke/snacks.nvim",
-    -- event = "VeryLazy",
-    lazy = true,
+    event = "BufReadPre",
+    lazy = false,
     --
     opts = {
+      indent = {
+        priority = 1,
+        enabled = true,
+      },
+      styles = {
+        zen = {
+          enter = true,
+          fixbuf = false,
+          minimal = true,
+          width = 100,
+          height = 0,
+          backdrop = { transparent = false, blend = 99 },
+          keys = { q = false },
+          zindex = 40,
+          wo = {
+            winhighlight = "NormalFloat:Normal",
+          },
+          w = {
+            snacks_main = true,
+          },
+        },
+      },
+      zen = {
+        toggles = {
+          dim = false,
+          git_signs = false,
+          mini_diff_signs = false,
+          -- diagnostics = false,
+          -- inlay_hints = false,
+        },
+        show = {
+          statusline = false, -- can only be shown when using the global statusline
+          tabline = false,
+        },
+        win = { style = "zen" },
+        on_open = function(win) end,
+        on_close = function(win) end,
+        --- Options for the `Snacks.zen.zoom()`
+        zoom = {
+          toggles = {},
+          show = { statusline = true, tabline = true },
+          win = {
+            backdrop = false,
+            width = 0, -- full width
+          },
+        },
+      },
       image = {
         enabled = true,
       },
-      -- animate = {
-      --   enabled = true,
-      --   duration = 50, -- ms per step
-      --   easing = "linear",
-      --   fps = 60, -- frames per second. Global setting for all animations
-      -- },
       picker = {
         prompt = "   ",
         auto_close = true,
@@ -443,6 +484,15 @@ return {
         "<leader>sw",
         function()
           Snacks.picker.lsp_workspace_symbols(opts)
+        end,
+        desc = "LSP Workspace Symbols",
+      },
+
+      -- ZEN
+      {
+        "<C-S-z>",
+        function()
+          Snacks.zen.zen(opts)
         end,
         desc = "LSP Workspace Symbols",
       },
