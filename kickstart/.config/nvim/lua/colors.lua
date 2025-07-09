@@ -397,7 +397,7 @@ return {
         },
         highlight_groups = {
           TelescopeSelection = { fg = "gold", bg = "overlay" },
-          IblIndent = { fg = "highlight_med" },
+          SnacksIndent = { fg = "highlight_med" },
           -- Comment = { fg = "foam" },
           -- VertSplit = { fg = "muted", bg = "muted" },
         },
