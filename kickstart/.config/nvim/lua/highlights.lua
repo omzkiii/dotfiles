@@ -7,7 +7,7 @@ local colors = function()
   local nFloat = vim.api.nvim_get_hl(0, { name = "NormalFloat", link = false })
   local err = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
   local add = vim.api.nvim_get_hl(0, { name = "@character", link = false })
-  local ul = vim.api.nvim_get_hl(0, { name = "IblIndent", link = false })
+  local ul = vim.api.nvim_get_hl(0, { name = "SnacksIndent", link = false })
   local yellow = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn" })
 
   -- local norm = vim.api.nvim_get_hl(0, { name = "Normal" })
@@ -38,7 +38,8 @@ local colors = function()
   vim.api.nvim_set_hl(0, "SnacksPickerBoxTitle", { link = "FloatTitle" })
 
   vim.api.nvim_set_hl(0, "WinBar", { bg = norm.bg, fg = nil, sp = ul.fg, underline = true })
-  vim.api.nvim_set_hl(0, "WinBarNC", { bg = norm.bg, fg = nil, nocombine = true })
+  vim.api.nvim_set_hl(0, "WinBarNC", { bg = norm.bg, fg = nil, sp = ul.fg, underline = true })
+  -- vim.api.nvim_set_hl(0, "WinBarNC", { bg = norm.bg, fg = nil, nocombine = true })
 
   vim.api.nvim_set_hl(0, "LualineBg", { fg = ul.fg, bg = cursor.bg })
 end
