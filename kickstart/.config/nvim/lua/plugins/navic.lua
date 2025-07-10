@@ -33,7 +33,7 @@ return {
       },
       lsp = {
         auto_attach = true,
-        preference = nil,
+        preference = { "vue" },
       },
       highlight = true,
       separator = "  ",
@@ -73,7 +73,7 @@ return {
     vim.api.nvim_set_hl(0, "NavicIconsEvent", { link = "@lsp.type.event" })
     vim.api.nvim_set_hl(0, "NavicIconsOperator", { link = "@operator" })
     vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", { link = "@lsp.type.typePArameter" })
-    vim.api.nvim_set_hl(0, "NavicText", { link = "IblScope" })
+    vim.api.nvim_set_hl(0, "NavicText", { link = "SnacksIndentScope" })
     vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Comment" })
   end,
 }
