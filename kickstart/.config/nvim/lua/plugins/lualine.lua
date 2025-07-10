@@ -6,6 +6,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("mini.icons").mock_nvim_web_devicons()
+      local navic = require "nvim-navic"
       local function recording()
         local reg = vim.fn.reg_recording()
         if reg == "" then
@@ -41,11 +42,8 @@ return {
         },
 
         sections = {
-
           lualine_a = {
-
             {
-
               "mode",
               fmt = function(str)
                 local mode_map = {
@@ -73,19 +71,17 @@ return {
               end,
             },
           },
-
           lualine_b = {
-
-            {
-              "filetype",
-              color = "CursorColumn",
-              separator = "",
-              colored = true, -- Displays filetype icon in color if set to true
-              icon_only = true, -- Display only an icon for filetype
-              align = "right",
-              -- separator = "",
-              padding = { right = -3, left = 1 },
-            },
+            -- {
+            --   "filetype",
+            --   color = "CursorColumn",
+            --   separator = "",
+            --   colored = true, -- Displays filetype icon in color if set to true
+            --   icon_only = true, -- Display only an icon for filetype
+            --   align = "right",
+            --   -- separator = "",
+            --   padding = { right = -3, left = 1 },
+            -- },
             {
               "filename",
               color = "CursorColumn",
@@ -170,13 +166,47 @@ return {
         },
         tabline = {},
         winbar = {
-          -- lualine_c = {
-          --   {
-          --     "navic",
-          --     -- color_correction = nil,
-          --     -- navic_opts = nil,
-          --   },
-          -- },
+          lualine_c = {
+            {
+              "filetype",
+              separator = "",
+              color = "WinBar",
+              colored = true, -- Displays filetype icon in color if set to true
+              icon_only = true, -- Display only an icon for filetype
+              align = "right",
+              padding = { right = -3, left = 1 },
+            },
+
+            {
+              "filename",
+              separator = "",
+              color = "SnacksIndentScope",
+              file_status = true, -- Displays file status (readonly status, modified status)
+              padding = { right = 1, left = 0 },
+              newfile_status = false, -- Display new file status (new file means no write after created)
+              path = 0, -- 0: Just the filename
+              -- 1: Relative path
+              -- 2: Absolute path
+              -- 3: Absolute path, with tilde as the home directory
+              -- 4: Filename and parent dir, with tilde as the home directory
+
+              shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+              -- for other components. (terrible name, any suggestions?)
+              symbols = {
+                modified = "",
+                readonly = "", -- Text to show when the file is non-modifiable or readonly.
+                unnamed = "", -- Text to show for unnamed buffers.
+                newfile = "", -- Text to show for newly created file before first write
+              },
+            },
+            {
+              "navic",
+              -- color = "Float",
+              -- color_correction = nil,
+              -- navic_opts = nil,
+            },
+          },
+          -- lualine_b = {},
         },
         inactive_winbar = {},
         extensions = {},
