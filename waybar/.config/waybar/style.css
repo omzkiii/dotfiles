@@ -6,7 +6,7 @@
   /* font-family:  'GohuFont 11 Nerd Font', Iosevka Nerd Font; */
   /* font-family: "MesloLGS Nerd Font"; */
   /* font-family: "Liberation Mono"; */
-  font-family: "JetbrainsMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font Propo";
   font-size: 10px;
 }
 
@@ -32,22 +32,17 @@
   transition-duration: 0.5s;
 }
 
-#clock,
 #cpu,
 #memory,
 #custom-media,
-#tray,
 #mode,
 #window,
 #workspaces,
-#battery,
 #idle_inhibitor,
 #custom-power-menu,
 #custom-wallpaper,
-#custom-launcher,
-#custom-spotify,
 #default {
-  padding: 2px;
+  /* padding: 2px; */
   /* background-color: @background; */
   /* margin: 0 3px 0; */
   /* border-radius: 3px; */
@@ -78,7 +73,7 @@
 button:hover {
   background: inherit;
   border: transparent;
-  border-top: 2px solid @color1;
+  /* border-top: 2px solid @color1; */
 }
 
 #workspaces {
@@ -100,8 +95,8 @@ button:hover {
   font-weight: bold;
   color: @foreground;
   /* margin: 0em; */
-  margin-right: 10px;
-  margin-left: 10px;
+  /* margin-right: 10px; */
+  /* margin-left: 10px; */
   border-top: 3px solid @color10;
   /* border-bottom: 3px solid @color10; */
   transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.68);
@@ -134,13 +129,16 @@ button:hover {
   color: @color10;
 }
 
+#clock,
+#custom-spotify,
+#tray,
 #battery,
 #bluetooth,
 #backlight,
 #pulseaudio,
 #network {
   /* background-color: @background; */
-  /* color: @background; */
+
   padding: 0 12px;
   margin: 0px 0 0;
 }

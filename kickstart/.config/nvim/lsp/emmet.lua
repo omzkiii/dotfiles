@@ -1,4 +1,4 @@
 return {
   cmd = { "emmet-language-server", "--stdio" },
-  filetypes = { "html", "javascriptreact", "typescriptreact" },
+  filetypes = { "html", "javascriptreact", "typescriptreact", "vue" },
 }

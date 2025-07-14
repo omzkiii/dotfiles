@@ -1,4 +1,5 @@
-# echo && fortune && echo
+# fastfetch
+# fortune && echo
 # toilet -f term -F border " It only takes two weeks. " && echo
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -227,6 +228,7 @@ export VISUAL="nvim"
 bg=$(head -n 1 ~/.cache/wal/colors)
 alias feh="feh -B '$bg'"
 alias ff="$HOME/.config/hypr/scripts/ff.sh; kill -9 $PPID"
+alias uv="$HOME/.push_vault.sh"
 
 export FZF_DEFAULT_OPTS='
   --height 40%
@@ -241,8 +243,9 @@ export FZF_DEFAULT_OPTS='
   --prompt=" │"
   --bind="j:down" 
   --bind="k:up" 
-  --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)"
-  --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)" 
+  --bind="q:abort" 
+  --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)+unbind(q)"
+  --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)+rebind(q)" 
 '
   # --bind="load:unbind(j)+unbind(k)+unbind(i)" 
 

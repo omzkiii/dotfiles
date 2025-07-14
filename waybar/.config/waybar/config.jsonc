@@ -85,14 +85,14 @@
     },
     "cpu": {
         "interval": 10,
-        "format": "   {}%",
+        "format": " {}%",
         "max-length": 10,
         "on-click": ""
     },
     "memory": {
         "interval": 30,
-        "format": "   {}%",
-        "format-alt": "   {used:0.1f}GB",
+        "format": " {}%",
+        "format-alt": " {used:0.1f}GB",
         "max-length": 10
     },
     "backlight": {
@@ -104,8 +104,8 @@
         "on-scroll-down": "~/.config/waybar/scripts/brightness.sh --dec"
     },
     "network": {
-        "format-wifi": "{icon}",
-        "format-ethernet": "󰈁 ",
+        "format-wifi":"{icon}",
+        "format-ethernet": "󰈁",
         "format-disconnected": "󰖪",
         "tooltip-format": "{essid}",
         "on-click": "kitty nmtui",
@@ -115,7 +115,7 @@
         "format": "{icon}{volume}%",
         "format-muted": "󰝟 ",
         "format-icons": {
-            "default": ["󰕿  ", "󰖀  ", "󰕾  "]
+            "default": ["󰕿 ", "󰖀 ", "󰕾 "]
         },
         "on-click": "pavucontrol &",
         "on-click-right": "pamixer -t",
@@ -134,18 +134,18 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
+        "format": "{icon}{capacity}%",
         "format-charging": "  {capacity}%",
         "format-plugged": "  {capacity}%",
-        "format-full": "{icon}  Full",
+        "format-full": "{icon}Full",
         "format-alt": "{icon}  {time}",
-        "format-icons": ["  ", "  ", "  ", "  ", "  "],
+        "format-icons": [" ", " ", " ", " ", " "],
         "format-time": "{H}h {M}min",
         "tooltip": true
     },
     "custom/spotify": {
         "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py",
-        "format": "    {}",
+        "format": " {}",
         "return-type": "json",
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",

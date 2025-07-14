@@ -11,5 +11,5 @@ killall waybar && waybar &
 spicetify config current_theme text color_scheme GruvboxMedium
 spicetify apply
 ~/.config/mako/update-colors.sh
-swww img ~/Pictures/Wallpapers/wall.jpg --transition-type center
+swww img ~/Pictures/Wallpapers/image21.png --transition-type center
 notify-send Gruvbox-Medium
