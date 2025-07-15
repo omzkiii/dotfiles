@@ -15,12 +15,51 @@ return {
       },
       -- Default keymappings
       keys = {
-        ["<leader>ct"] = "toggle", -- Toggle todo item
-        ["<leader>cc"] = "check", -- Set todo item as checked (done)
-        ["<leader>cu"] = "uncheck", -- Set todo item as unchecked (not done)
-        ["<leader>cn"] = "create", -- Create todo item
-        ["<leader>cR"] = "remove_all_metadata", -- Remove all metadata from a todo item
-        -- ["<leader>Ta"] = "archive", -- Archive checked/completed todo items (move to bottom section)
+        ["<leader>ct"] = {
+          rhs = "<cmd>Checkmate toggle<CR>",
+          desc = "Toggle todo item",
+          modes = { "n", "v" },
+        },
+        ["<leader>cc"] = {
+          rhs = "<cmd>Checkmate check<CR>",
+          desc = "Set todo item as checked (done)",
+          modes = { "n", "v" },
+        },
+        ["<leader>cu"] = {
+          rhs = "<cmd>Checkmate uncheck<CR>",
+          desc = "Set todo item as unchecked (not done)",
+          modes = { "n", "v" },
+        },
+        ["<leader>cn"] = {
+          rhs = "<cmd>Checkmate create<CR>",
+          desc = "Create todo item",
+          modes = { "n", "v" },
+        },
+        ["<leader>cR"] = {
+          rhs = "<cmd>Checkmate remove_all_metadata<CR>",
+          desc = "Remove all metadata from a todo item",
+          modes = { "n", "v" },
+        },
+        ["<leader>cA"] = {
+          rhs = "<cmd>Checkmate archive<CR>",
+          desc = "Archive checked/completed todo items (move to bottom section)",
+          modes = { "n" },
+        },
+        ["<leader>cv"] = {
+          rhs = "<cmd>Checkmate metadata select_value<CR>",
+          desc = "Update the value of a metadata tag under the cursor",
+          modes = { "n" },
+        },
+        ["<leader>c]"] = {
+          rhs = "<cmd>Checkmate metadata jump_next<CR>",
+          desc = "Move cursor to next metadata tag",
+          modes = { "n" },
+        },
+        ["<leader>c["] = {
+          rhs = "<cmd>Checkmate metadata jump_previous<CR>",
+          desc = "Move cursor to previous metadata tag",
+          modes = { "n" },
+        },
       },
       default_list_marker = "-",
       todo_markers = {
@@ -29,7 +68,7 @@ return {
       },
       style = {},
       todo_action_depth = 1, --  Depth within a todo item's hierachy from which actions (e.g. toggle) will act on the parent todo item
-      enter_insert_after_new = true, -- Should enter INSERT mode after :CheckmateCreate (new todo)
+      enter_insert_after_new = false, -- Should enter INSERT mode after :CheckmateCreate (new todo)
       smart_toggle = {
         enabled = true,
         check_down = "direct_children",
@@ -66,7 +105,9 @@ return {
         -- Example: A @started tag that uses a default date/time string when added
         started = {
           aliases = { "init" },
-          style = { fg = "#9fd6d5" },
+          style = function()
+            return vim.api.nvim_get_hl(0, { name = "DiagnosticHint" })
+          end,
           get_value = function()
             return tostring(os.date "%m/%d/%y %H:%M")
           end,
@@ -75,7 +116,9 @@ return {
         -- Example: A @done tag that also sets the todo item state when it is added and removed
         done = {
           aliases = { "completed", "finished" },
-          style = { fg = "#96de7a" },
+          style = function()
+            return vim.api.nvim_get_hl(0, { name = "GitSignsAdd" })
+          end,
           get_value = function()
             return tostring(os.date "%m/%d/%y %H:%M")
           end,
@@ -86,6 +129,17 @@ return {
           on_remove = function(todo_item)
             require("checkmate").set_todo_item(todo_item, "unchecked")
           end,
+        },
+        due = {
+          style = function()
+            return vim.api.nvim_get_hl(0, { name = "DiagnosticError" })
+          end,
+          get_value = function()
+            return tostring(os.date "%m/%d/%y")
+          end,
+          key = "<leader>cD",
+          jump_to_on_insert = "value",
+          select_on_insert = true,
         },
       },
       archive = {
