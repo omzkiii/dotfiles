@@ -38,7 +38,7 @@ local options = {
 
   ui = {
     cmp = {
-      icons_left = false, -- only for non-atom styles!
+      icons_left = true, -- only for non-atom styles!
       lspkind_text = true,
       style = "default", -- default/flat_light/flat_dark/atom/atom_colored
       format_colors = {
@@ -50,7 +50,7 @@ local options = {
     telescope = { style = "borderless" }, -- borderless / bordered
 
     statusline = {
-      enabled = false,
+      enabled = true,
       theme = "default", -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
@@ -141,5 +141,9 @@ local options = {
   },
 }
 
+vim.keymap.set("n", "<leader><leader>", function()
+  require("nvchad.themes").open()
+end, { silent = true, buffer = true, desc = "nvchad themes" })
 local status, chadrc = pcall(require, "chadrc")
+
 return vim.tbl_deep_extend("force", options, status and chadrc or {})
