@@ -86,61 +86,61 @@ return {
         action = function()
           return require("obsidian").util.toggle_checkbox()
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Toggle Checkbox" },
       },
 
       ["<BS>"] = {
         action = function()
           return vim.cmd ":ObsidianBacklinks"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Backlinks" },
       },
 
       ["<M-CR>"] = {
         action = function()
           return vim.cmd ":ObsidianLinks"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Links within Notes" },
       },
 
       ["<leader>os"] = {
         action = function()
           return vim.cmd ":ObsidianSearch"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Search Notes" },
       },
 
       ["<leader>oq"] = {
         action = function()
           return vim.cmd ":ObsidianQuickSwitch"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Open Quick Switch" },
       },
       ["<S-CR>"] = {
         action = function()
           return vim.cmd ":ObsidianFollowLink vsplit"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Follow Link Vsplit" },
       },
 
       ["<leader>on"] = {
         action = function()
           return vim.cmd ":ObsidianNew"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "New Note" },
       },
 
       ["<leader>ot"] = {
         action = function()
           return vim.cmd ":ObsidianTemplate Tagline"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Apply Tagline" },
       },
       ["<leader>od"] = {
         action = function()
           return vim.cmd ":ObsidianDailies"
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Open Daily" },
       },
       ["<leader>ou"] = {
         action = function()
@@ -153,7 +153,20 @@ return {
             end,
           }
         end,
-        opts = { buffer = true },
+        opts = { buffer = true, desc = "Unfinished Notes" },
+      },
+      ["<leader>oT"] = {
+        action = function()
+          require("telescope.builtin").grep_string {
+            prompt_title = "Todo Notes", -- Set custom prompt title
+            search = "#todo",
+            only_sort_text = true,
+            path_display = function(_, path)
+              return vim.fn.fnamemodify(path, ":t")
+            end,
+          }
+        end,
+        opts = { buffer = true, desc = "Task Notes" },
       },
     },
     disable_frontmatter = true,
