@@ -7,15 +7,19 @@ return {
     --
     opts = {
       indent = {
-        priority = 1,
         enabled = true,
+        priority = 1,
+        char = "│",
+        chunk = {
+          -- enabled = true,
+        },
       },
       styles = {
         zen = {
           enter = true,
           fixbuf = false,
           minimal = true,
-          width = 100,
+          width = 80,
           height = 0,
           backdrop = { transparent = false, blend = 99 },
           keys = { q = false },
@@ -39,6 +43,7 @@ return {
         show = {
           statusline = false, -- can only be shown when using the global statusline
           tabline = false,
+          tmux = false,
         },
         win = { style = "zen" },
         on_open = function(win) end,
@@ -490,7 +495,7 @@ return {
 
       -- ZEN
       {
-        "<C-S-z>",
+        "<leader>z",
         function()
           Snacks.zen.zen(opts)
         end,
