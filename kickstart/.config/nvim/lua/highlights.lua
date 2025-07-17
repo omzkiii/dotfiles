@@ -1,14 +1,14 @@
 -- HIGHLIGHTS
 local colors = function()
   local norm = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
-  local hint = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
+  local hint = vim.api.nvim_get_hl(0, { name = "DiagnosticHint", link = false })
   local cursor = vim.api.nvim_get_hl(0, { name = "CursorColumn", link = false })
   local comment = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
   local nFloat = vim.api.nvim_get_hl(0, { name = "NormalFloat", link = false })
   local err = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
   local add = vim.api.nvim_get_hl(0, { name = "@character", link = false })
   local ul = vim.api.nvim_get_hl(0, { name = "SnacksIndent", link = false })
-  local yellow = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn" })
+  local yellow = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false })
 
   -- local norm = vim.api.nvim_get_hl(0, { name = "Normal" })
   vim.api.nvim_set_hl(0, "LeapLabel", { bg = yellow.fg, fg = norm.bg, bold = true })
@@ -37,8 +37,10 @@ local colors = function()
   vim.api.nvim_set_hl(0, "SnacksPickerTitle", { link = "FloatTitle" })
   vim.api.nvim_set_hl(0, "SnacksPickerBoxTitle", { link = "FloatTitle" })
 
-  vim.api.nvim_set_hl(0, "WinBar", { bg = norm.bg, fg = nil, sp = ul.fg, underline = true })
-  vim.api.nvim_set_hl(0, "WinBarNC", { bg = norm.bg, fg = nil, sp = ul.fg, underline = true })
+  -- vim.api.nvim_set_hl(0, "NonText", { link = "NormalFloat" })
+
+  vim.api.nvim_set_hl(0, "WinBar", { bg = nFloat.bg, fg = nil, sp = ul.fg, underline = false })
+  vim.api.nvim_set_hl(0, "WinBarNC", { link = "WinBar" })
   -- vim.api.nvim_set_hl(0, "WinBarNC", { bg = norm.bg, fg = nil, nocombine = true })
 
   vim.api.nvim_set_hl(0, "LualineBg", { fg = ul.fg, bg = cursor.bg })
