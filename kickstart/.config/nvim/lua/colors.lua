@@ -101,7 +101,7 @@ return {
           constants = { bold = true },
         },
         theme = "neo", -- or comment to use solarized default theme.
-        variant = "autumn",
+        variant = "summer",
         pallete = "solarized",
         on_colors = function(colors, colorhelper)
           local darken = colorhelper.darken
@@ -131,30 +131,33 @@ return {
 
           ---@type solarized.highlights
           local groups = {
-            Normal = { fg = colors.base00 },
+            -- Normal = { fg = colors.base00 },
             -- LineNr = { fg = c.base1, bg = c.base02 },
-            -- CursorLineNr = { bg = lighten(c.base03, 10) },
+            CursorLineNr = { bg = colors.base03 },
             CursorLine = { bg = lighten(colors.base03, 10) },
-            Visual = { bg = darken(colors.base03, 30) },
-            IblScope = { fg = colors.base1, bg = "NONE" },
-            IblIndent = { fg = colors.base02, bg = "NONE" },
-            b = { bg = colors.base01 },
-            FloatBorder = { bg = "NONE" },
-            NormalFloat = { fg = colors.base3 },
-            SignColumn = { bg = colors.base03 },
-            ColorColumn = { bg = colors.base0, fg = colors.base03 },
-            LineNr = { bg = colors.base03 },
-            LeapMatch = { fg = colors.yellow },
-            LeapLabelPrimary = { fg = colors.base03, bg = colors.yellow },
-            Function = { fg = colors.cyan },
-            Constant = { fg = colors.orange },
-            String = { fg = colors.green },
-            Keyword = { fg = colors.yellow },
-            Variable = { fg = colors.base1 },
-            -- Character = { fg = colors.base1 },
-            Special = { fg = colors.blue },
-            Identifier = { fg = colors.blue },
-            Parameter = { fg = colors.magenta },
+            WinSeparator = { bg = colors.base03 },
+            SnacksPickerTree = { bg = colors.base04 },
+            SnacksPickerCol = { bg = colors.base04 },
+            -- Visual = { bg = darken(colors.base03, 30) },
+            -- IblScope = { fg = colors.base1, bg = "NONE" },
+            -- IblIndent = { fg = colors.base02, bg = "NONE" },
+            -- b = { bg = colors.base01 },
+            -- FloatBorder = { bg = "NONE" },
+            -- NormalFloat = { fg = colors.base3 },
+            -- SignColumn = { bg = colors.base03 },
+            -- ColorColumn = { bg = colors.base0, fg = colors.base03 },
+            -- LineNr = { bg = colors.base03 },
+            -- LeapMatch = { fg = colors.yellow },
+            -- LeapLabelPrimary = { fg = colors.base03, bg = colors.yellow },
+            -- Function = { fg = colors.cyan },
+            -- Constant = { fg = colors.orange },
+            -- String = { fg = colors.green },
+            -- Keyword = { fg = colors.yellow },
+            -- Variable = { fg = colors.base1 },
+            -- -- Character = { fg = colors.base1 },
+            -- Special = { fg = colors.blue },
+            -- Identifier = { fg = colors.blue },
+            -- Parameter = { fg = colors.magenta },
             -- Character = { fg = colors.magenta },
             -- PmenuThumb = { fg = colors.yellow, bg = colors.yellow },
             -- Visual = { bg = c.base02 },
@@ -175,15 +178,15 @@ return {
       vim.g.gruvbox_baby_keyword_style = "NONE"
       vim.g.gruvbox_baby_use_original_palette = true
       vim.g.gruvbox_baby_function_style = "NONE"
-      vim.g.gruvbox_baby_background_color = "soft"
+      -- vim.g.gruvbox_baby_background_color = "hard"
       vim.g.gruvbox_baby_highlights = {
         -- Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
         -- Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
         TelescopeSelection = { fg = "#ebdbb2", bg = "#504945", style = "NONE" },
         Underlined = { fg = "#7fa2ac", bg = "NONE", style = "underline" },
         WinSeparator = { fg = "#32392f", bg = "NONE", style = "NONE" },
-        IblScope = { fg = "#928374", bg = "NONE", style = "NONE" },
-        IblIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
+        SnacksIndentScope = { fg = "#928374", bg = "NONE", style = "NONE" },
+        SnacksIndent = { fg = "#504945", bg = "NONE", style = "NONE" },
         RenderMarkdownH1Bg = { fg = "#282828", bg = "#fb4934", style = "bold" },
         RenderMarkdownH2Bg = { fg = "#282828", bg = "#fabd35", style = "bold" },
         RenderMarkdownH3Bg = { fg = "#282828", bg = "#d4879c", style = "bold" },
@@ -238,6 +241,7 @@ return {
           emphasis = false,
           comments = true,
           operators = false,
+          emphasis = true,
           folds = true,
         },
         strikethrough = true,
@@ -245,14 +249,14 @@ return {
         invert_signs = false,
         invert_tabline = false,
         invert_intend_guides = false,
-        inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "hard", -- can be "hard", "soft" or empty string
+        inverse = true, -- invert background for search, diffs, statuslines and errors
+        -- contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
-          Normal = { bg = "#282828" }, -- explicitly set Normal background color
+          -- Normal = { bg = "#282828" }, -- explicitly set Normal background color
           NormalFloat = { bg = "#282626" }, -- explicitly set Normal background color
-          CursorColumn = { bg = "#3c3836" },
+          -- CursorColumn = { bg = "#504945" },
           -- SignColumn = { bg = "#1d2021" },
           ErrorMsg = { link = "GruvboxRed" },
           WarningMsg = { link = "GruvboxYellow" },
@@ -261,6 +265,24 @@ return {
           DiagnosticSignHint = { link = "GruvboxAqua" },
           DiagnosticSignInfo = { link = "GruvboxBlue" },
           DiagnosticSignOk = { link = "GruvboxGreen" },
+
+          RenderMarkdownH1Bg = { fg = "#282828", bg = "#fb4934", bold = true },
+          RenderMarkdownH2Bg = { fg = "#282828", bg = "#fabd35", bold = true },
+          RenderMarkdownH3Bg = { fg = "#282828", bg = "#d4879c", bold = true },
+          RenderMarkdownH4Bg = { fg = "#282828", bg = "#8ec07c", bold = true },
+          RenderMarkdownH5Bg = { fg = "#282828", bg = "#7fa2ac", bold = true },
+          RenderMarkdownH6Bg = { fg = "#282828", bg = "#98971a", bold = true },
+
+          TelescopeBorder = { fg = "#504845", bg = "#282626" },
+          TelescopeNormal = { fg = "#504845", bg = "#282626" },
+          TelescopeTitle = { fg = "#282626", bg = "#98971a", bold = true },
+          TelescopeSelection = { fg = "#ebdbb2", bg = "#504945" },
+
+          WinSeparator = { fg = "#32392f", bg = "NONE" },
+          SnacksIndentScope = { fg = "#928374", bg = "NONE" },
+          -- SnacksIndent = { fg = "#504945", bg = "NONE" },
+
+          CursorLineNr = { fg = "#ebdbb2", bg = "#282828", bold = true },
         },
         dim_inactive = false,
         transparent_mode = false,
