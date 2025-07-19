@@ -12,9 +12,11 @@ vim.lsp.config("*", {
   },
 })
 vim.lsp.enable {
+
   "bash",
   "lua_ls",
   "vue",
+  "vtsls",
   "pyright",
   "gopls",
   "dockerfile",
@@ -25,7 +27,9 @@ vim.lsp.enable {
   "css",
   "debugpy",
   "codelldb",
-  "typescript-language-server",
+  "marksman",
+  -- "markdown-oxide",
+  -- "typescript-language-server",
   "eslint",
   "htmx",
   "tailwindcss",
