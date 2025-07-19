@@ -229,6 +229,7 @@ bg=$(head -n 1 ~/.cache/wal/colors)
 alias feh="feh -B '$bg'"
 alias ff="$HOME/.config/hypr/scripts/ff.sh; kill -9 $PPID"
 alias uv="$HOME/.push_vault.sh"
+alias t=taskwarrior-tui
 
 export FZF_DEFAULT_OPTS='
   --height 40%
