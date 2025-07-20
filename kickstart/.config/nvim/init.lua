@@ -187,9 +187,9 @@ require("lazy").setup({
 
 -- vim.cmd.colorscheme "nvchad"
 -- vim.cmd.colorscheme "ayu-dark"
--- vim.cmd.colorscheme "kanagawa"
+vim.cmd.colorscheme "kanagawa"
 -- vim.cmd.colorscheme "solarized"
-vim.cmd.colorscheme "gruvbox"
+-- vim.cmd.colorscheme "gruvbox"
 -- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "tokyonight-night"
 -- vim.cmd.colorscheme "catppuccin-mocha"
