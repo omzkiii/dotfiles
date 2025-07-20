@@ -101,7 +101,7 @@ return {
           constants = { bold = true },
         },
         theme = "neo", -- or comment to use solarized default theme.
-        variant = "summer",
+        variant = "spring",
         pallete = "solarized",
         on_colors = function(colors, colorhelper)
           local darken = colorhelper.darken
@@ -294,18 +294,41 @@ return {
     lazy = true,
     config = function()
       require("kanagawa").setup {
+        compile = false, -- enable compiling the colorscheme
+        undercurl = true, -- enable undercurls
+        commentStyle = { italic = true },
+        functionStyle = {},
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = false, -- do not set background color
+        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+        terminalColors = true, -- define vim.g.terminal_color_{0,17}
+        colors = { -- add/modify theme and palette colors
+          palette = {},
+          theme = {
+            wave = {},
+            lotus = {},
+            dragon = {},
+            all = {
+              ui = {
+                bg_gutter = "none",
+              },
+            },
+          },
+        },
         overrides = function(colors)
           return {
             -- Assign a static color to strings
             -- String = { fg = colors.palette.carpYellow, italic = true },
             -- theme colors will update dynamically when you change theme!
             -- SomePluginHl = { fg = colors.theme.syn.type, bold = true },
-            SignColumn = { bg = colors.palette.sumiInk3 },
+            -- SignColumn = { bg = colors.palette.sumiInk3 },
             -- CursorLineNr = { bg = colors.palette.sumiInk2 },
             -- Visual = { bg = colors.palette.sumiInk6 },
-            LineNr = { bg = colors.palette.sumiInk0, fg = colors.palette.sumiInk4 },
-            LineNrAbove = { bg = colors.palette.sumiInk3, fg = colors.palette.springViolet1 },
-            LineNrBelow = { bg = colors.palette.sumiInk3, fg = colors.palette.springViolet1 },
+            -- LineNr = { bg = colors.palette.sumiInk0, fg = colors.palette.sumiInk4 },
+            -- LineNrAbove = { bg = colors.palette.sumiInk3, fg = colors.palette.springViolet1 },
+            -- LineNrBelow = { bg = colors.palette.sumiInk3, fg = colors.palette.springViolet1 },
             SnacksPickerCol = { bg = colors.palette.sumiInk0, fg = colors.palette.sumiInk4 },
             SnacksPickerTree = { bg = colors.palette.sumiInk0, fg = colors.palette.sumiInk4 },
           }
