@@ -73,14 +73,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc, noremap = true })
     end
 
-    map("<leader>ra", "<cmd>lua vim.lsp.buf.rename(); vim.cmd('wa')<CR>", "Rename")
+    map("<leader>grn", "<cmd>lua vim.lsp.buf.rename(); vim.cmd('wa')<CR>", "Rename")
     -- map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
     -- map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
     -- map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
     -- map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
     -- map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
     -- map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-    map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+    map("<leader>gra", vim.lsp.buf.code_action, "Code Action")
     map("<leader>lf", function()
       -- vim.diagnostic.open_float { border = "single" }
       vim.diagnostic.config { virtual_lines = { current_line = true }, virtual_text = false }
