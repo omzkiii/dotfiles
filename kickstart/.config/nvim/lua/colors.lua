@@ -449,4 +449,19 @@ return {
       }
     end,
   },
+  {
+    "Mofiqul/dracula.nvim",
+    lazy = true,
+    config = function()
+      require("dracula").setup {
+        overrides = function(colors)
+          return {
+            NormalFloat = { fg = colors.white, bg = colors.menu }, -- set NonText fg to white of theme
+            SnacksPickerListCursorLine = { bg = colors.selection, fg = colors.fg },
+            CursorColumn = { bg = colors.gutter_fg },
+          }
+        end,
+      }
+    end,
+  },
 }
