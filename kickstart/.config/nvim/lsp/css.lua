@@ -1,4 +1,4 @@
 return {
   cmd = { "vscode-css-language-server", "--stdio" },
-  filetypes = { "css", "scss" },
+  filetypes = { "css", "scss", "vue" },
 }
