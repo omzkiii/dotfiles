@@ -178,7 +178,7 @@ return {
       vim.g.gruvbox_baby_keyword_style = "NONE"
       vim.g.gruvbox_baby_use_original_palette = true
       vim.g.gruvbox_baby_function_style = "NONE"
-      -- vim.g.gruvbox_baby_background_color = "hard"
+      vim.g.gruvbox_baby_background_color = "soft"
       vim.g.gruvbox_baby_highlights = {
         -- Normal = { fg = "#fbf1c7", bg = "#1d2021", style = "NONE" },
         -- Normal = { fg = "#ebdbb2", bg = "#1d2021", style = "NONE" },
@@ -198,6 +198,7 @@ return {
         TelescopeBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
         TelescopeTitle = { fg = "#282626", bg = "#98971a", style = "bold" },
         DiagnosticUnderlineError = { sp = "#fb4934", style = "undercurl" },
+        LualineBg = { link = "StatusLine" },
 
         -- SnacksPickerBoxBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
         -- SnacksPickerInputBorder = { fg = "NONE", bg = "NONE", style = "NONE" },
@@ -283,6 +284,12 @@ return {
           -- SnacksIndent = { fg = "#504945", bg = "NONE" },
 
           CursorLineNr = { fg = "#ebdbb2", bg = "#282828", bold = true },
+
+          LspReferenceText = { link = "Visual" },
+          LspReferenceRead = { link = "Visual" },
+
+          Type = { link = "GruvboxAqua" },
+          Include = { link = "GruvboxPurple" },
         },
         dim_inactive = false,
         transparent_mode = false,
