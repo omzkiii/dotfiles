@@ -188,7 +188,7 @@ require("lazy").setup({
 -- vim.cmd.colorscheme "nvchad"
 -- vim.cmd.colorscheme "ayu-dark"
 -- vim.cmd.colorscheme "dracula"
-vim.cmd.colorscheme "kanagawa"
+-- vim.cmd.colorscheme "kanagawa"
 -- vim.cmd.colorscheme "solarized"
 -- vim.cmd.colorscheme "gruvbox"
 -- vim.cmd.colorscheme "rose-pine"
@@ -202,7 +202,7 @@ vim.cmd.colorscheme "kanagawa"
 -- dofile(vim.g.base46_cache .. "telescope")
 -- dofile(vim.g.base46_cache .. "cmp")
 -- vim.cmd.colorscheme "nord"
--- vim.cmd.colorscheme "gruvbox-baby"
+vim.cmd.colorscheme "gruvbox-baby"
 require "highlights"
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
