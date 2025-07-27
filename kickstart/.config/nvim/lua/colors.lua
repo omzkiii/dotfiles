@@ -466,6 +466,9 @@ return {
             NormalFloat = { fg = colors.white, bg = colors.menu }, -- set NonText fg to white of theme
             SnacksPickerListCursorLine = { bg = colors.selection, fg = colors.fg },
             CursorColumn = { bg = colors.gutter_fg },
+
+            LspReferenceText = { link = "Visual" },
+            LspReferenceRead = { link = "Visual" },
           }
         end,
       }
