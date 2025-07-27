@@ -6,7 +6,7 @@ return {
     opts = {
       enabled = true,
       notify = false,
-      files = { "*.todo*" }, -- matches TODO, TODO.md, .todo.md
+      files = { "*.todo*", "*.md" }, -- matches TODO, TODO.md, .todo.md
       -- files = { "*" }, -- matches TODO, TODO.md, .todo.md
       log = {
         level = "info",
@@ -21,8 +21,8 @@ return {
           modes = { "n", "v" },
         },
         ["<leader>cc"] = {
-          rhs = "<cmd>Checkmate check<CR>",
-          desc = "Set todo item as checked (done)",
+          rhs = "<cmd>Checkmate toggle cancelled<CR>",
+          desc = "Set todo item as cancelled",
           modes = { "n", "v" },
         },
         ["<leader>cu"] = {
@@ -60,14 +60,50 @@ return {
           desc = "Move cursor to previous metadata tag",
           modes = { "n" },
         },
+        ["<leader>c="] = {
+          rhs = "<cmd>Checkmate cycle_next<CR>",
+          desc = "Cycle todo item(s) to the next state",
+          modes = { "n", "v" },
+        },
+        ["<leader>c-"] = {
+          rhs = "<cmd>Checkmate cycle_previous<CR>",
+          desc = "Cycle todo item(s) to the previous state",
+          modes = { "n", "v" },
+        },
       },
       default_list_marker = "-",
-      todo_markers = {
-        unchecked = "",
-        checked = "",
+      todo_states = {
+        -- Built-in states (cannot change markdown or type)
+        unchecked = { marker = "□", order = 1 },
+        checked = { marker = "✔", order = 2 },
+
+        -- Custom states
+        partial = {
+          marker = "◐",
+          markdown = ".", -- Saved as `- [.]`
+          type = "incomplete", -- Counts as "not done"
+          order = 50,
+        },
+        cancelled = {
+          marker = "✗",
+          markdown = "c", -- Saved as `- [c]`
+          type = "complete", -- Counts as "done"
+          order = 2,
+        },
+        hold = {
+          marker = "⏸",
+          markdown = "/", -- Saved as `- [/]`
+          type = "inactive", -- Ignored in counts
+          order = 100,
+        },
       },
-      style = {},
-      todo_action_depth = 1, --  Depth within a todo item's hierachy from which actions (e.g. toggle) will act on the parent todo item
+      style = {
+        CheckmateCheckedMarker = { link = "GitSignsAdd" },
+        CheckmatePartialMarker = { link = "DiagnosticWarning" },
+        CheckmateCancelledMarker = { link = "DiagnosticError" },
+        CheckmateHoldMarker = { link = "DiagnosticHint" },
+        CheckmateCancelledMainContent = { link = "CheckmateCheckedMainContent" },
+      },
       enter_insert_after_new = false, -- Should enter INSERT mode after :CheckmateCreate (new todo)
       smart_toggle = {
         enabled = true,
@@ -104,12 +140,18 @@ return {
         },
         -- Example: A @started tag that uses a default date/time string when added
         started = {
-          aliases = { "init" },
+          aliases = { "partial" },
           style = function()
             return vim.api.nvim_get_hl(0, { name = "DiagnosticHint" })
           end,
           get_value = function()
             return tostring(os.date "%m/%d/%y %H:%M")
+          end,
+          on_add = function()
+            require("checkmate").toggle "partial"
+          end,
+          on_remove = function()
+            require("checkmate").toggle "unchecked"
           end,
           key = "<leader>cs",
         },
@@ -144,7 +186,7 @@ return {
       },
       archive = {
         heading = {
-          title = "Archive",
+          title = "Completed",
           level = 2, -- e.g. ##
         },
         parent_spacing = 0, -- no extra lines between archived todos
