@@ -2,6 +2,7 @@ return {
   cmd = { "vue-language-server", "--stdio" },
   filetypes = { "vue" },
   root_markers = { "package.json" },
+  hyrbrid_mode = true,
   on_init = function(client)
     client.handlers["tsserver/request"] = function(_, result, context)
       local clients = vim.lsp.get_clients { bufnr = context.bufnr, name = "vtsls" }
