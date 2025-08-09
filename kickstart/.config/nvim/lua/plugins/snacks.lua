@@ -10,6 +10,9 @@ return {
         enabled = true,
         priority = 1,
         char = "│",
+        only_scope = false, -- only show indent guides of the scope
+        only_current = false, -- only show indent guides in the current window
+        hl = "SnacksIndent",
         chunk = {
           enabled = false,
         },
@@ -54,7 +57,11 @@ return {
           tmux = false,
         },
         win = { style = "zen" },
-        on_open = function(win) end,
+        on_open = function(win)
+          vim.opt.wrap = true -- Enable line wrapping
+          vim.opt.linebreak = true -- Allow breaking within lines
+          vim.opt.breakat = vim.o.breakat -- Set break indent to vim default (using arabic characters to avoid keyword conflict)
+        end,
         on_close = function(win) end,
         --- Options for the `Snacks.zen.zoom()`
         zoom = {
@@ -507,7 +514,7 @@ return {
         function()
           Snacks.zen.zen(opts)
         end,
-        desc = "LSP Workspace Symbols",
+        desc = "Zen Mode",
       },
     },
   },
