@@ -10,7 +10,7 @@ return {
         runtimes = {
           {
             name = "jdk-24",
-            path = "/usr/lib/jvm/default",
+            -- path = "/usr/lib/jvm/default",
             default = true,
           },
         },
