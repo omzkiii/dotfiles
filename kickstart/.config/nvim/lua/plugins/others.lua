@@ -91,20 +91,6 @@ return {
           opts = { special_keys = sk, safe_labels = sl },
         }
       end)
-
-      -- local colors = function()
-      --   local yellow = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn" })
-      --   local norm = vim.api.nvim_get_hl(0, { name = "Normal" })
-      --   vim.api.nvim_set_hl(0, "LeapLabel", { bg = yellow.fg, fg = norm.bg, bold = true })
-      --   vim.api.nvim_set_hl(0, "LeapMatch", { bg = "#FFFFFF", fg = "#FFFFFF" })
-      --   vim.api.nvim_set_hl(0, "LeapLabelDimmed", { bg = "#FFFFFF", fg = "#FFFFFF" })
-      --   -- vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
-      -- end
-      -- colors()
-      -- vim.api.nvim_create_autocmd("ColorScheme", {
-      --   pattern = "*",
-      --   callback = colors,
-      -- })
     end,
   },
   -- {
@@ -134,6 +120,7 @@ return {
   -- },
   {
     "chipsenkbeil/distant.nvim",
+    event = "VeryLazy",
     branch = "v0.3",
     config = function()
       require("distant"):setup {
@@ -163,7 +150,7 @@ return {
     event = "VeryLazy",
     opts = {
       notification = {
-        override_vim_notify = true, -- Automatically override vim.notify() with Fidget
+        -- override_vim_notify = true, -- Automatically override vim.notify() with Fidget
       },
     },
   },
