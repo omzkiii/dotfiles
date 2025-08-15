@@ -11,7 +11,8 @@ dir=$(
   ) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black --prompt=" │" --bind="j:down" --bind="k:up" --bind="q:abort" --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)+unbind(q)" --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)+rebind(q)"
 )
 
-name=$(basename "$dir")
+# name=$(basename "$dir")
+name="$(basename "$(dirname "$dir")")/$(basename "$dir")"
 
 if [[ -n "$dir" ]]; then
 
@@ -28,7 +29,7 @@ if [[ -n "$dir" ]]; then
         tmux switch-client -t "$name"
         hyprctl dispatch focuswindow title:tmux
       else
-        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+        tmux new-session -d -s "$name" -c "$dir" "zsh -i -c 'nvim -S Session.vim; exec zsh'"
         tmux switch-client -t "$name"
         hyprctl dispatch focuswindow title:tmux
       fi
@@ -36,7 +37,7 @@ if [[ -n "$dir" ]]; then
       if tmux has-session -t $name 2>/dev/null; then
         kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
       else
-        tmux new-session -d -s "$name" -c "$dir" "nvim -S Session.vim"
+        tmux new-session -d -s "$name" -c "$dir" "zsh -i -c 'nvim -S Session.vim; exec zsh'"
         kitty -o background_opacity=$OPACITY --detach tmux attach-session -t "$name"
       fi
     fi
