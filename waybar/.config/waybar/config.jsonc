@@ -11,11 +11,13 @@
     "modules-center": ["hyprland/window"],
     "modules-right": [
     	"custom/spotify",
+        "bluetooth",
         "tray",
-      	"battery",
         "network",
-        "pulseaudio",
         "backlight",
+        "pulseaudio#input",
+        "pulseaudio#output",
+      	"battery",
         "clock",
         "custom/power-menu"
     ],
@@ -80,7 +82,9 @@
                     }
     },
     "bluetooth": {
-        "format": "",
+        "format": "󰂯",
+        "format-disabled": "",
+        "tooltip-format":"{device_alias}: 󰁹 {device_battery_percentage}%",
         "on-click": "blueberry"
     },
     "cpu": {
@@ -99,7 +103,7 @@
         "device": "eDP-1",
         "format": "{icon}",
         "tooltip-format": "{percent}",
-        "format-icons": ["󱩎 ", "󱩏 ", "󱩐 ", "󱩑 ", "󱩒 ", "󱩓 ", "󱩔 ", "󱩕 ", "󱩖 ", "󰛨 "],
+        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
         "on-scroll-up": "~/.config/waybar/scripts/brightness.sh --inc",
         "on-scroll-down": "~/.config/waybar/scripts/brightness.sh --dec"
     },
@@ -109,9 +113,9 @@
         "format-disconnected": "󰖪",
         "tooltip-format": "{essid}",
         "on-click": "kitty nmtui",
-        "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "]
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
     },
-    "pulseaudio": {
+    "pulseaudio#output": {
         "format": "{icon}{volume}%",
         "format-muted": "󰝟 ",
         "format-icons": {
@@ -122,6 +126,17 @@
         "scroll-step": 5,
         "on-scroll-up": "~/.config/waybar/scripts/volume.sh --inc",
         "on-scroll-down": "~/.config/waybar/scripts/volume.sh --dec"
+    },
+    "pulseaudio#input": {
+        "format-source": "󰍬",
+        "format-source-muted": "󰍭",
+        "format": "{format_source}",
+        "scroll-step": 1,
+        "smooth-scrolling-threshold": 1,
+        "on-click": "amixer sset 'Capture' toggle",
+        "on-click-middle": "pavucontrol &",
+        "on-scroll-up": "amixer sset 'Capture' 2%+",
+        "on-scroll-down": "amixer sset 'Capture' 2%-",
     },
     "battery": {
         "interval": 1,
@@ -135,17 +150,17 @@
             "critical": 15
         },
         "format": "{icon}{capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
         "format-full": "{icon}Full",
-        "format-alt": "{icon}  {time}",
+        "format-alt": "{icon}{time}",
         "format-icons": [" ", " ", " ", " ", " "],
         "format-time": "{H}h {M}min",
         "tooltip": true
     },
     "custom/spotify": {
         "exec": "python3 ~/.config/waybar/scripts/mediaplayer.py",
-        "format": " {}",
+        "format": "{}",
         "return-type": "json",
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",

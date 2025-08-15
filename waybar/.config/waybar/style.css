@@ -6,7 +6,8 @@
   /* font-family:  'GohuFont 11 Nerd Font', Iosevka Nerd Font; */
   /* font-family: "MesloLGS Nerd Font"; */
   /* font-family: "Liberation Mono"; */
-  font-family: "JetbrainsMono Nerd Font Propo";
+  /* font-family: "JetbrainsMono Nerd Font Propo"; */
+  font-family: "JetbrainsMono NFP ExtraBold";
   font-size: 10px;
 }
 
@@ -21,7 +22,7 @@
   border-radius: 3px;
   background-color: @background;
   margin: 3px 3px 3px 3px;
-  padding: 3px;
+  /* padding: 3px; */
   opacity: 1;
   /* background-color: rgba(29, 32, 33, 0.7); */
   /* backdrop-filter: blur(10px); */
@@ -48,6 +49,8 @@
   /* border-radius: 3px; */
 
   padding: 0 12px;
+
+  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.68);
 }
 
 #custom-launcher {
@@ -138,14 +141,15 @@ button:hover {
 #pulseaudio,
 #network {
   /* background-color: @background; */
-
-  padding: 0 12px;
+  padding: 0 7px;
   margin: 0px 0 0;
+  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.68);
 }
 
 #bluetooth {
   /* border-radius: 8px 0px 0px 8px; */
-  /* color: @color12; */
+  font-size: 14px;
+  color: @color12;
   /* margin-left: 3px; */
   /* border-right: none; */
 }
@@ -154,18 +158,21 @@ button:hover {
   color: @color1;
 }
 
-#pulseaudio {
-  /* color: @color5; */
-  /* border-left: none; */
-  /* border-right: none; */
+#pulseaudio.output {
+  padding-right: 12px;
+}
+#pulseaudio.input {
+  padding-right: 3px;
 }
 
-#pulseaudio.muted {
+#pulseaudio.output.muted {
+  color: @color1;
+}
+#pulseaudio.input.source-muted {
   color: @color1;
 }
 
 #backlight {
-  margin-right: 5px;
   /* padding-right: 8px; */
   /* color: @color5; */
   /* border-radius: 0 8px 8px 0; */
@@ -173,12 +180,17 @@ button:hover {
 }
 
 #battery {
-  color: @color10;
+  background-color: @color10;
+  color: @color0;
+  margin-right: 5px;
   /* padding: 0 0px; */
 }
 
 #battery.critical,
-#battery.warning,
+#battery.warning {
+  color: @color1;
+}
+
 #battery.full,
 #battery.plugged {
   color: @color15;
@@ -186,8 +198,8 @@ button:hover {
 
 #clock {
   color: @color0;
-  font-weight: bold;
-  border-radius: 3px;
+  font-weight: 900;
+  border-radius: 0px;
   /* padding: 0 0px 0 0px; */
   background-color: @color11;
 }
