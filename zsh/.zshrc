@@ -220,6 +220,7 @@ export QT_QPA_PLATFORM='wayland;xcb'
 export QT_QPA_PLATFORMTHEME=qt5ct
 # export QT_QPA_PLATFORMTHEME="xcb"
 export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="$PATH:$HOME/go/bin"
 export BAT_THEME="base16"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
