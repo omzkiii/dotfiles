@@ -188,12 +188,12 @@ button:hover {
 
 #battery.critical,
 #battery.warning {
-  color: @color1;
+  background-color: @color1;
 }
 
 #battery.full,
 #battery.plugged {
-  color: @color15;
+  background-color: @color15;
 }
 
 #clock {
