@@ -99,29 +99,4 @@ return {
       }
     end,
   },
-  {
-    "sindrets/diffview.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("diffview").setup {
-        keymaps = {
-          file_panel = {
-            {
-              "n",
-              "<leader>gv",
-              "<Cmd>DiffviewClose<CR>",
-              { desc = "Close Diffview" },
-            },
-          },
-        },
-      }
-      --
-      vim.keymap.set(
-        "n",
-        "<leader>gv",
-        "<Cmd>DiffviewOpen<CR>",
-        { silent = true, buffer = true, desc = "Open Diffview" }
-      )
-    end,
-  },
 }
