@@ -75,6 +75,9 @@ return {
       },
       image = {
         enabled = true,
+        doc = {
+          enabled = false,
+        },
       },
       picker = {
         prompt = "   ",
@@ -513,6 +516,15 @@ return {
         "<leader>z",
         function()
           Snacks.zen.zen(opts)
+        end,
+        desc = "Zen Mode",
+      },
+
+      -- IMAGE
+      {
+        "<leader>k",
+        function()
+          Snacks.image.hover(opts)
         end,
         desc = "Zen Mode",
       },
