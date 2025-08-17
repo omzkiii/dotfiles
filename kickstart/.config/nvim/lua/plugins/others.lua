@@ -87,9 +87,11 @@ return {
             table.insert(sl, label)
           end
         end
-        require("leap.treesitter").select {
-          opts = { special_keys = sk, safe_labels = sl },
-        }
+        pcall(function()
+          require("leap.treesitter").select {
+            opts = { special_keys = sk, safe_labels = sl },
+          }
+        end)
       end)
     end,
   },
