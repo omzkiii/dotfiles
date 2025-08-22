@@ -3,6 +3,7 @@ return {
   {
     "folke/snacks.nvim",
     event = "BufReadPre",
+    priority = 1000,
     lazy = false,
     --
     opts = {
@@ -167,7 +168,7 @@ return {
         desc = "Notification History",
       },
       {
-        "<leader>e",
+        "<leader>E",
         function()
           Snacks.explorer {
             finder = "explorer",

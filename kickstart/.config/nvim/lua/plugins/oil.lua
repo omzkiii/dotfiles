@@ -71,7 +71,7 @@ return {
         ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
         ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
-        ["-"] = "actions.close",
+        ["<leader>e"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
         ["<BS>"] = "actions.parent",
         ["_"] = "actions.open_cwd",
@@ -126,8 +126,8 @@ return {
       float = {
         -- Padding around the floating window
         padding = 2,
-        max_width = 0,
-        max_height = 0,
+        max_width = 90,
+        max_height = 50,
         border = "single",
         win_options = {
           winblend = 0,
@@ -189,9 +189,26 @@ return {
       keymaps_help = {
         border = "single",
       },
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
+      vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory" }),
     },
     -- Optional dependencies
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   },
+  -- {
+  --   "benomahony/oil-git.nvim",
+  --   dependencies = { "stevearc/oil.nvim" },
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("oil-git").setup {
+  --       highlights = {
+  --         OilGitAdded = { link = "SnacksPickerGitStatusAdded" }, -- green
+  --         OilGitModified = { link = "SnacksPickerGitStatusModified" }, -- yellow
+  --         OilGitDeleted = { link = "SnacksPickerGitStatusDeleted" }, -- red
+  --         OilGitRenamed = { link = "SnacksPickerGitStatusRenamed" }, -- purple
+  --         OilGitUntracked = { link = "SnacksPickerGitStatusUntracked" }, -- blue
+  --         OilGitIgnored = { link = "SnacksPickerGitStatusIgnored" }, -- gray
+  --       },
+  --     }
+  --   end,
+  -- },
 }
