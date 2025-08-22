@@ -290,6 +290,8 @@ return {
 
           Type = { link = "GruvboxAqua" },
           Include = { link = "GruvboxPurple" },
+          ["@variable"] = { link = "GruvboxFg1" },
+          Delimiter = { link = "GruvboxFg4" },
         },
         dim_inactive = false,
         transparent_mode = false,

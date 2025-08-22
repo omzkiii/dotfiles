@@ -9,6 +9,7 @@ return {
     config = function()
       require("gitsigns").setup {
         signcolumn = true,
+        current_blame_line = true,
 
         signs = {
           add = { text = "┃" },
@@ -25,7 +26,6 @@ return {
           row = 1,
           col = 1,
         },
-        -- current_blame_line = true,
         on_attach = function(bufnr)
           vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "Comment" })
           local gitsigns = require "gitsigns"
