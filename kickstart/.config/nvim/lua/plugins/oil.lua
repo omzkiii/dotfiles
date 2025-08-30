@@ -57,7 +57,7 @@ return {
       -- Set to `false` to disable, or "name" to keep it on the file names
       constrain_cursor = "editable",
       -- Set to true to watch the filesystem for changes and reload oil
-      watch_for_changes = false,
+      watch_for_changes = true,
       -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
       -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
       -- Additionally, if it is a string that matches "actions.<name>",
@@ -71,7 +71,7 @@ return {
         ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
         ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
-        ["<leader>e"] = "actions.close",
+        ["<leader>e"] = { "actions.close", desc = "Close Oil" },
         ["<C-l>"] = "actions.refresh",
         ["<BS>"] = "actions.parent",
         ["_"] = "actions.open_cwd",
@@ -211,4 +211,46 @@ return {
   --     }
   --   end,
   -- },
+  {
+    "JezerM/oil-lsp-diagnostics.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+    event = "VeryLazy",
+    opts = {},
+  },
+  {
+    "refractalize/oil-git-status.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+    event = "VeryLazy",
+    config = function()
+      require("oil-git-status").setup {
+        show_ignored = true,
+        symbols = {
+          index = {
+            ["!"] = "!",
+            ["?"] = "?",
+            ["A"] = "+",
+            ["C"] = "#",
+            ["D"] = "-",
+            ["M"] = "~",
+            ["R"] = "*",
+            ["T"] = "~",
+            ["U"] = ".",
+            [" "] = " ",
+          },
+          working_tree = {
+            ["!"] = "!",
+            ["?"] = "?",
+            ["A"] = "+",
+            ["C"] = "#",
+            ["D"] = "-",
+            ["M"] = "~",
+            ["R"] = "*",
+            ["T"] = "~",
+            ["U"] = ".",
+            [" "] = " ",
+          },
+        },
+      }
+    end,
+  },
 }
