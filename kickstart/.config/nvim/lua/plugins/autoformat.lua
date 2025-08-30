@@ -42,6 +42,7 @@ return {
         go = { "gofumpt" },
 
         cs = { "csharpier --stdio" },
+        razor = { "csharpier --stdio" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
