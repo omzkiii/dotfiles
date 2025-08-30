@@ -8,7 +8,17 @@ return {
   --   end,
   -- },
 
-  { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup {
+        registries = {
+          "github:mason-org/mason-registry",
+          "github:Crashdummyy/mason-registry",
+        },
+      }
+    end,
+  }, -- NOTE: Must be loaded before dependants
   {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
