@@ -194,7 +194,7 @@ return {
         RenderMarkdownH5Bg = { fg = "#282828", bg = "#7fa2ac", style = "bold" },
         RenderMarkdownH6Bg = { fg = "#282828", bg = "#98971a", style = "bold" },
         Normal = { fg = "#ebdbb2", bg = "#282828", style = "NONE" },
-        TelescopeNormal = { fg = "NONE", bg = "#282626", style = "NONE" },
+        -- TelescopeNormal = { fg = "NONE", bg = "#282626", style = "NONE" },
         TelescopeBorder = { fg = "#504845", bg = "#282626", style = "NONE" },
         TelescopeTitle = { fg = "#282626", bg = "#98971a", style = "bold" },
         DiagnosticUnderlineError = { sp = "#fb4934", style = "undercurl" },
