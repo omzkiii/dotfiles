@@ -64,7 +64,7 @@ return {
           vim.opt.breakat = vim.o.breakat -- Set break indent to vim default (using arabic characters to avoid keyword conflict)
         end,
         on_close = function(win) end,
-        --- Options for the `Snacks.zen.zoom()`
+        -- --- Options for the `Snacks.zen.zoom()`
         zoom = {
           toggles = {},
           show = { statusline = true, tabline = true },
@@ -89,7 +89,7 @@ return {
         layout = function()
           local default = {
             layout = {
-              backdrop = false,
+              backdrop = true,
               box = "horizontal",
               width = 0.8,
               min_width = 120,
@@ -107,7 +107,7 @@ return {
           local vertical = {
             layout = {
 
-              backdrop = false,
+              backdrop = true,
               width = 0.5,
               min_width = 80,
               height = 0.8,
