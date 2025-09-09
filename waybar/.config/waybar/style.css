@@ -42,15 +42,25 @@
 #idle_inhibitor,
 #custom-power-menu,
 #custom-wallpaper,
+#custom-cpufreq,
 #default {
   /* padding: 2px; */
   /* background-color: @background; */
   /* margin: 0 3px 0; */
   /* border-radius: 3px; */
 
-  padding: 0 12px;
+  padding: 0 8px;
 
   transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+}
+#custom-cpufreq.cpufreq-Performance {
+  color: @color7;
+}
+#custom-cpufreq.cpufreq-Balance {
+  color: @color3;
+}
+#custom-cpufreq.cpufreq-Powersave {
+  color: @color2;
 }
 
 #custom-launcher {
