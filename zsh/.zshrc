@@ -218,6 +218,7 @@ export QT_QPA_PLATFORM='wayland;xcb'
 # export QT_QPA_PLATFORM=wayland-xcomposite-egl
 # export QT_QPA_PLATFORM=xcb
 export QT_QPA_PLATFORMTHEME=qt5ct
+export XDG_MENU_PREFIX=plasma-
 # export QT_QPA_PLATFORMTHEME="xcb"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$PATH:$HOME/go/bin"
