@@ -6,7 +6,7 @@ return {
     opts = {
       enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
       multiwindow = true, -- Enable multiwindow support.
-      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+      max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
       min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
       line_numbers = true,
       multiline_threshold = 20, -- Maximum number of lines to show for a single context
@@ -22,7 +22,7 @@ return {
       require("treesitter-context").setup(opts)
 
       local colors = function()
-        local ul = vim.api.nvim_get_hl(0, { name = "SnacksIndentScope", link = false })
+        -- local ul = vim.api.nvim_get_hl(0, { name = "SnacksIndentScope", link = false })
         local ul = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
 
         vim.api.nvim_set_hl(0, "TreesitterContextBottom", { fg = "NONE", bg = "NONE", underline = true, sp = ul.fg })
