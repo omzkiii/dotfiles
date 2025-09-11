@@ -68,12 +68,12 @@ return {
             scrollbar = false,
           },
           documentation = cmp.config.window.bordered(),
-          documentation = {
-            border = "single",
-            scrollbar = false,
-            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-            padding = 2,
-          },
+          -- documentation = {
+          --   border = "single",
+          --   scrollbar = false,
+          --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+          --   padding = 2,
+          -- },
         },
 
         formatting = {
