@@ -9,7 +9,7 @@ return {
     config = function()
       require("gitsigns").setup {
         signcolumn = true,
-        current_blame_line = true,
+        -- current_blame_line = true,
 
         signs = {
           add = { text = "┃" },
