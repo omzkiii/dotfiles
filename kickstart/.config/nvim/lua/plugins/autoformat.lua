@@ -29,7 +29,7 @@ return {
         lua = { "stylua" },
 
         java = { "google-java-format" },
-        javascript = { "prettierd" },
+        javascript = { "prettierd --stdio" },
         typescript = { "prettierd" },
         javascriptreact = { "prettierd" },
         typescriptreact = { "prettierd" },
