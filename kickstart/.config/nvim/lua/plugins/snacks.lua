@@ -13,7 +13,16 @@ return {
         char = "│",
         only_scope = false, -- only show indent guides of the scope
         only_current = false, -- only show indent guides in the current window
-        hl = "SnacksIndent",
+        hl = {
+          "SnacksIndent1",
+          "SnacksIndent2",
+          "SnacksIndent3",
+          "SnacksIndent4",
+          "SnacksIndent5",
+          "SnacksIndent6",
+          "SnacksIndent7",
+          "SnacksIndent8",
+        },
         chunk = {
           enabled = false,
         },
