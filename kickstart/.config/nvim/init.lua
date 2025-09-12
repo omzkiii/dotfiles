@@ -206,3 +206,4 @@ vim.cmd.colorscheme "gruvbox"
 require "highlights"
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+-- vim.env.PATH = "$HOME/.local/share/nvim/mason/share/roslyn-ls:" .. vim.env.PATH
