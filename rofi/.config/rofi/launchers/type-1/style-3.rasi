@@ -47,12 +47,12 @@ configuration {
 window {
     /* properties for window widget */
     transparency:                "background";
-    location:                    north;
-    anchor:                      north;
+    location:                    center;
+    anchor:                      center;
     fullscreen:                  false;
     width:                       900px;
     x-offset:                    0px;
-    y-offset:                    300px;
+    y-offset:                    0px;
 
    /* properties for all widgets */
     enabled:                     true;
@@ -155,7 +155,7 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       0;
+    lines:                       5;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   true;
@@ -182,7 +182,7 @@ scrollbar {
 
 /*****----- Elements -----*****/
 element {
-    enabled:                     false;
+    enabled:                     true;
     spacing:                     20px;
     margin:                      0px;
     padding:                     5px 5px;
