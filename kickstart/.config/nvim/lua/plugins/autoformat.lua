@@ -37,6 +37,7 @@ return {
         html = { "prettierd" },
         python = { "black" },
         c = { "clang-format" },
+        php = { "pretty-php" },
 
         sh = { "shfmt" },
         go = { "gofumpt" },
