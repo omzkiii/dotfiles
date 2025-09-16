@@ -45,6 +45,7 @@ configuration {
 		parse-user:   true;
 		/** Parse system desktop files. */
 		parse-system: true;
+
     }
 
 	/*---------- Run settings ----------*/
@@ -106,6 +107,16 @@ configuration {
     }
 
 	/*---------- Keybindings ----------*/
+
+        kb-row-up: "Up,Alt+k,Shift+Tab,Shift+ISO_Left_Tab";
+        kb-row-down: "Down,Alt+j";
+        kb-accept-entry: "Control+m,Return,KP_Enter";
+        kb-mode-next: "Shift+Right,Control+Tab,Alt+l";
+        kb-mode-previous: "Shift+Left,Control+Shift+Tab,Alt+h";
+        kb-remove-char-back: "BackSpace";
+        kb-mode-complete: "Alt+c";
+        kb-remove-to-eol: "Alt+BackSpace";
+
 /*
 	kb-primary-paste: "Control+V,Shift+Insert";
 	kb-secondary-paste: "Control+v,Insert";
