@@ -1,0 +1,30 @@
+#!/bin/bash
+
+export PATH="${PATH}:${HOME}/.local/bin/"
+
+dir="$HOME/.config/rofi/launchers/type-1"
+theme='style-3'
+HISTORY_FILE="$HOME/Documents/Books/.fzf_book_history"
+
+books=$(
+    cat "$HISTORY_FILE" | awk -F/ '{print $NF}'
+    find -P ~/Documents/Books/* -type f | awk -F/ '{print $NF}'
+)
+
+selected=$(echo "$books" | rofi -dmenu -i -p "󱉟  Books:" -theme ${dir}/${theme}.rasi)
+
+book=$(find -P ~/Documents/Books/* -name "$selected")
+
+if [[ -n "$book" ]]; then
+
+    tmp_history=$(mktemp) # Create a temporary file
+    (
+        echo "$book"
+        grep -Fxv "$book" "$HISTORY_FILE"
+    ) | sed '/^$/d' | head -n 5 >"$tmp_history"
+
+    mv "$tmp_history" "$HISTORY_FILE" # Replace history file safely
+    zathura "$book"
+else
+    echo "No book selected."
+fi

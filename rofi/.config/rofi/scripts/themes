@@ -8,7 +8,6 @@ theme='style-2'
 themes=$HOME/Themes/
 picked="$(ls $themes | rofi -dmenu -i -p "  Themes:" -theme ${dir}/${theme}.rasi)"
 
-
 for script in "$themes$picked"/*.sh; do
     if [ -f "$script" ]; then
         echo "Executing $script"
