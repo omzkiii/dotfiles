@@ -16,15 +16,18 @@ vim.lsp.enable {
   "bash",
   "lua_ls",
   "vue",
-  "csharp",
   "vtsls",
+  "intelephense",
+  -- "omnisharp",
+  -- "csharp",
   "pyright",
   "gopls",
   "dockerfile",
   "dockercompose",
-  "emmet",
+  -- "emmet",
   "clangd",
   "eslint",
+  "html",
   "css",
   "debugpy",
   "codelldb",
@@ -32,7 +35,7 @@ vim.lsp.enable {
   -- "markdown-oxide",
   -- "typescript-language-server",
   "eslint",
-  "htmx",
+  -- "htmx",
   "tailwindcss",
   "harper_ls",
 }
@@ -67,6 +70,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       update_in_insert = false, -- optional: don't update in insert mode
       severity_sort = true, -- optional: sort by severity
       signs = signs,
+      float = {
+        border = "single", -- border style for floating windows
+        source = "always", -- show source (LSP server)
+        header = "Diagnostics",
+        prefix = "· ", -- marker for list items
+      },
     }
 
     -- MAPPINGS
