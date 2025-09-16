@@ -257,6 +257,7 @@ return {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
           -- Normal = { bg = "#282828" }, -- explicitly set Normal background color
           NormalFloat = { bg = "#282626" }, -- explicitly set Normal background color
+          -- NormalFloat = { link = "GruvboxGray" }, -- explicitly set Normal background color
           -- CursorColumn = { bg = "#504945" },
           -- SignColumn = { bg = "#1d2021" },
           ErrorMsg = { link = "GruvboxRed" },
@@ -279,11 +280,11 @@ return {
           TelescopeTitle = { fg = "#282626", bg = "#98971a", bold = true },
           TelescopeSelection = { fg = "#ebdbb2", bg = "#504945" },
 
-          WinSeparator = { fg = "#32392f", bg = "NONE" },
-          SnacksIndentScope = { fg = "#928374", bg = "NONE" },
+          -- WinSeparator = { fg = "#32392f", bg = "NONE" },
+          SnacksIndentScope = { link = "GruvboxGray" },
           -- SnacksIndent = { fg = "#504945", bg = "NONE" },
 
-          CursorLineNr = { fg = "#ebdbb2", bg = "#282828", bold = true },
+          -- CursorLineNr = { link = "GruvboxBg0" },
 
           LspReferenceText = { link = "Visual" },
           LspReferenceRead = { link = "Visual" },

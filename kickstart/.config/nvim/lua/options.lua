@@ -1,5 +1,5 @@
 vim.o.virtualedit = "block"
-vim.o.background = "dark"
+-- vim.o.background = "auto"
 vim.opt.laststatus = 3
 vim.g.vim_markdown_folding_style_pythonic = 2
 vim.g.vim_markdown_folding_level = 6
