@@ -48,6 +48,7 @@ if [[ -n "$dir" ]]; then
     fi
   else
     echo "Selected directory does not exist: $dir"
+    sed -i "\|$dir|d" "$HISTORY_FILE"
   fi
 else
   echo "No directory selected."
