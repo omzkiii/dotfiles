@@ -50,7 +50,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       900px;
+    // width:                       900px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -94,7 +94,6 @@ inputbar {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               5px;
     border-color:                @border-color;
     background-color:            transparent;
     text-color:                  @foreground-color;
@@ -103,10 +102,10 @@ inputbar {
 
 prompt {
     enabled:                     true;
-    font:                        "MesloLGS Nerd Font 14";
-    background-color:            @background;
-    text-color:                  @foreground;
-    padding:                     5px 5px 10px 5px;
+    // font:                        "JetBrainsMono NFP Bold 14";
+    background-color:            var(accent);
+    text-color:                  @background;
+    padding:                     5px 5px 0px 5px;
 }
 textbox-prompt-colon {
     // font:                        "MesloLGS Nerd Font 24";
