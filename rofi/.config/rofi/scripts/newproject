@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+dir="$HOME/.config/rofi/launchers/type-1"
+theme='style-2'
+
+PROJ=$(rofi -dmenu -i -p " New Project " -theme ${dir}/${theme}.rasi)
+mkdir $HOME/Documents/Projects/$PROJ
