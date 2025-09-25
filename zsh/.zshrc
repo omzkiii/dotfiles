@@ -198,6 +198,10 @@ vf() {
   fi
 }
 
+prj() {
+  mkdir $HOME/Documents/Projects/$1
+}
+
 #Start X
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 	#exec startx &>/dev/null
@@ -211,7 +215,7 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # eval "$(starship init zsh)"
 export PATH=$PATH:/home/geo/.cargo/bin
-export JAVA_HOME=/usr/lib/jvm/java-23-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
 export QT_QPA_PLATFORM='wayland;xcb'
 # export QT_STYLE_OVERRIDE='gtk2'
 # export QT_QPA_PLATFORM=wayland-xcomposite-glx
@@ -227,11 +231,19 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+export PATH="$HOME/Git/flutter/bin:$PATH"
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
+
 bg=$(head -n 1 ~/.cache/wal/colors)
 alias feh="feh -B '$bg'"
 alias ff="$HOME/.config/hypr/scripts/ff.sh; kill -9 $PPID"
 alias uv="$HOME/.push_vault.sh"
 alias t=taskwarrior-tui
+alias mkprj="echo test/$1/"
+
 
 export FZF_DEFAULT_OPTS='
   --height 40%
