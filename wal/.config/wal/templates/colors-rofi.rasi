@@ -5,4 +5,5 @@
     selected:       {color3};
     active:         {color11};
     urgent:         {color9};
+    accent:         {color10};
 }}
