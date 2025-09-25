@@ -6,7 +6,7 @@ dir="$HOME/.config/rofi/launchers/type-1"
 theme='style-2'
 
 wallpapers=$HOME/Pictures/Wallpapers/
-image="$(ls -t $wallpapers | rofi -dmenu -i -p "  Wallpapers: " -theme ${dir}/${theme}.rasi)"
+image="$(ls -t $wallpapers | rofi -dmenu -i -p "  Wallpapers " -theme ${dir}/${theme}.rasi)"
 wallpaper=$wallpapers/$image
 
 if [[ -d $wallpapers/$image ]]; then
