@@ -19,6 +19,25 @@ return {
           focus_on_open = false, -- focus on the newly opened log window
         },
         lsp = {
+          -- Inside your LSP setup
+          on_attach = function(client, bufnr)
+            -- Override didChange handler
+            client.handlers["textDocument/didChange"] = function(err, method, params, client_id, bufnr, config)
+              -- Example: normalize contentChanges so they all share the same base range
+              local changes = params.contentChanges
+
+              if changes and #changes > 1 then
+                -- Force all changes to use the same range (from the first one)
+                local base_range = changes[1].range
+                for i = 2, #changes do
+                  changes[i].range = base_range
+                end
+              end
+
+              -- Pass the modified notification along to the default handler
+              return vim.lsp.handlers["textDocument/didChange"](err, method, params, client_id, bufnr, config)
+            end
+          end,
           color = { -- show the derived colours for dart variables
             enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
             background = true, -- highlight the background
@@ -28,6 +47,7 @@ return {
             virtual_text = true, -- show the highlight using virtual text
             virtual_text_str = "■", -- the virtual text character to highlight
           },
+
           settings = {
             showTodos = true,
             completeFunctionCalls = true,
@@ -37,6 +57,10 @@ return {
           },
         },
       }
+
+      vim.keymap.set("n", "<leader>fl", "<cmd>FlutterLogToggle<CR>")
+      vim.keymap.set("n", "<leader>fr", "<cmd>FlutterLspRestart<CR>")
+      vim.keymap.set("n", "<leader>f<space>", "<cmd>FlutterOutlineToggle<CR>")
     end,
   },
 }
