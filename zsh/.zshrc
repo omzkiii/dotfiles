@@ -237,6 +237,9 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
 
+export LIBVA_DRIVER_NAME=iHD
+# export LIBVA_DRIVERS_PATH=/usr/lib/dri
+
 bg=$(head -n 1 ~/.cache/wal/colors)
 alias feh="feh -B '$bg'"
 alias ff="$HOME/.config/hypr/scripts/ff.sh; kill -9 $PPID"
