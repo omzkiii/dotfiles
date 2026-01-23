@@ -4,7 +4,8 @@ return {
     opts = function(_, opts)
       opts = opts or {}
 
-      -- vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "[/] Comment" })
+      vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "[/] Comment" })
+      vim.keymap.set("x", "<leader>/", "gc", { remap = true, desc = "[/] Comment" })
 
       return opts
     end,
@@ -15,12 +16,12 @@ return {
   --   "numToStr/Comment.nvim",
   --   event = "VeryLazy",
   --   -- keys = {
-  --   --   { "<leader>/", mode = "n", desc = "Comment toggle current line" },
-  --   --   { "<leader>/", mode = { "n", "o" }, desc = "Comment toggle linewise" },
-  --   --   { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
-  --   --   { "gbc", mode = "n", desc = "Comment toggle current block" },
-  --   --   { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-  --   --   { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+  --     -- { "<leader>/", mode = "n", desc = "Comment toggle current line" },
+  --   --   { "<leader>/", mode = { "n", "o", "x" }, desc = "Comment toggle linewise" },
+  --   --   -- { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
+  --     -- { "gbc", mode = "n", desc = "Comment toggle current block" },
+  --   --   -- { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+  --   --   -- { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
   --   -- },
   --   config = function(_, opts)
   --     require("Comment").setup(opts)

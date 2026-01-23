@@ -18,6 +18,7 @@ return {
           end
           return "make install_jsregexp"
         end)(),
+
         dependencies = {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
@@ -162,6 +163,8 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
+          { name = "vim-dadbod-completion" },
+
         },
       }
       -- options = vim.tbl_deep_extend("force", options, require "nvchad.cmp")

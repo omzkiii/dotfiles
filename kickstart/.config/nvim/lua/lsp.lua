@@ -16,7 +16,7 @@ vim.lsp.enable {
   "bash",
   "lua_ls",
   "vue",
-  "vtsls",
+  -- "vtsls",
   "intelephense",
   -- "omnisharp",
   -- "csharp",
@@ -24,6 +24,7 @@ vim.lsp.enable {
   "gopls",
   "dockerfile",
   "dockercompose",
+  "prismals",
   -- "emmet",
   "clangd",
   "eslint",
@@ -33,11 +34,12 @@ vim.lsp.enable {
   "codelldb",
   "marksman",
   -- "markdown-oxide",
-  -- "typescript-language-server",
+  "typescript-language-server",
   "eslint",
   -- "htmx",
   "tailwindcss",
   "harper_ls",
+  "postgres-language-server"
 }
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),

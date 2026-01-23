@@ -1,5 +1,6 @@
 return {
-  { -- Autoformat
+  -- Autoformat
+  {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
@@ -15,64 +16,47 @@ return {
     },
     opts = {
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
+      -- format_on_save = function(bufnr)
+      --   local disable_filetypes = { c = true, cpp = true }
+      --   return {
+      --     timeout_ms = 500,
+      --     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+      --   }
+      -- end,
       formatters_by_ft = {
         lua = { "stylua" },
-
         java = { "google-java-format" },
-        javascript = { "prettierd --stdio" },
+        javascript = { "prettierd" },
         typescript = { "prettierd" },
         javascriptreact = { "prettierd" },
         typescriptreact = { "prettierd" },
+        jsonc = { "prettierd" },
+        json = { "prettierd" },
         css = { "prettierd" },
         html = { "prettierd" },
         python = { "black" },
         c = { "clang-format" },
         php = { "pretty-php" },
-
         sh = { "shfmt" },
         go = { "gofumpt" },
-
-        cs = { "csharpier --stdio" },
-        razor = { "csharpier --stdio" },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        cs = { "csharpier" },
+        razor = { "csharpier" },
+        sql = {"pg_format"}
+      },
+      formatters = {
+        prettierd = {
+          args = {
+            "--stdin-filepath",
+            "$FILENAME",
+            -- "--use-tabs",
+            -- "--tab-width=4",
+            -- "--print-width=500",
+          },
+        },
+        csharpier = {
+          prepend_args = { "--stdio" },
+        },
       },
     },
   },
-  -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   -- event = "VeryLazy",
-  --   lazy = true,
-  --   ft = "*",
-  --   opts = {
-  --     on_attach = function(client, bufnr)
-  --       if client.supports_method "textDocument/formatting" then
-  --         vim.api.nvim_clear_autocmds {
-  --           group = vim.api.nvim_create_augroup("LspFormatting", {}),
-  --           buffer = bufnr,
-  --         }
-  --         vim.api.nvim_create_autocmd("BufWritePre", {
-  --           group = vim.api.nvim_create_augroup("LspFormatting", {}),
-  --           buffer = bufnr,
-  --           callback = function()
-  --             vim.lsp.buf.format { bufnr = bufnr }
-  --           end,
-  --         })
-  --       end
-  --     end,
-  --   },
-  -- },
 }

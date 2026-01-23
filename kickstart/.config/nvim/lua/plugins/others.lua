@@ -92,7 +92,7 @@ return {
         sk.prev_target = vim.fn.flatten(vim.list_extend({ "S" }, { sk.prev_target }))
         -- Remove these temporary traversal keys from `safe_labels`.
         local sl = {}
-        for _, label in ipairs(vim.deepcopy(require("leap").opts.safe_labels)) do
+        for _, label in ipairs { vim.deepcopy(require("leap").opts.safe_labels) } do
           if label ~= "s" and label ~= "S" then
             table.insert(sl, label)
           end
@@ -165,5 +165,9 @@ return {
         -- override_vim_notify = true, -- Automatically override vim.notify() with Fidget
       },
     },
+  },
+  {
+    "tpope/vim-dotenv",
+    event = "VeryLazy",
   },
 }
