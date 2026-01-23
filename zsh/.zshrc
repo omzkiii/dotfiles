@@ -205,7 +205,7 @@ prj() {
 #Start X
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 	#exec startx &>/dev/null
-	exec Hyprland &>/dev/null
+	exec start-hyprland &>/dev/null
 fi
 
 
