@@ -13,7 +13,7 @@ dir=$(
     #   -maxdepth 3 \
     #   \( -type d -name ".*" -prune \) -o -type d -print |
     #   awk -F/ '{print NF, $0}' | sort -n | cut -d' ' -f2-
-  ) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --color=16 --color=border:cyan --color=current-bg:bright-black --prompt=" │" --bind="j:down" --bind="k:up" --bind="q:abort" --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)+unbind(q)" --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)+rebind(q)"
+  ) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --height 100% --color=16 --color=border:cyan --color=current-bg:bright-black --prompt=" │" --bind="j:down" --bind="k:up" --bind="q:abort" --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)+unbind(q)" --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)+rebind(q)"
 )
 
 # name=$(basename "$dir")
