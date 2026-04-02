@@ -3,14 +3,15 @@ return {
     "seblyng/roslyn.nvim",
     ft = { "cs", "razor" },
     lazy = true,
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     dependencies = {
       {
         -- By loading as a dependencies, we ensure that we are available to set
         -- the handlers for Roslyn.
         "tris203/rzls.nvim",
         lazy = true,
-        event = "VeryLazy",
+        ft = { "cs", "razor" },
+        -- event = "VeryLazy",
         config = true,
       },
     },

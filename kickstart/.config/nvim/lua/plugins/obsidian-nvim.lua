@@ -12,6 +12,7 @@ return {
   --   "BufNewFile path/to/my-vault/*.md",
   -- },
   opts = {
+    legacy_commands = false,
     workspaces = {
       {
         name = "Notes",
@@ -22,7 +23,7 @@ return {
       },
     },
 
-    notes_subdir = "notes",
+    notes_subdir = "Notes",
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
       folder = "Excerpts",
@@ -55,6 +56,32 @@ return {
       -- Set to false to disable new note creation in the picker
       create_new = true,
     },
+    templates = {
+      enabled = true,
+      folder = "Templates",
+      date_format = "YYYY-MM-DD",
+      time_format = "HH:mm",
+      substitutions = {
+        date = function(_, suffix)
+          local format = suffix or Obsidian.opts.templates.date_format
+          return require("obsidian.util").format_date(os.time(), format)
+        end,
+        time = function(_, suffix)
+          local format = suffix or Obsidian.opts.templates.time_format
+          return require("obsidian.util").format_date(os.time(), format)
+        end,
+        title = function(ctx)
+          return ctx.partial_note and ctx.partial_note:display_name()
+        end,
+        id = function(ctx)
+          return ctx.partial_note and ctx.partial_note.id
+        end,
+        path = function(ctx)
+          return ctx.partial_note and tostring(ctx.partial_note.path)
+        end,
+      },
+      customizations = {},
+    },
 
     -- Where to put new notes. Valid options are
     -- _ "current_dir" - put new notes in same directory as the current buffer.
@@ -67,17 +94,18 @@ return {
       -- In this case a note with the title 'My new note' will be given an ID that looks
       -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'.
       -- You may have as many periods in the note ID as you'd like—the ".md" will be added automatically
-      local suffix = ""
-      if title ~= nil then
-        -- If title is given, transform it into valid file name.
-        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-      else
-        -- If title is nil, just add 4 random uppercase letters to the suffix.
-        for _ = 1, 4 do
-          suffix = suffix .. string.char(math.random(65, 90))
-        end
-      end
-      return tostring(os.time()) .. "-" .. suffix
+      -- local suffix = ""
+      -- if title ~= nil then
+      --   -- If title is given, transform it into valid file name.
+      --   suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+      -- else
+      --   -- If title is nil, just add 4 random uppercase letters to the suffix.
+      --   for _ = 1, 4 do
+      --     suffix = suffix .. string.char(math.random(65, 90))
+      --   end
+      -- end
+      -- return tostring(os.time()) .. "-" .. suffix
+      return tostring(os.time())
     end,
 
     -- Optional, customize how note file names are generated given the ID, target directory, and title.
@@ -87,59 +115,47 @@ return {
       return path:with_suffix ".md"
     end,
 
-    -- Optional, customize how wiki links are formatted. You can set this to one of:
-    -- _ "use_alias_only", e.g. '[[Foo Bar]]'
-    -- _ "prepend*note_id", e.g. '[[foo-bar|Foo Bar]]'
-    -- * "prepend*note_path", e.g. '[[foo-bar.md|Foo Bar]]'
-    -- * "use_path_only", e.g. '[[foo-bar.md]]'
-    -- Or you can set it to a function that takes a table of options and returns a string, like this:
-    wiki_link_func = function(opts)
-      return require("obsidian.util").wiki_link_id_prefix(opts)
-    end,
-
-    -- Optional, customize how markdown links are formatted.
-    markdown_link_func = function(opts)
-      return require("obsidian.util").markdown_link(opts)
-    end,
-
     -- Either 'wiki' or 'markdown'.
-    preferred_link_style = "wiki",
+    link = { style = "wiki" },
 
     -- Optional, boolean or a function that takes a filename and returns a boolean.
     -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-    disable_frontmatter = true,
 
     -- Optional, alternatively you can customize the frontmatter data.
-    note_frontmatter_func = function(note)
-      -- Add the title of the note as an alias.
-      if note.title then
-        note:add_alias(note.title)
-      end
+    frontmatter = {
+      enable = false,
+      func = function(note)
+        -- Add the title of the note as an alias.
+        -- if note.title then
+        --   note:add_alias(note.title)
+        -- end
+        local out = {}
 
-      local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+        -- local out = { date = note.id, aliases = note.aliases, tags = note.tags }
 
-      -- `note.metadata` contains any manually added fields in the frontmatter.
-      -- So here we just make sure those fields are kept in the frontmatter.
-      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-        for k, v in pairs(note.metadata) do
-          out[k] = v
-        end
-      end
+        -- `note.metadata` contains any manually added fields in the frontmatter.
+        -- So here we just make sure those fields are kept in the frontmatter.
+        -- if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+        --   for k, v in pairs(note.metadata) do
+        --     out[k] = v
+        --   end
+        -- end
 
-      return out
-    end,
+        return out
+      end,
+    },
 
     -- Sets how you follow URLs
-    follow_url_func = function(url)
-      -- vim.ui.open(url)
-      vim.ui.open(url, { cmd = { "firefox" } })
-    end,
-
-    -- Sets how you follow images
-    follow_img_func = function(img)
-      -- vim.ui.open(img)
-      vim.ui.open(img, { cmd = { "feh" } })
-    end,
+    -- follow_url_func = function(url)
+    --   -- vim.ui.open(url)
+    --   vim.ui.open(url, { cmd = { "firefox" } })
+    -- end,
+    --
+    -- -- Sets how you follow images
+    -- follow_img_func = function(img)
+    --   -- vim.ui.open(img)
+    --   vim.ui.open(img, { cmd = { "feh" } })
+    -- end,
 
     open = {
       use_advanced_uri = false,
@@ -148,7 +164,7 @@ return {
 
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
-      name = "telescope.nvim",
+      name = "snacks.pick",
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
       note_mappings = {
@@ -165,21 +181,17 @@ return {
       },
     },
 
-    -- Optional, by default, `:ObsidianBacklinks` parses the header under
-    -- the cursor. Setting to `false` will get the backlinks for the current
-    -- note instead. Doesn't affect other link behaviour.
-    backlinks = {
-      parse_headers = true,
-    },
-
     -- Optional, sort search results by "path", "modified", "accessed", or "created".
     -- The recommend value is "modified" and `true` for `sort_reversed`, which means, for example,
     -- that `:Obsidian quick_switch` will show the notes sorted by latest modified time
-    sort_by = "modified",
-    sort_reversed = true,
 
     -- Set the maximum number of lines to read from notes on disk when performing certain searches.
-    search_max_lines = 1000,
+    search = {
+      max_lines = 1000,
+
+      sort_by = "modified",
+      sort_reversed = true,
+    },
 
     -- Optional, determines how certain commands open notes. The valid options are:
     -- 1. "current" (the default) - to always open in the current window
@@ -205,47 +217,38 @@ return {
         -- })
 
         vim.keymap.set("n", "<leader>ch", "<cmd>Obsidian toggle_checkbox<cr>", {
-          buffer = note.bufnr,
           desc = "Toggle Checkbox",
         })
 
         vim.keymap.set("n", "<BS>", "<cmd>Obsidian backlinks<cr>", {
-          buffer = note.bufnr,
           desc = "Backlinks",
         })
 
         vim.keymap.set("n", "<M-CR>", "<cmd>Obsidian links<cr>", {
-          buffer = note.bufnr,
           desc = "Links within Notes",
         })
 
         vim.keymap.set("n", "<leader>os", "<cmd>Obsidian search<cr>", {
-          buffer = note.bufnr,
           desc = "Search Notes",
         })
 
         vim.keymap.set("n", "<leader>oq", "<cmd>Obsidian quick_switch<cr>", {
-          buffer = note.bufnr,
           desc = "Open Quick Switch",
         })
 
         vim.keymap.set("n", "<S-CR>", "<cmd>Obsidian follow_link vsplit<cr>", {
-          buffer = note.bufnr,
           desc = "Follow Link Vsplit",
         })
 
-        vim.keymap.set("n", "<leader>on", "<cmd>Obsidian new<cr>", {
-          buffer = note.bufnr,
+        vim.keymap.set("n", "<leader>on", "<cmd>Obsidian unique_note<cr>", {
           desc = "New Note",
         })
 
-        vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianTemplate Tagline<cr>", {
-          buffer = note.bufnr,
+        vim.keymap.set("n", "<leader>ot", "<cmd>Obsidian template<cr>", {
           desc = "Apply Tagline",
         })
 
-        vim.keymap.set("n", "<leader>od", "<cmd>ObsidianDailies<cr>", {
-          buffer = note.bufnr,
+        vim.keymap.set("n", "<leader>od", "<cmd>Obsidian dailies<cr>", {
           desc = "Open Daily",
         })
 
@@ -259,7 +262,6 @@ return {
             end,
           }
         end, {
-          buffer = note.bufnr,
           desc = "Unfinished Notes",
         })
 
@@ -273,7 +275,6 @@ return {
             end,
           }
         end, {
-          buffer = note.bufnr,
           desc = "Task Notes",
         })
       end,
@@ -291,7 +292,7 @@ return {
     -- Optional, configure additional syntax highlighting / extmarks.
     -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
     ui = {
-      enable = true, -- set to false to disable all additional syntax features
+      enable = false, -- set to false to disable all additional syntax features
       ignore_conceal_warn = true, -- set to true to disable conceallevel specific warning
       update_debounce = 200, -- update delay after a text change (in milliseconds)
       max_file_length = 5000, -- disable UI features for files with more than this many lines
@@ -321,7 +322,7 @@ return {
     },
 
     attachments = {
-      img_folder = "assets/imgs",
+      folder = "assets/imgs",
       img_name_func = function()
         return string.format("Pasted image %s", os.date "%Y%m%d%H%M%S")
       end,
@@ -330,13 +331,15 @@ return {
 
     footer = {
       enabled = true,
-      format = "{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars",
+      -- format = "{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars",
+      format = "{{backlinks}} backlinks",
       hl_group = "Comment",
-      separator = string.rep("-", 80),
+      separator = "" .. string.rep("―", 15),
     },
     ---
     ---Order of checkbox state chars, e.g. { " ", "x" }
     checkbox = {
+      enabled = false,
       order = { " ", "~", "!", ">", "x" },
     },
   },

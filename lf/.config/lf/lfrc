@@ -57,8 +57,8 @@ map x $$f
 map X !$f
 
 # dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
+# map o &mimeopen $f
+# map O &mimeopen --ask $f
 
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
@@ -117,6 +117,11 @@ cmd delete ${{
 # use '<delete>' key for either 'trash' or 'delete' command
 map T trash
 map D delete
+map E editDir
+
+cmd editDir ${{
+    nvim .
+}}
 
 
 cmd tmux ${{
@@ -198,11 +203,18 @@ cmd fzf_cd ${{
         lf -remote "send $id select \"$file\""
     fi
 }}
+map Yy :yank-file
+map Yg :yank-paths
+map Yd :yank-dirname
+map Yb :yank-basename
+map Yn :yank-basename-without-extension
 
-cmd yank-file $printf '%s' "$f" | xclip -i -selection clipboard
-cmd yank-paths $printf '%s' "$fx" | xclip -i -selection clipboard
-cmd yank-dirname &printf '%s' "$PWD" | xclip -i -selection clipboard
-cmd yank-basename &basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
-cmd yank-basename-without-extension &basename -a -- $fx | sed -E 's/\.[^.]+$//' | head -c-1 | xclip -i -selection clipboard
+# cmd yank-file $printf '%s' "$f" | wl-copy
+cmd yank-file $printf "file://%s\n" $fx | wl-copy --type text/uri-list
+cmd yank-paths $printf '%s' "$fx" | wl-copy
+cmd yank-dirname &printf '%s' "$PWD" | wl-copy
+cmd yank-basename &basename -a -- $fx | head -c-1 | wl-copy
+cmd yank-basename-without-extension &basename -a -- $fx | sed -E 's/\.[^.]+$//' | head -c-1 | wl-copy
+# cmd yank-basename-without-extension &basename -a -- $fx | sed -E 's/\.[^.]+$//' | head -c-1 | xclip -i -selection clipboard
 
-cmd free-space $notify-send "$(df -h ~ | tail -n 1)"
+cmd free-space $notify-send "$(df -h ~ | tail -n 1 | awk '{print $4" / "$2}')"

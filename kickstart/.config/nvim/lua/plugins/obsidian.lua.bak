@@ -225,7 +225,7 @@ return {
 
     follow_img_func = function(img)
       -- vim.fn.jobstart { "qlmanage", "-p", img } -- Mac OS quick look preview
-      vim.fn.jobstart { "xdg-open", url } -- linux
+      vim.fn.jobstart { "xdg-open", vim.fn.expand "$HOME" .. "/Documents/Notes/Notes/" .. img }
       -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
     end,
   },

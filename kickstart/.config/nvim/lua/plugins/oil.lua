@@ -3,8 +3,6 @@ return {
     "stevearc/oil.nvim",
     event = "VeryLazy",
     -- lazy = true,
-    ---@module 'oil'
-    ---@type oil.SetupOpts
     opts = {
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
       -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
@@ -126,7 +124,7 @@ return {
       float = {
         -- Padding around the floating window
         padding = 2,
-        max_width = 90,
+        max_width = 150,
         max_height = 50,
         border = "single",
         win_options = {

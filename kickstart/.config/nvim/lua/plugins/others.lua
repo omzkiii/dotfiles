@@ -68,8 +68,9 @@ return {
     event = "VeryLazy",
   },
   {
-    "ggandor/leap.nvim",
+    -- "ggandor/leap.nvim",
     event = "VeryLazy",
+    url="https://codeberg.org/andyg/leap.nvim",
     config = function()
       -- require("leap").create_default_mappings()
       -- vim.keymap.set("n", "f", "<Plug>(leap)")

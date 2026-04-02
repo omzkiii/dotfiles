@@ -143,6 +143,9 @@ button:hover {
 }
 
 #clock,
+#custom-tmuxsessions,
+#custom-personaltasks,
+#custom-worktasks,
 #custom-spotify,
 #tray,
 #battery,
@@ -155,6 +158,8 @@ button:hover {
   margin: 0px 0 0;
   transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.68);
 }
+
+
 
 #bluetooth {
   /* border-radius: 8px 0px 0px 8px; */
@@ -220,6 +225,26 @@ button:hover {
   margin-right: 8px;
   margin-left: 8px;
   padding: 0 8px 0 8px;
+}
+
+#custom-worktasks.low,
+#custom-personaltasks.low {
+  font-weight: bold;
+  color: @color7;
+  margin-right: 5px;
+}
+#custom-worktasks.mid,
+#custom-personaltasks.mid {
+  font-weight: bold;
+  color: @color11;
+  margin-right: 5px;
+}
+
+#custom-worktasks.high,
+#custom-personaltasks.high {
+  font-weight: bold;
+  color: @color9;
+  margin-right: 5px;
 }
 
 @keyframes blink {

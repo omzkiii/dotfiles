@@ -3,7 +3,7 @@ vim.o.virtualedit = "block"
 vim.opt.laststatus = 3
 vim.g.vim_markdown_folding_style_pythonic = 2
 vim.g.vim_markdown_folding_level = 6
-vim.g.vim_markdown_conceal = 3
+vim.g.vim_markdown_conceal = 2
 vim.g.vim_markdown_conceal_links = 1
 -- vim.g.maplocalleader = "\\"
 vim.g.vim_markdown_borderless_table = 1
@@ -44,7 +44,7 @@ vim.opt.mouse = "a"
 vim.opt.showmode = false
 
 -- Conceal Level
-vim.opt.conceallevel = 3
+vim.opt.conceallevel = 2
 vim.opt.concealcursor = ""
 
 -- Sync clipboard between OS and Neovim.

@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
 draw() {
+  # CACHE="$HOME/.cache/lf/thumb"
+  # mkdir -p "$CACHE"
+  #
+  # HASH=$(printf '%s' "$1" | md5sum | cut -d' ' -f1)
+  # THUMB="$CACHE/$HASH.jpg"
+  #
+  # if [ ! -f "$THUMB" ]; then
+  #   magick "$1"[0] -thumbnail 800x800 "$THUMB" >/dev/null 2>&1
+  # fi
+
   kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
   #
   # chafa --view-size="${w}x${h}" --view-position="${x},${y}" --scale "$1" </dev/null >/dev/tty

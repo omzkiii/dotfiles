@@ -16,7 +16,10 @@ vim.lsp.enable {
   "bash",
   "lua_ls",
   "vue",
-  -- "vtsls",
+  "vtsls",
+  "eslint",
+  -- "tsgo",
+  "qmlls",
   "intelephense",
   -- "omnisharp",
   -- "csharp",
@@ -27,19 +30,18 @@ vim.lsp.enable {
   "prismals",
   -- "emmet",
   "clangd",
-  "eslint",
   "html",
   "css",
   "debugpy",
   "codelldb",
   "marksman",
   -- "markdown-oxide",
-  "typescript-language-server",
-  "eslint",
+  -- "typescript-language-server",
+  -- "denols",
   -- "htmx",
   "tailwindcss",
   "harper_ls",
-  "postgres-language-server"
+  "postgres-language-server",
 }
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -74,7 +76,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       signs = signs,
       float = {
         border = "single", -- border style for floating windows
-        source = "always", -- show source (LSP server)
+        source = true, -- show source (LSP server)
         header = "Diagnostics",
         prefix = "· ", -- marker for list items
       },
@@ -133,7 +135,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end
-    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
       map("<leader>th", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
       end, "[T]oggle Inlay [H]ints")

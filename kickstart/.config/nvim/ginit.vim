@@ -159,7 +159,6 @@ vim.g.neovide_padding_left = 10
   end
   vim.keymap.set('n', '<C-=>', IncreaseFontSize, { noremap = true, silent = true })
   vim.keymap.set('n', '<C-->', DecreaseFontSize, { noremap = true, silent = true })
-  vim.keymap.set('n', '<C-->', DecreaseFontSize, { noremap = true, silent = true })
   vim.keymap.set('n', '<C-+>', IncreasePadding, { noremap = true, silent = true })
   vim.keymap.set('n', '<C-_>', DecreasePadding, { noremap = true, silent = true })
   vim.keymap.set("n", "<F11>", toggle_fullscreen, { silent = true })

@@ -18,6 +18,9 @@ return {
           hl.TelescopeSelection = {
             bg = c.blue0,
           }
+          hl.Normal =  {
+            bg = c.bg
+          }
         end,
       }
     end,
@@ -63,7 +66,7 @@ return {
           hl.LeapLabelPrimary = { fg = palette.bg0, bg = palette.yellow, bold = true }
           hl.CursorColumn = { fg = palette.fg, bg = palette.bg3, bold = true }
           hl.NormalFloat = { fg = palette.fg, bg = palette.bg1, bold = true }
-          hl.CursorLine = { fg = palette.fg, bg = palette.bg2 }
+          -- hl.CursorLine = { fg = palette.fg, bg = palette.bg2 }
           hl.Terminal = { fg = palette.bg, bg = palette.fg }
         end,
       }
@@ -239,7 +242,6 @@ return {
         bold = true,
         italic = {
           strings = false,
-          emphasis = false,
           comments = true,
           operators = false,
           emphasis = true,
