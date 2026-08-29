@@ -62,11 +62,25 @@ return {
           layout = function()
             local ok, snacks = pcall(require, "snacks")
             if ok and snacks.config.picker.layout then
-              return snacks.config.picker.layout("snacks")
+              return snacks.config.picker.layout "snacks"
             end
             return "default"
           end,
         },
+      },
+    },
+    kulala_keymaps = {
+      ["Previous tab"] = {
+        "<C-p>",
+        function()
+          require("kulala.ui").show_previous_tab()
+        end,
+      },
+      ["Next tab"] = {
+        "<C-n>",
+        function()
+          require("kulala.ui").show_next_tab()
+        end,
       },
     },
   },

@@ -117,7 +117,7 @@ return {
     quiet = false,
     onIgnoredFiles = "off",
     rulesCustomizations = {},
-    run = "onType",
+    run = "onSave",
     problems = {
       shortenToSingleLine = false,
     },

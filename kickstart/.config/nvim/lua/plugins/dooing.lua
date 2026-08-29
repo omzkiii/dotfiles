@@ -12,8 +12,10 @@ return {
 
       -- Window settings
       window = {
-        width = 55, -- Width of the floating window
-        height = 20, -- Height of the floating window
+        dimensions = {
+          width = 55, -- Width of the floating window
+          height = 20, -- Height of the floating window
+        },
         border = "single", -- Border style
         position = "center", -- Window position: 'right', 'left', 'top', 'bottom', 'center',
         -- 'top-right', 'top-left', 'bottom-right', 'bottom-left'

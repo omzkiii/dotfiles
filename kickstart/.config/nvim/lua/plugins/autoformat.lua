@@ -43,6 +43,10 @@ return {
         razor = { "csharpier" },
         sql = { "sleek" },
         http = { "trim_whitespace" },
+        scheme = { "zprint" },
+        clojure = { "zprint" },
+        -- ["_"] = { "prettierd" },
+        -- ["*"] = { "prettierd" },
       },
       formatters = {
         injected = {

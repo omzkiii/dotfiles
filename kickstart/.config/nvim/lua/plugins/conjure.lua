@@ -1,0 +1,51 @@
+return {
+  -- {
+  --   "Olical/conjure",
+  --   ft = { "clojure", "fennel", "python", "scheme", "javascript", "racket" }, -- etc
+  --   lazy = true,
+  --   init = function()
+  --     -- vim.g["conjure#client#typescript#stdio#command"] = "ts-node"
+  --     vim.g["conjure#client#javascript#stdio#command"] = "node -i"
+  --     vim.g["conjure#client#scheme#stdio#command"] = "racket -I sicp -i"
+  --     vim.g["conjure#client#scheme#stdio#prompt_pattern"] = ">"
+  --     vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
+  --     vim.g["conjure#client#scheme#stdio#value_prefix_pattern"] = false
+  --
+  --     vim.g["conjure#mapping#eval_current_form"] = "cc"
+  --     vim.g["conjure#mapping#eval_root_form"] = "cr"
+  --     vim.g["conjure#mapping#eval_buf"] = "cb"
+  --     vim.g["conjure#mapping#eval_visual"] = "cv"
+  --     vim.g["conjure#mapping#eval_file"] = "cf"
+  --     vim.g["conjure#mapping#eval_word"] = "cw"
+  --     vim.g["conjure#mapping#eval_motion"] = "cm"
+  --     vim.g["conjure#mapping#eval_replace_form"] = "c!"
+  --     vim.g["conjure#mapping#eval_comment_form"] = "c_"
+  --     vim.g["conjure#mapping#eval_marked_form"] = "cM"
+  --     vim.g["conjure#mapping#eval_comment_current_form"] = "Ce" -- was ece
+  --     vim.g["conjure#mapping#eval_comment_root_form"] = "Cr" -- was ecr
+  --     vim.g["conjure#mapping#eval_comment_word"] = "Cw" -- was ecw
+  --     vim.g["conjure#mapping#eval_previous"] = "cp" -- was ep
+  --     vim.g["conjure#client#scheme#stdio#mapping#interrupt"] = "ci" -- was ei
+  --     vim.g["conjure#client#javascript#stdio#mapping#interrupt"] = "ci" -- was ei
+  --     vim.g["conjure#client#python#stdio#mapping#interrupt"] = "ci" -- was ei
+  --     -- vim.g["conjure#mapping#prefix"] = "<leader>c"
+  --     -- Set configuration options here
+  --     -- Uncomment this to get verbose logging to help diagnose internal Conjure issues
+  --     -- This is VERY helpful when reporting an issue with the project
+  --     -- vim.g["conjure#debug"] = true
+  --   end,
+  --
+  --   -- Optional cmp-conjure integration
+  --   -- dependencies = { "PaterJason/cmp-conjure" },
+  -- },
+  -- {
+  --   "PaterJason/cmp-conjure",
+  --   lazy = true,
+  --   config = function()
+  --     local cmp = require("cmp")
+  --     local config = cmp.get_config()
+  --     table.insert(config.sources, { name = "conjure" })
+  --     return cmp.setup(config)
+  --   end,
+  -- },
+}

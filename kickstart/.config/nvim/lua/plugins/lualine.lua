@@ -53,6 +53,7 @@ return {
                   ["V-LINE"] = "V-L",
                   ["V-BLOCK"] = "V-B",
                   ["COMMAND"] = "C",
+                  ["REPLACE"] = "R",
                   ["SELECT"] = "S",
                   ["S-LINE"] = "SL",
                   ["S-BLOCK"] = "SB",
@@ -107,7 +108,8 @@ return {
           },
           lualine_c = {
             { "branch" },
-            { recording },
+            { recording,
+            color="DiagnosticSignWarn"},
           },
 
           lualine_x = {
@@ -145,8 +147,8 @@ return {
               "harpoon2",
               -- color = "CursorColumn",
               icon = "󰛢",
-              -- indicators = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" },
-              -- active_indicators = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" },
+              indicators = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" },
+              active_indicators = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]", "[0]" },
               color_active = "DiagnosticWarn",
               _separator = " ",
               no_harpoon = "Harpoon not loaded",

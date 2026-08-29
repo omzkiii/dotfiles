@@ -184,26 +184,28 @@ require("lazy").setup({
     },
   },
 })
-
+vim.o.background = "dark"
 -- vim.cmd.colorscheme "nvchad"
 -- vim.cmd.colorscheme "ayu-dark"
 -- vim.cmd.colorscheme "dracula"
 -- vim.cmd.colorscheme "kanagawa"
 -- vim.cmd.colorscheme "solarized"
 vim.cmd.colorscheme "gruvbox"
+-- vim.cmd.colorscheme "onedark"
 -- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "tokyonight-night"
 -- vim.cmd.colorscheme "catppuccin-mocha"
 -- vim.cmd.colorscheme "everforest"
+-- vim.cmd.colorscheme "gruvbox-baby"
+-- vim.cmd.colorscheme "nord"
+require "highlights"
+
 -- dofile(vim.g.base46_cache .. "defaults")
 -- dofile(vim.g.base46_cache .. "statusline")
 -- dofile(vim.g.base46_cache .. "syntax")
 -- dofile(vim.g.base46_cache .. "treesitter")
 -- dofile(vim.g.base46_cache .. "telescope")
 -- dofile(vim.g.base46_cache .. "cmp")
--- vim.cmd.colorscheme "nord"
--- vim.cmd.colorscheme "gruvbox-baby"
-require "highlights"
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 -- vim.env.PATH = "$HOME/.local/share/nvim/mason/share/roslyn-ls:" .. vim.env.PATH

@@ -42,7 +42,7 @@ map <enter> shell
 map ` mark-load
 
 #CUSTOM MAPS
-map <backspace2> set hidden!
+map <backspace> set hidden!
 map <c-space> :up; toggle
 
 cmd touch %touch "$@"
@@ -91,7 +91,7 @@ map a :push %mkdir<space>
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
+# cmd trash %set -f; mv $fx ~/.trash
 
 # define a custom 'delete' command
 cmd delete ${{
@@ -115,7 +115,7 @@ cmd delete ${{
 }}
 
 # use '<delete>' key for either 'trash' or 'delete' command
-map T trash
+# map T trash
 map D delete
 map E editDir
 

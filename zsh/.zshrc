@@ -216,7 +216,8 @@ fi
 # eval "$(starship init zsh)"
 export PATH=$PATH:/home/geo/.cargo/bin
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-export QT_QPA_PLATFORM='wayland;xcb'
+# export QT_QPA_PLATFORM='wayland;xcb'
+export QT_QPA_PLATFORM='wayland'
 # export QT_STYLE_OVERRIDE='gtk2'
 # export QT_QPA_PLATFORM=wayland-xcomposite-glx
 # export QT_QPA_PLATFORM=wayland-xcomposite-egl

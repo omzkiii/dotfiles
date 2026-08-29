@@ -9,6 +9,11 @@ local vue_language_server_path = vim.fn.stdpath "data"
 return {
   cmd = { "vtsls", "--stdio" },
   settings = {
+    typescript = {
+      compilerOptions = {
+        noErrorTruncation = true,
+      },
+    },
     vtsls = {
       tsserver = {
         globalPlugins = {

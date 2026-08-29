@@ -35,6 +35,7 @@ vim.lsp.enable {
   "debugpy",
   "codelldb",
   "marksman",
+  "racket",
   -- "markdown-oxide",
   -- "typescript-language-server",
   -- "denols",

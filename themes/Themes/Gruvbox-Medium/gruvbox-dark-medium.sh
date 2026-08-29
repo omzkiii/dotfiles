@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 wal --theme ~/Themes/Gruvbox-Medium/pywal-gruvbox-dark-medium.json
 gsettings set org.gnome.desktop.interface gtk-theme "oomox-gruvbox-dark-medium"
 gsettings set org.gnome.desktop.interface icon-theme "oomox-gruvbox-dark-medium"
@@ -13,3 +14,4 @@ spicetify apply
 ~/.config/mako/update-colors.sh
 swww img ~/Pictures/Wallpapers/image21.png --transition-type center
 notify-send Gruvbox-Medium
+exit

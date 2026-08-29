@@ -18,8 +18,8 @@ return {
           hl.TelescopeSelection = {
             bg = c.blue0,
           }
-          hl.Normal =  {
-            bg = c.bg
+          hl.Normal = {
+            bg = c.bg,
           }
         end,
       }
@@ -120,7 +120,8 @@ return {
             -- base2 = lighten(colors.base2, 20),
             -- base3 = lighten(colors.base3, 20),
             -- green = lighten(colors.green, 20),
-            -- red = lighten(colors.red, 20),
+            -- red = darken(colors.red, 20),
+            -- magenta = darken(colors.red, 20),
             -- cyan = lighten(colors.cyan, 20),
             -- blue = lighten(colors.blue, 20),
             -- yellow = lighten(colors.yellow, 20),
@@ -258,7 +259,8 @@ return {
         overrides = {
           -- Normal = { bg = "#1d2021" }, -- explicitly set Normal background color
           -- Normal = { bg = "#282828" }, -- explicitly set Normal background color
-          NormalFloat = { bg = "#282626" }, -- explicitly set Normal background color
+          NormalFloat = { bg = "#1d2021" }, -- explicitly set Normal background color
+          ColorColumn = { bg = "#1d2021" }, -- explicitly set Normal background color
           -- NormalFloat = { link = "GruvboxGray" }, -- explicitly set Normal background color
           -- CursorColumn = { bg = "#504945" },
           -- SignColumn = { bg = "#1d2021" },
@@ -459,6 +461,16 @@ return {
           -- VertSplit = { fg = "muted", bg = "muted" },
         },
       }
+    end,
+  },
+  {
+    "navarasu/onedark.nvim",
+    lazy = true,
+    config = function()
+      require("onedark").setup {
+        style = "dark",
+      }
+      require("onedark").load()
     end,
   },
   {

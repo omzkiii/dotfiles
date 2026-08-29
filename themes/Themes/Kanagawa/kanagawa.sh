@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 wal --theme ~/Themes/Kanagawa/pywal-kanagawa.json
 gsettings set org.gnome.desktop.interface gtk-theme "oomox-kanagawa"
 gsettings set org.gnome.desktop.interface icon-theme "oomox-kanagawa"
@@ -10,5 +11,6 @@ killall waybar && waybar &
 spicetify config current_theme text color_scheme Kanagawa
 spicetify apply
 ~/.config/mako/update-colors.sh
-swww img ~/Pictures/Wallpapers/camp.jpg --transition-type center
+awww img ~/Pictures/Wallpapers/camp.jpg --transition-type center
 notify-send Kanagawa
+exit

@@ -200,6 +200,7 @@ fi             # FILE
 *.rproj         󰗆
 *.sol           󰡪
 *.pem           
+*.scm			󰘧
 
 # file names (vim-devicons) (case-insensitive not supported in lf)
 *gruntfile.coffee       

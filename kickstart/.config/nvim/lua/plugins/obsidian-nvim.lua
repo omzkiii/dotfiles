@@ -46,16 +46,16 @@ return {
     log_level = vim.log.levels.INFO,
 
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-    completion = {
-      -- Enables completion using nvim_cmp
-      nvim_cmp = true,
-      -- Enables completion using blink.cmp
-      blink = false,
-      -- Trigger completion at 2 chars.
-      min_chars = 2,
-      -- Set to false to disable new note creation in the picker
-      create_new = true,
-    },
+    -- completion = {
+    --   -- Enables completion using nvim_cmp
+    --   nvim_cmp = true,
+    --   -- Enables completion using blink.cmp
+    --   blink = false,
+    --   -- Trigger completion at 2 chars.
+    --   min_chars = 2,
+    --   -- Set to false to disable new note creation in the picker
+    --   create_new = true,
+    -- },
     templates = {
       enabled = true,
       folder = "Templates",
