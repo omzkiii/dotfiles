@@ -6,6 +6,7 @@ HISTORY_FILE="$HOME/.fzf_project_history"
 
 dir=$(
   (
+    tmux list-sessions -F "#{pane_current_path}/  " | jq -Rr '[.,inputs] | join("\n")'
     cat "$HISTORY_FILE"
     fd --type d --max-depth 3 --absolute-path . ~/Documents/Projects |
       awk -F/ '{print NF, $0}' | sort -n | cut -d" " -f2-
@@ -13,10 +14,35 @@ dir=$(
     #   -maxdepth 3 \
     #   \( -type d -name ".*" -prune \) -o -type d -print |
     #   awk -F/ '{print NF, $0}' | sort -n | cut -d' ' -f2-
-  ) | fzf --preview="tree -C -C {}" --delimiter / --with-nth 6.. --layout=default --border=sharp --preview-border=sharp --border-label=" Projects" --pointer=󰄾 --height 100% --color=16 --color=border:cyan --color=current-bg:bright-black --prompt=" │" --bind="j:down" --bind="k:up" --bind="q:abort" --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)+unbind(q)" --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)+rebind(q)"
+    #
+  ) |
+    awk '!seen[$1]++' |
+    fzf \
+      --preview='p={}; p=${p% \ }; tree "$p"' \
+      --delimiter / \
+      --with-nth 6.. \
+      --layout=default \
+      --border=sharp \
+      --preview-border=sharp \
+      --border-label=" Projects" \
+      --pointer=󰄾 \
+      --height 100% \
+      --color=16 \
+      --color=border:cyan \
+      --color=current-bg:bright-black \
+      --prompt=" │" \
+      --bind="j:down" \
+      --bind="k:up" \
+      --bind="q:abort" \
+      --bind="i:enable-search+unbind(j)+unbind(k)+unbind(i)+unbind(q)" \
+      --bind="esc:disable-search+rebind(j)+rebind(k)+rebind(i)+rebind(q)" \
+      --bind='ctrl-u:preview-up,ctrl-d:preview-down' \
+      --bind='shift-up:preview-up,shift-down:preview-down' \
+      --bind='ctrl-b:preview-page-up,ctrl-f:preview-page-down'
 )
 
 # name=$(basename "$dir")
+dir="${dir%\  }"
 name="$(basename "$(dirname "$dir")")/$(basename "$dir")"
 
 if [[ -n "$dir" ]]; then
@@ -32,11 +58,11 @@ if [[ -n "$dir" ]]; then
     if tmux list-clients | grep "attached"; then
       if tmux has-session -t $name 2>/dev/null; then
         tmux switch-client -t "$name"
-        hyprctl dispatch focuswindow title:tmux
+        hyprctl eval 'hl.dispatch(hl.dsp.focus({  window = "title:(^tmux$)"  }))'
       else
         tmux new-session -d -s "$name" -c "$dir" "zsh -i -c 'nvim -S Session.vim; exec zsh'"
         tmux switch-client -t "$name"
-        hyprctl dispatch focuswindow title:tmux
+        hyprctl eval 'hl.dispatch(hl.dsp.focus({  window = "title:(^tmux$)"  }))'
       fi
     else
       if tmux has-session -t $name 2>/dev/null; then

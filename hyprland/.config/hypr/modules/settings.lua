@@ -1,6 +1,3 @@
-
-local home = os.getenv("HOME")
-local C = dofile(home .. "/.cache/wal/colors-hyprland.lua")
 -----------------------
 ----- PERMISSIONS -----
 -----------------------
@@ -22,6 +19,7 @@ local C = dofile(home .. "/.cache/wal/colors-hyprland.lua")
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
+local utils = require("modules.utils")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
@@ -32,8 +30,8 @@ hl.config({
 		border_size = 1,
 
 		col = {
-			active_border = { colors = { C.color3 }, angle = 45 },
-			inactive_border = C.background,
+			active_border = { colors = { utils.color.color3 }, angle = 45 },
+			inactive_border = utils.color.background,
 		},
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -42,7 +40,8 @@ hl.config({
 		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
 		allow_tearing = false,
 
-		layout = "master",
+		-- layout = "master",
+		layout = "scrolling",
 	},
 
 	decoration = {
@@ -56,8 +55,8 @@ hl.config({
 		shadow = {
 			enabled = true,
 			range = 7,
-			render_power = 5,
-			color = "0xee1a1a1a",
+			render_power = 3,
+			color = "#161616ff",
 		},
 
 		blur = {
@@ -112,6 +111,7 @@ hl.config({
 hl.config({
 	scrolling = {
 		fullscreen_on_one_column = true,
+		focus_fit_method = 1,
 	},
 })
 
@@ -122,7 +122,7 @@ hl.config({
 hl.config({
 	misc = {
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
-		disable_splash_rendering = true,
+		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
+		disable_splash_rendering = false,
 	},
 })

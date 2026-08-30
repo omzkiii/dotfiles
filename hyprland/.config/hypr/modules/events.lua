@@ -1,0 +1,10 @@
+-- local u = require("modules.utils")
+-- hl.on(
+-- 	"workspace.active",
+-- 	---@param ws HL.Workspace
+-- 	function(ws)
+-- 		if ws.windows < 1 then
+-- 			hl.exec_cmd(u.rofiScriptPath .. "/launcher")
+-- 		end
+-- 	end
+-- )

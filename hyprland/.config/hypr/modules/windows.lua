@@ -32,6 +32,11 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	match = { float = true },
+	border_size = 1,
+})
+
+hl.window_rule({
 	name = "books",
 	match = {
 		class = "^(kitty)$",
@@ -56,7 +61,8 @@ hl.window_rule({
 	fullscreen = false,
 	pin = false,
 	no_focus = false,
-    size = {"(monitor_w*0.7)", "(monitor_h*0.5)"}
+	size = { "(monitor_w*0.7)", "(monitor_h*0.5)" },
+	dim_around = true,
 })
 
 hl.window_rule({
@@ -69,8 +75,8 @@ hl.window_rule({
 	float = true,
 	fullscreen = false,
 	pin = false,
-    size = {"(monitor_w*0.5)", "(monitor_h*0.5)"},
-
+	size = { "(monitor_w*0.5)", "(monitor_h*0.5)" },
+	dim_around = true,
 	no_focus = false,
 })
 
@@ -100,21 +106,21 @@ hl.window_rule({
 hl.window_rule({
 	name = "move-hyprland-run",
 	match = { class = "hyprland-run" },
-
 	move = "20 monitor_h-120",
 	float = true,
 })
 
 hl.layer_rule({
 	name = "notifications",
-	match = { namespace = "notification" },
+	match = { namespace = "notifications" },
 	animation = "slide",
 })
 
 hl.layer_rule({
 	name = "rofi",
 	match = { namespace = "rofi" },
-	dim_around = true
+	dim_around = true,
+	animation = "popin",
 })
 
 hl.layer_rule({
@@ -127,4 +133,12 @@ hl.layer_rule({
 	name = "selection",
 	match = { namespace = "selection" },
 	animation = "fade",
+})
+
+hl.workspace_rule({
+	workspace = "w[tv1]",
+	-- gaps_out = 0,
+	-- gaps_in = 0,
+	no_border = true,
+	no_rounding = true,
 })

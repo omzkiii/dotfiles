@@ -21,10 +21,10 @@ hl.monitor({
 -- monitor= eDP-1, 1920x1080@61,0x0,1
 -- monitor= HDMI-A-1, 1360x768@60,1920x0,1
 
-
 require("modules.devices")
 require("modules.autostart")
 require("modules.settings")
 require("modules.keybinds")
 require("modules.windows")
 require("modules.animations")
+require("modules.events")

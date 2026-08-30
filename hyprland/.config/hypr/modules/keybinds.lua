@@ -1,16 +1,4 @@
-local utils = require("modules.utils")
----------------------
----- MY PROGRAMS ----
----------------------
--- Set programs that you use
-local terminal = "kitty -o background_opacity=" .. utils.opacity
-local fileManager = terminal .. " lf"
-local taskManager = terminal .. " btop"
-local editor = terminal .. " nvim"
-local scriptPath = "~/.config/hypr/scripts"
-local rofiScriptPath = ".config/rofi/scripts"
--- local menu = "dmenu"
-
+local u = require("modules.utils")
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
@@ -18,37 +6,44 @@ local rofiScriptPath = ".config/rofi/scripts"
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(editor))
+
+-- Programs
+hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(u.terminal))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(u.fileManager))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(u.editor))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + tab", hl.dsp.exec_cmd(taskManager))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(terminal .. " --single-instance -T Tasks taskwarrior-tui"))
+hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("obsidian"))
+hl.bind(mainMod .. " + tab", hl.dsp.exec_cmd(u.taskManager))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(u.terminal .. " --single-instance -T Tasks taskwarrior-tui"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.window.kill({ window = "title:(^Tasks$)" }))
-hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd(terminal .. " --single-instance -T Projects " .. scriptPath .. "/ff.sh"))
+hl.bind(
+	mainMod .. " + slash",
+	hl.dsp.exec_cmd(u.terminal .. " --single-instance -T Projects " .. u.scriptPath .. "/ff.sh")
+)
 hl.bind(mainMod .. " + slash", hl.dsp.window.kill({ window = "title:(^Projects$)" }))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(terminal .. " -T tmux tmux attach"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(u.terminal .. " -T tmux tmux attach"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -a"))
-hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("cd ~/Documents/Notes/Notes && " .. terminal .. " nvim TODOs.md"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("cd ~/Documents/Notes/Notes && " .. u.terminal .. " nvim TODOs.md"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("killall waybar || waybar"))
 
 -- WM operations
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pin)
+hl.bind(mainMod .. " + CTRL + P", hl.dsp.window.pin())
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + S", utils.toggle_scrolling)
-hl.bind(mainMod .. " + SHIFT + F", utils.fit_into_scroll)
+hl.bind(mainMod .. " + S", u.toggle_scrolling)
+hl.bind(mainMod .. " + SHIFT + F", u.fit_into_scroll)
 
 -- Rofi
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(rofiScriptPath .. "/launcher || pkill rofi"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(rofiScriptPath .. "/wallpaper || pkill rofi"))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(rofiScriptPath .. "/themes || pkill rofi"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(rofiScriptPath .. "/powermenu || pkill rofi"))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(rofiScriptPath .. "/books || pkill rofi"))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(rofiScriptPath .. "/calc || pkill rofi"))
-hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(rofiScriptPath .. "/emoji || pkill rofi"))
-hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd(rofiScriptPath .. "/newproject || pkill rofi"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(u.rofiScriptPath .. "/launcher || pkill rofi"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(u.rofiScriptPath .. "/wallpaper || pkill rofi"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(u.rofiScriptPath .. "/themes || pkill rofi"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(u.rofiScriptPath .. "/powermenu || pkill rofi"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(u.rofiScriptPath .. "/books || pkill rofi"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(u.rofiScriptPath .. "/calc || pkill rofi"))
+hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(u.rofiScriptPath .. "/emoji || pkill rofi"))
+hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd(u.rofiScriptPath .. "/newproject || pkill rofi"))
 
 -- Move focus with mainMod
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
@@ -57,10 +52,10 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
 -- Move window with mainMod
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + H", u.move_window("left"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + L", u.move_window("right"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + K", u.move_window("up"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + J", u.move_window("down"), { repeating = true })
 
 -- Resize window with mainMod
 hl.bind(mainMod .. " + CTRL + H", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
@@ -91,15 +86,15 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
 	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5% && " .. scriptPath .. "/volume up"),
+	hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5% && " .. u.scriptPath .. "/volume up"),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5% && " .. scriptPath .. "/volume down"),
+	hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5% && " .. u.scriptPath .. "/volume down"),
 	{ locked = true, repeating = true }
 )
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd(scriptPath .. "/volume mute"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(u.scriptPath .. "/volume mute"), { locked = true, repeating = true })
 hl.bind(
 	"XF86AudioMicMute",
 	hl.dsp.exec_cmd("pactl set-source-mute @DEFAULT_SOURCE@ toggle"),
