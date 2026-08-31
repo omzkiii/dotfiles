@@ -1,67 +1,81 @@
-local opacity = 1
-local terminal = "kitty -o background_opacity=" .. opacity
+local M = {}
 
-return {
-	color = dofile(os.getenv("HOME") .. "/.cache/wal/colors-hyprland.lua"),
-	opacity = opacity,
-	terminal = terminal,
-	fileManager = terminal .. " lf",
-	taskManager = terminal .. " btop",
-	editor = terminal .. " nvim",
-	scriptPath = "~/.config/hypr/scripts",
-	rofiScriptPath = ".config/rofi/scripts",
-	toggle_scrolling = function()
-		local ws = hl.get_active_workspace()
-		if ws == nil then
-			return
-		end
-		local current = ws.tiled_layout
+M.opacity = 1
+M.terminal = "kitty -o background_opacity=" .. M.opacity
+M.scriptPath = "~/.config/hypr/scripts"
+M.color = dofile(os.getenv("HOME") .. "/.cache/wal/colors-hyprland.lua")
+M.fileManager = M.terminal .. " lf"
+M.taskManager = M.terminal .. " btop"
+M.editor = M.terminal .. " nvim"
+M.rofiScriptPath = ".config/rofi/scripts"
 
-		local next_layout = (current == "scrolling") and "master" or "scrolling"
+function M.toggle_scrolling()
+	local ws = hl.get_active_workspace()
+	if ws == nil then
+		return
+	end
+	local current = ws.tiled_layout
 
+	local next_layout = (current == "scrolling") and "master" or "scrolling"
+
+	hl.workspace_rule({
+		workspace = tostring(ws.id),
+		layout = next_layout,
+	})
+end
+
+function M.fit_into_scroll()
+	local ws = hl.get_active_workspace()
+	if ws == nil then
+		return
+	end
+	local current = ws.tiled_layout
+
+	if current ~= "scrolling" then
 		hl.workspace_rule({
 			workspace = tostring(ws.id),
-			layout = next_layout,
+			layout = "scrolling",
 		})
-	end,
+	else
+		hl.dispatch(hl.dsp.layout("fit active"))
+	end
+end
 
-	fit_into_scroll = function()
-		local ws = hl.get_active_workspace()
-		if ws == nil then
+---@param dir "left"|"right"|"up"|"down"
+function M.move_window(dir)
+	return function()
+		local w = hl.get_active_window()
+		if w == nil then
 			return
 		end
-		local current = ws.tiled_layout
+		local float_dir = {
+			left = { x = -50, y = 0, relative = true },
+			right = { x = 50, y = 0, relative = true },
+			up = { x = 0, y = -50, relative = true },
+			down = { x = 0, y = 50, relative = true },
+		}
 
-		if current ~= "scrolling" then
-			hl.workspace_rule({
-				workspace = tostring(ws.id),
-				layout = "scrolling",
-			})
+		local val = { direction = dir }
+		if w.floating then
+			val = float_dir[dir]
+		end
+
+		hl.dispatch(hl.dsp.window.move(val))
+	end
+end
+
+---@param name string
+---@param exec string
+function M.toggle_term_app(name, exec)
+	return function()
+		local w = hl.get_window("title:(^" .. name .. "$)")
+		if w == nil then
+			hl.dispatch(hl.dsp.exec_cmd(M.terminal .. " --single-instance -T " .. name .. " " .. exec))
+			return
 		else
-			hl.dispatch(hl.dsp.layout("fit active"))
+			hl.dispatch(hl.dsp.window.kill({ window = "title:(^" .. name .. "$)" }))
 		end
+	end
+end
 
-	end,
-	---@param dir "left"|"right"|"up"|"down"
-	move_window = function(dir)
-		return function()
-			local w = hl.get_active_window()
-			if w == nil then
-				return
-			end
-			local float_dir = {
-				left = { x = -50, y = 0, relative = true },
-				right = { x = 50, y = 0, relative = true },
-				up = { x = 0, y = -50, relative = true },
-				down = { x = 0, y = 50, relative = true },
-			}
-
-			local val = { direction = dir }
-			if w.floating then
-				val = float_dir[dir]
-			end
-
-			hl.dispatch(hl.dsp.window.move(val))
-		end
-	end,
-}
+return M

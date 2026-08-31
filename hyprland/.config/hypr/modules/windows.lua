@@ -7,13 +7,13 @@
 
 -- Example window rules that are useful
 
-local suppressMaximizeRule = hl.window_rule({
-	-- Ignore maximize requests from all apps. You'll probably like this.
-	name = "suppress-maximize-events",
-	match = { class = ".*" },
-
-	suppress_event = "maximize",
-})
+-- local suppressMaximizeRule = hl.window_rule({
+-- 	-- Ignore maximize requests from all apps. You'll probably like this.
+-- 	name = "suppress-maximize-events",
+-- 	match = { class = ".*" },
+--
+-- 	suppress_event = "maximize",
+-- })
 -- suppressMaximizeRule:set_enabled(false)
 
 hl.window_rule({
@@ -32,7 +32,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	match = { float = true },
+	match = { float = true , focus = true },
 	border_size = 1,
 })
 
@@ -59,7 +59,7 @@ hl.window_rule({
 	},
 	float = true,
 	fullscreen = false,
-	pin = false,
+	pin = true,
 	no_focus = false,
 	size = { "(monitor_w*0.7)", "(monitor_h*0.5)" },
 	dim_around = true,
@@ -74,7 +74,7 @@ hl.window_rule({
 	},
 	float = true,
 	fullscreen = false,
-	pin = false,
+	pin = true,
 	size = { "(monitor_w*0.5)", "(monitor_h*0.5)" },
 	dim_around = true,
 	no_focus = false,
